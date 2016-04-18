@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "Schedule Results";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/dashboard-css")
+}
+
+@model BetsKiller.ViewModel.Dashboard.ScheduleResults.ScheduleResultsViewModel
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Schedule & Results
+        <small>NBA</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Dashboard/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Schedule & Results</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+
+        <section class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
+
+            <!-- Teams -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Teams</h3>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12 hidden-xs hidden-sm">
+                        <div class="list-group" id="teamsList">
+                            @for (int i = 0; i < Model.Teams.Count; i++)
+                            {
+                                <a href="#@Model.Teams[i]" class="list-group-item col-lg-6 col-md-6 @(i % 2 == 1 ? "odd" : "even")" data-toggle="tab"><span class="label label-sm label-@Model.Teams[i].ToLower()">@Model.Teams[i]</span></a>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 visible-xs visible-sm">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <select class="form-control" tabindex="0" id="teamsListSelect">
+                                    @foreach (string team in Model.Teams)
+                                    {
+                                        <option value="@team">@team</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="col-lg-10 col-md-8 col-sm-12 col-xs-12">
+
+            <!-- Schedules and results -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Schedule & Results</h3>
+                </div>
+                <div class="box-body">
+                    <div class="tab-content">
+                        @foreach (BetsKiller.ViewModel.Dashboard.ScheduleResults.ScheduleResultsTeamViewModel team in Model.TeamsGames)
+                        {
+                            <div role="tabpanel" class="tab-pane" id="@team.TeamName">
+                                <div class="table-responsive">
+                                    <p>
+                                        <span class="label label-sm label-@team.TeamName.ToLower()">@team.TeamName</span>
+                                    </p>
+                                    <table class="table table-striped table-hover" style="width: 100%">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Date</th>
+                                                <th class="text-center">Side</th>
+                                                <th class="text-center">Opponent</th>
+                                                <th class="text-center">Result</th>
+                                                <th class="text-center">Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (BetsKiller.ViewModel.Dashboard.ScheduleResults.ScheduleResultsGameViewModel game in team.Games)
+                                            {
+                                                <tr>
+                                                    <td class="text-center">@game.Date</td>
+                                                    <td class="text-center">@game.Side</td>
+                                                    <td class="text-center"><span class="label label-sm label-@game.Opponent.ToLower()">@game.Opponent</span></td>
+                                                    <td class="text-center"><span style="@game.Result.Style">@game.Result.Value</span></td>
+                                                    <td class="text-center">@game.Location</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+</section>
+
+@section Scripts {
+    <script>
+        // Set first tab active
+        $('#teamsList a:first').tab('show');
+
+        // Hook select change event
+        $('#teamsListSelect').change(function () {
+            var selectedValue = $(this).val();
+            $('#teamsList a[href="#' + selectedValue + '"]').tab('show');
+        });
+
+        // Set datatables
+        @foreach (BetsKiller.ViewModel.Dashboard.ScheduleResults.ScheduleResultsTeamViewModel team in Model.TeamsGames)
+        {
+            <text>
+                $('#@team.TeamName table').DataTable({
+                    "paging": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": false
+                });
+            </text>
+        }
+    </script>
+}

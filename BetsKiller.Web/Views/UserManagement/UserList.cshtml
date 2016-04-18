@@ -1,0 +1,67 @@
+﻿@model BetsKiller.ViewModel.UserManagement.UsersListViewModel
+@{
+    ViewBag.Title = "Users list";
+}
+
+<h3>Users list</h3>
+
+@Html.ValidationSummary()
+
+<!-- Search panel -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Search parameters
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("UserList", "UserManagement", FormMethod.Post, new { @class = "form-horizonral", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @style = "color: red" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.UserProfileSearchViewModel.Email)
+                        @Html.TextBoxFor(x => x.UserProfileSearchViewModel.Email)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.UserProfileSearchViewModel.RoleName)
+                        @Html.DropDownListFor(x => x.UserProfileSearchViewModel.RoleName, Model.AllRoles)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.UserProfileSearchViewModel.ResultLimit)
+                        @Html.TextBoxFor(x => x.UserProfileSearchViewModel.ResultLimit)
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Search</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Result table -->
+<div class="row">
+    <div class="col-md-8">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (BetsKiller.ViewModel.UserManagement.UserProfileViewModel user in Model.UserProfileViewModels)
+                {
+                    <tr>
+                        <td>@user.UserId</td>
+                        <td>@Html.ActionLink(user.Email, "UserEdit", new { userName = user.Email })</td>
+                        <td>@user.Roles</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

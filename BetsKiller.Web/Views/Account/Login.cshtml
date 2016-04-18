@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Account/_Layout.cshtml";
+}
+
+@model BetsKiller.ViewModel.Account.LoginViewModel
+
+<div class="login-box-body">
+
+    <h3 class="login-box-msg">
+        Log In
+    </h3>
+
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @style = "color: red" })
+        
+        <div class="form-group has-feedback">
+            @Html.LabelFor(x => x.Email, "Email address:", new { @class = "white" })
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Where you receive cat gif's..." })
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+
+        <div class="form-group has-feedback">
+            @Html.LabelFor(x => x.Password, "Password:", new { @class = "white" })
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Keep it private like your Porn history..." })
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="checkbox icheck">
+                    @Html.CheckBoxFor(x => x.RememberMe)
+                    @Html.LabelFor(x => x.RememberMe)
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <button type="submit" class="btn btn-primary btn-block btn-flat btn_purple">Log In</button>
+            </div>
+        </div>
+    }
+
+    <div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Log In using Facebook</a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Log In using Google+</a>
+    </div>
+
+    <div class="text-center">
+        <a href="#">I forgot my password</a><br>
+        @Html.ActionLink("Sign Up", "Register", "Account", new { @class = "text-center" })
+    </div>
+</div>

@@ -1,0 +1,260 @@
+﻿@model BetsKiller.ViewModel.Home.HomeViewModel
+
+<!-------------- START SCROLL BUTTONS -------------->
+<a href="#" id="scrollTop" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
+<a href="#" id="scrollBottom" class="scrollToTop"><i class="fa fa-arrow-down"></i></a>
+<!-------------- END SCROLL BUTTONS -------------->
+
+<!-------------- BEGIN HEADER -------------->
+<header id="header">
+
+    <!-- BEGIN SLIDER AREA-->
+    <div class="slider_area">
+
+        <!-- BEGIN SLIDER-->
+        <div id="slides">
+            <ul class="slides-container">
+
+                @foreach (BetsKiller.ViewModel.Home.HomeImageViewModel image in Model.Images)
+                { 
+                    <!-- SLIDE OVERLAY -->
+                    <li>
+                        <div class="slider_overlay"></div>
+                        <img src="@image.Path" alt="img">
+                        <div class="slider_caption">
+                            <h2>@image.Caption</h2>
+                            <p style="margin-top: 50px">
+                                @image.Description
+                            </p>
+                        </div>
+                    </li>
+                }
+
+            </ul>
+
+            <!-- BEGAIN SLIDER NAVIGATION -->
+            <nav class="slides-navigation">
+                <!-- PREV IN THE SLIDE -->
+                <a class="prev" href="/item1">
+                    <span class="icon-wrap"></span>
+                    <h3><strong>Prev</strong></h3>
+                </a>
+                <!-- NEXT IN THE SLIDE -->
+                <a class="next" href="/item3">
+                    <span class="icon-wrap"></span>
+                    <h3><strong>Next</strong></h3>
+                </a>
+            </nav>   
+        </div>
+        <!-- END SLIDER-->
+
+    </div>
+    <!-- END SLIDER AREA -->
+
+</header>
+<!-------------- END HEADER -------------->
+
+<!-------------- BEGIN SERVICE -------------->
+<section id="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <!-- BEGIN SERVICE HEADING -->
+                <div class="heading text-center">
+                    <h2 class="wow fadeInLeftBig">Our Services</h2>
+                    <p>Bets Killer offers these incredible services for enhanced betting experience</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <!-- BEGIN SERVICE  -->
+                <div class="service_area">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <!-- BEGIN SINGLE SERVICE -->
+                            <div class="single_service wow fadeInLeft">
+                                <div class="service_iconarea">
+                                    <span class="fa fa-line-chart service_icon"></span>
+                                </div>
+                                <h3 class="service_title">Bets Tracker</h3>
+                                <p>Take advantage of our Comprehensive System to track all of your Bets in Real Time</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <!-- BEGIN SINGLE SERVICE -->
+                            <div class="single_service wow fadeInRight">
+                                <div class="service_iconarea">
+                                    <span class="fa fa-pie-chart service_icon"></span>
+                                </div>
+                                <h3 class="service_title">Bets analyser</h3>
+                                <p>See the correct steps to placing a Bet and what Factors you need to take into consideration</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <!-- BEGIN SINGLE SERVICE -->
+                            <div class="single_service wow fadeInLeft">
+                                <div class="service_iconarea">
+                                    <span class="fa fa-gift service_icon"></span>
+                                </div>
+                                <h3 class="service_title">Bets contests</h3>
+                                <p>Compete for Supremacy and become a Bets Killer Champion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-------------- END SERVICE -------------->
+
+<!-------------- BEGIN OVERALL STATISTICS -------------->
+<section id="works">
+    <!-- BEGIN OVERALL STATISTICS SECTION -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="counter_section">
+                <!-- OVERALL STATISTICS OVERLAY -->
+                <div class="slider_overlay"></div>
+                <div class="container">
+                    <div class="counter_area">
+                        <div class="heading text-center">
+                            <h2 class="wow fadeInRightBig white">Overall Statistics</h2>
+                        </div>
+                        <!-- START OVERALL STATISTICS COUNTER-->
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="counter wow fadeInUp">
+                                <i class="fa fa-usd fa-2x"></i>
+                                <h2 class="timer count-title" id="count-number" data-speed="1500">@Model.Profit</h2>
+                                <p class="count-text ">All Time Dollars <strong>Profit</strong></p>
+                            </div>
+                        </div>
+                        <!-- START OVERALL STATISTICS COUNTER-->
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="counter wow fadeInUp">
+                                <i class="fa fa-bar-chart fa-2x"></i>
+                                <h2 class="timer count-title" id="count-number2" data-speed="1500">@Model.Predictions</h2>
+                                <p class="count-text ">Overall <strong>Predictions</strong> Made</p>
+                            </div>
+                        </div>
+                        <!-- START OVERALL STATISTICS COUNTER-->
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="counter wow fadeInUp">
+                                <i class="fa fa-exchange fa-2x"></i>
+                                <h2 class="timer count-title" id="count-number3" data-speed="1500">@Model.ROI</h2>
+                                <p class="count-text ">All Time <strong>ROI</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------- END OVERALL STATISTICS -------------->
+    <!-------------- BEGIN MOTIVATION MESSAGE -------------->
+    <div class="row">
+        <div class="portfolio_area">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="container">
+                        <div class="heading text-center">
+                            <h2 class="wow fadeInLeftBig white">Quote of the Day</h2>
+                            <p>@Model.Quote</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-------------- END OVERALL STATISTICS -------------->
+
+<!-------------- BEGIN PRICING -------------->
+<section id="pricing">
+    <div class="container">
+        <div class="row col-lg-12 col-md-12">
+            <!-- START PRICING HEADING -->
+            <div class="heading text-center">
+                <h2 class="wow fadeInRightBig">Pricing</h2>
+                <p>Choose from one of these option and Start your Money making Career</p>
+            </div>
+        </div>
+        <div class="row col-lg-12 col-md-12">
+            <div class="pricing_area">
+                <div class="row">
+                    <!-- BEGIN BASIC PRICE TABLE -->
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="single_price wow fadeInUp">
+                            <h3>Basic</h3>
+                            <div class="price">
+                                <h4>$0</h4>
+                                <span>per month</span>
+                            </div>
+                            <ul class="price_features">
+                                <li>Free Analysis<strong> Every Day</strong></li>
+                                <li><strong>Stats</strong> and news</li>
+                                <li><strike><strong>Basic</strong> Bets Tracker</strike><br /><span style="color: red">coming soon</span></li>
+                            </ul>
+                            <a type="button" href="@Url.Action("Register", "Account")" class="btn btn-primary">Select Plan</a>
+                        </div>
+                    </div>
+                    <!-- BEGIN STANDARD PRICE TABLE -->
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="single_price wow fadeInUp">
+                            <h3>Premium</h3>
+                            <div class="price">
+                                <h4><strike>$50</strike> $25</h4>
+                                <span>per month <span style="color: red">until 1.7.2016</span></span>
+                            </div>
+                            <ul class="price_features">
+                                <li>One Premium Analysis<strong> Every Day</strong></li>
+                                <li><strike><strong>Advanced</strong> Bets Tracker</strike><br /><span style="color: red">coming soon</span></li>
+                            </ul>
+                            <a type="button" href="@Url.Action("Index", "Dashboard")?subscribe=true" class="btn btn-primary">Select Plan</a>
+                        </div>
+                    </div>
+                    <!-- BEGIN BUSINESS PRICE TABLE -->
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="single_price wow fadeInUp">
+                            <h3>Ultimate<label class="label label-danger label-as-badge" style="margin-left: 10px">coming soon</label></h3>
+                            <div class="price">
+                                <h4>$90</h4>
+                                <span>per month</span>
+                            </div>
+                            <ul class="price_features">
+                                <li>All Premium Analysis<strong> Every Day</strong></li>
+                                <li><strong><strike>Games Analyser</strike></strong><br /><span style="color: red">coming soon</span></li>
+                            </ul>
+                            <button type="button" href="#" class="btn btn-primary disabled">Select Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-------------- END PRICING -------------->
+
+<!-------------- START FOOTER -------------->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="footer_left">
+                    <p>Designed By <a href="#">Bets Killer Team</a></p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="footer_right">
+                    <ul class="social_nav">
+                        <li><a href="https://www.facebook.com/BetsKillerAnalysis"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/BetsKiller"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/betskiller/"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-------------- END FOOTER -------------->

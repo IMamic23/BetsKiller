@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DAFA2DED-1FA7-4EAC-A1E2-D7DABD123BC1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BetsKiller.Jobs</RootNamespace>
+    <AssemblyName>BetsKiller.Jobs</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="NCalc">
+      <HintPath>..\packages\NCalc\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="JobBase.cs" />
+    <Compile Include="JobEveryDay0.cs" />
+    <Compile Include="JobEveryDay9.cs" />
+    <Compile Include="JobEveryHours2.cs" />
+    <Compile Include="JobEveryMonday15.cs" />
+    <Compile Include="JobEveryMonday9.cs" />
+    <Compile Include="JobLoadSeasonsScheduleResults.cs" />
+    <Compile Include="Processes\Load.cs" />
+    <Compile Include="Processes\LoadDraftNBA.cs" />
+    <Compile Include="Processes\LoadEventsNBA.cs" />
+    <Compile Include="Processes\LoadInjuries.cs" />
+    <Compile Include="Processes\LoadLeadersNBA.cs" />
+    <Compile Include="Processes\LoadNews.cs" />
+    <Compile Include="Processes\LoadPowerRankingsNBA.cs" />
+    <Compile Include="Processes\LoadRostersNBA.cs" />
+    <Compile Include="Processes\LoadScheduleResultsNBA.cs" />
+    <Compile Include="Processes\LoadStandings.cs" />
+    <Compile Include="Processes\LoadTeamsNBA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BetsKiller.API.Erikberg\BetsKiller.API.Erikberg.csproj">
+      <Project>{0abf99a4-9b55-4f6d-a95a-e18435b7a881}</Project>
+      <Name>BetsKiller.API.Erikberg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.API.NBAcom\BetsKiller.API.NBAcom.csproj">
+      <Project>{c59b888f-739e-4df5-97b1-7d95782a071d}</Project>
+      <Name>BetsKiller.API.NBAcom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.API.Rotoworld\BetsKiller.API.Rotoworld.csproj">
+      <Project>{7025707d-1405-4411-96bd-bfbfe8c531ec}</Project>
+      <Name>BetsKiller.API.Rotoworld</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.API.SportsDatabase\BetsKiller.API.SportsDatabase.csproj">
+      <Project>{33d4ce60-5249-4003-bd11-d66e0225b26e}</Project>
+      <Name>BetsKiller.API.SportsDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.DAL\BetsKiller.DAL.csproj">
+      <Project>{95d8a777-e15d-42b4-9dab-a65ac58e723e}</Project>
+      <Name>BetsKiller.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.Helper\BetsKiller.Helper.csproj">
+      <Project>{18cee436-649f-4c28-81a3-d7fad6e93adf}</Project>
+      <Name>BetsKiller.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.Jobs.Mail\BetsKiller.Jobs.Mail.csproj">
+      <Project>{d637b24d-39d7-4f8a-836d-dee2e465e48e}</Project>
+      <Name>BetsKiller.Jobs.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.Model\BetsKiller.Model.csproj">
+      <Project>{230890ed-dce1-4656-a47e-66dc5cce705d}</Project>
+      <Name>BetsKiller.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

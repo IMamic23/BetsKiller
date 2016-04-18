@@ -1,0 +1,92 @@
+﻿@model BetsKiller.ViewModel.UserManagement.UserEditViewModel
+@{
+    ViewBag.Title = "Edit user";
+}
+
+<h3>Edit user</h3>
+
+@Html.ValidationSummary()
+
+<!-- Edit user panel -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                User informations
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("UserEdit", "UserManagement", FormMethod.Post, new { @class = "form-horizonral", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @style = "color: red" })
+
+                    @Html.HiddenFor(x => x.Email);
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.FullName)
+                        @Html.TextBoxFor(x => x.FullName)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Email)
+                        @Html.ValueFor(x => x.Email)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Password)
+                        @Html.TextBoxFor(x => x.Password)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Roles)
+                        <select id="Roles" name="Roles" class="span3" data-placeholder="Choose Role...">
+                            @foreach (SelectListItem role in Model.AllRoles)
+                            {
+                                if (Model.Roles.Contains(role.Text))
+                                {
+                                    <option selected="selected" value="@role.Value">@role.Text</option>
+                                }
+                                else
+                                {
+                                    <option value="@role.Value">@role.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.RoleActiveFrom)
+                        @Html.TextBoxFor(x => x.RoleActiveFrom)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.RoleActiveTo)
+                        @Html.TextBoxFor(x => x.RoleActiveTo)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.MoneyPaid)
+                        @Html.TextBoxFor(x => x.MoneyPaid)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.PaymentDescription)
+                        @Html.TextBoxFor(x => x.PaymentDescription)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.PaymentSources)
+                        <select id="PaymentSources" name="PaymentSources" class="span3" data-placeholder="Choose Payment source...">
+                            @foreach (SelectListItem paymentSource in Model.AllPaymentSources)
+                            {
+                                <option value="@paymentSource.Value">@paymentSource.Text</option>
+                            }
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Edit user</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{95D8A777-E15D-42B4-9DAB-A65AC58E723E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BetsKiller.DAL</RootNamespace>
+    <AssemblyName>BetsKiller.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppData\AppDataContext.cs" />
+    <Compile Include="AppData\AppDataInitializer.cs" />
+    <Compile Include="AppData\AppDataRepository.cs" />
+    <Compile Include="IAppDataRepository.cs" />
+    <Compile Include="Migrations\201602091825351_InitialCreate.cs" />
+    <Compile Include="Migrations\201602091825351_InitialCreate.Designer.cs">
+      <DependentUpon>201602091825351_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602221213167_AnalysisTableChanged.cs" />
+    <Compile Include="Migrations\201602221213167_AnalysisTableChanged.Designer.cs">
+      <DependentUpon>201602221213167_AnalysisTableChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602261231392_ReorganizedTableTeamsNBA.cs" />
+    <Compile Include="Migrations\201602261231392_ReorganizedTableTeamsNBA.Designer.cs">
+      <DependentUpon>201602261231392_ReorganizedTableTeamsNBA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603012037599_ReorganizedTableAnalysis.cs" />
+    <Compile Include="Migrations\201603012037599_ReorganizedTableAnalysis.Designer.cs">
+      <DependentUpon>201603012037599_ReorganizedTableAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603032135543_NewsAndAnalysisChanged.cs" />
+    <Compile Include="Migrations\201603032135543_NewsAndAnalysisChanged.Designer.cs">
+      <DependentUpon>201603032135543_NewsAndAnalysisChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603052340335_DecimalNumbers.cs" />
+    <Compile Include="Migrations\201603052340335_DecimalNumbers.Designer.cs">
+      <DependentUpon>201603052340335_DecimalNumbers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603071936324_NewsPublishing.cs" />
+    <Compile Include="Migrations\201603071936324_NewsPublishing.Designer.cs">
+      <DependentUpon>201603071936324_NewsPublishing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603211458069_TableStandingsAdded.cs" />
+    <Compile Include="Migrations\201603211458069_TableStandingsAdded.Designer.cs">
+      <DependentUpon>201603211458069_TableStandingsAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="UserManagement\UserManagementContext.cs" />
+    <Compile Include="UserManagement\UserManagementInitializer.cs" />
+    <Compile Include="IUserManagementRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManagement\UserManagementRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BetsKiller.Model\BetsKiller.Model.csproj">
+      <Project>{230890ed-dce1-4656-a47e-66dc5cce705d}</Project>
+      <Name>BetsKiller.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602091825351_InitialCreate.resx">
+      <DependentUpon>201602091825351_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602221213167_AnalysisTableChanged.resx">
+      <DependentUpon>201602221213167_AnalysisTableChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602261231392_ReorganizedTableTeamsNBA.resx">
+      <DependentUpon>201602261231392_ReorganizedTableTeamsNBA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603012037599_ReorganizedTableAnalysis.resx">
+      <DependentUpon>201603012037599_ReorganizedTableAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603032135543_NewsAndAnalysisChanged.resx">
+      <DependentUpon>201603032135543_NewsAndAnalysisChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603052340335_DecimalNumbers.resx">
+      <DependentUpon>201603052340335_DecimalNumbers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603071936324_NewsPublishing.resx">
+      <DependentUpon>201603071936324_NewsPublishing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603211458069_TableStandingsAdded.resx">
+      <DependentUpon>201603211458069_TableStandingsAdded.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

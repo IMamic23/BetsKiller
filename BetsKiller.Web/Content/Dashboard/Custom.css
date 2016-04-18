@@ -1,0 +1,275 @@
+.count_bottom {
+    margin-right: 5px;
+}
+
+/* Standings */
+
+h3.eastern {
+    background-color: #0067ac;
+    color: white;
+    font-family: Rockwell;
+    font-size: 38px;
+    line-height: 1;
+    padding-left: 10px;
+}
+
+h3.western {
+    background-color: #ee2f4e;
+    color: white;
+    font-family: Rockwell;
+    font-size: 38px;
+    line-height: 1;
+    padding-left: 10px;
+}
+
+@media(max-width:768px) {
+    h3.eastern {
+        background-color: #0067ac;
+        color: white;
+        font-family:Rockwell;  
+        font-size: 20px;
+        line-height: 1;
+    }
+    h3.western {    
+        background-color: #ee2f4e;
+        color: white;
+        font-family:Rockwell;  
+        font-size: 20px;
+        line-height: 1;   
+    }
+}
+
+/* Teams labels */
+.label-sm {
+    font-size: small;
+    display: inline-block;
+    opacity: 0.9;
+    width: 60px;
+    border-radius: 7px;
+}
+
+.label-md {
+    font-size: large;
+    display: inline-block;
+    opacity: 0.9;
+    width: 60px;
+    border-radius: 7px;
+}
+
+.label-lg {
+    font-size: x-large;
+    display: inline-block;
+    opacity: 0.9;
+    width: 60px;
+    border-radius: 7px;
+}
+
+.label-atl {
+    background-color: #FF0033;
+    border-style: double;
+    border-width: 4px;
+    border-color: #C3D600;
+}
+
+.label-bos {
+    background-color: #008348;
+    border-style: double;
+    border-width: 4px;
+    border-color: black;
+}
+
+.label-bkn {
+    background-color: black;
+    border-style: double;
+    border-width: 4px;
+    border-color: black;
+}
+
+.label-cha {
+    background-color: #1D1160;
+    border-style: double;
+    border-width: 4px;
+    border-color: #008CA8;
+}
+
+.label-chi {
+    background-color: #CE1141;
+    border-style: double;
+    border-width: 4px;
+    border-color: black;
+}
+
+.label-cle {
+    background-color: #860038;
+    border-style: double;
+    border-width: 4px;
+    border-color: #FDBB30;
+}
+
+.label-dal {
+    background-color: #007DC5;
+    border-style: double;
+    border-width: 4px;
+    border-color: #C4CED3;
+}
+
+.label-den {
+    background-color: #4FA8FF;
+    border-style: double;
+    border-width: 4px;
+    border-color: #FFB20F;
+}
+
+.label-det {
+    background-color: #006BB6;
+    border-style: double;
+    border-width: 4px;
+    border-color: #ED174C;
+}
+
+.label-gs {
+    background-color: #006BB6;
+    border-style: double;
+    border-width: 4px;
+    border-color: #FDB927;
+}
+
+.label-hou {
+    background-color: #CE1141;
+    border-style: double;
+    border-width: 4px;
+    border-color: #FDB927;
+}
+
+.label-ind {
+    background-color: #00275D;
+    border-style: double;
+    border-width: 4px;
+    border-color: #FFC633;
+}
+
+.label-lac {
+    background-color: #ED174C;
+    border-style: double;
+    border-width: 4px;
+    border-color: #006BB6;
+}
+
+.label-lal {
+    background-color: #552582;
+    border-style: double;
+    border-width: 4px;
+    border-color: #FDB927;
+}
+
+.label-mem {
+    background-color: #23375B;
+    border-style: double;
+    border-width: 4px;
+    border-color: #6189B9;
+}
+
+.label-mia {
+    background-color: #98002E;
+    border-style: double;
+    border-width: 4px;
+    border-color: black;
+}
+
+.label-mil {
+    background-color: #00471B;
+    border-style: double;
+    border-width: 4px;
+    border-color: #EEE1C6;
+}
+
+.label-min {
+    background-color: #005083;
+    border-style: double;
+    border-width: 4px;
+    border-color: #C4CED3;
+}
+
+.label-no {
+    background-color: #002B5C;
+    border-style: double;
+    border-width: 4px;
+    border-color: #E31937;
+}
+
+.label-ny {
+    background-color: #006BB6;
+    border-style: double;
+    border-width: 4px;
+    border-color: #F58426;
+}
+
+.label-okc {
+    background-color: #007DC3;
+    border-style: double;
+    border-width: 4px;
+    border-color: #F05133;
+}
+
+.label-orl {
+    background-color: #007DC5;
+    border-style: double;
+    border-width: 4px;
+    border-color: #C4CED3;
+}
+
+.label-phi {
+    background-color: #006BB6;
+    border-style: double;
+    border-width: 4px;
+    border-color: #ED174C;
+}
+
+.label-pho {
+    background-color: #E56020;
+    border-style: double;
+    border-width: 4px;
+    border-color: #63717A;
+}
+
+.label-por {
+    background-color: #F0163A;
+    border-style: double;
+    border-width: 4px;
+    border-color: black;
+}
+
+.label-sac {
+    background-color: #724C9F;
+    border-style: double;
+    border-width: 4px;
+    border-color: #8E9090;
+}
+
+.label-sa {
+    background-color: #B6BFBF;
+    border-style: double;
+    border-width: 4px;
+    border-color: black;
+}
+
+.label-tor {
+    background-color: #CE1141;
+    border-style: double;
+    border-width: 4px;
+    border-color: #C4CED3;
+}
+
+.label-uta {
+    background-color: #00471B;
+    border-style: double;
+    border-width: 4px;
+    border-color: #F9A01B;
+}
+
+.label-was {
+    background-color: #002566;
+    border-style: double;
+    border-width: 4px;
+    border-color: #F5002F;
+}

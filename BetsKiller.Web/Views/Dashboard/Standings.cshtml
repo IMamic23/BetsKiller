@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "Standings";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/dashboard-css")
+}
+
+@model BetsKiller.ViewModel.Dashboard.Standings.StandingsViewModel
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Standings
+        <small>NBA</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Dashboard/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Standings</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+
+        <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+            @foreach (BetsKiller.ViewModel.Dashboard.Standings.StandingsConferenceViewModel conference in Model.Conferences)
+            {
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="@conference.ConferenceStyle">@conference.ConferenceLabel</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped" id="@conference.ConferenceName" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Rank</th>
+                                        <th class="text-center">Team</th>
+                                        <th class="text-center">Won</th>
+                                        <th class="text-center">Lost</th>
+                                        <th class="text-center">Away won</th>
+                                        <th class="text-center">Away lost</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Conference won">ConfW</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Conference lost">ConfL</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Division">Div</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Games back">GB</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Games played">GP</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Home won">HW</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Home lost">HL</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Last five">L5</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Last ten">L10</th>
+                                        <th class="text-center">Playoff seed</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Point differential">Point diff</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Point differential per game">PDPG</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Points against">PA</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Points fo">PF</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Points allowed per game">APPG</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Points scored per game">PPG</th>
+                                        <th class="text-center">Streak</th>
+                                        <th class="text-center" data-toggle="tooltip" title="Win percentage">WP</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (BetsKiller.ViewModel.Dashboard.Standings.StandingsTeamViewModel standing in conference.Standings)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@standing.Rank</td>
+                                            <td class="text-center"><span class="label label-sm label-@standing.TeamName.ToLower()">@standing.TeamName</span></td>
+                                            <td class="text-center">@standing.Won</td>
+                                            <td class="text-center">@standing.Lost</td>
+                                            <td class="text-center">@standing.AwayWon</td>
+                                            <td class="text-center">@standing.AwayLost</td>
+                                            <td class="text-center">@standing.ConferenceWon</td>
+                                            <td class="text-center">@standing.ConferenceLost</td>
+                                            <td class="text-center">@standing.Division</td>
+                                            <td class="text-center">@standing.GamesBack</td>
+                                            <td class="text-center">@standing.GamesPlayed</td>
+                                            <td class="text-center">@standing.HomeWon</td>
+                                            <td class="text-center">@standing.HomeLost</td>
+                                            <td class="text-center">@standing.LastFive</td>
+                                            <td class="text-center">@standing.LastTen</td>
+                                            <td class="text-center">@standing.PlayoffSeed</td>
+                                            <td class="text-center">@standing.PointDifferential</td>
+                                            <td class="text-center">@standing.PointDifferentialPerGame</td>
+                                            <td class="text-center">@standing.PointsAgainst</td>
+                                            <td class="text-center">@standing.PointsFor</td>
+                                            <td class="text-center">@standing.PointsAllowedPerGame</td>
+                                            <td class="text-center">@standing.PointsScoredPerGame</td>
+                                            <td class="text-center">@standing.Streak</td>
+                                            <td class="text-center">@standing.WinPercentage</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </section>
+
+    </div>
+
+</section>
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/dashboard-js")
+
+    <script>
+        // Make the dashboard widgets sortable using jQuery UI
+        "use strict";
+        $(".connectedSortable").sortable({
+            placeholder: "sort-highlight",
+            connectWith: ".connectedSortable",
+            handle: ".box-header, .nav-tabs",
+            forcePlaceholderSize: true,
+            zIndex: 999999
+        });
+        $(".connectedSortable .box-header, .connectedSortable .nav-tabs-custom").css("cursor", "move");
+
+        // Set datatables
+        @foreach (BetsKiller.ViewModel.Dashboard.Standings.StandingsConferenceViewModel conference in Model.Conferences)
+        {
+            <text>
+                $('#@conference.ConferenceName').DataTable({
+                    "paging": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": false
+                });
+            </text>
+        }
+
+    </script>
+
+}

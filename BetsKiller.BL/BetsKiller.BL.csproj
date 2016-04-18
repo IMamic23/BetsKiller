@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83994B17-D3A3-4B40-9A89-73CC50F0887A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BetsKiller.BL</RootNamespace>
+    <AssemblyName>BetsKiller.BL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dashboard\Index\DeleteAnalysis.cs" />
+    <Compile Include="Dashboard\Index\PublishNews.cs" />
+    <Compile Include="Dashboard\Injuries\GetData.cs" />
+    <Compile Include="Dashboard\Leaders\GetData.cs" />
+    <Compile Include="Dashboard\PowerRankings\GetData.cs" />
+    <Compile Include="Dashboard\ScheduleResults\GetData.cs" />
+    <Compile Include="Dashboard\Standings\GetData.cs" />
+    <Compile Include="Dashboard\TeamsRosters\GetData.cs" />
+    <Compile Include="Home\GetData.cs" />
+    <Compile Include="ProcessBase.cs" />
+    <Compile Include="Dashboard\Index\GetData.cs" />
+    <Compile Include="Dashboard\Index\SaveAnalysis.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Dashboard\TeamsStats\GetData.cs" />
+    <Compile Include="UserManagement\AddUser.cs" />
+    <Compile Include="UserManagement\EditUser.cs" />
+    <Compile Include="UserManagement\GetPaymentSources.cs" />
+    <Compile Include="UserManagement\GetUsers.cs" />
+    <Compile Include="UserManagement\GetRoles.cs" />
+    <Compile Include="UserManagement\GetUserProfiles.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BetsKiller.DAL\BetsKiller.DAL.csproj">
+      <Project>{95d8a777-e15d-42b4-9dab-a65ac58e723e}</Project>
+      <Name>BetsKiller.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.Helper\BetsKiller.Helper.csproj">
+      <Project>{18cee436-649f-4c28-81a3-d7fad6e93adf}</Project>
+      <Name>BetsKiller.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.Model\BetsKiller.Model.csproj">
+      <Project>{230890ed-dce1-4656-a47e-66dc5cce705d}</Project>
+      <Name>BetsKiller.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.ViewModel\BetsKiller.ViewModel.csproj">
+      <Project>{e58c2aa2-9579-43f1-b8a7-a37c9c12b256}</Project>
+      <Name>BetsKiller.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
