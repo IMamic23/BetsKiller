@@ -22,8 +22,10 @@ namespace BetsKiller.Jobs.Processes
 
         private List<BetStatus> _betStatuses;
         private List<Sport> _sports;
+        private List<TeamsNBA> _teams;
 
         private List<ScheduleResultsNBA> _updatedScheduleResults;
+        private List<ScheduleResultsNBA> _addedScheduleResults;
         private List<Analysis> _updatedAnalysis;
 
         #endregion
@@ -44,6 +46,7 @@ namespace BetsKiller.Jobs.Processes
             // Get bet statuses and sportss
             this._betStatuses = base.GetBetStatuses();
             this._sports = base.GetSports();
+            this._teams = base.GetTeamsNBA();
 
             foreach (string date in this._dates)
             {
@@ -70,6 +73,7 @@ namespace BetsKiller.Jobs.Processes
         private void GetParseEventsNBA(string date)
         {
             this._updatedScheduleResults = new List<ScheduleResultsNBA>();
+            this._addedScheduleResults = new List<ScheduleResultsNBA>();
 
             // Get todays games
             BetsKiller.API.Erikberg.Methods.MethodEvents methodEvents = new API.Erikberg.Methods.MethodEvents();
@@ -77,17 +81,56 @@ namespace BetsKiller.Jobs.Processes
 
             foreach (BetsKiller.API.Erikberg.Entities.Event dataEvent in dataEvents.Event)
             {
-                ScheduleResultsNBA scheduleResult = base.AppDataRepository.GetAllScheduleResultsNBA().Where(x => x.EventId == dataEvent.EventId).First();
+                ScheduleResultsNBA scheduleResult = base.AppDataRepository.GetAllScheduleResultsNBA().Where(x => x.EventId == dataEvent.EventId).FirstOrDefault();
 
-                scheduleResult.TeamPointsScored = dataEvent.HomePointsScored;
-                scheduleResult.TeamPeriodScores = string.Join(",", dataEvent.HomePeriodScores);
+                if (scheduleResult != null) // Update existing event in DB
+                {
+                    scheduleResult.TeamPointsScored = dataEvent.HomePointsScored;
+                    scheduleResult.TeamPeriodScores = string.Join(",", dataEvent.HomePeriodScores);
 
-                scheduleResult.OpponentPointsScored = dataEvent.AwayPointsScored;
-                scheduleResult.OpponentPeriodScores = string.Join(",", dataEvent.AwayPeriodScores);
+                    scheduleResult.OpponentPointsScored = dataEvent.AwayPointsScored;
+                    scheduleResult.OpponentPeriodScores = string.Join(",", dataEvent.AwayPeriodScores);
 
-                scheduleResult.EventStatus = dataEvent.EventStatus;
+                    scheduleResult.EventStatus = dataEvent.EventStatus;
 
-                this._updatedScheduleResults.Add(scheduleResult);
+                    this._updatedScheduleResults.Add(scheduleResult);
+                }
+                else // Event is new so it has to be saved in DB
+                {
+                    scheduleResult = new ScheduleResultsNBA();
+                    scheduleResult.EventId = dataEvent.EventId;
+                    scheduleResult.EventStatus = dataEvent.EventStatus;
+                    scheduleResult.EventStartDateTime = dataEvent.StartDateTime;
+                    scheduleResult.EventSeasonType = dataEvent.SeasonType;
+                    scheduleResult.TeamEventNumberInSeason = -1;
+                    scheduleResult.TeamEventLocationType = null;
+                    scheduleResult.TeamEventResult = null;
+                    scheduleResult.TeamPointsScored = -1;
+                    scheduleResult.TeamEventsWon = -1;
+                    scheduleResult.TeamEventsLost = -1;
+                    scheduleResult.OpponentPointsScored = -1;
+                    scheduleResult.OpponentEventsWon = -1;
+                    scheduleResult.OpponentEventsLost = -1;
+                    scheduleResult.SiteCapacity = dataEvent.Site.Capacity;
+                    scheduleResult.SiteSurface = dataEvent.Site.Surface;
+                    scheduleResult.SiteName = dataEvent.Site.Name;
+                    scheduleResult.SiteState = dataEvent.Site.State;
+                    scheduleResult.SiteCity = dataEvent.Site.City;
+
+                    TeamsNBA homeTeam = this._teams.Where(x => x.Name.NameErikberg == dataEvent.HomeTeam.TeamId).FirstOrDefault();
+                    if (homeTeam != null)
+                    {
+                        scheduleResult.Team_Id = homeTeam.Id;
+                    }
+
+                    TeamsNBA awayTeam = this._teams.Where(x => x.Name.NameErikberg == dataEvent.AwayTeam.TeamId).FirstOrDefault();
+                    if (awayTeam != null)
+                    {
+                        scheduleResult.Opponent_Id = awayTeam.Id;
+                    }
+
+                    this._addedScheduleResults.Add(scheduleResult);
+                }
             }
         }
 
@@ -201,6 +244,11 @@ namespace BetsKiller.Jobs.Processes
             if (this._updatedScheduleResults.Count > 0)
             {
                 base.AppDataRepository.SaveScheduleResultsNBA(this._updatedScheduleResults);
+            }
+
+            if (this._addedScheduleResults.Count > 0)
+            {
+                base.AppDataRepository.SaveScheduleResultsNBA(this._addedScheduleResults);
             }
         }
 
