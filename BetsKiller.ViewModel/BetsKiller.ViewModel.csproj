@@ -63,6 +63,10 @@
     <Compile Include="Dashboard\ScheduleResults\ScheduleResultsGameViewModel.cs" />
     <Compile Include="Dashboard\ScheduleResults\ScheduleResultsTeamViewModel.cs" />
     <Compile Include="Dashboard\ScheduleResults\ScheduleResultsViewModel.cs" />
+    <Compile Include="Dashboard\SportsPicks\SportsPicksAnalyseViewModel.cs" />
+    <Compile Include="Dashboard\SportsPicks\SportsPicksStatsViewModel.cs" />
+    <Compile Include="Dashboard\SportsPicks\SportsPicksTypeViewModel.cs" />
+    <Compile Include="Dashboard\SportsPicks\SportsPicksViewModel.cs" />
     <Compile Include="Dashboard\Standings\StandingsConferenceViewModel.cs" />
     <Compile Include="Dashboard\Standings\StandingsTeamViewModel.cs" />
     <Compile Include="Dashboard\Standings\StandingsViewModel.cs" />

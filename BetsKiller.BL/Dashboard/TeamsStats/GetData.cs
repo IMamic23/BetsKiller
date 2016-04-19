@@ -49,6 +49,7 @@ namespace BetsKiller.BL.Dashboard.TeamsStats
         public GetData()
         {
             this._appDataRepository = new AppDataRepository();
+            this._teamsStatsViewModel = new TeamsStatsViewModel();
         }
 
         #endregion
@@ -57,8 +58,6 @@ namespace BetsKiller.BL.Dashboard.TeamsStats
 
         protected override void Process()
         {
-            this._teamsStatsViewModel = new TeamsStatsViewModel();
-
             // Get and parse NBA teams
             this.GetParseTeamsNBA();
         }

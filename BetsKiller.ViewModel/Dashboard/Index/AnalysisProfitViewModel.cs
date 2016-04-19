@@ -20,11 +20,13 @@ namespace BetsKiller.ViewModel.Dashboard.Index
 
         public string TotalInvested { get; set; }
         public CustomHtmlElement TotalInvestedPctFromLastWeek { get; set; }
+        public string TotalInvestedMoney { get; set; }
 
         public string ROI { get; set; }
         public CustomHtmlElement ROIPctFromLastWeek { get; set; }
 
         public string Profit { get; set; }
         public CustomHtmlElement ProfitPctFromLastWeek { get; set; }
+        public string ProfitMoney { get; set; }
     }
 }

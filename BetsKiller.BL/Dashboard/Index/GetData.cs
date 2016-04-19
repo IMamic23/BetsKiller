@@ -8,6 +8,7 @@ using BetsKiller.Model;
 using BetsKiller.ViewModel.Dashboard.Index;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
@@ -373,6 +374,10 @@ namespace BetsKiller.BL.Dashboard.Index
             analysisProfitVM.TotalInvestedPctFromLastWeek = customElement.GetElementByValue(Percentage.GetRawPercentage(overall.Invested, lastWeek.Invested));
             analysisProfitVM.ROIPctFromLastWeek = customElement.GetElementByValue(Percentage.GetRawPercentage(overall.ROI, lastWeek.ROI));
             analysisProfitVM.ProfitPctFromLastWeek = customElement.GetElementByValue(Percentage.GetRawPercentage(overall.Profit, lastWeek.Profit));
+
+            decimal unitDollars = Convert.ToDecimal(ConfigurationManager.AppSettings["UnitDollars"], CultureInfo.InvariantCulture);
+            analysisProfitVM.TotalInvestedMoney = "($" + string.Format(CultureInfo.InvariantCulture, "{0:N}", Math.Round(overall.Invested * unitDollars, 2)) + ")";
+            analysisProfitVM.ProfitMoney = "($" + string.Format(CultureInfo.InvariantCulture, "{0:N}", Math.Round(overall.Profit * unitDollars, 2)) + ")";
 
             this._dashboardViewModel.AnalysisProfitNBA = analysisProfitVM;
         }

@@ -60,6 +60,7 @@
     <Compile Include="Dashboard\Leaders\GetData.cs" />
     <Compile Include="Dashboard\PowerRankings\GetData.cs" />
     <Compile Include="Dashboard\ScheduleResults\GetData.cs" />
+    <Compile Include="Dashboard\SportsPicks\GetData.cs" />
     <Compile Include="Dashboard\Standings\GetData.cs" />
     <Compile Include="Dashboard\TeamsRosters\GetData.cs" />
     <Compile Include="Home\GetData.cs" />

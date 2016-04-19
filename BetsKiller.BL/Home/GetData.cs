@@ -102,7 +102,8 @@ namespace BetsKiller.BL.Home
                 roi = invested / profit;
             }
 
-            this._homeViewModel.Profit = Math.Round(profit, 2).ToString(CultureInfo.InvariantCulture);
+            decimal unitDollars = Convert.ToDecimal(ConfigurationManager.AppSettings["UnitDollars"], CultureInfo.InvariantCulture);
+            this._homeViewModel.Profit = string.Format(CultureInfo.InvariantCulture, "{0:N}", Math.Round(profit * unitDollars, 2));
             this._homeViewModel.Predictions = predictions.ToString();
             this._homeViewModel.ROI = Math.Round(roi, 2).ToString(CultureInfo.InvariantCulture);
         }

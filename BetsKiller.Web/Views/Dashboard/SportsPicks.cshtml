@@ -1,0 +1,156 @@
+﻿@{
+    ViewBag.Title = "Sports Picks";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/dashboard-css")
+}
+
+@model BetsKiller.ViewModel.Dashboard.SportsPicks.SportsPicksViewModel
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Sports Picks
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Dashboard/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Sports Picks</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+
+        @foreach (BetsKiller.ViewModel.Dashboard.SportsPicks.SportsPicksTypeViewModel type in Model.Types)
+        {
+            <!-- PICKS STATS -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3><@type.Caption.Type class="@type.Caption.Class" style="@type.Caption.Style">@type.Caption.Value</@type.Caption.Type> Picks Stats</h3>
+                    </div>
+                    <div class="box-body">
+                        <!-- Info boxes -->
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-center" style="font-size: large">Total bets</span>
+                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.TotalBets</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-green"><i class="fa fa-thumbs-up"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-center" style="font-size: large">Wins</span>
+                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.Wins</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- fix for small devices only -->
+                        <div class="clearfix visible-sm-block"></div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-center" style="font-size: large">Losses</span>
+                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.Losses</span>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-blue-active"><i class="fa fa-bank"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-center" style="font-size: large">Total Invested</span>
+                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.TotalInvested</span>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-purple-active">
+                                    <i class="fa  fa-line-chart"></i>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-center" style="font-size: large">ROI</span>
+                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.ROI%</span>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box">
+                                <span class="info-box-icon" style="background-color: #daa520 !important"><i class="fa fa-money" style="color: white"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-center" style="font-size: large">Profit units</span>
+                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.Profit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FREE PICKS -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3><@type.Caption.Type class="@type.Caption.Class" style="@type.Caption.Style">@type.Caption.Value</@type.Caption.Type> Picks</h3>
+                    </div>
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Date</th>
+                                    <th class="text-center">Game</th>
+                                    <th class="text-center" style="width:100px">Pick </th>
+                                    <th class="text-center">Result</th>
+                                    <th class="text-center">Invested</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Profit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (BetsKiller.ViewModel.Dashboard.SportsPicks.SportsPicksAnalyseViewModel analyse in type.Analysis)
+                                {
+                                    <tr>
+                                        <td class="text-center">@analyse.Date</td>
+                                        <td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
+                                        <td class="text-center">@analyse.Pick</td>
+                                        <td class="text-center" style="font-weight: bold">@analyse.Result</td>
+                                        <td class="text-center">@analyse.Invested</td>
+                                        <td class="text-center" style="@analyse.Status.Style">@analyse.Status.Value</td>
+                                        <td class="text-center" style="@analyse.Profit.Style">@analyse.Profit.Value</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</section>
+
+@section Scripts {
+    <script>
+        $('table').DataTable({
+            "paging": true,
+            "searching": false,
+            "ordering": true,
+            "info": true
+        });
+    </script>
+}

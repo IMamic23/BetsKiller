@@ -176,5 +176,17 @@ namespace BetsKiller.Web.Controllers
         }
 
         #endregion
+
+        #region SportsPicks
+
+        public ActionResult SportsPicks()
+        {
+            BL.Dashboard.SportsPicks.GetData getData = new BL.Dashboard.SportsPicks.GetData();
+            getData.Start();
+
+            return View(getData.SportsPicksViewModel);
+        }
+
+        #endregion
     }
 }

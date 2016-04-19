@@ -67,8 +67,8 @@
             <div class="info-box">
                 <span class="info-box-icon bg-blue-active"><i class="fa fa-bank"></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Total Invested</span>
-                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.TotalInvested</span>
+                    <span class="info-box-text">Invested <span style="font-size: smaller">units</span></span>
+                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.TotalInvested <small>@this.Model.AnalysisProfitNBA.TotalInvestedMoney</small></span>
                     <p></p>
                     <span style="@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Value%</span>
                     <span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
@@ -93,8 +93,8 @@
             <div class="info-box">
                 <span class="info-box-icon" style="background-color: #daa520 !important"><i class="fa fa-money" style="color: white"></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Profit units</span>
-                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.Profit</span>
+                    <span class="info-box-text">Profit <span style="font-size: smaller">units</span></span>
+                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.Profit <small>@this.Model.AnalysisProfitNBA.ProfitMoney</small></span>
                     <p></p>
                     <span style="@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Value%</span>
                     <span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
@@ -766,84 +766,6 @@
         </div>
     </div>
 
-    <div class="modal fade" id="subscribeModal" role="dialog">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color:#006dcc">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" style="color:white">Subscribe</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="heading text-center">
-                                <h2>Pricing</h2>
-                                <p>Choose from one of these option and Start your Money making Career</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="box box-primary">
-                                    <div class="box-body">
-                                        <table id="subscribetable" class="table table-bordered table-striped text-center">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 33%; font-size: x-large">Basic</th>
-                                                    <th style="width: 33%; font-size: x-large">Premium</th>
-                                                    <th style="width: 33%; font-size: x-large">Ultimate</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr style="font-size: x-large">
-                                                    <td>$0 per month</td>
-                                                    <td><strike>$50</strike> $25 per month until 1.7.2016</td>
-                                                    <td><strike>$90 per month</strike><br><span class="label label-pill label-danger">COMING SOON</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ONE OR MORE FREE ANALYSIS EVERY DAY</td>
-                                                    <td>ONE PREMIUM ANALYSIS EVERY DAY</td>
-                                                    <td>ALL PREMIUM ANALYSIS EVERY DAY</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>STATS AND NEWS<br><strike>BETS TRACKER BASIC</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
-                                                    <td><strike>BETS TRACKER ADVANCED</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
-                                                    <td><strike>GAMES ANALYSER</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
-                                            </tbody>
-                                        </table>
-                                        <br>
-                                        <div class="col-lg-6 col-lg-offset-3 col-xs-12">
-                                            <div align="center">
-                                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                                    <input type="hidden" name="hosted_button_id" value="TR77GM6AU8DHS">
-                                                    <table>
-                                                        <tr><td><input type="hidden" name="on0" value="Subscriptions">Subscriptions</td></tr>
-                                                        <tr>
-                                                            <td>
-                                                                <select name="os0">
-                                                                    <option value="Premium">Premium : $25.00 USD - monthly</option>
-                                                                </select>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                    <input type="hidden" name="currency_code" value="USD">
-                                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 
 @section Scripts {
@@ -946,19 +868,5 @@
             }, 50);
         });
 
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)", "i"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-
-        var subscribe = getParameterByName('subscribe');
-        if (subscribe != null && subscribe) {
-            $('#subscribeModal').modal('show');
-        }
     </script>
 }

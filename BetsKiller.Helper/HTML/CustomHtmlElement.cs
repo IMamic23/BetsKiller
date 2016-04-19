@@ -43,6 +43,7 @@ namespace BetsKiller.Helper.HTML
             this.Style = elementStyle;
             this.Value = elementValue;
             this.SubElements = elementSubElements;
+            this.Type = elementType;
         }
 
         public CustomHtmlElement(string classBelow, string classAbove, string styleBelow, string styleAbove)
