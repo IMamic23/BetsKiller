@@ -29,7 +29,6 @@
         <div id="status">&nbsp;</div>
     </div>
     <!-- END PRELOADER -->
-
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Header -->
@@ -53,46 +52,40 @@
 
                 <div class="navbar-custom-menu">
 
-                    
-                        <ul class="nav navbar-nav">
 
-                            @*if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free))
-                            {*@
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#subscribeModal"><i class="fa fa-star" style="margin-right: 5px"></i>Subscribe</a>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
                             <li class="dropdown user user-menu">
-                                <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#subscribeModal"><i class="fa fa-star" style="margin-right: 5px"></i>Subscribe</a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-user"></i>
+                                    <span class="hidden-xs">@User.Identity.Name</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#changePasswordModal"><i class="fa fa-key"></i>Change password</a>
+                                    </li>
+                                    <li>
+                                        <a id="showProfilePreview" data-url="@Url.Action("UserProfilePreview", "Account")" class="btn btn-default btn-flat" data-toggle="modal" data-target="#profileModal"><i class="fa fa-user"></i>Profile preview</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Logout", "Account")" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>
+                                    </li>
+                                </ul>
                             </li>
-                            @*}*@
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                
-                                
-                                <li class="dropdown user user-menu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="fa fa-user"></i>
-                                        <span class="hidden-xs">@User.Identity.Name</span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li class="user-footer">
-
-                                            <div class="pull-left">
-                                                <button type="button" class="btn btn-default btn-flat" data-toggle="modal" data-target="#changePasswordModal"><i class="fa fa-key" style="margin-right: 8px"></i>Change password</button>
-                                            </div>
-
-                                            <div class="pull-right">
-                                                <a href="@Url.Action("Logout", "Account")" class="btn btn-default btn-flat"><i class="fa fa-sign-out" style="margin-right: 8px"></i>Sign out</a>
-                                            </div>
-
-                                        </li>
-                                    </ul>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="dropdown user user-menu">
-                                    <a href="@Url.Action("Login", "Account")" class="dropdown-toggle"><i class="fa fa-sign-in" style="margin-right: 8px"></i>Login</a>
-                                </li>
-                            }
-                        </ul>
+                        }
+                        else
+                        {
+                            <li class="dropdown user user-menu">
+                                <a href="@Url.Action("Login", "Account")" class="dropdown-toggle"><i class="fa fa-sign-in" style="margin-right: 8px"></i>Login</a>
+                            </li>
+                        }
+                    </ul>
 
                     @if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin))
                     {
@@ -233,103 +226,100 @@
 
                     @using (Html.BeginForm("Manage", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
-                        <div class="modal-header" style="background-color:#006dcc">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" style="color:white">Change password</h4>
-                        </div>
+                    <div class="modal-header" style="background-color:#006dcc">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" style="color:white">Change password</h4>
+                    </div>
 
-                        <div class="modal-body">
+                    <div class="modal-body">
 
-                            <div class="row">
-                                <div class="form-group" style="margin-top:10px">
-                                    <label for="inputemail" class="col-sm-3 control-label">Old password</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" class="form-control" for="OldPassord" placeholder="Enter old password">
-                                    </div>
+                        <div class="row">
+                            <div class="form-group" style="margin-top:10px">
+                                <label for="inputemail" class="col-sm-3 control-label">Old password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" for="OldPassord" placeholder="Enter old password">
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="form-group" style="margin-top:10px">
-                                    <label for="inputemail" class="col-sm-3 control-label">New password</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" class="form-control" for="NewPassword" placeholder="Enter new password (at least 6 characters)">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group" style="margin-top:10px">
-                                    <label for="inputemail" class="col-sm-3 control-label">Confirm password</label>
-                                    <div class="col-sm-9">
-                                        <input type="password" class="form-control" for="ConfirmPassword" placeholder="Repeat password">
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        <div class="row">
+                            <div class="form-group" style="margin-top:10px">
+                                <label for="inputemail" class="col-sm-3 control-label">New password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" for="NewPassword" placeholder="Enter new password (at least 6 characters)">
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="row">
+                            <div class="form-group" style="margin-top:10px">
+                                <label for="inputemail" class="col-sm-3 control-label">Confirm password</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" for="ConfirmPassword" placeholder="Repeat password">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
                     }
                 </div>
             </div>
         </div>
 
-    </div>
-
-    <!-- Modals -->
-    <div class="modal fade" id="subscribeModal" role="dialog">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color:#006dcc">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" style="color:white">Subscribe</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="heading text-center">
-                                <h2>Pricing</h2>
-                                <p>Choose from one of these option and Start your Money making Career</p>
-                            </div>
-                        </div>
+        <div class="modal fade" id="subscribeModal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#006dcc">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" style="color:white">Subscribe</h4>
+                    </div>
+                    <div class="modal-body">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="box box-primary">
-                                    <div class="box-body">
-                                        <table id="subscribetable" class="table table-bordered table-striped text-center">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 33%; font-size: x-large">Basic</th>
-                                                    <th style="width: 33%; font-size: x-large">Premium</th>
-                                                    <th style="width: 33%; font-size: x-large">Ultimate</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr style="font-size: x-large">
-                                                    <td>$0 per month</td>
-                                                    <td><strike>$50</strike> $25 per month until <span style="color: red">1.7.2016</span></td>
-                                                    <td><strike>$90 per month</strike><br><span class="label label-pill label-danger">COMING SOON</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ONE OR MORE FREE ANALYSIS EVERY DAY</td>
-                                                    <td>ONE PREMIUM ANALYSIS EVERY DAY</td>
-                                                    <td>ALL PREMIUM ANALYSIS EVERY DAY</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>STATS AND NEWS<br><strike>BETS TRACKER BASIC</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
-                                                    <td><strike>BETS TRACKER ADVANCED</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
-                                                    <td><strike>GAMES ANALYSER</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
-                                            </tbody>
-                                        </table>
-                                        <br>
-                                        <div class="col-lg-6 col-lg-offset-3 col-xs-12">
-                                            <div align="center">
-                                                @if (User.Identity.IsAuthenticated)
-                                                {
+                            <div class="col-lg-12 col-md-12">
+                                <div class="heading text-center">
+                                    <h2>Pricing</h2>
+                                    <p>Choose from one of these option and Start your Money making Career</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="box box-primary">
+                                        <div class="box-body">
+                                            <table id="subscribetable" class="table table-bordered table-striped text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 33%; font-size: x-large">Basic</th>
+                                                        <th style="width: 33%; font-size: x-large">Premium</th>
+                                                        <th style="width: 33%; font-size: x-large">Ultimate</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="font-size: x-large">
+                                                        <td>$0 per month</td>
+                                                        <td><strike>$50</strike> $25 per month until <span style="color: red">1.7.2016</span></td>
+                                                        <td><strike>$90 per month</strike><br><span class="label label-pill label-danger">COMING SOON</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ONE OR MORE FREE ANALYSIS EVERY DAY</td>
+                                                        <td>ONE PREMIUM ANALYSIS EVERY DAY</td>
+                                                        <td>ALL PREMIUM ANALYSIS EVERY DAY</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>STATS AND NEWS<br><strike>BETS TRACKER BASIC</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
+                                                        <td><strike>BETS TRACKER ADVANCED</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
+                                                        <td><strike>GAMES ANALYSER</strike><br><span class="label label-pill label-warning">COMING SOON</span></td>
+                                                </tbody>
+                                            </table>
+                                            <br>
+                                            <div class="col-lg-6 col-lg-offset-3 col-xs-12">
+                                                <div align="center">
+                                                    @if (User.Identity.IsAuthenticated)
+                                                    {
                                                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                                                         <input type="hidden" name="cmd" value="_s-xclick">
                                                         <input type="hidden" name="hosted_button_id" value="TR77GM6AU8DHS">
@@ -347,29 +337,33 @@
                                                         <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                                                         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
                                                     </form>
-                                                }
-                                                else
-                                                {
+                                                    }
+                                                    else
+                                                    {
                                                     <span style="color: red">To subscribe, you need to login or register if you dont have an account.</span>
-                                                }
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button></div>
-                        @if (!User.Identity.IsAuthenticated)
-                        {
+                        <div class="modal-footer">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"><button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button></div>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
                             <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-3 col-xs-offset-1"><a href="@Url.Action("Login", "Account")" class="btn btn-success" style="width: 100%">Log In</a></div>
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><a href="@Url.Action("Register", "Account")" class="btn btn-danger" style="width: 100%">Sign Up</a></div>
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div id="profileModal" class="modal fade" role="dialog"></div>
+
     </div>
 
     <!-- <Scripts> -->
@@ -392,6 +386,16 @@
         if (subscribe != null && subscribe) {
             $('#subscribeModal').modal('show');
         }
+
+        $('#showProfilePreview').click(function () {
+            var url = $('#showProfilePreview').data('url');
+
+            $.get(url, function (data) {
+                $('#profileModal').html(data);
+
+                $('#profileModal').modal('show');
+            });
+        });
 
     </script>
 

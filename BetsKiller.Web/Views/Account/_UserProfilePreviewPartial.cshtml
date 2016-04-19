@@ -1,0 +1,35 @@
+﻿@model BetsKiller.ViewModel.Account.UserProfilePreviewViewModel
+
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#006dcc">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="color:white">Profile preview</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td><div class="label label-primary label-md" style="width: auto">Full name</div></td>
+                            <td style="font-size: large">@Model.FullName</td>
+                        </tr>
+                        <tr>
+                            <td><div class="label label-primary label-md" style="width: auto">Email</div></td>
+                            <td style="font-size: large">@Model.Email</td>
+                        </tr>
+                        <tr>
+                            <td><div class="label label-primary label-md" style="width: auto">Active role</div></td>
+                            <td style="font-size: large">@Model.RoleActive</td>
+                        </tr>
+                        <tr>
+                            <td><div class="label label-primary label-md" style="width: auto">Role active until</div></td>
+                            <td style="font-size: large">@Model.RoleActiveUntil</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>

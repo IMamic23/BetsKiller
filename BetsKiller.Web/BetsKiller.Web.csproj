@@ -285,6 +285,7 @@
     <Content Include="Views\Dashboard\PowerRankings.cshtml" />
     <Content Include="Views\Account\_Layout.cshtml" />
     <Content Include="Views\Dashboard\SportsPicks.cshtml" />
+    <Content Include="Views\Account\_UserProfilePreviewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Payment\" />

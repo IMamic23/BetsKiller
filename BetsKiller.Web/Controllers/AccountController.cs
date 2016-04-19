@@ -1,4 +1,5 @@
-﻿using BetsKiller.Helper.Constants;
+﻿using BetsKiller.BL.Account;
+using BetsKiller.Helper.Constants;
 using BetsKiller.ViewModel.Account;
 using BotDetect.Web;
 using BotDetect.Web.Mvc;
@@ -135,6 +136,20 @@ namespace BetsKiller.Web.Controllers
             }
 
             return View(manageViewModel);
+        }
+
+        #endregion
+
+        #region UserProfilePreview
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult UserProfilePreview()
+        {
+            GetUserProfilePreview getUserProfilePreview = new GetUserProfilePreview(User.Identity.Name);
+            getUserProfilePreview.Start();
+
+            return PartialView("_UserProfilePreviewPartial", getUserProfilePreview.UserProfilePreviewViewModel);
         }
 
         #endregion
