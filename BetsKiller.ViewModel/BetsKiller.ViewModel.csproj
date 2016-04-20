@@ -76,6 +76,7 @@
     <Compile Include="Dashboard\TeamsStats\TeamsStatsSideViewModel.cs" />
     <Compile Include="Dashboard\TeamsStats\TeamsStatsViewModel.cs" />
     <Compile Include="Dashboard\TeamsStats\TeamStatViewModel.cs" />
+    <Compile Include="Dashboard\Terminology\TerminologyViewModel.cs" />
     <Compile Include="Home\HomeImageViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

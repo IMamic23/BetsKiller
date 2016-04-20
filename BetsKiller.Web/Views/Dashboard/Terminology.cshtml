@@ -1,0 +1,211 @@
+﻿@{
+    ViewBag.Title = "Terminology";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/dashboard-css")
+}
+
+@model BetsKiller.ViewModel.Dashboard.Terminology.TerminologyViewModel
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Terminology
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Dashboard/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Terminology</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Main row -->
+    <div class="row">
+
+        <!-- Terminology -->
+        <section class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <i class="fa fa-question-circle-o"></i>
+                    <h3 class="box-title">Terminology</h3>
+                </div>
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Heading</th>
+                                    <th>Explanation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Action </td><td> A baseball wager where no pitcher is specified. Also refers to the number of bets being placed on a certain event.</td></tr>
+                                <tr><td>ATS (Against The Spread) </td><td> A method of referring to the result of an event that takes the pointspread into account. Also, the act of taking points rather than betting with the spread, or "laying" points.</td></tr>
+                                <tr><td>Bad Beat </td><td> A wager that loses unexpectedly.</td></tr>
+                                <tr><td>Book </td><td> An establishment that accepts bets on the outcome of sporting events.</td></tr>
+                                <tr><td>Bookmaker/Bookie </td><td> A person who takes wagers on sporting events.</td></tr>
+                                <tr><td>Buy (Points) </td><td> When a player pays an additional price to receive half a point or more in his favor on a pointspread game.</td></tr>
+                                <tr><td>Canadian Line </td><td> A combination pointspread and moneyline in hockey.</td></tr>
+                                <tr><td>Chalk </td><td> The favored team, athlete or horse.</td></tr>
+                                <tr><td>Chalk Player </td><td> Someone who usually only plays the favored teams, rarely betting on the underdogs. Also known as a "chalkeater."</td></tr>
+                                <tr><td>Circled Game </td><td> A game where the limits are lowered, or betting options are restricted, usually due to injuries.</td></tr>
+                                <tr><td>Cover </td><td> To beat the pointspread by the required number of points. When you win, you have "covered the spread."</td></tr>
+                                <tr><td>Dead Heat </td><td> When two or more horses finish in a tie.</td></tr>
+                                <tr><td>Dime </td><td> $1,000.</td></tr>
+                                <tr><td>Dime Line </td><td> A line where the juice is 10 percent.</td></tr>
+                                <tr><td>Dog </td><td> Short for "underdog."</td></tr>
+                                <tr><td>Dog Player </td><td> A bettor who mostly plays the underdog.</td></tr>
+                                <tr><td>Double Action </td><td> An "if bet" that is processed when the precedent bet wins, ties or cancels.</td></tr>
+                                <tr><td>Double Bet </td><td> A wager for twice the size of one's usual wager; also known as "double pop" or "doubling up."</td></tr>
+                                <tr><td>Edge </td><td> A person's advantage when it comes to sports betting.</td></tr>
+                                <tr><td>Even Money </td><td> A wager on which neither side lays any odds or vigorish.</td></tr>
+                                <tr><td>Exotic </td><td> Any wager other than a straight bet or parlay, also called a prop or proposition.</td></tr>
+                                <tr><td>Exposure </td><td> The maximum amount of money a sportsbook stands to lose on a game.</td></tr>
+                                <tr><td>Favorite </td><td> The team expected to win an event. The quoted odds reflect the extent to which the choice is favored.</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                                <tr><td>Figure </td><td> The amount owed to or by a bookmaker.</td></tr>
+                                <tr><td>Final Four </td><td> The remaining four teams in the NCAA basketball tournament.</td></tr>
+                                <tr><td>First Half Bet </td><td> A bet placed only on the first half of the game.</td></tr>
+                                <tr><td>Futures </td><td> Bets placed on an event or outcome taking place some time in the future (e.g. betting during the season on the Super Bowl winner).</td></tr>
+                                <tr><td>Getting Down </td><td> Making a bet.</td></tr>
+                                <tr><td>Grand Salami </td><td> The grand total of goals scored in all the hockey games of the day. It can be wagered to go Over/Under.</td></tr>
+                                <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+                                <tr><td>Half Time Bet </td><td> A bet placed only on the second half of the game.</td></tr>
+                                <tr><td>Handicapper </td><td> One who studies and rates sporting events.</td></tr>
+                                <tr><td>Handicapping </td><td> The attempt to predict the outcome of sporting events. Usually involves research.</td></tr>
+                                <tr><td>Handle </td><td> The total amount of money bet on an event or group of events.</td></tr>
+                                <tr><td>Hedging </td><td> Placing wagers on the opposite side in order to cut losses or guarantee a minimum amount of winnings.</td></tr>
+                                <tr><td>Hook </td><td> A half-point.</td></tr>
+                                <tr><td>Hot Game </td><td> A game that is drawing a lot of action on one side from knowledgeable handicappers.</td></tr>
+                                <tr><td>Juice </td><td> The commission the bookie earns.</td></tr>
+                                <tr><td>Laying the Points </td><td> Betting the favorite by giving up points.</td></tr>
+                                <tr><td>Laying the Price </td><td> Betting the favorite by laying money odds.</td></tr>
+                                <tr><td>Layoff </td><td> Money bet by a house with another bookmaker to reduce its liability.</td></tr>
+                                <tr><td>Limit </td><td> The maximum amount a bookmaker will allow you to bet before he changes the odds and/or the points.</td></tr>
+                                <tr><td>Lines </td><td> Another word for odds.</td></tr>
+                                <tr><td>Linemaker </td><td> The person who establishes the original and subsequent betting lines. Also known as "oddsmaker."</td></tr>
+                                <tr><td>Listed Pitchers </td><td> A baseball bet which will be placed only if both of the pitchers scheduled to start a game actually start. If they don't, the bet is cancelled.</td></tr>
+                                <tr><td>Lock </td><td> An easy winner.</td></tr>
+                                <tr><td>Longshot </td><td> A team, athlete or horse perceived to be unlikely to win.</td></tr>
+                                <tr><td>Middle </td><td> To win both sides of the same contest in a sports betting event. Wagering on the underdog at one pointspread and the favorite at a different pointspread and winning both sides.</td></tr>
+                                <tr><td>Moneyline </td><td> A wager where no pointspread is involved.</td></tr>
+                                <tr><td>Move the Line </td><td> A player pays an additional price to receive half a point or more in his favor on a pointspread game.</td></tr>
+                                <tr><td>Nickel Line </td><td> A sports wagering line where the juice is five percent.</td></tr>
+                                <tr><td>No Action </td><td> A wager in which no money is lost nor won.</td></tr>
+                                <tr><td>Off the Board </td><td> A game that the bookmaker is not offering action on at that moment.</td></tr>
+                                <tr><td>Outlaw Line </td><td> The earliest line in sports betting. This is an overnight line that only a handful of players are allowed to bet into.</td></tr>
+                                <tr><td>Over/Under </td><td> A bet on whether the combined total of the points/goals scored by the two teams will exceed or be less than a specified number.</td></tr>
+                                <tr><td>Parlay </td><td> A bet on two or more teams or outcomes where the original stake and winnings are reinvested on the next wager. All selections must be correct for the parlay to win. In the event of a push or a game cancellation, the parlay reverts to the next lower number (e.g. a 4 team parlay becomes a 3 team parlay).</td></tr>
+                                <tr><td>Pick 'em </td><td> A game where neither team is favored.</td></tr>
+                                <tr><td>Pointspread </td><td> The handicap, or head start, which the favorite gives to the underdog for betting purposes.</td></tr>
+                                <tr><td>Press </td><td> To wager a larger amount than usual.</td></tr>
+                                <tr><td>Prop (Proposition) Bet </td><td> A special wager offered by the sportsbook on unique and various topics. These wagers can be on sporting events, politics, and even trial outcomes. The wagers use the moneyline format of payoff odds and might include who scores the first touchdown in the Super Bowl, who will win the next presidential election, or whether or not someone on trial will be found guilty.</td></tr>
+                                <tr><td>Price </td><td> The odds or pointspread.</td></tr>
+                                <tr><td>Puckline </td><td> Giving odds of a goal spread in hockey instead of using a Canadian Line, where both a goal spread and moneyline are played.</td></tr>
+                                <tr><td>Puppy </td><td> The underdog.</td></tr>
+                                <tr><td>Push </td><td> When a contest ends with no winner or loser for wagering purposes.</td></tr>
+                                <tr><td>Round Robin </td><td> A series of three or more teams in 2 team parlays.</td></tr>
+                                <tr><td>Run down </td><td> All the lines for a specific date, sport, time, etc.</td></tr>
+                                <tr><td>Runline </td><td> In baseball, a spread used instead of the moneyline.</td></tr>
+                                <tr><td>Runner </td><td> One who places bets for another.</td></tr>
+                                <tr><td>Scouts </td><td> Person(s) who waits for what he thinks is an unusually strong wager. Also known as a "sports player."</td></tr>
+                                <tr><td>Sharp </td><td> A sophisticated or professional gambler.</td></tr>
+                                <tr><td>Sides </td><td> The two teams or athletes playing  the underdog and the favorite.</td></tr>
+                                <tr><td>Single Action </td><td> An "if bet" that's processed only if the precedent bet wins.</td></tr>
+                                <tr><td>Spread </td><td> An abbreviated form of "pointspread."</td></tr>
+                                <tr><td>Square </td><td> A novice when it comes to sports betting.</td></tr>
+                                <tr><td>Steam </td><td> When a line starts to move rapidly. Most "steam games" do not necessarily reflect objective circumstances, but are games that draw a mass of bettors for some reason.</td></tr>
+                                <tr><td>Store </td><td> A bookie or sports betting establishment.</td></tr>
+                                <tr><td>Straight Bet </td><td> A wager on just one team, athlete or horse.</td></tr>
+                                <tr><td>Taking the Points </td><td> Betting the underdog and its advantage in the pointspread.</td></tr>
+                                <tr><td>Taking the Price </td><td> Betting the underdog and accepting money odds.</td></tr>
+                                <tr><td>Teaser </td><td> A bet on two or more teams where the line on each team is adjusted in the favor of the bettor. Like a parlay, all selections must be correct for the teaser to win.</td></tr>
+                                <tr><td>Ticket </td><td> A sports betting wager.</td></tr>
+                                <tr><td>Tie </td><td> A wager in which no money is lost nor won because the teams' scores were equal to the number of points in the given line.</td></tr>
+                                <tr><td>Total </td><td> The combined amount of runs, points or goals scored by both teams during the game, including the overtime (see Over/Under).</td></tr>
+                                <tr><td>Totals Bet </td><td> A proposition bet in which the bettor speculates that the total score by both teams in a game will be more or less than the line posted by the sportsbook.</td></tr>
+                                <tr><td>Tout </td><td> Someone who sells his/her expertise on sports wagering.</td></tr>
+                                <tr><td>Under </td><td> A wager that the total points scored by two teams will be under a certain figure.</td></tr>
+                                <tr><td>Underdog </td><td> The team perceived to be most likely to lose. Also known as the "dog" for short.</td></tr>
+                                <tr><td>Value </td><td> Getting the best odds on a wagering proposition; the highest possible edge.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Abbreviations -->
+        <section class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <i class="fa fa-question-circle"></i>
+                    <h3 class="box-title">Abbreviations</h3>
+                </div>
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Heading</th>
+                                    <th>Explanation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>W / L</td><td>Wins / Losses</td></tr>
+                                <tr><td>ATS</td><td>Record Against the Spread</td></tr>
+                                <tr><td>H</td><td>Home</td></tr>
+                                <tr><td>A</td><td>Away</td></tr>
+                                <tr><td>O/U</td><td>Over / Under</td></tr>
+                                <tr><td>AF</td><td>Average Points For</td></tr>
+                                <tr><td>AA</td><td>Average Points Against</td></tr>
+                                <tr><td>FG%</td><td>Field Goal Percentage</td></tr>
+                                <tr><td>3P%</td><td>Three Point Field Goal Percentage</td></tr>
+                                <tr><td>DFG%</td><td>Defensive Field Goal Percentage</td></tr>
+                                <tr><td>D3P%</td><td>Defensive Three Point Field Goal Percentage</td></tr>
+                                <tr><td>RM</td><td>Rebounding Margin</td></tr>
+                                <tr><td>A/TO</td><td>Assist to Turnover Ratio</td></tr>
+                                <tr><td>FT%</td><td>Free Throw Percentage</td></tr>
+                                <tr><td>H Line</td><td>Home Line</td></tr>
+                                <tr><td>Reb</td><td>Rebounds</td></tr>
+                                <tr><td>FGM</td><td>Field Goals Made</td></tr>
+                                <tr><td>FGA</td><td>Field Goals Attempted</td></tr>
+                                <tr><td>3PM</td><td>Three Point Field Goals Made</td></tr>
+                                <tr><td>3PA</td><td>Three Point Field Goals Attempted</td></tr>
+                                <tr><td>FTA</td><td>Free Throws Attempted</td></tr>
+                                <tr><td>% points</td><td>Percentage of Points</td></tr>
+                                <tr><td>% minutes</td><td>Percentage of Minutes</td></tr>
+                                <tr><td>% 3PA to FGA</td><td>Percentage of Field Goals that are Three Point Attempts</td></tr>
+                                <tr><td>A500</td><td>Versus Above .500 Teams</td></tr>
+                                <tr><td>B500</td><td>Versus Below .500 Teams</td></tr>
+                                <tr><td>Days Rest</td><td>Number of Days Between Games</td></tr>
+                                <tr><td>ODR</td><td>Opposition's Days Between Games</td></tr>
+                                <tr><td>DR</td><td>Days Rest</td></tr>
+                                <tr><td>SU</td><td>Straight Up</td></tr>
+                                <tr><td><2 dr</td><td>Less than two Days Rest</td></tr>
+                                <tr><td>>2 DR</td><td>More the two Days Rest</td></tr>
+                                <tr><td>F</td><td>Favorite</td></tr>
+                                <tr><td>D</td><td>Underdog</td></tr>
+                                <tr><td>Fav</td><td>Favorite</td></tr>
+                                <tr><td>Dog</td><td>Underdog</td></tr>
+                                <tr><td>Div</td><td>Division</td></tr>
+                                <tr><td>Conf</td><td>Conference</td></tr>
+                                <tr><td>PPG</td><td>Points Per Game</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+</section>

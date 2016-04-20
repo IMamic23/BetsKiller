@@ -188,5 +188,14 @@ namespace BetsKiller.Web.Controllers
         }
 
         #endregion
+
+        #region Terminology
+
+        public ActionResult Terminology()
+        {
+            return View();
+        }
+
+        #endregion
     }
 }

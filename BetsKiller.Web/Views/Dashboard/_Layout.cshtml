@@ -201,6 +201,12 @@
                             <small class="label pull-right bg-blue">Developing...</small>
                         </a>
                     </li>
+                    <li>
+                        <a href="@Url.Action("Terminology", "Dashboard")">
+                            <i class="fa fa-question-circle"></i> <span>Terminology</span>
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </a>
+                    </li>
                 </ul>
             </section>
             <!-- /.sidebar -->
@@ -213,10 +219,23 @@
 
         <!-- Footer -->
         <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 1.0.0
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="pull-left">
+                        <strong>Copyright &copy; @DateTime.Now.Year BetsKiller</strong> All rights reserved.
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div align="center">
+                        <a href="@Url.Action("TermsOfUse", "Home")">Terms of use</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="pull-right hidden-xs">
+                        <b>Version</b> 1.0.0
+                    </div>
+                </div>
             </div>
-            <strong>Copyright &copy; @DateTime.Now.Year BetsKiller</strong> All rights reserved.
         </footer>
 
         <!-- Modal profile -->

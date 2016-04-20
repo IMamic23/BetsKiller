@@ -21,7 +21,8 @@ namespace BetsKiller.Web
                         "~/Scripts/respond.js",
                         "~/Scripts/wysihtml5-{version}.js",
                         "~/Scripts/bootstrap3-wysihtml5.js",
-                        "~/Scripts/dataTables.bootstrap.min.js"
+                        "~/Scripts/dataTables.bootstrap.min.js",
+                        "~/Scripts/bootstrap-datepicker.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/dashboard-js").Include(
@@ -41,7 +42,8 @@ namespace BetsKiller.Web
                         "~/Scripts/Landing/jquery.superslides.min.js",
                         "~/Scripts/Landing/slick.min.js",
                         "~/Scripts/Landing/jquery.circliful.min.js",
-                        "~/Scripts/Landing/custom.js"
+                        "~/Scripts/Landing/custom.js",
+                        "~/Scripts/bootstrap-datepicker.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/logsignin-js").Include(

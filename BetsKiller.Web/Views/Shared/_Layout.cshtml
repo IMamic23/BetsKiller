@@ -54,7 +54,7 @@
 
                     <!-- LOGO -->
                     <!-- TEXT BASED LOGO -->
-                    <a class="navbar-brand" href="#">Bets<span class="logo_text_2">Killer</span></a>
+                    <a class="navbar-brand" href="/">Bets<span class="logo_text_2">Killer</span></a>
                     <!-- IMG BASED LOGO  -->
                     <!--  <a class="navbar-brand" href="#"><img src="img/logo.png" alt="logo"></a> -->
 
@@ -88,6 +88,35 @@
     <!-- END MAIN MENU -->
     @RenderBody()
 
+    <!-------------- START FOOTER -------------->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer_left">
+                        <p>Designed By <a href="#">Bets Killer Team</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div align="center">
+                        <p><a href="@Url.Action("TermsOfUse", "Home")">Terms of use</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer_right">
+                        <ul class="social_nav">
+                            <li><a href="https://www.facebook.com/BetsKillerAnalysis"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/BetsKiller"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.instagram.com/betskiller/"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-------------- END FOOTER -------------->
+
     @Scripts.Render("~/bundles/landing-js")
+    @RenderSection("Scripts", false)
 </body>
 </html>

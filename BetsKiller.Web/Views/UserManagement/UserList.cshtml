@@ -3,65 +3,73 @@
     ViewBag.Title = "Users list";
 }
 
-<h3>Users list</h3>
-
 @Html.ValidationSummary()
 
 <!-- Search panel -->
 <div class="row">
-    <div class="col-md-8">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Search parameters
-            </div>
-            <div class="panel-body">
-                @using (Html.BeginForm("UserList", "UserManagement", FormMethod.Post, new { @class = "form-horizonral", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary("", new { @style = "color: red" })
-
-                    <div class="form-group">
-                        @Html.LabelFor(x => x.UserProfileSearchViewModel.Email)
-                        @Html.TextBoxFor(x => x.UserProfileSearchViewModel.Email)
+    <div class="col-lg-12 col-md-12">
+        <div class="counter_section">
+            <div class="slider_overlay"></div>
+            <div class="container">
+                <div class="counter_area" align="center">
+                    <div class="heading">
+                        <h2 class="wow fadeInRightBig white">Users list</h2>
                     </div>
+                    <div class="col-lg-offset-4 col-lg-4 col-md-4 col-sm-4">
+                        <div class="counter wow fadeInUp">
+                            @using (Html.BeginForm("UserList", "UserManagement", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary("", new { @style = "color: red" })
 
-                    <div class="form-group">
-                        @Html.LabelFor(x => x.UserProfileSearchViewModel.RoleName)
-                        @Html.DropDownListFor(x => x.UserProfileSearchViewModel.RoleName, Model.AllRoles)
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(x => x.UserProfileSearchViewModel.ResultLimit)
-                        @Html.TextBoxFor(x => x.UserProfileSearchViewModel.ResultLimit)
-                    </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.UserProfileSearchViewModel.Email, new { @class = "control-label col-sm-4", style = "color: white; text-align: left" })
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(x => x.UserProfileSearchViewModel.Email, new { @class = "form-control" })
+                                    </div>
+                                </div>
 
-                    <button type="submit" class="btn btn-primary">Search</button>
-                }
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.UserProfileSearchViewModel.RoleName, new { @class = "control-label col-sm-4", style = "color: white; text-align: left" })
+                                    <div class="col-sm-8">
+                                        @Html.DropDownListFor(x => x.UserProfileSearchViewModel.RoleName, Model.AllRoles, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.UserProfileSearchViewModel.ResultLimit, new { @class = "control-label col-sm-4", style = "color: white; text-align: left" })
+                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(x => x.UserProfileSearchViewModel.ResultLimit, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <table class="table table-bordered" style="color: white">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Email</th>
+                                    <th>Roles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (BetsKiller.ViewModel.UserManagement.UserProfileViewModel user in Model.UserProfileViewModels)
+                                {
+                                    <tr>
+                                        <td>@user.UserId</td>
+                                        <td>@Html.ActionLink(user.Email, "UserEdit", new { userName = user.Email }, new { style = "color: white" })</td>
+                                        <td>@user.Roles</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- Result table -->
-<div class="row">
-    <div class="col-md-8">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Email</th>
-                    <th>Roles</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (BetsKiller.ViewModel.UserManagement.UserProfileViewModel user in Model.UserProfileViewModels)
-                {
-                    <tr>
-                        <td>@user.UserId</td>
-                        <td>@Html.ActionLink(user.Email, "UserEdit", new { userName = user.Email })</td>
-                        <td>@user.Roles</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
     </div>
 </div>
