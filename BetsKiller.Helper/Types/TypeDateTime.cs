@@ -24,5 +24,20 @@ namespace BetsKiller.Helper.Types
 
             return firstDayInWeek;
         }
+
+        /// <summary>
+        /// Returns datetime string in specific format.
+        /// </summary>
+        public static string ParseDateTime(DateTime? dateTime)
+        {
+            if (dateTime.HasValue)
+            {
+                return dateTime.Value.ToString("MMM d, yyyy", CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
     }
 }

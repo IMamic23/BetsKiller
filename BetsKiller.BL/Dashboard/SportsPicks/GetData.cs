@@ -3,6 +3,7 @@ using BetsKiller.DAL.AppData;
 using BetsKiller.Helper.Constants;
 using BetsKiller.Helper.HTML;
 using BetsKiller.Helper.Operations;
+using BetsKiller.Helper.Types;
 using BetsKiller.Model;
 using BetsKiller.ViewModel.Dashboard.SportsPicks;
 using System;
@@ -141,7 +142,7 @@ namespace BetsKiller.BL.Dashboard.SportsPicks
                 analyseVM.Profit = new CustomHtmlElement(null, null, "color: red", "color: green").GetElementByValue(analyse.Profit != null ? (decimal)analyse.Profit : 0);
                 analyseVM.Profit.Value = (analyse.Profit != null ? Math.Round((decimal)analyse.Profit, 2) : 0).ToString(CultureInfo.InvariantCulture) + " units";
 
-                analyseVM.Date = ((DateTime)analyse.EventNBA.EventStartDateTime).ToShortDateString();
+                analyseVM.Date = TypeDateTime.ParseDateTime(analyse.EventNBA.EventStartDateTime);
 
                 analyseVM.Status = new CustomHtmlElement();
                 analyseVM.Status.Value = analyse.BetStatus.Name;

@@ -4,6 +4,7 @@ using BetsKiller.Helper.Constants;
 using BetsKiller.Helper.HTML;
 using BetsKiller.Helper.HTML.Elements;
 using BetsKiller.Helper.Operations;
+using BetsKiller.Helper.Types;
 using BetsKiller.Model;
 using BetsKiller.ViewModel.Dashboard.Index;
 using System;
@@ -135,7 +136,7 @@ namespace BetsKiller.BL.Dashboard.Index
                 headline.Id = news.Id.ToString();
                 headline.Title = news.Title;
                 headline.Description = news.Description;
-                headline.Published = news.Published.ToString();
+                headline.Published = TypeDateTime.ParseDateTime(news.Published);
 
                 this._dashboardViewModel.HeadlinesPublishedNBA.Add(headline);
             }
@@ -172,7 +173,7 @@ namespace BetsKiller.BL.Dashboard.Index
                 TodaysGamesNBAViewModel todayGameVM = new TodaysGamesNBAViewModel();
 
                 todayGameVM.EventId = scheduleResult.EventId;
-                todayGameVM.EventStart = ((DateTime)scheduleResult.EventStartDateTime).ToString("dd.MM.yyyy. HH:mm");
+                todayGameVM.EventStart = TypeDateTime.ParseDateTime(scheduleResult.EventStartDateTime);
                 todayGameVM.EventStatus = scheduleResult.EventStatus;
                 todayGameVM.SeasonType = scheduleResult.EventSeasonType;
                 todayGameVM.SiteCapacity = scheduleResult.SiteCapacity.ToString();
@@ -299,7 +300,7 @@ namespace BetsKiller.BL.Dashboard.Index
                 analyseVM.Profit = new CustomHtmlElement(null, null, "color: red", "color: green").GetElementByValue(analyse.Profit != null ? (decimal)analyse.Profit : 0);
                 analyseVM.Profit.Value = (analyse.Profit != null ? Math.Round((decimal)analyse.Profit, 2) : 0).ToString(CultureInfo.InvariantCulture) + " units";
 
-                analyseVM.Date = ((DateTime)analyse.EventNBA.EventStartDateTime).ToShortDateString();
+                analyseVM.Date = TypeDateTime.ParseDateTime(analyse.EventNBA.EventStartDateTime);
 
                 analyseVM.Status = new CustomHtmlElement();
                 analyseVM.Status.Value = analyse.BetStatus.Name;

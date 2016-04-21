@@ -1,5 +1,6 @@
 ﻿using BetsKiller.DAL;
 using BetsKiller.DAL.UserManagement;
+using BetsKiller.Helper.Types;
 using BetsKiller.Model.UserManagement;
 using BetsKiller.ViewModel.UserManagement;
 using NLog;

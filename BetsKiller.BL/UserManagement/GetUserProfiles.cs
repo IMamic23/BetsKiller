@@ -1,5 +1,6 @@
 ﻿using BetsKiller.DAL;
 using BetsKiller.DAL.UserManagement;
+using BetsKiller.Helper.Types;
 using BetsKiller.Model.UserManagement;
 using BetsKiller.ViewModel.UserManagement;
 using System;
@@ -65,8 +66,8 @@ namespace BetsKiller.BL.UserManagement
                         UserId = userProfile.UserId,
                         Email = userProfile.UserName,
                         FullName = userProfile.FullName,
-                        RoleActiveFrom = userProfile.RoleActiveFrom.ToShortDateString(),
-                        RoleActiveTo = userProfile.RoleActiveTo.HasValue ? userProfile.RoleActiveTo.Value.ToShortDateString() : string.Empty,
+                        RoleActiveFrom = TypeDateTime.ParseDateTime(userProfile.RoleActiveFrom),
+                        RoleActiveTo = TypeDateTime.ParseDateTime(userProfile.RoleActiveTo),
                         Roles = string.Join(", ", userProfile.Roles.OrderBy(x => x.RoleName).Select(x => x.RoleName))
                     };
 

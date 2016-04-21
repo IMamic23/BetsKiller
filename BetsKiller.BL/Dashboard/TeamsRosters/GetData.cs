@@ -1,5 +1,6 @@
 ﻿using BetsKiller.DAL;
 using BetsKiller.DAL.AppData;
+using BetsKiller.Helper.Types;
 using BetsKiller.Model;
 using BetsKiller.ViewModel.Dashboard.TeamsRosters;
 using System;
@@ -87,7 +88,7 @@ namespace BetsKiller.BL.Dashboard.TeamsRosters
                     playerVM.UniformNumber = player.UniformNumber == -1 ? string.Empty : player.UniformNumber.ToString();
                     playerVM.Position = player.Position;
                     playerVM.Name = player.FirstName + " " + player.LastName;
-                    playerVM.Birthday = player.Birthday.HasValue ? player.Birthday.Value.ToShortDateString() : string.Empty;
+                    playerVM.Birthday = TypeDateTime.ParseDateTime(player.Birthday);
                     playerVM.Age = player.Age.ToString();
                     playerVM.Birthplace = player.Birthplace;
                     playerVM.Height = player.HeightFormatted + " / " + Math.Round(player.HeightM, 2).ToString(CultureInfo.InvariantCulture) + " m";

@@ -2,6 +2,7 @@
 using BetsKiller.DAL.AppData;
 using BetsKiller.Helper.Constants;
 using BetsKiller.Helper.HTML;
+using BetsKiller.Helper.Types;
 using BetsKiller.Model;
 using BetsKiller.ViewModel.Dashboard.ScheduleResults;
 using System;
@@ -88,7 +89,7 @@ namespace BetsKiller.BL.Dashboard.ScheduleResults
                 foreach (ScheduleResultsNBA scheduleResult in scheduleResultsNba.Where(x => x.Team.Id == team.Id || x.Opponent.Id == team.Id).OrderBy(x => x.TeamEventNumberInSeason))
                 {
                     ScheduleResultsGameViewModel scheduleResultVM = new ScheduleResultsGameViewModel();
-                    scheduleResultVM.Date = scheduleResult.EventStartDateTime.HasValue ? scheduleResult.EventStartDateTime.Value.ToString("MMM d, yyyy", CultureInfo.InvariantCulture) : string.Empty;
+                    scheduleResultVM.Date = TypeDateTime.ParseDateTime(scheduleResult.EventStartDateTime);
                     scheduleResultVM.Location = scheduleResult.SiteName;
 
                     // Depends on which side is parsing team

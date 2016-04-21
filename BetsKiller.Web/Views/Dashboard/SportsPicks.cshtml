@@ -146,11 +146,14 @@
 
 @section Scripts {
     <script>
+
         $('table').DataTable({
             "paging": true,
             "searching": false,
             "ordering": true,
-            "info": true
+            "info": true,
+            "order": [[0, "desc"]]
         });
+        
     </script>
 }
