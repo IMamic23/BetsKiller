@@ -12,7 +12,7 @@ namespace BetsKiller.ViewModel.UserManagement
     {
         [Required]
         [Display(Name = "Full name")]
-        [StringLength(50, ErrorMessage = "The property \"Full name\" must be at least {2} characters long.", MinimumLength = 8)]
+        [StringLength(50, ErrorMessage = "The property \"Full name\" must be at least {2} characters long.", MinimumLength = 4)]
         public string FullName { get; set; }
 
         [Required]

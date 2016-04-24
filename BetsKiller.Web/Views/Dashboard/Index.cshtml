@@ -640,7 +640,7 @@
                                         <span>Pick:</span>
                                     </td>
                                     <td>
-                                        <input type="number" name="Pick" class="form-control" placeholder="Pick" step="0.1">
+                                        <input type="number" name="Pick" class="form-control" placeholder="Pick" step="0.5">
                                     </td>
                                 </tr>
                                 <!-- Offer total -->
@@ -649,7 +649,7 @@
                                         <span>Offer total:</span>
                                     </td>
                                     <td>
-                                        <input type="number" name="OfferTotal" class="form-control" placeholder="Offer total" step="0.1">
+                                        <input type="number" name="OfferTotal" class="form-control" placeholder="Offer total" step="0.5">
                                     </td>
                                 </tr>
                                 <!-- Offer line-->
@@ -658,7 +658,7 @@
                                         <span>Offer line:</span>
                                     </td>
                                     <td>
-                                        <input type="number" name="OfferLine" class="form-control" placeholder="Offer line" step="0.1">
+                                        <input type="number" name="OfferLine" class="form-control" placeholder="Offer line" step="0.5">
                                     </td>
                                 </tr>
                                 <!-- Confidence -->
@@ -700,6 +700,7 @@
                                             <option value="1.925">1.925</option>
                                             <option value="1.934">1.934</option>
                                             <option value="1.952">1.952</option>
+											<option value="2.000">2.0</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -709,7 +710,7 @@
                                         <span>Invested:</span>
                                     </td>
                                     <td>
-                                        <input type="number" name="Invested" class="form-control" placeholder="Invested" min="0" step="0.01">
+                                        <input type="number" name="Invested" class="form-control" placeholder="Invested" min="0" step="0.5">
                                     </td>
                                 </tr>
                                 <!-- Details -->
@@ -769,8 +770,6 @@
             $(this).closest('div').parent().find('input').val($(this).attr('value'));
         });
     </script>
-
-    @Scripts.Render("~/bundles/dashboard-js")
 
     <script>
 

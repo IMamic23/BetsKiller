@@ -3,8 +3,10 @@
 .login-page,.register-page{
 	width: 100%;
 	overflow: hidden;
+	background-repeat: no-repeat;
 	background-image: url(../Images/log_sign_bg.jpg);
 	background-position: center center;
+	background-size: 100% 100%;
 }
 
 /*Logo*/

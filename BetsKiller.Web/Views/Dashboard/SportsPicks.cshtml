@@ -101,14 +101,14 @@
                 </div>
             </div>
 
-            <!-- FREE PICKS -->
+            <!-- PICKS -->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3><@type.Caption.Type class="@type.Caption.Class" style="@type.Caption.Style">@type.Caption.Value</@type.Caption.Type> Picks</h3>
                     </div>
-                    <div class="box-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                    <div class="box-body table-responsive">
+                        <table id="@type.Caption.Value" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th class="text-center">Date</th>
@@ -147,13 +147,18 @@
 @section Scripts {
     <script>
 
-        $('table').DataTable({
-            "paging": true,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "order": [[0, "desc"]]
-        });
-        
+        @foreach (BetsKiller.ViewModel.Dashboard.SportsPicks.SportsPicksTypeViewModel type in Model.Types)
+        {
+            <text>
+                $('#@type.Caption.Value').DataTable({
+                    "paging": true,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "order": [[0, "desc"]]
+                });
+            </text>
+        }
+
     </script>
 }

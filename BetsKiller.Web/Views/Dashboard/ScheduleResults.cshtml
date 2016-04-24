@@ -91,9 +91,9 @@
                                             {
                                                 <tr>
                                                     <td class="text-center">@game.Date</td>
-                                                    <td class="text-center">@game.Side</td>
+                                                    <td class="text-center" style="font-weight:bold">@game.Side</td>
                                                     <td class="text-center"><span class="label label-sm label-@game.Opponent.ToLower()">@game.Opponent</span></td>
-                                                    <td class="text-center"><span style="@game.Result.Style">@game.Result.Value</span></td>
+                                                    <td class="text-center"><span style="@game.Result.Style; font-weight:bold; font-size:medium">@game.Result.Value</span></td>
                                                     <td class="text-center">@game.Location</td>
                                                 </tr>
                                             }

@@ -116,10 +116,18 @@ namespace BetsKiller.Web.Controllers
 
         protected virtual string ExecuteIpnResponse(string url)
         {
-            WebClient ipnClient = new WebClient();
-            string ipnResponse = ipnClient.DownloadString(url);
+            try
+            {
+                WebClient ipnClient = new WebClient();
+                string ipnResponse = ipnClient.DownloadString(url);
 
-            return ipnResponse;
+                return ipnResponse;
+            }
+            catch (Exception ex)
+            {
+                LogManager.GetCurrentClassLogger().Error("[IPN RESPONSE ERROR]", ex);
+                return string.Empty;
+            }
         }
 
         #endregion
