@@ -84,6 +84,8 @@ namespace BetsKiller.Web.Controllers
             var url = baseUrl + sb;
             var ipnResponse = ExecuteIpnResponse(url);
 
+            LogManager.GetLogger(LoggerConst.PAYMENT).Trace("[RECEIVED IPN RESPONSE]\r\n" + ipnResponse);
+
             if (ipnResponse.Equals("VERIFIED", StringComparison.InvariantCultureIgnoreCase))
             {
                 if (String.IsNullOrEmpty(optionId))

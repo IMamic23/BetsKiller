@@ -204,6 +204,8 @@
     <Content Include="Content\LogSignIn\blue.css" />
     <Content Include="Content\LogSignIn\custom.css" />
     <Content Include="Content\preloader.css" />
+    <Content Include="Content\Sitemap\Sitemap.html" />
+    <Content Include="Content\Sitemap\Sitemap.xml" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
