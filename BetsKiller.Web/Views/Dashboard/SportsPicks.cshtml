@@ -121,18 +121,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (BetsKiller.ViewModel.Dashboard.SportsPicks.SportsPicksAnalyseViewModel analyse in type.Analysis)
-                                {
-                                    <tr>
-                                        <td class="text-center">@analyse.Date</td>
-                                        <td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
-                                        <td class="text-center">@analyse.Pick</td>
-                                        <td class="text-center" style="font-weight: bold">@analyse.Result</td>
-                                        <td class="text-center">@analyse.Invested</td>
-                                        <td class="text-center" style="@analyse.Status.Style">@analyse.Status.Value</td>
-                                        <td class="text-center" style="@analyse.Profit.Style">@analyse.Profit.Value</td>
-                                    </tr>
-                                }
+                                    @foreach (BetsKiller.ViewModel.Dashboard.SportsPicks.SportsPicksAnalyseViewModel analyse in type.Analysis)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@analyse.Date</td>
+                                            <td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
+                                            <td class="text-center">@analyse.Pick</td>
+                                            <td class="text-center" style="font-weight: bold">@analyse.Result</td>
+                                            <td class="text-center">@analyse.Invested</td>
+                                            <td class="text-center" style="@analyse.Status.Style">@analyse.Status.Value</td>
+                                            <td class="text-center" style="@analyse.Profit.Style">@analyse.Profit.Value</td>
+                                        </tr>
+                                    }
                             </tbody>
                         </table>
                     </div>

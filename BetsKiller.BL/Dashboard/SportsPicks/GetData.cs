@@ -81,7 +81,7 @@ namespace BetsKiller.BL.Dashboard.SportsPicks
             type.Caption = new CustomHtmlElement("span", "label label-info", "margin-right: 5px; background-color: #00c0ef", "Free", null);
 
             IEnumerable<Analysis> freeAnalysis = this._appDataRepository.GetAllAnalysis()
-                                                    .Where(x => x.Sport.Name == SportConst.NBA && x.AnalyseType.Name == AnalyseTypeConst.FREE)
+                                                    .Where(x => x.Sport.Name == SportConst.NBA && x.AnalyseType.Name == AnalyseTypeConst.FREE && x.EventNBA.EventStatus != EventStatusConst.SCHEDULED)
                                                     .OrderByDescending(x => x.EventNBA.EventStartDateTime);
 
             this.CalculateAnalysis(type, freeAnalysis);
