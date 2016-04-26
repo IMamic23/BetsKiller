@@ -64,6 +64,7 @@
     <Compile Include="Dashboard\Standings\GetData.cs" />
     <Compile Include="Dashboard\TeamsRosters\GetData.cs" />
     <Compile Include="Home\GetData.cs" />
+    <Compile Include="Payment\ReceivePayment.cs" />
     <Compile Include="ProcessBase.cs" />
     <Compile Include="Dashboard\Index\GetData.cs" />
     <Compile Include="Dashboard\Index\SaveAnalysis.cs" />

@@ -190,7 +190,6 @@
     <Content Include="Content\Images\logoAlternative.png" />
     <Content Include="Content\Images\logoMini.png" />
     <Content Include="Content\Images\logoNormal.png" />
-    <Content Include="Content\Images\log_sign_bg.jpg" />
     <Content Include="Content\Images\status.gif" />
     <Content Include="Content\Images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
     <Content Include="Content\jquery-ui.min.css" />

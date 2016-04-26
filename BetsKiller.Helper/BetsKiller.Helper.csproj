@@ -57,6 +57,7 @@
     <Compile Include="HTML\Elements\FiveStarsRating.cs" />
     <Compile Include="Operations\Percentage.cs" />
     <Compile Include="Operations\RandomElement.cs" />
+    <Compile Include="Operations\InternetRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\TypeDateTime.cs" />
   </ItemGroup>

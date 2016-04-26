@@ -1,4 +1,5 @@
 ﻿using BetsKiller.Helper.Constants;
+using BetsKiller.Helper.Operations;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -92,15 +93,18 @@ namespace BetsKiller.Web.Controllers
                 {
                     LogManager.GetLogger(LoggerConst.PAYMENT).Trace("[NO PURCHASE TO MATCH]\r\n" + sb.ToString());
                 }
+
                 if (isRefund == false && isPaymentCompleted == false)
                 {
                     LogManager.GetLogger(LoggerConst.PAYMENT).Trace("[SHOULD BE EITHER RECEIVED OR VERIFIED]\r\n" + sb.ToString());
                 }
+
                 if (isPaymentCompleted)
                 {
                     LogManager.GetLogger(LoggerConst.PAYMENT).Info("[PURCHASE COMPLETED]\r\n" + sb.ToString());
                     // todo - ExecutePurchaseComplete(id);
                 }
+
                 if (isRefund)
                 {
                     LogManager.GetLogger(LoggerConst.PAYMENT).Info("[REFUND]\r\n" + sb.ToString());
@@ -120,10 +124,7 @@ namespace BetsKiller.Web.Controllers
         {
             try
             {
-                WebClient ipnClient = new WebClient();
-                string ipnResponse = ipnClient.DownloadString(url);
-
-                return ipnResponse;
+                return InternetRequest.GetResponse(url);
             }
             catch (Exception ex)
             {
