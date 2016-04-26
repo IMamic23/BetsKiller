@@ -127,7 +127,7 @@ namespace BetsKiller.Web.Controllers
             }
             catch (Exception ex)
             {
-                LogManager.GetCurrentClassLogger().Error("[IPN RESPONSE ERROR]", ex);
+                LogManager.GetLogger(LoggerConst.PAYMENT).Error(ex, "[IPN RESPONSE ERROR]");
                 return string.Empty;
             }
         }
