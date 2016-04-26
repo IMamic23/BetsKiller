@@ -14,13 +14,11 @@ using WebMatrix.WebData;
 
 namespace BetsKiller.BL.UserManagement
 {
-    public class AddUser
+    public class AddUser : ProcessBase
     {
         #region Private
 
         private UserAddViewModel _inputUserAddViewModel;
-
-        private Status _status;
 
         #endregion
 
@@ -31,9 +29,18 @@ namespace BetsKiller.BL.UserManagement
             get { return this._inputUserAddViewModel; }
         }
 
-        public Status ProcessStatus
+        #endregion
+
+        #region Properties - override
+
+        protected override string _successMessage
         {
-            get { return this._status; }
+            get { return "Added user successfully."; }
+        }
+
+        protected override string _failMessage
+        {
+            get { return "Adding user failed."; }
         }
 
         #endregion
@@ -58,21 +65,11 @@ namespace BetsKiller.BL.UserManagement
 
         #region Methods
 
-        public void Start()
+        protected override void Process()
         {
-            try
-            {
-                this.CreateUser();
+            this.CreateUser();
 
-                this.AddRolesToUser();
-
-                this._status = Status.Success;
-            }
-            catch (Exception ex)
-            {
-                LogManager.GetCurrentClassLogger().Error(ex, "BL - AddUser");
-                this._status = Status.Error;
-            }
+            this.AddRolesToUser();
         }
 
         #endregion
@@ -91,9 +88,10 @@ namespace BetsKiller.BL.UserManagement
             WebSecurity.CreateUserAndAccount(
                 this._inputUserAddViewModel.Email,
                 this._inputUserAddViewModel.Password,
-                new { 
+                new
+                {
                     FullName = this._inputUserAddViewModel.FullName,
-                    RoleActiveFrom = Convert.ToDateTime(this._inputUserAddViewModel.RoleActiveFrom, CultureInfo.InvariantCulture), 
+                    RoleActiveFrom = Convert.ToDateTime(this._inputUserAddViewModel.RoleActiveFrom, CultureInfo.InvariantCulture),
                     RoleActiveTo = this._inputUserAddViewModel.RoleActiveTo != null ? (object)Convert.ToDateTime(this._inputUserAddViewModel.RoleActiveTo, CultureInfo.InvariantCulture) : null
                 }
             );
@@ -105,16 +103,6 @@ namespace BetsKiller.BL.UserManagement
             {
                 Roles.AddUserToRole(this._inputUserAddViewModel.Email, role);
             }
-        }
-
-        #endregion
-
-        #region Enums
-
-        public enum Status
-        {
-            Error,
-            Success
         }
 
         #endregion

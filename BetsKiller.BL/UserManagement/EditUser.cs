@@ -15,7 +15,7 @@ using WebMatrix.WebData;
 
 namespace BetsKiller.BL.UserManagement
 {
-    public class EditUser
+    public class EditUser : ProcessBase
     {
         #region Private
 
@@ -24,8 +24,6 @@ namespace BetsKiller.BL.UserManagement
         private IUserManagementRepository _userManagementRepository;
 
         private UserRoleHistory _userRoleHistory;
-
-        private Status _status;
 
         #endregion
 
@@ -36,9 +34,18 @@ namespace BetsKiller.BL.UserManagement
             get { return this._userEditViewModel; }
         }
 
-        public Status ProcessStatus
+        #endregion
+
+        #region Properties - override
+
+        protected override string _successMessage
         {
-            get { return this._status; }
+            get { return "Edited user successfully."; }
+        }
+
+        protected override string _failMessage
+        {
+            get { return "Editing user failed."; }
         }
 
         #endregion
@@ -48,7 +55,6 @@ namespace BetsKiller.BL.UserManagement
         public EditUser(string userName)
         {
             this._userEditViewModel = new UserEditViewModel();
-            this._status = Status.UserNotFound;
 
             if (!string.IsNullOrEmpty(userName))
             {
@@ -75,8 +81,6 @@ namespace BetsKiller.BL.UserManagement
                     GetRoles getRoles = new GetRoles(GetRoles.AddPredefinedType.None);
                     getRoles.Start();
                     this._userEditViewModel.AllRoles = getRoles.Roles;
-
-                    this._status = Status.Success;
                 }
             }
         }
@@ -84,7 +88,6 @@ namespace BetsKiller.BL.UserManagement
         public EditUser(UserEditViewModel userEditViewModel)
         {
             this._userEditViewModel = userEditViewModel;
-            this._status = Status.UserNotFound;
             this._userManagementRepository = new UserManagementRepository();
             this._userRoleHistory = new UserRoleHistory();
         }
@@ -93,26 +96,16 @@ namespace BetsKiller.BL.UserManagement
 
         #region Methods
 
-        public void Start()
+        protected override void Process()
         {
-            try
-            {
-                if (!this.Validate())
-                    return;
+            if (!this.Validate())
+                return;
 
-                this.ParseRoles();
+            this.ParseRoles();
 
-                this.ParsePassword();
+            this.ParsePassword();
 
-                this.ParseUserProfile();
-
-                this._status = Status.Success;
-            }
-            catch (Exception ex)
-            {
-                LogManager.GetCurrentClassLogger().Error(ex, "BL - EditUser");
-                this._status = Status.Error;
-            }
+            this.ParseUserProfile();
         }
 
         #endregion
@@ -201,17 +194,6 @@ namespace BetsKiller.BL.UserManagement
             {
                 this._userManagementRepository.AddUserRoleHistoryItem(this._userRoleHistory);
             }
-        }
-
-        #endregion
-
-        #region Enums
-
-        public enum Status
-        {
-            Success,
-            UserNotFound,
-            Error
         }
 
         #endregion

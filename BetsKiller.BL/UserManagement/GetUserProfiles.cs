@@ -11,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace BetsKiller.BL.UserManagement
 {
-    public class GetUserProfiles
+    public class GetUserProfiles : ProcessBase
     {
         #region Private
 
         private UsersProfilesSearchViewModel _searchViewModel;
 
         private List<UserProfileViewModel> _userProfilesViewModel;
+        private IUserManagementRepository _userManagementRepository;
 
         #endregion
 
@@ -30,19 +31,34 @@ namespace BetsKiller.BL.UserManagement
 
         #endregion
 
+        #region Properties - override
+
+        protected override string _successMessage
+        {
+            get { return "Get user profiles successfully."; }
+        }
+
+        protected override string _failMessage
+        {
+            get { return "Get user profiles failed."; }
+        }
+
+        #endregion
+
         #region Constructors
 
         public GetUserProfiles(UsersProfilesSearchViewModel searchViewModel)
         {
             this._searchViewModel = searchViewModel;
             this._userProfilesViewModel = new List<UserProfileViewModel>();
+            this._userManagementRepository = new UserManagementRepository();
         }
 
         #endregion
 
         #region Methods
 
-        public void Start()
+        protected override void Process()
         {
             this.GetData();
         }
@@ -53,26 +69,23 @@ namespace BetsKiller.BL.UserManagement
 
         private void GetData()
         {
-            using (IUserManagementRepository repository = new UserManagementRepository())
+            IEnumerable<UserProfile> users = this._userManagementRepository.SelectUserProfiles(this._searchViewModel.Email,
+                                                                           this._searchViewModel.RoleName,
+                                                                           this._searchViewModel.ResultLimit);
+
+            foreach (UserProfile userProfile in users)
             {
-                IEnumerable<UserProfile> users = repository.SelectUserProfiles(this._searchViewModel.Email,
-                                                                               this._searchViewModel.RoleName,
-                                                                               this._searchViewModel.ResultLimit);
-
-                foreach (UserProfile userProfile in users)
+                UserProfileViewModel userProfileViewModel = new UserProfileViewModel()
                 {
-                    UserProfileViewModel userProfileViewModel = new UserProfileViewModel()
-                    {
-                        UserId = userProfile.UserId,
-                        Email = userProfile.UserName,
-                        FullName = userProfile.FullName,
-                        RoleActiveFrom = TypeDateTime.ParseDateTime(userProfile.RoleActiveFrom),
-                        RoleActiveTo = TypeDateTime.ParseDateTime(userProfile.RoleActiveTo),
-                        Roles = string.Join(", ", userProfile.Roles.OrderBy(x => x.RoleName).Select(x => x.RoleName))
-                    };
+                    UserId = userProfile.UserId,
+                    Email = userProfile.UserName,
+                    FullName = userProfile.FullName,
+                    RoleActiveFrom = TypeDateTime.ParseDateTime(userProfile.RoleActiveFrom),
+                    RoleActiveTo = TypeDateTime.ParseDateTime(userProfile.RoleActiveTo),
+                    Roles = string.Join(", ", userProfile.Roles.OrderBy(x => x.RoleName).Select(x => x.RoleName))
+                };
 
-                    this._userProfilesViewModel.Add(userProfileViewModel);
-                }
+                this._userProfilesViewModel.Add(userProfileViewModel);
             }
         }
 

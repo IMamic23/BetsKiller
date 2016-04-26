@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace BetsKiller.BL.UserManagement
 {
-    public class GetRoles
+    public class GetRoles : ProcessBase
     {
         #region Private
 
@@ -19,6 +19,7 @@ namespace BetsKiller.BL.UserManagement
 
         private string _userName;
         private List<SelectListItem> _roles;
+        private IUserManagementRepository _userManagementRepository;
 
         #endregion
 
@@ -31,12 +32,27 @@ namespace BetsKiller.BL.UserManagement
 
         #endregion
 
+        #region Properties - override
+
+        protected override string _successMessage
+        {
+            get { return "Get roles successfully."; }
+        }
+
+        protected override string _failMessage
+        {
+            get { return "Get roles failed."; }
+        }
+
+        #endregion
+
         #region Constructors
 
         public GetRoles(AddPredefinedType predefinedType)
         {
             this._predefinedType = predefinedType;
             this._roles = new List<SelectListItem>();
+            this._userManagementRepository = new UserManagementRepository();
         }
 
         public GetRoles(AddPredefinedType predefinedType, string userName)
@@ -44,13 +60,14 @@ namespace BetsKiller.BL.UserManagement
             this._predefinedType = predefinedType;
             this._userName = userName;
             this._roles = new List<SelectListItem>();
+            this._userManagementRepository = new UserManagementRepository();
         }
 
         #endregion
 
         #region Methods
 
-        public void Start()
+        protected override void Process()
         {
             this.AddPredefinedRole();
 
@@ -84,7 +101,7 @@ namespace BetsKiller.BL.UserManagement
                 {
                     roleItem.Text = string.Empty;
                 }
-                
+
                 roleItem.Value = string.Empty;
 
                 this._roles.Add(roleItem);
@@ -93,22 +110,16 @@ namespace BetsKiller.BL.UserManagement
 
         private void GetAllRoles()
         {
-            using (IUserManagementRepository repository = new UserManagementRepository())
-            {
-                IEnumerable<Role> roles = repository.SelectRoles();
+            IEnumerable<Role> roles = this._userManagementRepository.SelectRoles();
 
-                this._roles.AddRange(this.ParseRoles(roles));
-            }
+            this._roles.AddRange(this.ParseRoles(roles));
         }
 
         private void GetUserRoles()
         {
-            using (IUserManagementRepository repository = new UserManagementRepository())
-            {
-                IEnumerable<UserProfile> users = repository.SelectUserProfiles(this._userName, null, null);
+            IEnumerable<UserProfile> users = this._userManagementRepository.SelectUserProfiles(this._userName, null, null);
 
-                this._roles.AddRange(this.ParseRoles(users.First().Roles));
-            }
+            this._roles.AddRange(this.ParseRoles(users.First().Roles));
         }
 
         private List<SelectListItem> ParseRoles(IEnumerable<Role> roles)

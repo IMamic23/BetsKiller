@@ -1,10 +1,12 @@
-﻿using BetsKiller.Helper.Constants;
+﻿using BetsKiller.BL.Payment;
+using BetsKiller.Helper.Constants;
 using BetsKiller.Helper.Operations;
 using NLog;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -30,10 +32,12 @@ namespace BetsKiller.Web.Controllers
         {
             StringBuilder sb = new StringBuilder();
             string baseUrl = "https://www.paypal.com/cgi-bin/webscr?cmd=_notify-validate";
-            string optionId = "";
-            string payerEmail = "";
-            bool isRefund = false;
+            string optionName = "";
+            string optionEmail = "";
             bool isPaymentCompleted = false;
+            bool isTest = false;
+            decimal mcFee = 0;
+            decimal mcGross = 0;
 
             // build a list of the keys
             foreach (string key in Request.Form.AllKeys)
@@ -53,20 +57,18 @@ namespace BetsKiller.Web.Controllers
 
                 if (key.Equals("option_selection1", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    // option_selection1=POF8C4AABC
-                    optionId = value;
+                    optionName = value;
+                }
+                if (key.Equals("option_selection2", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    optionEmail = HttpUtility.UrlDecode(value);
                 }
                 else if (key.Equals("test_ipn", StringComparison.InvariantCultureIgnoreCase) &&
                   value == "1")
                 {
                     // test_ipn=1
                     baseUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_notify-validate";
-                }
-                else if (key.Equals("reason_code", StringComparison.InvariantCultureIgnoreCase) &&
-                  value == "refund")
-                {
-                    // reason_code=refund
-                    isRefund = true;
+                    isTest = true;
                 }
                 else if (key.Equals("payment_status", StringComparison.InvariantCultureIgnoreCase) &&
                      "Completed".Equals(value, StringComparison.InvariantCultureIgnoreCase))
@@ -74,9 +76,13 @@ namespace BetsKiller.Web.Controllers
                     // payment_status=Refunded OR payment_status=Completed
                     isPaymentCompleted = true;
                 }
-                else if (key.Equals("payer_email", StringComparison.InvariantCultureIgnoreCase))
+                else if (key.Equals("mc_fee", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    payerEmail = value;
+                    mcFee = Convert.ToDecimal(value, CultureInfo.InvariantCulture);
+                }
+                else if (key.Equals("mc_gross", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    mcGross = Convert.ToDecimal(value, CultureInfo.InvariantCulture);
                 }
             }
 
@@ -89,26 +95,40 @@ namespace BetsKiller.Web.Controllers
 
             if (ipnResponse.Equals("VERIFIED", StringComparison.InvariantCultureIgnoreCase))
             {
-                if (String.IsNullOrEmpty(optionId))
+                if (!isTest)
                 {
-                    LogManager.GetLogger(LoggerConst.PAYMENT).Trace("[NO PURCHASE TO MATCH]\r\n" + sb.ToString());
-                }
+                    if (String.IsNullOrEmpty(optionName))
+                    {
+                        LogManager.GetLogger(LoggerConst.PAYMENT).Trace("[NO PURCHASE TO MATCH]\r\n" + sb.ToString());
+                    }
 
-                if (isRefund == false && isPaymentCompleted == false)
-                {
-                    LogManager.GetLogger(LoggerConst.PAYMENT).Trace("[SHOULD BE EITHER RECEIVED OR VERIFIED]\r\n" + sb.ToString());
-                }
+                    if (isPaymentCompleted == false)
+                    {
+                        LogManager.GetLogger(LoggerConst.PAYMENT).Trace("[PAYMENT SHOULD BE COMPLETED]\r\n" + sb.ToString());
+                    }
 
-                if (isPaymentCompleted)
-                {
-                    LogManager.GetLogger(LoggerConst.PAYMENT).Info("[PURCHASE COMPLETED]\r\n" + sb.ToString());
-                    // todo - ExecutePurchaseComplete(id);
-                }
+                    if (isPaymentCompleted)
+                    {
+                        ReceivePayment.PaymentTypeEnum paymentType;
 
-                if (isRefund)
+                        if (optionName == "Premium")
+                        {
+                            paymentType = ReceivePayment.PaymentTypeEnum.Premium;
+                        }
+                        else // optionName == "Ultimate"
+                        {
+                            paymentType = ReceivePayment.PaymentTypeEnum.Ultimate;
+                        }
+
+                        ReceivePayment receivePayment = new ReceivePayment(optionEmail, paymentType, mcGross - mcFee, sb.ToString());
+                        receivePayment.Start();
+
+                        LogManager.GetLogger(LoggerConst.PAYMENT).Info("[PURCHASE COMPLETED]\r\n" + sb.ToString());
+                    }
+                }
+                else
                 {
-                    LogManager.GetLogger(LoggerConst.PAYMENT).Info("[REFUND]\r\n" + sb.ToString());
-                    // todo - ExecuteRefundActions(id);
+                    LogManager.GetLogger(LoggerConst.PAYMENT).Info("[THIS WAS ONLY TEST PAYMENT]");
                 }
 
                 return new HttpStatusCodeResult(HttpStatusCode.OK);

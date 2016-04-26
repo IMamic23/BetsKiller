@@ -13,26 +13,33 @@ using BetsKiller.Helper.Constants;
 
 namespace BetsKiller.BL.UserManagement
 {
-    public class GetUsers
+    public class GetUsers : ProcessBase
     {
         #region Private
 
         private UsersListViewModel _usersListViewModel;
 
-        private Status _status;
-
         #endregion
 
         #region Properties
 
-        public UsersListViewModel UsersListViewModels 
+        public UsersListViewModel UsersListViewModels
         {
             get { return this._usersListViewModel; }
         }
 
-        public Status ProcessStatus
+        #endregion
+
+        #region Properties - override
+
+        protected override string _successMessage
         {
-            get { return this._status; }
+            get { return "Get users successfully."; }
+        }
+
+        protected override string _failMessage
+        {
+            get { return "Get users failed."; }
         }
 
         #endregion
@@ -55,21 +62,11 @@ namespace BetsKiller.BL.UserManagement
 
         #region Methods
 
-        public void Start()
+        protected override void Process()
         {
-            try
-            {
-                this.GetRolesData();
+            this.GetRolesData();
 
-                this.GetUserProfiles();
-
-                this._status = Status.Success;
-            }
-            catch (Exception ex)
-            {
-                LogManager.GetCurrentClassLogger().Error(ex, "BL - GetUsers");
-                this._status = Status.Error;
-            }
+            this.GetUserProfiles();
         }
 
         #endregion
@@ -90,16 +87,6 @@ namespace BetsKiller.BL.UserManagement
             getUserProfiles.Start();
 
             this._usersListViewModel.UserProfileViewModels = getUserProfiles.UserProfiles.Where(x => x.Email != UsersConst.AdminUsername).ToList();
-        }
-
-        #endregion
-
-        #region Enums
-
-        public enum Status
-        {
-            Error,
-            Success
         }
 
         #endregion

@@ -31,7 +31,7 @@ namespace BetsKiller.Web.Controllers
             GetUsers getUsers = new GetUsers();
             getUsers.Start();
 
-            if (getUsers.ProcessStatus == GetUsers.Status.Success)
+            if (getUsers.Response.Success)
             {
                 return View(getUsers.UsersListViewModels);
             }
@@ -47,7 +47,7 @@ namespace BetsKiller.Web.Controllers
             GetUsers getUsers = new GetUsers(usersListViewModel.UserProfileSearchViewModel);
             getUsers.Start();
 
-            if (getUsers.ProcessStatus == GetUsers.Status.Success)
+            if (getUsers.Response.Success)
             {
                 return View(getUsers.UsersListViewModels);
             }
@@ -92,7 +92,7 @@ namespace BetsKiller.Web.Controllers
         public ActionResult UserEdit(string username)
         {
             EditUser editUser = new EditUser(username);
-            if (editUser.ProcessStatus == EditUser.Status.Success)
+            if (editUser.Response.Success)
             {
                 return View(editUser.UserEditViewModel);
             }
@@ -109,20 +109,15 @@ namespace BetsKiller.Web.Controllers
             EditUser editUser = new EditUser(userEditViewModel);
             editUser.Start();
 
-            if (editUser.ProcessStatus == EditUser.Status.UserNotFound)
-            {
-                this.ModelState.AddModelError(string.Empty, "User not found.");
-                return View(userEditViewModel);
-            }
-            else if (editUser.ProcessStatus == EditUser.Status.Error)
-            {
-                this.ModelState.AddModelError(string.Empty, "There was an issue trying to update the user.");
-                return View(userEditViewModel);
-            }
-            else //Success
+            if (editUser.Response.Success)
             {
                 // Update success, return user to list
                 return RedirectToAction("UserList");
+            }
+            else
+            {
+                this.ModelState.AddModelError(string.Empty, editUser.Response.Message);
+                return View(userEditViewModel);
             }
         }
 

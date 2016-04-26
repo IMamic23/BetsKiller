@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BetsKiller.BL.Account
 {
-    public class GetUserProfilePreview
+    public class GetUserProfilePreview : ProcessBase
     {
         #region Private
 
@@ -28,6 +28,20 @@ namespace BetsKiller.BL.Account
 
         #endregion
 
+        #region Properties - override
+
+        protected override string _successMessage
+        {
+            get { return "Get users data retrived successfully."; }
+        }
+
+        protected override string _failMessage
+        {
+            get { return "Get users data retrive failed."; }
+        }
+
+        #endregion
+
         #region Constructors
 
         public GetUserProfilePreview(string username)
@@ -40,7 +54,7 @@ namespace BetsKiller.BL.Account
 
         #region Methods
 
-        public void Start()
+        protected override void Process()
         {
             this.GetData();
         }

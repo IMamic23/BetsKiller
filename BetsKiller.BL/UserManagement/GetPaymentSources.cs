@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace BetsKiller.BL.UserManagement
 {
-    public class GetPaymentSources
+    public class GetPaymentSources : ProcessBase
     {
         #region Private
 
@@ -29,6 +29,20 @@ namespace BetsKiller.BL.UserManagement
 
         #endregion
 
+        #region Properties - override
+
+        protected override string _successMessage
+        {
+            get { return "Get payment sources successfully."; }
+        }
+
+        protected override string _failMessage
+        {
+            get { return "Get payment sources failed."; }
+        }
+
+        #endregion
+
         #region Constructors
 
         public GetPaymentSources()
@@ -41,7 +55,7 @@ namespace BetsKiller.BL.UserManagement
 
         #region Methods
 
-        public void Start()
+        protected override void Process()
         {
             this.GetSources();
         }

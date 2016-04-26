@@ -47,6 +47,7 @@
     <Compile Include="Constants\LeadersNBACategoriesConst.cs" />
     <Compile Include="Constants\LoggerConst.cs" />
     <Compile Include="Constants\NewsSourcesConst.cs" />
+    <Compile Include="Constants\PaymentSourcesConst.cs" />
     <Compile Include="Constants\RolesConst.cs" />
     <Compile Include="Constants\SportConst.cs" />
     <Compile Include="Constants\StandingsConferenceConst.cs" />
