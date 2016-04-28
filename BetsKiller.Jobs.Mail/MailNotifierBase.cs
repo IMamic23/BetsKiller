@@ -21,13 +21,7 @@ namespace BetsKiller.Jobs.Mail
 
         public MailNotifierBase()
         {
-            this._client = new SmtpClient()
-            {
-                Port = Convert.ToInt32(ConfigurationManager.AppSettings["MailPort"]),
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Host = ConfigurationManager.AppSettings["MailHost"],
-            };
+            this._client = new SmtpClient(ConfigurationManager.AppSettings["MailHost"], Convert.ToInt32(ConfigurationManager.AppSettings["MailPort"]));
         }
 
         #endregion
@@ -55,7 +49,9 @@ namespace BetsKiller.Jobs.Mail
         {
             if (address == MailAddressesEnum.Service)
             {
+                this._client.UseDefaultCredentials = false;
                 this._client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["MailServiceUsername"], ConfigurationManager.AppSettings["MailServicePassword"]);
+                this._client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             }
         }
 

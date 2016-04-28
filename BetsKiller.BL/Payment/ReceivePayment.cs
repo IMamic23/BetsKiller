@@ -27,6 +27,7 @@ namespace BetsKiller.BL.Payment
         private string _userEmail;
         private decimal _moneyPaid;
         private string _paymentDescription;
+        private PaymentTypeEnum _paymentType;
 
         private IUserManagementRepository _userManagementRepository;
 
@@ -57,7 +58,7 @@ namespace BetsKiller.BL.Payment
             this._userManagementRepository = new UserManagementRepository();
             this._userEmail = userEmail;
             
-            if (paymentType == PaymentTypeEnum.Premium)
+            if ((paymentType == PaymentTypeEnum.PremiumMonthly) || (paymentType == PaymentTypeEnum.PremiumWeekly))
             {
                 this._newRole = RolesConst.Premium;
             }
@@ -66,6 +67,7 @@ namespace BetsKiller.BL.Payment
                 this._newRole = RolesConst.Ultimate;
             }
 
+            this._paymentType = paymentType;
             this._moneyPaid = moneyPaid;
             this._paymentDescription = paymentDescription;
         }
@@ -130,17 +132,17 @@ namespace BetsKiller.BL.Payment
                 {
                     // Role finished
                     this._userProfile.RoleActiveFrom = DateTime.Now;
-                    this._userProfile.RoleActiveTo = DateTime.Now.AddMonths(1);
+                    this._userProfile.RoleActiveTo = this.AddPaymentDays(this._paymentType, null);
                 }
                 else
                 {
-                    this._userProfile.RoleActiveTo = this._userProfile.RoleActiveTo.Value.AddMonths(1);
+                    this._userProfile.RoleActiveTo = this.AddPaymentDays(this._paymentType, this._userProfile.RoleActiveTo.Value);
                 }
             }
             else
             {
                 this._userProfile.RoleActiveFrom = DateTime.Now;
-                this._userProfile.RoleActiveTo = DateTime.Now.AddMonths(1);
+                this._userProfile.RoleActiveTo = this.AddPaymentDays(this._paymentType, null);
             }
 
             this._userManagementRepository.EditUserProfile(this._userProfile);
@@ -168,11 +170,42 @@ namespace BetsKiller.BL.Payment
 
         #endregion
 
+        #region Helper
+
+        private DateTime AddPaymentDays(PaymentTypeEnum type, DateTime? date)
+        {
+            if (date == null)
+            {
+                if (type == PaymentTypeEnum.PremiumWeekly)
+                {
+                    return DateTime.Now.AddDays(7);
+                }
+                else
+                {
+                    return DateTime.Now.AddMonths(1);
+                }
+            }
+            else
+            {
+                if (type == PaymentTypeEnum.PremiumWeekly)
+                {
+                    return date.Value.AddDays(7);
+                }
+                else
+                {
+                    return date.Value.AddMonths(1);
+                }
+            }
+        }
+
+        #endregion
+
         #region PaymentType enum
 
         public enum PaymentTypeEnum
         {
-            Premium,
+            PremiumMonthly,
+            PremiumWeekly,
             Ultimate
         }
 

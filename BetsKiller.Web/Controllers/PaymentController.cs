@@ -18,6 +18,8 @@ namespace BetsKiller.Web.Controllers
 {
     public class PaymentController : Controller
     {
+        #region PaypalIpn
+
         /// <summary>
         /// When PayPal gets a purchase with the IPN set up we get a POST with a bunch of variables.
         /// If all is good we verify by calling back (GET) with the same parameters, we get a "VERIFIED" response.
@@ -111,9 +113,13 @@ namespace BetsKiller.Web.Controllers
                     {
                         ReceivePayment.PaymentTypeEnum paymentType;
 
-                        if (optionName == "Premium")
+                        if (optionName == "Premium Monthly")
                         {
-                            paymentType = ReceivePayment.PaymentTypeEnum.Premium;
+                            paymentType = ReceivePayment.PaymentTypeEnum.PremiumMonthly;
+                        }
+                        else if (optionName == "Premium Weekly")
+                        {
+                            paymentType = ReceivePayment.PaymentTypeEnum.PremiumWeekly;
                         }
                         else // optionName == "Ultimate"
                         {
@@ -137,6 +143,8 @@ namespace BetsKiller.Web.Controllers
             LogManager.GetLogger(LoggerConst.PAYMENT).Error("[PAYPAL IPN FAILED]\r\n" + sb.ToString());
             return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
         }
+
+        #endregion
 
         #region Method Helpers
 
