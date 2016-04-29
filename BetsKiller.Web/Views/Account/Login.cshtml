@@ -43,7 +43,8 @@
     }
 
     <div class="text-center">
-        <a href="#">I forgot my password</a><br>
+        <a href="@Url.Action("PasswordForgot", "Account")">I forgot my password</a>
+        <br />
         @Html.ActionLink("Sign Up", "Register", "Account", new { @class = "text-center" })
     </div>
 </div>

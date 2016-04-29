@@ -8,6 +8,7 @@ namespace BetsKiller.Jobs.Mail
 {
     public enum MailAddressesEnum
     {
-        Service
+        NoReply,
+        Admin
     }
 }

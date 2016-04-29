@@ -28,17 +28,11 @@ namespace BetsKiller.Jobs.Mail
 
         #region Methods
 
-        protected void Send(MailAddressesEnum address, string from, string to, string subject, string body)
+        protected void Send(MailAddressesEnum address, MailMessage mail)
         {
             this.SetCredentials(address);
-
-            using (MailMessage mail = new MailMessage(from, to))
-            {
-                mail.Subject = subject;
-                mail.Body = body;
-
-                this._client.Send(mail);
-            }
+            
+            this._client.Send(mail);
         }
 
         #endregion
@@ -47,12 +41,18 @@ namespace BetsKiller.Jobs.Mail
 
         private void SetCredentials(MailAddressesEnum address)
         {
-            if (address == MailAddressesEnum.Service)
+            this._client.UseDefaultCredentials = false;
+
+            if (address == MailAddressesEnum.Admin)
             {
-                this._client.UseDefaultCredentials = false;
-                this._client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["MailServiceUsername"], ConfigurationManager.AppSettings["MailServicePassword"]);
-                this._client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                this._client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["MailAdminUsername"], ConfigurationManager.AppSettings["MailAdminPassword"]);
             }
+            else // address == MailAddressesEnum.NoReply
+            {
+                this._client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["MailNoReplyUsername"], ConfigurationManager.AppSettings["MailNoReplyPassword"]);
+            }
+
+            this._client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
         }
 
         #endregion

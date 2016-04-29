@@ -145,6 +145,7 @@
     <Compile Include="App_Start\StartupConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\UserManagementController.cs" />
@@ -378,6 +379,13 @@
     <Content Include="Views\Account\_UserProfilePreviewPartial.cshtml" />
     <Content Include="Views\Home\TermsOfUse.cshtml" />
     <Content Include="Views\Dashboard\Terminology.cshtml" />
+    <Content Include="Views\Account\ConfirmationSent.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Account\Confirmed.cshtml" />
+    <Content Include="Views\Account\PasswordForgot.cshtml" />
+    <Content Include="Views\Account\PasswordForgotSent.cshtml" />
+    <Content Include="Views\Account\PasswordReset.cshtml" />
+    <Content Include="Views\Account\PasswordResetConfirmed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Payment\" />

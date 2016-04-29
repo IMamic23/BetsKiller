@@ -73,18 +73,15 @@ namespace BetsKiller.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                WebSecurity.CreateUserAndAccount(register.Email, register.Password, new { FullName = register.FullName, RoleActiveFrom = DateTime.Now.Date });
+                string confirmationToken = WebSecurity.CreateUserAndAccount(register.Email, register.Password, new { FullName = register.FullName, RoleActiveFrom = DateTime.Now.Date }, true);
+                
                 Roles.AddUserToRole(register.Email, RolesConst.Free);
+                MvcCaptcha.ResetCaptcha("RegistrationCaptcha");
 
-                if (WebSecurity.Login(register.Email, register.Password, false))
-                {
-                    MvcCaptcha.ResetCaptcha("RegistrationCaptcha");
-                    return RedirectToAction("Index", "Dashboard");
-                }
-                else
-                {
-                    return RedirectToAction("Login", "Account");
-                }
+                SendMailConfirmation sendMail = new SendMailConfirmation(confirmationToken, register.Email);
+                sendMail.Start();
+
+                return RedirectToAction("ConfirmationSent");
             }
 
             return View();
@@ -168,6 +165,117 @@ namespace BetsKiller.Web.Controllers
             registrationCaptcha.ImageSize = new System.Drawing.Size(255, 50);
 
             return registrationCaptcha;
+        }
+
+        #endregion
+
+        #region Email confirmation
+
+        [HttpGet]
+        public ActionResult ConfirmationSent()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Confirmed(string mail, string token)
+        {
+            if (WebSecurity.ConfirmAccount(mail, token))
+            {
+                return View();
+            }
+            else
+            {
+                return View("Index", "Error");
+            }
+        }
+
+        #endregion
+
+        #region Password forgot
+
+        [HttpGet]
+        public ActionResult PasswordForgot()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PasswordForgot(PasswordForgotViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                string forgotToken = WebSecurity.GeneratePasswordResetToken(viewModel.Email);
+
+                SendPasswordForgot sendPasswordForgot = new SendPasswordForgot(forgotToken, viewModel.Email);
+                sendPasswordForgot.Start();
+
+                if (sendPasswordForgot.Response.Success)
+                {
+                    return View("PasswordForgotSent");
+                }
+                else
+                {
+                    return View("Index", "Error");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid data.");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult PasswordForgotSent()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #region Password reset
+
+        [HttpGet]
+        public ActionResult PasswordReset(string mail, string token)
+        {
+            PasswordResetViewModel viewModel = new PasswordResetViewModel()
+            {
+                Email = mail,
+                ResetToken = token
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult PasswordReset(PasswordResetViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (WebSecurity.ResetPassword(viewModel.ResetToken, viewModel.NewPassword))
+                {
+                    return View("PasswordResetConfirmed");
+                }
+                else
+                {
+                    return View("Index", "Error");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid data.");
+            }
+
+            return View();
+        }
+
+        public ActionResult PasswordResetConfirmed()
+        {
+            return View();
         }
 
         #endregion

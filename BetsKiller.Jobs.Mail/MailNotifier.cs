@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +13,8 @@ namespace BetsKiller.Jobs.Mail
     {
         #region Consts
 
-        private string _serviceMailAddress;
-        private string _infoMailAddress;
+        private string _noReplyMailAddress;
+        private string _adminMailAddress;
 
         #endregion
 
@@ -21,8 +23,8 @@ namespace BetsKiller.Jobs.Mail
         public MailNotifier()
             : base()
         {
-            this._serviceMailAddress = ConfigurationManager.AppSettings["MailService"];
-            this._infoMailAddress = ConfigurationManager.AppSettings["MailInfo"];
+            this._noReplyMailAddress = ConfigurationManager.AppSettings["MailNoReplyUsername"];
+            this._adminMailAddress = ConfigurationManager.AppSettings["MailAdminUsername"];
         }
 
         #endregion
@@ -31,10 +33,39 @@ namespace BetsKiller.Jobs.Mail
 
         public void SendServiceJobStatus(string jobName, string status)
         {
-            string subject = "Job " + jobName + ": " + status + " at " + DateTime.Now.ToShortTimeString();
-            string body = "Job " + jobName + ": " + status + " at " + DateTime.Now.ToString();
+            using (MailMessage mail = new MailMessage(this._adminMailAddress, this._adminMailAddress))
+            {
+                mail.Subject = "Job " + jobName + ": " + status + " at " + DateTime.Now.ToShortTimeString();
+                mail.Body = "Job " + jobName + ": " + status + " at " + DateTime.Now.ToString();
 
-            base.Send(MailAddressesEnum.Service, this._serviceMailAddress, this._infoMailAddress, subject, body);
+                base.Send(MailAddressesEnum.Admin, mail);
+            }
+        }
+
+        public void SendMailConfirmation(string link, string mailAddressTo)
+        {
+            using (MailMessage mail = new MailMessage(this._noReplyMailAddress, mailAddressTo))
+            {
+                mail.Subject = "Confirm your account";
+                mail.Body = "Please confirm your account by clicking this <a href=\"" + link + "\">link</a>.<br/><br/>BetsKiller team";
+
+                mail.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(mail.Body, null, MediaTypeNames.Text.Html));
+
+                base.Send(MailAddressesEnum.NoReply, mail);
+            }
+        }
+
+        public void SendPasswordReset(string link, string mailAddressTo)
+        {
+            using (MailMessage mail = new MailMessage(this._noReplyMailAddress, mailAddressTo))
+            {
+                mail.Subject = "Password reset";
+                mail.Body = "Please reset your password by clicking this <a href=\"" + link + "\">link</a>.<br/><br/>BetsKiller team";
+
+                mail.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(mail.Body, null, MediaTypeNames.Text.Html));
+
+                base.Send(MailAddressesEnum.NoReply, mail);
+            }
         }
 
         #endregion

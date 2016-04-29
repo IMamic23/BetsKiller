@@ -9,5 +9,9 @@ namespace BetsKiller.Jobs.Mail
     public interface IMailNotifier
     {
         void SendServiceJobStatus(string jobName, string status);
+
+        void SendMailConfirmation(string link, string mailAddressTo);
+
+        void SendPasswordReset(string link, string mailAddressTo);
     }
 }

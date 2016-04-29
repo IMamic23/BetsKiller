@@ -54,6 +54,8 @@
     <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\SendMailConfirmation.cs" />
+    <Compile Include="Account\SendPasswordForgot.cs" />
     <Compile Include="Dashboard\Index\DeleteAnalysis.cs" />
     <Compile Include="Dashboard\Index\PublishNews.cs" />
     <Compile Include="Dashboard\Injuries\GetData.cs" />
@@ -86,6 +88,10 @@
     <ProjectReference Include="..\BetsKiller.Helper\BetsKiller.Helper.csproj">
       <Project>{18cee436-649f-4c28-81a3-d7fad6e93adf}</Project>
       <Name>BetsKiller.Helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BetsKiller.Jobs.Mail\BetsKiller.Jobs.Mail.csproj">
+      <Project>{d637b24d-39d7-4f8a-836d-dee2e465e48e}</Project>
+      <Name>BetsKiller.Jobs.Mail</Name>
     </ProjectReference>
     <ProjectReference Include="..\BetsKiller.Model\BetsKiller.Model.csproj">
       <Project>{230890ed-dce1-4656-a47e-66dc5cce705d}</Project>
