@@ -92,7 +92,7 @@ namespace BetsKiller.Web.Controllers
         public ActionResult UserEdit(string username)
         {
             EditUser editUser = new EditUser(username);
-            if (editUser.Response.Success)
+            if (!string.IsNullOrEmpty(editUser.UserEditViewModel.Email))
             {
                 return View(editUser.UserEditViewModel);
             }

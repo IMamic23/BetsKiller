@@ -4,7 +4,7 @@
 	width: 100%;
 	overflow: hidden;
 	background-repeat: no-repeat;
-	background-image: url(Images/index_concrete.jpg);
+	background-image: url(/Content/Images/index_concrete.jpg);
 	background-position: center center;
 	background-size: 100% 100%;
 }

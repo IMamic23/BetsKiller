@@ -177,7 +177,15 @@ namespace BetsKiller.BL.UserManagement
 
             user.FullName = this._userEditViewModel.FullName;
             user.RoleActiveFrom = Convert.ToDateTime(this._userEditViewModel.RoleActiveFrom);
-            user.RoleActiveTo = Convert.ToDateTime(this._userEditViewModel.RoleActiveTo);
+
+            if (string.IsNullOrEmpty(this._userEditViewModel.RoleActiveTo))
+            {
+                user.RoleActiveTo = null;
+            }
+            else
+            {
+                Convert.ToDateTime(this._userEditViewModel.RoleActiveTo);
+            }
 
             this._userManagementRepository.EditUserProfile(user);
 

@@ -15,7 +15,7 @@
   position:absolute;
   left:50%; /* centers the loading animation horizontally one the screen */
   top:50%; /* centers the loading animation vertically one the screen */
-  background-image:url(Images/status.gif); /* path to your loading animation */
+  background-image:url(/Content/Images/status.gif); /* path to your loading animation */
   background-repeat:no-repeat;
   background-position:center;
   margin:-200px 0 0 -200px; /* is width and height divided by two */

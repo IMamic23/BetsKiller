@@ -50,8 +50,7 @@ namespace BetsKiller.Web
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.validate*",
                         "~/Scripts/bootstrap.js",
-                        "~/Scripts/preloader.js",
-                        "~/Scripts/LogSignIn/icheck.min.js"
+                        "~/Scripts/preloader.js"
                         ));
 
             #endregion

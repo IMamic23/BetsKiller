@@ -29,8 +29,8 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-8">
-                <div class="checkbox icheck">
+            <div class="col-xs-offset-1 col-xs-7">
+                <div class="checkbox">
                     @Html.CheckBoxFor(x => x.RememberMe)
                     @Html.LabelFor(x => x.RememberMe)
                 </div>
@@ -45,6 +45,6 @@
     <div class="text-center">
         <a href="@Url.Action("PasswordForgot", "Account")">I forgot my password</a>
         <br />
-        @Html.ActionLink("Sign Up", "Register", "Account", new { @class = "text-center" })
+        @Html.ActionLink("Sign Up", "Register", "Account", null, new { @class = "text-center" })
     </div>
 </div>

@@ -159,7 +159,7 @@ namespace BetsKiller.BL.Dashboard.SportsPicks
             type.Stats.Wins = wins.ToString();
             type.Stats.Losses = losses.ToString();
             type.Stats.TotalInvested = Math.Round(totalInvested, 2).ToString(CultureInfo.InvariantCulture);
-            type.Stats.ROI = Percentage.GetPercentage(profit / totalInvested).ToString(CultureInfo.InvariantCulture);
+            type.Stats.ROI = Percentage.GetPercentage(totalInvested == 0 ? 0 : profit / totalInvested).ToString(CultureInfo.InvariantCulture);
             type.Stats.Profit = Math.Round(profit, 2).ToString(CultureInfo.InvariantCulture);
         }
 

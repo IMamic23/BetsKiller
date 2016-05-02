@@ -777,7 +777,7 @@ div[data-dimension] {
 
 
 .counter_section {
-  background-image: url(Images/index_concrete.jpg);
+  background-image: url(/Content/Images/index_concrete.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: inline;
