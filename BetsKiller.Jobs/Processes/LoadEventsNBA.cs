@@ -59,9 +59,6 @@ namespace BetsKiller.Jobs.Processes
                 // Save events
                 this.SaveEventsNBA();
 
-                // Update analysis profit
-                this.UpdateAnalysisProfit();
-
                 Thread.Sleep(base.WAIT_TIME); //TODO: Erikberg limit request per 10 seconds
             }
         }
@@ -153,6 +150,8 @@ namespace BetsKiller.Jobs.Processes
                         {
                             this.ResloveAnalyse(analyse, scheduleResult);
 
+                            this.UpdateAnalysisProfit(analyse);
+
                             this._updatedAnalysis.Add(analyse);
                         }
                     }
@@ -234,6 +233,58 @@ namespace BetsKiller.Jobs.Processes
             }
         }
 
+        private void UpdateAnalysisProfit(Analysis analyse)
+        {
+            int year = analyse.Created.Year;
+            int month = analyse.Created.Month;
+            int week = CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(analyse.Created, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+
+            AnalysisProfit analysisProfit = base.AppDataRepository.GetAllAnalysisProfit().Where(x => x.Year == year && x.Week == week).FirstOrDefault();
+
+            if (analysisProfit != null)
+            {
+                analysisProfit.TotalBets++;
+
+                if (analyse.BetStatus_Id == this._betStatuses.Single(x => x.Name == BetStatusConst.WIN).Id)
+                {
+                    analysisProfit.Wins++;
+                }
+                else if (analyse.BetStatus_Id == this._betStatuses.Single(x => x.Name == BetStatusConst.LOSS).Id)
+                {
+                    analysisProfit.Losses++;
+                }
+
+                analysisProfit.Invested += analyse.Invested;
+                analysisProfit.Profit += analyse.Profit.Value;
+                analysisProfit.ROI = analysisProfit.Invested > 0 ? Math.Round(analysisProfit.Profit / analysisProfit.Invested, 4) : 0;
+            }
+            else
+            {
+                analysisProfit = new AnalysisProfit();
+                analysisProfit.Sport_Id = this._sports.Single(x => x.Name == SportConst.NBA).Id;
+                analysisProfit.TotalBets = 1;
+                analysisProfit.Year = year;
+                analysisProfit.Month = month;
+                analysisProfit.Week = week;
+                analysisProfit.FirstDayInWeek = TypeDateTime.GetFirstDayOfWeek(DateTime.Now);
+
+                if (analyse.BetStatus_Id == this._betStatuses.Single(x => x.Name == BetStatusConst.WIN).Id)
+                {
+                    analysisProfit.Wins = 1;
+                }
+                else if (analyse.BetStatus_Id == this._betStatuses.Single(x => x.Name == BetStatusConst.LOSS).Id)
+                {
+                    analysisProfit.Losses = 1;
+                }
+
+                analysisProfit.Invested = analyse.Invested;
+                analysisProfit.Profit = analyse.Profit.Value;
+                analysisProfit.ROI = analysisProfit.Invested > 0 ? Math.Round(analysisProfit.Profit / analysisProfit.Invested, 4) : 0;
+            }
+
+            base.AppDataRepository.SaveAnalysisProfit(new List<AnalysisProfit>() { analysisProfit });
+        }
+
         private void SaveEventsNBA()
         {
             if (this._updatedAnalysis.Count > 0)
@@ -250,62 +301,6 @@ namespace BetsKiller.Jobs.Processes
             {
                 base.AppDataRepository.SaveScheduleResultsNBA(this._addedScheduleResults);
             }
-        }
-
-        private void UpdateAnalysisProfit()
-        {
-            int totalBets = 0, wins = 0, losses = 0;
-            decimal invested = 0, profit = 0;
-
-            foreach (Analysis analyse in this._updatedAnalysis)
-            {
-                totalBets++;
-
-                if (analyse.BetStatus_Id == this._betStatuses.Single(x => x.Name == BetStatusConst.WIN).Id)
-                {
-                    wins++;
-                }
-                else if (analyse.BetStatus_Id == this._betStatuses.Single(x => x.Name == BetStatusConst.LOSS).Id)
-                {
-                    losses++;
-                }
-
-                profit += analyse.Profit.Value;
-                invested += analyse.Invested;
-            }
-
-            int year = DateTime.Now.Year;
-            int month = DateTime.Now.Month;
-            int week = CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
-
-            AnalysisProfit analysisProfit = base.AppDataRepository.GetAllAnalysisProfit().Where(x => x.Year == year && x.Week == week).FirstOrDefault();
-
-            if (analysisProfit != null)
-            {
-                analysisProfit.TotalBets += totalBets;
-                analysisProfit.Wins += wins;
-                analysisProfit.Losses += losses;
-                analysisProfit.Profit += profit;
-                analysisProfit.Invested += invested;
-                analysisProfit.ROI = analysisProfit.Invested > 0 ? Math.Round(analysisProfit.Profit / analysisProfit.Invested, 4) : 0;
-            }
-            else
-            {
-                analysisProfit = new AnalysisProfit();
-                analysisProfit.Sport_Id = this._sports.Single(x => x.Name == SportConst.NBA).Id;
-                analysisProfit.TotalBets = totalBets;
-                analysisProfit.Year = year;
-                analysisProfit.Month = month;
-                analysisProfit.Week = week;
-                analysisProfit.FirstDayInWeek = TypeDateTime.GetFirstDayOfWeek(DateTime.Now);
-                analysisProfit.Wins = wins;
-                analysisProfit.Losses = losses;
-                analysisProfit.Invested = invested;
-                analysisProfit.Profit = profit;
-                analysisProfit.ROI = analysisProfit.Invested > 0 ?Math.Round(analysisProfit.Profit / analysisProfit.Invested, 4) : 0;
-            }
-
-            base.AppDataRepository.SaveAnalysisProfit(new List<AnalysisProfit>() { analysisProfit });
         }
 
         #endregion
