@@ -278,7 +278,7 @@ namespace BetsKiller.Jobs.Processes
             int month = DateTime.Now.Month;
             int week = CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
 
-            AnalysisProfit analysisProfit = base.AppDataRepository.GetAllAnalysisProfit().Where(x => x.Year == year && x.Month == month && x.Week == week).FirstOrDefault();
+            AnalysisProfit analysisProfit = base.AppDataRepository.GetAllAnalysisProfit().Where(x => x.Year == year && x.Week == week).FirstOrDefault();
 
             if (analysisProfit != null)
             {

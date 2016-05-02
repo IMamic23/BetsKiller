@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,9 +50,9 @@
             <!-- Logo -->
             <a href="/" class="navbar-fixed-top logo">
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><img src="~/Content/Images/logoNormal.png" width="84" height="51" /></span>
+                <span class="logo-lg"><img src="~/Content/Images/logoNormal.png" alt="logo" width="84" height="51" /></span>
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo_mini" style="margin-left: -6px"><img src="~/Content/Images/logoMini.png" width="32" height="32" /></span>
+                <span class="logo_mini" style="margin-left: -6px"><img src="~/Content/Images/logoMini.png" alt="logo" width="32" height="32" /></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-fixed-top" role="navigation">
@@ -236,7 +236,10 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="pull-left">
-                        <strong>Copyright &copy; @DateTime.Now.Year BetsKiller</strong> All rights reserved.
+                        <strong>Copyright &copy; @DateTime.Now.Year <span style="color: #337ab7">BetsKiller</span></strong> All rights reserved.
+                    </div>
+                    <div class="pull-right">
+                        <span style="color: #da002a">info@betskiller.com</span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4">
@@ -412,7 +415,7 @@
                                                             </table>
                                                             <input type="hidden" name="currency_code" value="USD">
                                                             <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                                            <img alt="paypal" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
                                                         </form>
                                                     }
                                                     else
