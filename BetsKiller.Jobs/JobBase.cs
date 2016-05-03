@@ -34,7 +34,7 @@ namespace BetsKiller.Jobs
 
         #region Properties - protected
 
-        protected readonly int WAIT_TIME = 13000;
+        protected readonly int WAIT_TIME = 15000;
 
         #endregion
 

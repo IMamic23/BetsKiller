@@ -15,7 +15,7 @@ namespace BetsKiller.Jobs.Processes
 
         protected IAppDataRepository AppDataRepository;
 
-        protected readonly int WAIT_TIME = 13000;
+        protected readonly int WAIT_TIME = 15000;
 
         #endregion
 
