@@ -41,10 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\ConfirmationResentViewModel.cs" />
     <Compile Include="Account\LoginViewModel.cs" />
     <Compile Include="Account\ManageViewModel.cs" />
     <Compile Include="Account\PasswordForgotViewModel.cs" />
-    <Compile Include="Account\PasswordResetViewModel.cs" />
+    <Compile Include="Account\PasswordResentViewModel.cs" />
     <Compile Include="Account\RegisterViewModel.cs" />
     <Compile Include="Dashboard\Index\AnalyseTypeViewModel.cs" />
     <Compile Include="Dashboard\Index\AnalysisProfitViewModel.cs" />

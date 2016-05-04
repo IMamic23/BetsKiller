@@ -54,6 +54,7 @@
     <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\GetUserConfirmationToken.cs" />
     <Compile Include="Account\SendMailConfirmation.cs" />
     <Compile Include="Account\SendPasswordForgot.cs" />
     <Compile Include="Dashboard\Index\DeleteAnalysis.cs" />

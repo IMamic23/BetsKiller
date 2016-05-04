@@ -18,5 +18,7 @@ namespace BetsKiller.DAL
         void AddUserRoleHistoryItem(UserRoleHistory userRoleHistory);
 
         IEnumerable<PaymentSource> GetPaymentSources();
+
+        IQueryable<Membership> GetAllMemberships();
     }
 }

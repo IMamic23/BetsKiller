@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BetsKiller.ViewModel.Account
 {
-    public class PasswordResetViewModel
+    public class PasswordResentViewModel
     {
         [Required(ErrorMessage = "The \"Email\" property is required")]
         [EmailAddress]

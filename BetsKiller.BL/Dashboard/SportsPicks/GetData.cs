@@ -142,7 +142,7 @@ namespace BetsKiller.BL.Dashboard.SportsPicks
                 analyseVM.Profit = new CustomHtmlElement(null, null, "color: red", "color: green").GetElementByValue(analyse.Profit != null ? (decimal)analyse.Profit : 0);
                 analyseVM.Profit.Value = (analyse.Profit != null ? Math.Round((decimal)analyse.Profit, 2) : 0).ToString(CultureInfo.InvariantCulture) + " units";
 
-                analyseVM.Date = TypeDateTime.ParseDateTime(analyse.EventNBA.EventStartDateTime);
+                analyseVM.Date = TypeDateTime.ParseDateTime(analyse.Created);
 
                 analyseVM.Status = new CustomHtmlElement();
                 analyseVM.Status.Value = analyse.BetStatus.Name;

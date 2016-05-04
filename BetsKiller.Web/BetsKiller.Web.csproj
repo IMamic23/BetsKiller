@@ -385,6 +385,7 @@
     <Content Include="Views\Account\PasswordForgotSent.cshtml" />
     <Content Include="Views\Account\PasswordReset.cshtml" />
     <Content Include="Views\Account\PasswordResetConfirmed.cshtml" />
+    <Content Include="Views\Account\ConfirmationResent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Payment\" />

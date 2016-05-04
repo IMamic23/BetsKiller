@@ -30,7 +30,15 @@ namespace BetsKiller.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (WebSecurity.Login(login.Email, login.Password, login.RememberMe))
+                if (!WebSecurity.UserExists(login.Email))
+                {
+                    ModelState.AddModelError(string.Empty, "User does not exist!");
+                }
+                else if (!WebSecurity.IsConfirmed(login.Email))
+                {
+                    ModelState.AddModelError(string.Empty, "User is not verified by email verification link! Take a look in your Spam/Trash/Junk folder just in case the confirmation email got delivered there instead of your inbox. If you continue to have a problem, please contact us on info@betskillers.com!");
+                }
+                else if (WebSecurity.Login(login.Email, login.Password, login.RememberMe))
                 {
                     Request.Cookies[0].Expires = DateTime.Now.AddDays(30);
                     string returnUrl = Request.QueryString["ReturnUrl"];
@@ -241,7 +249,7 @@ namespace BetsKiller.Web.Controllers
         [HttpGet]
         public ActionResult PasswordReset(string mail, string token)
         {
-            PasswordResetViewModel viewModel = new PasswordResetViewModel()
+            PasswordResentViewModel viewModel = new PasswordResentViewModel()
             {
                 Email = mail,
                 ResetToken = token
@@ -252,7 +260,7 @@ namespace BetsKiller.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult PasswordReset(PasswordResetViewModel viewModel)
+        public ActionResult PasswordReset(PasswordResentViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -275,6 +283,63 @@ namespace BetsKiller.Web.Controllers
 
         public ActionResult PasswordResetConfirmed()
         {
+            return View();
+        }
+
+        #endregion
+
+        #region Confirmation resent
+
+        [HttpGet]
+        public ActionResult ConfirmationResent()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmationResent(ConfirmationResentViewModel confirmationResent)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!WebSecurity.UserExists(confirmationResent.Email))
+                {
+                    ModelState.AddModelError(string.Empty, "User does not exist!");
+                }
+                else if (WebSecurity.IsConfirmed(confirmationResent.Email))
+                {
+                    ModelState.AddModelError(string.Empty, "User is already confirmed!");
+                }
+                else
+                {
+                    GetUserConfirmationToken userMembership = new GetUserConfirmationToken(WebSecurity.GetUserId(confirmationResent.Email));
+                    userMembership.Start();
+
+                    if (userMembership.Response.Success)
+                    {
+                        SendMailConfirmation sendMail = new SendMailConfirmation(userMembership.UserConfirmationToken, confirmationResent.Email);
+                        sendMail.Start();
+
+                        if (!sendMail.Response.Success)
+                        {
+                            ModelState.AddModelError(string.Empty, "Failed to sent verification mail!");
+                        }
+                        else
+                        {
+                            return RedirectToAction("ConfirmationSent");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Get user data failed!");
+                    }
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid data!");
+            }
+
             return View();
         }
 

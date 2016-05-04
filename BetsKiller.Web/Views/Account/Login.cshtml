@@ -46,5 +46,8 @@
         <a href="@Url.Action("PasswordForgot", "Account")">I forgot my password</a>
         <br />
         @Html.ActionLink("Sign Up", "Register", "Account", null, new { @class = "text-center" })
+        <br />
+        <br />
+        <h4>@Html.ActionLink("Resend email verification", "ConfirmationResent", "Account", null, new { @class = "label label-warning text-center" })</h4>
     </div>
 </div>

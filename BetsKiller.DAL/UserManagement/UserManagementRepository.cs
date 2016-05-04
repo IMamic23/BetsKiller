@@ -84,6 +84,11 @@ namespace BetsKiller.DAL.UserManagement
             return this._context.PaymentSources;
         }
 
+        public IQueryable<Membership> GetAllMemberships()
+        {
+            return this._context.Memberships;
+        }
+
         #endregion
 
         #region Dispose
