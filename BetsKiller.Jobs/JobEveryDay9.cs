@@ -29,6 +29,7 @@ namespace BetsKiller.Jobs
             loadTeamsNba.Start();
 
             Thread.Sleep(base.WAIT_TIME);
+            Thread.Sleep(base.WAIT_TIME); // Beacause of error "Too many requests"
 
             /*
              * Load new NBA leaders.
@@ -38,6 +39,7 @@ namespace BetsKiller.Jobs
             loadLeadersNba.Start();
 
             Thread.Sleep(base.WAIT_TIME);
+            Thread.Sleep(base.WAIT_TIME); // Beacause of error "Too many requests"
 
             /*
              * Load new NBA rosters.
@@ -47,6 +49,7 @@ namespace BetsKiller.Jobs
             loadRostersNba.Start();
 
             Thread.Sleep(base.WAIT_TIME);
+            Thread.Sleep(base.WAIT_TIME); // Beacause of error "Too many requests"
 
             /*
              * Load new NBA draft data.
