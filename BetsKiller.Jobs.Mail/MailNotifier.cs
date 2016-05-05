@@ -31,12 +31,12 @@ namespace BetsKiller.Jobs.Mail
 
         #region Methods
 
-        public void SendServiceJobStatus(string jobName, string status)
+        public void SendServiceJobStatus(string jobName, string status, string message)
         {
             using (MailMessage mail = new MailMessage(this._adminMailAddress, this._adminMailAddress))
             {
                 mail.Subject = "Job " + jobName + ": " + status + " at " + DateTime.Now.ToShortTimeString();
-                mail.Body = "Job " + jobName + ": " + status + " at " + DateTime.Now.ToString();
+                mail.Body = message;
 
                 base.Send(MailAddressesEnum.Admin, mail);
             }
