@@ -259,50 +259,46 @@
         <div class="modal fade" id="changePasswordModal" role="dialog">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
-
-                    @using (Html.BeginForm("Manage", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
                     <div class="modal-header" style="background-color:#006dcc">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" style="color:white">Change password</h4>
                     </div>
-
                     <div class="modal-body">
-
                         <div class="row">
                             <div class="form-group" style="margin-top:10px">
                                 <label for="inputemail" class="col-sm-3 control-label">Old password</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" for="OldPassord" placeholder="Enter old password">
+                                    <input type="password" class="form-control" id="changePasswordOldPassword" placeholder="Enter old password">
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="form-group" style="margin-top:10px">
                                 <label for="inputemail" class="col-sm-3 control-label">New password</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" for="NewPassword" placeholder="Enter new password (at least 6 characters)">
+                                    <input type="password" class="form-control" id="changePasswordNewPassword" placeholder="Enter new password (at least 6 characters)">
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="form-group" style="margin-top:10px">
                                 <label for="inputemail" class="col-sm-3 control-label">Confirm password</label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" for="ConfirmPassword" placeholder="Repeat password">
+                                    <input type="password" class="form-control" id="changePasswordConfirmPassword" placeholder="Repeat password">
                                 </div>
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="form-group" style="margin-top:10px; color:red">
+                                <div id="changePasswordMessage" class="col-sm-9">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button id="changePasswordBtn" data-url="@Url.Action("Manage", "Account")" class="btn btn-primary">Save changes</button>
                     </div>
-                    }
                 </div>
             </div>
         </div>
@@ -479,6 +475,35 @@
                 $('#profileModal').html(data);
 
                 $('#profileModal').modal('show');
+            });
+        });
+
+        $('#changePasswordBtn').click(function () {
+            var url = $('#changePasswordBtn').data('url');
+
+            $.post(url, {
+                OldPassword: $('#changePasswordOldPassword').val(),
+                NewPassword: $('#changePasswordNewPassword').val(),
+                ConfirmPassword: $('#changePasswordConfirmPassword').val()
+            })
+            .done(function (response) {
+                $('#changePasswordMessage').text(response.message);
+
+                if (response.success) {
+                    $('#changePasswordMessage').css('color', 'green');
+
+                    setTimeout(function () {
+                        $('#changePasswordModal').modal('hide');
+                        $('#changePasswordMessage').text('');
+                    }, 2000);
+
+                    $('#changePasswordOldPassword').val('');
+                    $('#changePasswordNewPassword').val('');
+                    $('#changePasswordConfirmPassword').val('');
+                }
+                else {
+                    $('#changePasswordMessage').css('color', 'red');
+                }
             });
         });
 

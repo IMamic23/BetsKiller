@@ -37,6 +37,7 @@ namespace BetsKiller.DAL.UserManagement
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRoleHistory> UsersRolesHistory { get; set; }
         public DbSet<PaymentSource> PaymentSources { get; set; }
+        public DbSet<UserActionHistory> UsersActionsHistory { get; set; }
 
         #endregion
 

@@ -1,4 +1,5 @@
 ﻿using BetsKiller.BL.Account;
+using BetsKiller.BL.UserManagement;
 using BetsKiller.Helper.Constants;
 using BetsKiller.ViewModel.Account;
 using BotDetect.Web;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Web.Security;
 using System.Web.UI;
 using WebMatrix.WebData;
@@ -40,6 +42,10 @@ namespace BetsKiller.Web.Controllers
                 }
                 else if (WebSecurity.Login(login.Email, login.Password, login.RememberMe))
                 {
+                    // Save login history
+                    AddUserActionHistory addUserActionHistory = new AddUserActionHistory(WebSecurity.GetUserId(login.Email), AddUserActionHistory.ActionType.LOGIN);
+                    addUserActionHistory.Start();
+
                     Request.Cookies[0].Expires = DateTime.Now.AddDays(30);
                     string returnUrl = Request.QueryString["ReturnUrl"];
                     if (returnUrl == null)
@@ -89,6 +95,9 @@ namespace BetsKiller.Web.Controllers
                 SendMailConfirmation sendMail = new SendMailConfirmation(confirmationToken, register.Email);
                 sendMail.Start();
 
+                AddUserActionHistory addUserActionHistory = new AddUserActionHistory(WebSecurity.GetUserId(register.Email), AddUserActionHistory.ActionType.REGISTER);
+                addUserActionHistory.Start();
+
                 return RedirectToAction("ConfirmationSent");
             }
 
@@ -110,6 +119,10 @@ namespace BetsKiller.Web.Controllers
         public ActionResult Logout()
         {
             WebSecurity.Logout();
+
+            AddUserActionHistory addUserActionHistory = new AddUserActionHistory(WebSecurity.CurrentUserId, AddUserActionHistory.ActionType.LOGOUT);
+            addUserActionHistory.Start();
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -126,21 +139,25 @@ namespace BetsKiller.Web.Controllers
                 string currentUserName = WebSecurity.CurrentUserName;
                 if (WebSecurity.ChangePassword(currentUserName, manageViewModel.OldPassword, manageViewModel.NewPassword))
                 {
+                    AddUserActionHistory addUserActionHistory = new AddUserActionHistory(WebSecurity.CurrentUserId, AddUserActionHistory.ActionType.CHANGED_PASSWORD);
+                    addUserActionHistory.Start();
+
                     WebSecurity.Login(currentUserName, manageViewModel.NewPassword, false);
 
-                    return RedirectToAction("Index", "Dashboard");
+                    addUserActionHistory = new AddUserActionHistory(WebSecurity.CurrentUserId, AddUserActionHistory.ActionType.LOGIN);
+                    addUserActionHistory.Start();
+
+                    return Json(new { success = true, message = "Password changed successfully!" });
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Change password failed!");
+                    return Json(new { success = false, message = "Change password failed!" });
                 }
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Invalid data.");
+                return Json(new { success = false, message = "Invalid data." });
             }
-
-            return View(manageViewModel);
         }
 
         #endregion
@@ -190,6 +207,9 @@ namespace BetsKiller.Web.Controllers
         {
             if (WebSecurity.ConfirmAccount(mail, token))
             {
+                AddUserActionHistory addUserActionHistory = new AddUserActionHistory(WebSecurity.GetUserId(mail), AddUserActionHistory.ActionType.MAIL_CONFIRMED);
+                addUserActionHistory.Start();
+
                 return View();
             }
             else
@@ -221,6 +241,9 @@ namespace BetsKiller.Web.Controllers
 
                 if (sendPasswordForgot.Response.Success)
                 {
+                    AddUserActionHistory addUserActionHistory = new AddUserActionHistory(WebSecurity.GetUserId(viewModel.Email), AddUserActionHistory.ActionType.MAIL_PASSWORD_FORGOT_SENT);
+                    addUserActionHistory.Start();
+
                     return View("PasswordForgotSent");
                 }
                 else
@@ -266,6 +289,9 @@ namespace BetsKiller.Web.Controllers
             {
                 if (WebSecurity.ResetPassword(viewModel.ResetToken, viewModel.NewPassword))
                 {
+                    AddUserActionHistory addUserActionHistory = new AddUserActionHistory(WebSecurity.GetUserId(viewModel.Email), AddUserActionHistory.ActionType.PASSWORD_RESET);
+                    addUserActionHistory.Start();
+
                     return View("PasswordResetConfirmed");
                 }
                 else
@@ -326,6 +352,9 @@ namespace BetsKiller.Web.Controllers
                         }
                         else
                         {
+                            AddUserActionHistory addUserActionHistory = new AddUserActionHistory(WebSecurity.GetUserId(confirmationResent.Email), AddUserActionHistory.ActionType.MAIL_CONFIRMATION_RESENT);
+                            addUserActionHistory.Start();
+
                             return RedirectToAction("ConfirmationSent");
                         }
                     }

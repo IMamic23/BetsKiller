@@ -63,7 +63,7 @@ namespace BetsKiller.DAL.UserManagement
         {
             return this._context.Roles.OrderBy(x => x.RoleName);
         }
-
+        
         public void EditUserProfile(UserProfile userProfile)
         {
             UserProfile entity = this._context.UserProfiles.FirstOrDefault(x => x.UserId == userProfile.UserId);
@@ -87,6 +87,13 @@ namespace BetsKiller.DAL.UserManagement
         public IQueryable<Membership> GetAllMemberships()
         {
             return this._context.Memberships;
+        }
+
+        public void AddUserActionHistoryItem(UserActionHistory userActionHistory)
+        {
+            this._context.UsersActionsHistory.Add(userActionHistory);
+
+            this._context.SaveChanges();
         }
 
         #endregion

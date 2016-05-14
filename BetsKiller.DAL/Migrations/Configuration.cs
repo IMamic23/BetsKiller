@@ -13,7 +13,7 @@ namespace BetsKiller.DAL.Migrations
             // But in appcontext initialize can't be automatic migration on last model, because it will send automatic migration on database.
 
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(BetsKiller.DAL.AppData.AppDataContext context)

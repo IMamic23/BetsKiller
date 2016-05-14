@@ -20,5 +20,7 @@ namespace BetsKiller.DAL
         IEnumerable<PaymentSource> GetPaymentSources();
 
         IQueryable<Membership> GetAllMemberships();
+
+        void AddUserActionHistoryItem(UserActionHistory userActionHistory);
     }
 }

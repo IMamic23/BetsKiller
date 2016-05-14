@@ -63,6 +63,7 @@
     <Compile Include="UserManagement\OAuthMembership.cs" />
     <Compile Include="UserManagement\PaymentSource.cs" />
     <Compile Include="UserManagement\Role.cs" />
+    <Compile Include="UserManagement\UserActionHistory.cs" />
     <Compile Include="UserManagement\UserProfile.cs" />
     <Compile Include="UserManagement\UserInRole.cs" />
     <Compile Include="UserManagement\UserRoleHistory.cs" />
