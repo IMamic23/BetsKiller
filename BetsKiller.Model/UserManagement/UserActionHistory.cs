@@ -11,7 +11,9 @@ namespace BetsKiller.Model.UserManagement
     [Table("UsersActionsHistory")]
     public class UserActionHistory
     {
-        [Key, Column(Order = 0)]
+        [Key]
+        public int Id { get; set; }
+
         public int UserId { get; set; }
 
         public string Action { get; set; }
