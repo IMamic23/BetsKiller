@@ -80,7 +80,7 @@ namespace BetsKiller.Jobs
             LogManager.GetCurrentClassLogger().Info(this.GetType().Name + " " + STARTED_MESSAGE);
 
             // Send email with status
-            this._mailNotifier.SendServiceJobStatus(this.GetType().Name, STARTED_MESSAGE, string.Empty);
+            //this._mailNotifier.SendServiceJobStatus(this.GetType().Name, STARTED_MESSAGE, string.Empty);
         }
 
         private void Finish()
@@ -89,7 +89,7 @@ namespace BetsKiller.Jobs
             LogManager.GetCurrentClassLogger().Info(this.GetType().Name + " " + SUCCESS_MESSAGE);
 
             // Send email with status
-            this._mailNotifier.SendServiceJobStatus(this.GetType().Name, SUCCESS_MESSAGE, string.Empty);
+            //this._mailNotifier.SendServiceJobStatus(this.GetType().Name, SUCCESS_MESSAGE, string.Empty);
 
             // Set counter to zero, so while loop can finish
             this._tryCounter = 0;
