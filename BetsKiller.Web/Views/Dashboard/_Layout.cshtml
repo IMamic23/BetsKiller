@@ -11,6 +11,17 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
+    <!-- Facebook LIKE Button Script-->
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=225518330859193";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <!-- Google -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" rel="stylesheet" type="text/css">
     <script>
@@ -43,6 +54,11 @@
         <div id="status">&nbsp;</div>
     </div>
     <!-- END PRELOADER -->
+
+    <!-- START SCROLL BUTTONS -->
+    <a href="#" id="scrollTop" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
+    <!-- END SCROLL BUTTONS -->
+
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Header -->
@@ -64,13 +80,22 @@
                     <span class="icon-bar"></span>
                 </a>
 
-                <div class="navbar-custom-menu">
+                <div class="badge" style="background-color: #3b5999; margin-bottom: 0px; padding: 15px 15px; display: inline-block; left: 30%; position: relative;">
+                    <i class="fa fa-facebook-square fa-2x" style="color: white; margin-right: 10px" aria-hidden="true"></i>
+                    <div class="fb-like" data-href="https://www.facebook.com/BetsKillerAnalysis" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                </div>
 
+                <div class="badge" style="background-color: white; margin-bottom: 0px; margin-left: 20px; padding: 15px 15px; display: inline-block; left: 30%; position: relative;">
+                    <i class="fa fa-instagram fa-2x" style="color: black; margin-right: 10px" aria-hidden="true"></i>
+                    <a href="https://www.instagram.com/betskiller/" style="color: black" target="_blank">Watch us!</a>
+                </div>
+
+                <div class="navbar-custom-menu">
 
                     <ul class="nav navbar-nav">
 
                         <li class="dropdown user user-menu">
-                            <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#subscribeModal"><i class="fa fa-star" style="margin-right: 5px"></i>Subscribe</a>
+                            <a href="#" class="btn btn-warning btn-sm subscribeAnimation" data-toggle="modal" data-target="#subscribeModal"><i class="fa fa-star" style="margin-right: 5px"></i>Subscribe</a>
                         </li>
 
                         @if (User.Identity.IsAuthenticated)
@@ -435,8 +460,8 @@
                         </div>
                         @if (!User.Identity.IsAuthenticated)
                         {
-                        <div class="col-lg-offset-1  col-lg-3 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-12"><a href="@Url.Action("Login", "Account")" class="btn btn-success btn-block">Log In</a></div>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><a href="@Url.Action("Register", "Account")" class="btn btn-danger btn-block">Sign Up</a></div>
+                            <div class="col-lg-offset-1  col-lg-3 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-12"><a href="@Url.Action("Login", "Account")" class="btn btn-success btn-block">Log In</a></div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><a href="@Url.Action("Register", "Account")" class="btn btn-danger btn-block">Sign Up</a></div>
                         }
                     </div>
                 </div>

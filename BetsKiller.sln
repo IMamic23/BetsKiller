@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jobs", "Jobs", "{C97FFAC1-83D4-41FD-A7D7-47EA30541D7D}"
+	ProjectSection(SolutionItems) = preProject
+		Jobs\App.config = Jobs\App.config
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Tests", "BetsKiller.Tests\BetsKiller.Tests.csproj", "{CAAB7911-5C53-4E7D-9AAE-F6198F5663B1}"
 EndProject
@@ -29,21 +32,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.API.NBAcom", "Be
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.API.Rotoworld", "BetsKiller.API.Rotoworld\BetsKiller.API.Rotoworld.csproj", "{7025707D-1405-4411-96BD-BFBFE8C531EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryDay9", "BetsKiller.Jobs.EveryDay9\BetsKiller.Jobs.EveryDay9.csproj", "{16E0042F-03D3-4253-B20E-EBAAE0D9A3A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryDay9", "Jobs\BetsKiller.Jobs.EveryDay9\BetsKiller.Jobs.EveryDay9.csproj", "{16E0042F-03D3-4253-B20E-EBAAE0D9A3A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryMonday10", "BetsKiller.Jobs.EveryMonday10\BetsKiller.Jobs.EveryMonday10.csproj", "{3DF633F7-F088-474B-AF51-F57989CA22E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryMonday10", "Jobs\BetsKiller.Jobs.EveryMonday10\BetsKiller.Jobs.EveryMonday10.csproj", "{3DF633F7-F088-474B-AF51-F57989CA22E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryHours8", "BetsKiller.Jobs.EveryHours8\BetsKiller.Jobs.EveryHours8.csproj", "{343D092F-8CFE-4186-995D-0E3A90142F7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryHours8", "Jobs\BetsKiller.Jobs.EveryHours8\BetsKiller.Jobs.EveryHours8.csproj", "{343D092F-8CFE-4186-995D-0E3A90142F7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryMonday15", "BetsKiller.Jobs.EveryMonday15\BetsKiller.Jobs.EveryMonday15.csproj", "{9056A50D-3533-44E4-9A79-11C00A4D3312}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryMonday15", "Jobs\BetsKiller.Jobs.EveryMonday15\BetsKiller.Jobs.EveryMonday15.csproj", "{9056A50D-3533-44E4-9A79-11C00A4D3312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.LoadSeasonsScheduleResults", "BetsKiller.Jobs.LoadSeasonsScheduleResults\BetsKiller.Jobs.LoadSeasonsScheduleResults.csproj", "{1600EA99-206C-4A44-9959-036D2E477846}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.LoadSeasonsScheduleResults", "Jobs\BetsKiller.Jobs.LoadSeasonsScheduleResults\BetsKiller.Jobs.LoadSeasonsScheduleResults.csproj", "{1600EA99-206C-4A44-9959-036D2E477846}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.Mail", "BetsKiller.Jobs.Mail\BetsKiller.Jobs.Mail.csproj", "{D637B24D-39D7-4F8A-836D-DEE2E465E48E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.Mail", "Jobs\BetsKiller.Jobs.Mail\BetsKiller.Jobs.Mail.csproj", "{D637B24D-39D7-4F8A-836D-DEE2E465E48E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs", "BetsKiller.Jobs\BetsKiller.Jobs.csproj", "{DAFA2DED-1FA7-4EAC-A1E2-D7DABD123BC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs", "Jobs\BetsKiller.Jobs\BetsKiller.Jobs.csproj", "{DAFA2DED-1FA7-4EAC-A1E2-D7DABD123BC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryDay0", "BetsKiller.Jobs.EveryDay0\BetsKiller.Jobs.EveryDay0.csproj", "{BB29BB10-2287-40C2-9C4A-DF9225FD1A02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetsKiller.Jobs.EveryDay0", "Jobs\BetsKiller.Jobs.EveryDay0\BetsKiller.Jobs.EveryDay0.csproj", "{BB29BB10-2287-40C2-9C4A-DF9225FD1A02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

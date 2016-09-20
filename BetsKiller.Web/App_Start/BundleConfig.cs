@@ -30,7 +30,8 @@ namespace BetsKiller.Web
                         "~/Scripts/Dashboard/raphael.min.js",
                         "~/Scripts/Dashboard/morris.min.js",
                         "~/Scripts/Dashboard/fastclick.min.js",
-                        "~/Scripts/Dashboard/app.min.js"
+                        "~/Scripts/Dashboard/app.min.js",
+                        "~/Scripts/Dashboard/custom.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/landing-js").Include(
@@ -72,7 +73,8 @@ namespace BetsKiller.Web
                       "~/Content/Dashboard/morris.css",
                       "~/Content/Dashboard/AdminLTE.min.css",
                       "~/Content/Dashboard/skin-blue.min.css",
-                      "~/Content/Dashboard/Custom.css"
+                      "~/Content/Dashboard/Custom.css",
+                      "~/Content/animate.css"
             ));
 
             bundles.Add(new StyleBundle("~/Content/landing-css").Include(
@@ -81,7 +83,7 @@ namespace BetsKiller.Web
                       "~/Content/preloader.css",
                       "~/Content/Landing/superslides.css",
                       "~/Content/Landing/slick.css",
-                      "~/Content/Landing/animate.css",
+                      "~/Content/animate.css",
                       "~/Content/Landing/elastic_grid.css",
                       "~/Content/Landing/jquery.circliful.css",
                       "~/Content/Landing/default-theme.css",

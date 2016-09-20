@@ -283,3 +283,50 @@ h3.western {
 width: 100%;
 border-bottom:2px solid #3c8dbc;
 }
+
+/*scrol to top*/
+.scrollToTop {
+  bottom: 60px;
+  display: none;
+  font-size: 32px;
+  font-weight: bold;
+  height: 50px;
+  position: fixed;
+  right: 50px;
+  text-align: center;
+  text-decoration: none;
+  width: 50px;
+  z-index: 9999;
+  color: #fff;
+  background-color: #da002a;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+
+}
+.scrollToTop:hover, .scrollToTop:focus{
+  text-decoration: none;
+  outline: none;
+}
+
+/* Animations */
+.subscribeAnimation {
+    -webkit-animation-name: flashAnim;
+    animation-name: flashAnim;
+    animation-delay: 2s;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes flashAnim{
+    0% { 
+	    opacity: 1;
+	} 
+	50% { opacity: .5;
+    } 
+	100% { opacity: 1;
+    }
+}

@@ -142,13 +142,13 @@ img{
 	font-weight: 800;
 	font-family: 'Varela', sans-serif;
 	 text-shadow:
-    3px 3px 0 #000,
+    3px -3px 0 rgba(0,0,0,0.7),
     /* Simulated effect for Firefox and Opera
        and nice enhancement for WebKit */
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-   -1px  1px 0 #000,
-    1px  1px 0 #000;
+   -1px -1px 0 rgba(0,0,0,0.7),  
+    1px -1px 0 rgba(0,0,0,0.7),
+   -1px  1px 0 rgba(0,0,0,0.7),
+    1px  1px 0 rgba(0,0,0,0.7);
 }
 /*Bets Killer Logo - Temporary*/
 .navbar-brand .logo_text_2 {
@@ -181,7 +181,8 @@ img{
 .navbar-default .navbar-nav > li > a:hover, 
 .navbar-default .navbar-nav > li > a:focus {
   background-color: transparent;
-  color: #fff;
+  color: dodgerblue;
+  font-weight:bold;
 }
 
 
@@ -368,39 +369,46 @@ img{
 
 
 .slider_caption > h2 {
-  color: #ffffff;
-  font-size: 65px;
+  color: dodgerblue;
+  font-size: 60px;
   font-weight: 700;
   line-height: 76px;
   margin: 0 auto 10px;
-  padding-bottom: 8px;
+  padding: 0 40px 8px 40px;
+  letter-spacing: 3px;
   text-align: center;
   text-transform: uppercase;
   width: 90%;
+   opacity: 0.8;
   /* text-shadow: 3px 3px 5px rgba(0, 0, 0, 1); */
   text-shadow:
-    3px 3px 0 #000,
+    3px -3px 0 rgba(0,0,0,0.7),
     /* Simulated effect for Firefox and Opera
        and nice enhancement for WebKit */
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-   -1px  1px 0 #000,
-    1px  1px 0 #000;
+   -1px -1px 0 rgba(0,0,0,0.7),  
+    1px -1px 0 rgba(0,0,0,0.7),
+   -1px  1px 0 rgba(0,0,0,0.7),
+    1px  1px 0 rgba(0,0,0,0.7);
 }
 
 
 .slider_caption>p{
-	color: #ffffff;
+	color: orangered;
 	font-size: 23px;
+	padding: 0 60px;
+	font-family: Varela, sans-serif;
+	font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.8;
 	/*text-shadow: 3px 3px 5px rgba(0, 0, 0, 1);*/
 text-shadow:
-    1px 1px 0 #000,
+    1px -1px 0 rgba(0,0,0,0.5),
     /* Simulated effect for Firefox and Opera
        and nice enhancement for WebKit */
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-   -1px  1px 0 #000,
-    1px  1px 0 #000;	
+   -1px -1px 0 rgba(0,0,0,0.5),  
+    1px -1px 0 rgba(0,0,0,0.5),
+   -1px  1px 0 rgba(0,0,0,0.5),
+    1px  1px 0 rgba(0,0,0,0.5);	
 }
 
 
@@ -2407,7 +2415,7 @@ textarea .form-control {
   #map_canvas{height: 404px;	}
   }
   /*.slider_caption {margin-top: 25%;}*/
-  .slider_caption {margin-top: 30%;}
+  .slider_caption {margin-top: 27%;}
   .subscribe_mail {width: 76%;}
   .subscr_btn {width: 24%;}
 
@@ -2444,9 +2452,9 @@ textarea .form-control {
 	.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: rgba(0,0,0,0.5);}
 	#slides {height: 360px !important;}
 	/*.slider_caption {margin-top: 15%;}*/
-	.slider_caption {margin-top: 30%;}
-	.slider_caption > h2 {font-size: 25px;line-height: 26px;}
-	.slider_caption > p {font-size: 15px;}
+	.slider_caption {margin-top: 20%;}
+	.slider_caption > h2 {font-size: 25px;line-height: 26px; text-shadow:2px -2px 0 rgba(0,0,0,0.5),-1px -1px 0 rgba(0,0,0,0.5),1px -1px 0 rgba(0,0,0,0.5),-1px 1px 0 rgba(0,0,0,0.5),1px 1px 0 rgba(0,0,0,0.5);}
+	.slider_caption > p {font-size: 16px; text-shadow: 1px -1px 0 rgba(0,0,0,.5),-1px -1px 0 rgba(0,0,0,.5),-1px 1px 0 rgba(0,0,0,.5),1px 1px 0 rgba(0,0,0,.5); }
 	.slider_btn {font-size: 18px;}
 	.heading h2 {font-size: 30px;line-height: 30px;}
 	.skills_area {background-size: cover;}
@@ -2490,10 +2498,11 @@ textarea .form-control {
 
 @media(max-width:480px ){	
 	#slides {height: 320px !important;}
+	#service {padding: 20px 0 20px;}
 	/*.slider_caption {margin-top: 20%;}*/
 	.slider_caption {margin-top: 30%;}
-	.slider_caption > h2 { font-size: 20px;line-height: 22px;margin-bottom: 0px;}
-	.slider_caption > p {font-size: 14px;}
+	.slider_caption > h2 { font-size: 20px;line-height: 22px;margin-bottom: 0px; padding: 0px 20px;}
+	.slider_caption > p {font-size: 14px; padding: 0px 20px;}
 	.slider_caption > a { font-size: 15px; margin-top: 20px;  padding: 8px 10px;}
 	.wagwep-container ul#portfolio-filter li {width: auto;}
 	.wagwep-container ul#portfolio-filter a {font-size: 10px;margin: 0 0 2px;padding: 5px;text-align: center;text-indent: 0;}
@@ -2512,7 +2521,40 @@ textarea .form-control {
   .blogdetails_content > h2 {font-size: 18px;line-height: 25px;}
   .similar_post h2 {font-size: 17px;}
   .single_blogsidebar > h2 {font-size: 18px;}
- 
+  .heading p {  font-size: 12px; line-height: 20px;}
+  .service_icon { font-size: 35px;height: 80px;line-height: 80px;padding: 0px 0;width: 80px;}
+   p{font-size: 12px;}
+   .heading h2 { font-size: 18px; line-height: 15px;}
+   .count-title {font-size: 20px;margin-top: 10px;}
+   .fa-2x{font-size: 28px;}
+   .count-text {font-size: 12px;margin-top: 0px;}
+   .counter{margin-left: 12%;}
+   .single_price>h3 {
+    font-size: 20px;
+    line-height: 50px;
+	}
+	.single_price .price>h4 {
+    font-size: 35px;
+    line-height: 35px;
+	}
+	.price_features li {
+    font-size: 13px;
+    line-height: 10px;
+	}
+	#status {
+    width: 100px !important;
+    height: 100px !important;
+    margin: -50px 0 0 -50px;
+	background-size: 70%;
+   }
+   .scrollToTop {
+    bottom: 25px;
+    font-size: 22px;
+    height: 35px;
+    right: 25px;
+    width: 35px;
+   }
+   .navbar-brand {font-size: 24px; text-shadow:2px -2px 0 rgba(0,0,0,.5),-1px -1px 0 rgba(0,0,0,.5),1px -1px 0 rgba(0,0,0,.5),-1px 1px 0 rgba(0,0,0,.5),1px 1px 0 rgba(0,0,0,.5);}
 }
 
 @media(max-width:360px ){
@@ -2532,7 +2574,7 @@ textarea .form-control {
 	.clients_slider .slick-next {right: 40%;}
 	.subscribe_mail {width: 70%;font-size: 15px;}
 	.subscr_btn {width: 29%;font-size: 15px;}
-	.heading h2 { font-size: 25px;line-height: 30px;}
+	.heading h2 { font-size: 18px; line-height: 15px;}
 	.single_service > .service_title:after {left: 32%;}
 	.slides-navigation {display: none;}
   #blogBanner {height: 150px;padding: 45px 0;}

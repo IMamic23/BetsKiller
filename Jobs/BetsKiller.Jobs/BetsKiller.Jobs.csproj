@@ -36,7 +36,7 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="NCalc">
-      <HintPath>..\packages\NCalc\NCalc.dll</HintPath>
+      <HintPath>..\packages\ncalc.1.3.8\lib\NCalc.dll</HintPath>
     </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
@@ -71,27 +71,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BetsKiller.API.Erikberg\BetsKiller.API.Erikberg.csproj">
+    <ProjectReference Include="..\..\BetsKiller.API.Erikberg\BetsKiller.API.Erikberg.csproj">
       <Project>{0abf99a4-9b55-4f6d-a95a-e18435b7a881}</Project>
       <Name>BetsKiller.API.Erikberg</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BetsKiller.API.NBAcom\BetsKiller.API.NBAcom.csproj">
+    <ProjectReference Include="..\..\BetsKiller.API.NBAcom\BetsKiller.API.NBAcom.csproj">
       <Project>{c59b888f-739e-4df5-97b1-7d95782a071d}</Project>
       <Name>BetsKiller.API.NBAcom</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BetsKiller.API.Rotoworld\BetsKiller.API.Rotoworld.csproj">
+    <ProjectReference Include="..\..\BetsKiller.API.Rotoworld\BetsKiller.API.Rotoworld.csproj">
       <Project>{7025707d-1405-4411-96bd-bfbfe8c531ec}</Project>
       <Name>BetsKiller.API.Rotoworld</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BetsKiller.API.SportsDatabase\BetsKiller.API.SportsDatabase.csproj">
+    <ProjectReference Include="..\..\BetsKiller.API.SportsDatabase\BetsKiller.API.SportsDatabase.csproj">
       <Project>{33d4ce60-5249-4003-bd11-d66e0225b26e}</Project>
       <Name>BetsKiller.API.SportsDatabase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BetsKiller.DAL\BetsKiller.DAL.csproj">
+    <ProjectReference Include="..\..\BetsKiller.DAL\BetsKiller.DAL.csproj">
       <Project>{95d8a777-e15d-42b4-9dab-a65ac58e723e}</Project>
       <Name>BetsKiller.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BetsKiller.Helper\BetsKiller.Helper.csproj">
+    <ProjectReference Include="..\..\BetsKiller.Helper\BetsKiller.Helper.csproj">
       <Project>{18cee436-649f-4c28-81a3-d7fad6e93adf}</Project>
       <Name>BetsKiller.Helper</Name>
     </ProjectReference>
@@ -99,10 +99,13 @@
       <Project>{d637b24d-39d7-4f8a-836d-dee2e465e48e}</Project>
       <Name>BetsKiller.Jobs.Mail</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BetsKiller.Model\BetsKiller.Model.csproj">
+    <ProjectReference Include="..\..\BetsKiller.Model\BetsKiller.Model.csproj">
       <Project>{230890ed-dce1-4656-a47e-66dc5cce705d}</Project>
       <Name>BetsKiller.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

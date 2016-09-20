@@ -91,7 +91,7 @@
       <Project>{18cee436-649f-4c28-81a3-d7fad6e93adf}</Project>
       <Name>BetsKiller.Helper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BetsKiller.Jobs.Mail\BetsKiller.Jobs.Mail.csproj">
+    <ProjectReference Include="..\Jobs\BetsKiller.Jobs.Mail\BetsKiller.Jobs.Mail.csproj">
       <Project>{d637b24d-39d7-4f8a-836d-dee2e465e48e}</Project>
       <Name>BetsKiller.Jobs.Mail</Name>
     </ProjectReference>

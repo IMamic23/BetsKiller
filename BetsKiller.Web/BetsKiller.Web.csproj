@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\pp-logo-200px.png" />
+    <Content Include="Scripts\Dashboard\custom.js" />
     <Content Include="_app_offline.htm" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -194,7 +195,7 @@
     <Content Include="Content\Images\status.gif" />
     <Content Include="Content\Images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
     <Content Include="Content\jquery-ui.min.css" />
-    <Content Include="Content\Landing\animate.css" />
+    <Content Include="Content\animate.css" />
     <Content Include="Content\Landing\default-theme.css" />
     <Content Include="Content\Landing\elastic_grid.css" />
     <Content Include="Content\Landing\jquery.circliful.css" />
