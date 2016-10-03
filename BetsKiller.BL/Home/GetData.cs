@@ -195,31 +195,36 @@ namespace BetsKiller.BL.Home
                 {
                     Path = "/Content/Images/bball_01.jpg",
                     Caption = "Leading Sports Predictions Software",
-                    Description = "Increase your Chances For Winning and making Money Online, with our Revolutionary Software based on Advanced Statistical Analysis"
+                    Description = "Increase your Chances For Winning and making Money Online",
+                    ComingSoon = ""
                 },
                 new HomeImageViewModel()
                 {
                     Path = "/Content/Images/baseball_01.jpg",
                     Caption = "MLB and NBA season long odds, stats and news",
-                    Description = "Daily updated, for Most Popular Sports on the planet"
+                    Description = "Daily updated, for Most Popular Sports on the planet",
+                    ComingSoon = ""
                 },
                 new HomeImageViewModel()
                 {
                     Path = "/Content/Images/bball_02.jpg",
                     Caption = "NBA and MLB games analysis and picks every day",
-                    Description = "We are using Advanced Software and our knowledge about NBA and MLB to determine which games are Best To Bet On"
+                    Description = "We are using Advanced Software and our knowledge about NBA and MLB to determine which games are Best To Bet On",
+                    ComingSoon = ""
                 },
                 new HomeImageViewModel()
                 {
                     Path = "/Content/Images/baseball_02.jpg",
-                    Caption = "Basic and advanced Bets Tracker tool - COMING SOON",
-                    Description = "We are bringing you Best Tool you can get to track all your bets, Bets Stats and winnings daily"
+                    Caption = "Bets Tracker",
+                    Description = "We are bringing you Best Tool you can get to track all your bets, bets stats and winnings daily",
+                    ComingSoon = "COMING SOON"
                 },
                 new HomeImageViewModel()
                 {
                     Path = "/Content/Images/bball_03.jpg",
-                    Caption = "Games Analyser - COMING SOON",
-                    Description = "Tool to analyse MLB and NBA games, determine which game is Bets To Bet On based on rankings, stats and trends"
+                    Caption = "Games Analyzer",
+                    Description = "Tool to analyse MLB and NBA games, determine which game is Bets To Bet On based on rankings, stats and trends",
+                    ComingSoon = "COMING SOON"
                 }
                 //,
                 //new HomeImageViewModel()

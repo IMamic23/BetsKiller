@@ -13,5 +13,7 @@ namespace BetsKiller.ViewModel.Home
         public string Caption { get; set; }
 
         public string Description { get; set; }
+
+        public string ComingSoon { get; set; }
     }
 }

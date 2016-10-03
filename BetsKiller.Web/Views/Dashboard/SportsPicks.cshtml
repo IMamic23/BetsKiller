@@ -28,7 +28,7 @@
 
         @foreach (BetsKiller.ViewModel.Dashboard.SportsPicks.SportsPicksTypeViewModel type in Model.Types)
         {
-            <!-- PICKS STATS -->
+             <!-- PICKS STATS -->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -37,63 +37,63 @@
                     <div class="box-body">
                         <!-- Info boxes -->
                         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
+                            <div class="info-box ibItem01">
                                 <span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center" style="font-size: large">Total bets</span>
-                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.TotalBets</span>
+                                    <span class="info-box-text text-center sportPicksText" style="font-size: medium;">Total bets</span>
+                                    <span class="info-box-number text-center" style="font-size: large">@type.Stats.TotalBets</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
+                            <div class="info-box ibItem02">
                                 <span class="info-box-icon bg-green"><i class="fa fa-thumbs-up"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center" style="font-size: large">Wins</span>
-                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.Wins</span>
+                                    <span class="info-box-text text-center sportPicksText" style="font-size: medium;">Wins</span>
+                                    <span class="info-box-number text-center" style="font-size: large">@type.Stats.Wins</span>
                                 </div>
                             </div>
                         </div>
                         <!-- fix for small devices only -->
                         <div class="clearfix visible-sm-block"></div>
                         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
+                            <div class="info-box ibItem03">
                                 <span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center" style="font-size: large">Losses</span>
-                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.Losses</span>
+                                    <span class="info-box-text text-center sportPicksText" style="font-size: medium;">Losses</span>
+                                    <span class="info-box-number text-center" style="font-size: large">@type.Stats.Losses</span>
                                     <p></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
+                            <div class="info-box ibItem04">
                                 <span class="info-box-icon bg-blue-active"><i class="fa fa-bank"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center" style="font-size: large">Total Invested</span>
-                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.TotalInvested</span>
+                                    <span class="info-box-text text-center sportPicksText" style="font-size: medium;">Total Invested</span>
+                                    <span class="info-box-number text-center" style="font-size: large">@type.Stats.TotalInvested</span>
                                     <p></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
+                            <div class="info-box ibItem05">
                                 <span class="info-box-icon bg-purple-active">
                                     <i class="fa  fa-line-chart"></i>
                                 </span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center" style="font-size: large">ROI</span>
-                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.ROI%</span>
+                                    <span class="info-box-text text-center sportPicksText" style="font-size: medium;">ROI</span>
+                                    <span class="info-box-number text-center" style="font-size: large">@type.Stats.ROI%</span>
                                     <p></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box">
+                            <div class="info-box ibItem06">
                                 <span class="info-box-icon" style="background-color: #daa520 !important"><i class="fa fa-money" style="color: white"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text text-center" style="font-size: large">Profit units</span>
-                                    <span class="info-box-number text-center" style="font-size: x-large">@type.Stats.Profit</span>
+                                    <span class="info-box-text text-center sportPicksText" style="font-size: medium;">Profit units</span>
+                                    <span class="info-box-number text-center" style="font-size: large">@type.Stats.Profit</span>
                                 </div>
                             </div>
                         </div>

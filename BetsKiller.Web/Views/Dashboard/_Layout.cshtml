@@ -47,11 +47,20 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="skin-blue sidebar-mini">
 
     <!-- BEGAIN PRELOADER -->
     <div id="preloader">
-        <div id="status">&nbsp;</div>
+         <div class="spinner">
+              <span class="ball-1"></span>
+              <span class="ball-2"></span>
+              <span class="ball-3"></span>
+              <span class="ball-4"></span>
+              <span class="ball-5"></span>
+              <span class="ball-6"></span>
+              <span class="ball-7"></span>
+              <span class="ball-8"></span>
+        </div>
     </div>
     <!-- END PRELOADER -->
 
@@ -66,7 +75,10 @@
             <!-- Logo -->
             <a href="/" class="navbar-fixed-top logo">
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><img src="/Content/Images/logoNormal.png" alt="logo" width="84" height="51" /></span>
+                <span class="logo-lg logo-text">
+                    Bets<span class="logo_text_2">Killer</span>
+                    <!--<img src="/Content/Images/logoNormal.png" alt="logo" width="84" height="51" />-->
+                </span>
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo_mini" style="margin-left: -6px"><img src="/Content/Images/logoMini.png" alt="logo" width="32" height="32" /></span>
             </a>
@@ -79,21 +91,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-
-                <div class="badge" style="background-color: #3b5999; margin-bottom: 0px; padding: 15px 15px; display: inline-block; left: 30%; position: relative;">
-                    <i class="fa fa-facebook-square fa-2x" style="color: white; margin-right: 10px" aria-hidden="true"></i>
-                    <div class="fb-like" data-href="https://www.facebook.com/BetsKillerAnalysis" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-                </div>
-
-                <div class="badge" style="background-color: white; margin-bottom: 0px; margin-left: 20px; padding: 15px 15px; display: inline-block; left: 30%; position: relative;">
-                    <i class="fa fa-instagram fa-2x" style="color: black; margin-right: 10px" aria-hidden="true"></i>
-                    <a href="https://www.instagram.com/betskiller/" style="color: black" target="_blank">Watch us!</a>
+                 <span class="menu-trigger">Social Links<i class="fa fa-arrow-down"></i></span>
+                <div id="socialnav" class="badge badge_custom  animated slideInDown">
+                    <nav class="navclass" id="navigation">
+                       <ul>
+                          <li><div class="fb-like" data-href="https://www.facebook.com/BetsKillerAnalysis" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></li>
+                          <li><a href="http://facebook.com/BetsKillerAnalysis" target="_blank" class="icon-button facebook"><i class="fa fa-facebook icon-facebook"></i><span></span></a></li>
+                          <li><a href="http://twitter.com/betskiller" target="_blank" class="icon-button twitter"><i class="fa fa-twitter icon-twitter"></i><span></span></a></li>
+                          <li><a href="http://www.instagram.com/betskiller" target="_blank" class="icon-button instagram"><i class="fa fa-instagram icon-instagram"></i><span></span></a></li>
+                     </ul>
+                     </nav>                  
                 </div>
 
                 <div class="navbar-custom-menu">
-
                     <ul class="nav navbar-nav">
-
                         <li class="dropdown user user-menu">
                             <a href="#" class="btn btn-warning btn-sm subscribeAnimation" data-toggle="modal" data-target="#subscribeModal"><i class="fa fa-star" style="margin-right: 5px"></i>Subscribe</a>
                         </li>
@@ -158,7 +169,7 @@
         <!-- Left side column. contains the sidebar -->
         <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
+            <section class="sidebar" style="height: 900px; overflow: hidden; width: auto;">
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
@@ -533,6 +544,30 @@
         });
 
     </script>
+  <script>
+         jQuery(document).ready(function() {
+         jQuery(".menu-trigger").click(function(){
+             jQuery(".navclass").toggleClass('show').addClass('animated fadeInDown');
+         });
+         });
 
+              jQuery(document).ready(function() {
+         jQuery(".menu-trigger").click(function(){
+             jQuery("#socialnav").removeClass('animated').toggleClass('show');
+         });
+              });
+
+    jQuery(document).ready(function() {
+         jQuery(".navclass a").click(function(){
+             jQuery(".navclass").toggleClass('show');
+      });               
+    });
+
+         jQuery(document).ready(function() {
+         jQuery(".navclass a").click(function(){
+             jQuery("#socialnav").toggleClass('show');
+         });
+              });
+  </script>
 </body>
 </html>
