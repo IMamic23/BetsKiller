@@ -30,7 +30,7 @@ namespace BetsKiller.Web
                         "~/Scripts/Dashboard/raphael.min.js",
                         "~/Scripts/Dashboard/morris.min.js",
                         "~/Scripts/Dashboard/fastclick.min.js",
-                        "~/Scripts/Dashboard/app.min.js",
+                        "~/Scripts/Dashboard/app.js",
                         "~/Scripts/Dashboard/custom.js"
                         ));
 
@@ -71,7 +71,7 @@ namespace BetsKiller.Web
 
             bundles.Add(new StyleBundle("~/Content/dashboard-css").Include(
                       "~/Content/Dashboard/morris.css",
-                      "~/Content/Dashboard/AdminLTE.min.css",
+                      "~/Content/Dashboard/AdminLTE.css",
                       "~/Content/Dashboard/skin-blue.min.css",
                       "~/Content/Dashboard/Custom.css",
                       "~/Content/animate.css"
@@ -94,7 +94,7 @@ namespace BetsKiller.Web
                       "~/Content/bootstrap.min.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/preloader.css",
-                      "~/Content/LogSignIn/AdminLTE.min.css",
+                      "~/Content/LogSignIn/AdminLTE.css",
                       "~/Content/LogSignIn/blue.css",
                       "~/Content/LogSignIn/custom.css"
             ));
