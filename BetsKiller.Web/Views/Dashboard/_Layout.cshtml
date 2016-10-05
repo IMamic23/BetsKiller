@@ -73,7 +73,7 @@
         <!-- Header -->
         <header class="main-header">
             <!-- Logo -->
-            <a href="/" class="navbar-fixed-top logo">
+            <a href="/" class="navbar-fixed-top logo animated slideInDown" style="animation-delay:1s; animation-duration:2s;">
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg logo-text">
                     Bets<span class="logo_text_2">Killer</span>
@@ -92,14 +92,15 @@
                     <span class="icon-bar"></span>
                 </a>
                  <span class="menu-trigger">Social Links<i class="fa fa-arrow-down"></i></span>
-                <div id="socialnav" class="badge badge_custom  animated slideInDown">
-                    <nav class="navclass" id="navigation">
+                <div id="socialnav" class="badge badge_custom animated slideInDown" style="animation-delay:1s;">
+                    <nav class="navclass social_nav_class" id="navigation">
                        <ul>
                           <li><div class="fb-like" data-href="https://www.facebook.com/BetsKillerAnalysis" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></li>
                           <li><a href="http://facebook.com/BetsKillerAnalysis" target="_blank" class="icon-button facebook"><i class="fa fa-facebook icon-facebook"></i><span></span></a></li>
                           <li><a href="http://twitter.com/betskiller" target="_blank" class="icon-button twitter"><i class="fa fa-twitter icon-twitter"></i><span></span></a></li>
                           <li><a href="http://www.instagram.com/betskiller" target="_blank" class="icon-button instagram"><i class="fa fa-instagram icon-instagram"></i><span></span></a></li>
                      </ul>
+                        <div class="social_nav_arrow_up"></div>
                      </nav>                  
                 </div>
 
@@ -109,32 +110,37 @@
                             <a href="#" class="btn btn-warning btn-sm subscribeAnimation" data-toggle="modal" data-target="#subscribeModal"><i class="fa fa-star" style="margin-right: 5px"></i>Subscribe</a>
                         </li>
 
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-user"></i>
-                                    <span class="hidden-xs">@User.Identity.Name</span>
-                                </a>
-                                <ul class="dropdown-menu">
+                       @if (User.Identity.IsAuthenticated)
+                       {
+                        <li class="user user-menu">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-user"></i>
+                                <span class="hidden-xs">@User.Identity.Name</span>
+                            </a>
+                            <div id="menuwrap">
+                            <nav class="navclass navclass_user" id="navigationUser">
+                                <ul>
                                     <li>
-                                        <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#changePasswordModal"><i class="fa fa-key"></i>Change password</a>
+                                        <a href="#" data-toggle="modal" data-target="#changePasswordModal"><i class="fa fa-key"></i>Change password</a>
                                     </li>
                                     <li>
-                                        <a id="showProfilePreview" data-url="@Url.Action("UserProfilePreview", "Account")" class="btn btn-default btn-flat" data-toggle="modal" data-target="#profileModal"><i class="fa fa-user"></i>Profile preview</a>
+                                        <a id="showProfilePreview" data-url="@Url.Action("UserProfilePreview", "Account")" data-toggle="modal" data-target="#profileModal"><i class="fa fa-user"></i>Profile preview</a>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("Logout", "Account")" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i>Sign out</a>
+                                        <a href="@Url.Action("Logout", "Account")"><i class="fa fa-sign-out"></i>Sign out</a>
                                     </li>
                                 </ul>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="dropdown user user-menu">
-                                <a href="@Url.Action("Login", "Account")" class="dropdown-toggle"><i class="fa fa-sign-in" style="margin-right: 8px"></i>Login</a>
-                            </li>
-                        }
+                                <div class="user_nav_arrow_up"></div>
+                            </nav>
+                                </div>
+                        </li>
+                     }
+            else
+            {
+                <li class="dropdown user user-menu">
+                    <a href="@Url.Action("Login", "Account")" class="dropdown-toggle"><i class="fa fa-sign-in" style="margin-right: 8px"></i>Login</a>
+                </li>
+            }
                     </ul>
 
                     @if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin))
@@ -293,7 +299,7 @@
 
         <!-- Modal profile -->
         <div class="modal fade" id="changePasswordModal" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-md modal_margin_top">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color:#006dcc">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -340,7 +346,7 @@
         </div>
 
         <div class="modal fade" id="subscribeModal" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-lg modal_margin_top">
                 <div class="modal-content">
                     <div class="modal-header" style="background-color:#006dcc">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -466,6 +472,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                             <button type="button" class="btn btn-default pull-left btn-block" data-dismiss="modal">Close</button>
                         </div>
@@ -474,13 +481,14 @@
                             <div class="col-lg-offset-1  col-lg-3 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-12"><a href="@Url.Action("Login", "Account")" class="btn btn-success btn-block">Log In</a></div>
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><a href="@Url.Action("Register", "Account")" class="btn btn-danger btn-block">Sign Up</a></div>
                         }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="profileModal" class="modal fade" role="dialog"></div>
+    <div id="profileModal" class="modal fade modal_margin_top" role="dialog"></div>
 
     <!-- <Scripts> -->
     @Scripts.Render("~/bundles/js")
@@ -544,30 +552,5 @@
         });
 
     </script>
-  <script>
-         jQuery(document).ready(function() {
-         jQuery(".menu-trigger").click(function(){
-             jQuery(".navclass").toggleClass('show').addClass('animated fadeInDown');
-         });
-         });
-
-              jQuery(document).ready(function() {
-         jQuery(".menu-trigger").click(function(){
-             jQuery("#socialnav").removeClass('animated').toggleClass('show');
-         });
-              });
-
-    jQuery(document).ready(function() {
-         jQuery(".navclass a").click(function(){
-             jQuery(".navclass").toggleClass('show');
-      });               
-    });
-
-         jQuery(document).ready(function() {
-         jQuery(".navclass a").click(function(){
-             jQuery("#socialnav").toggleClass('show');
-         });
-              });
-  </script>
 </body>
 </html>
