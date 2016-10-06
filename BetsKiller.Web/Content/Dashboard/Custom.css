@@ -557,7 +557,12 @@ h3.western {
          border-right: 15px solid transparent;
          z-index: 999;
      }
-
+      .navlass_user_icon{
+       display: inline-block;
+       width: 23%;
+       padding:5px;
+       border-right: 3px groove rgba(255,255,255,0.3);
+    }
 @media(max-width:992px) {
     .badge_custom {
         left: 5%
@@ -566,7 +571,11 @@ h3.western {
   
 @media(max-width:768px) {
     .badge_custom {
-        left: 5%
+        left: 0%
+    }
+    .basketball_icon{
+        width:17px;
+        height:17px;
     }
     }
    .showIt {
@@ -578,9 +587,6 @@ h3.western {
         width: auto;
         margin-right: 5px
     }
-    .menu-trigger {
-        display: none
-    }
     nav.navclass_user{
         display:none;
     }
@@ -588,19 +594,21 @@ h3.western {
         position: absolute;
         margin-top: 10px;
         right:2px;
-        text-align:center;
+        text-align:left;
         width: 200px;
         padding: 0;
-        z-index: 11111;
+        z-index: 999;
     }
     nav.navclass.navclass_user a{
        color:rgba(255,255,255,0.9);
-       margin-left: 5px;
        line-height: 30px;
        cursor:pointer;
+       margin-left: 8px;
     }
+
     nav.navclass.navclass_user i{
-       margin-right: 10px;
+       margin: 7px;
+       color: white;
     }
     nav.navclass.navclass_user a:hover{
        color:white;
@@ -608,13 +616,17 @@ h3.western {
      nav.navclass_user ul li:hover{
        background: #25516b;
     }
+     nav.navclass_user ul li:hover > .navlass_user_icon i{
+       transition: all 400ms linear;
+       transform: rotateY(360deg);
+       color: #FDB927 ;
+    }
     nav.navclass_user ul {
         width: 100%
     }
     nav.navclass_user ul li {
         width: 100%;
         min-height: 40px;
-        padding: 6px;
         border-bottom: 1px solid rgba(255, 255, 255, .2);
         background: #2b6e94;
         box-shadow: 6px 6px 8px rgba(0, 0, 0, .4);
@@ -628,6 +640,10 @@ h3.western {
 @media screen and (max-width:520px) {
     .navclass {
         display: none
+    }
+    .basketball_icon{
+        width:15px;
+        height:15px;
     }
     .showIt {
         display: block !important
@@ -665,8 +681,10 @@ h3.western {
         margin-top: 55px;
         left:7px;
         width: 55%!important;
-        padding: 0;
         z-index: 11111
+    }
+      nav.social_nav_class ul li {
+      padding:6px;
     }
      nav.navclass ul {
         width: 100%
@@ -674,7 +692,6 @@ h3.western {
      nav.navclass ul li {
         width: 100%;
         min-height: 40px;
-        padding: 6px;
         border-bottom: 1px solid rgba(255, 255, 255, .2);
         background: rgba(43, 110, 148,1);
         box-shadow: 6px 6px 8px rgba(0, 0, 0, .4);

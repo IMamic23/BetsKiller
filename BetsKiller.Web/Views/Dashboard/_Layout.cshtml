@@ -121,13 +121,13 @@
                             <nav class="navclass navclass_user" id="navigationUser">
                                 <ul>
                                     <li>
-                                        <a href="#" data-toggle="modal" data-target="#changePasswordModal"><i class="fa fa-key"></i>Change password</a>
+                                        <div class="navlass_user_icon"><i class="fa fa-key"></i></div><a href="#" data-toggle="modal" data-target="#changePasswordModal">Change password</a>
                                     </li>
                                     <li>
-                                        <a id="showProfilePreview" data-url="@Url.Action("UserProfilePreview", "Account")" data-toggle="modal" data-target="#profileModal"><i class="fa fa-user"></i>Profile preview</a>
+                                        <div class="navlass_user_icon"><i class="fa fa-user"></i></div><a id="showProfilePreview" data-url="@Url.Action("UserProfilePreview", "Account")" data-toggle="modal" data-target="#profileModal">Profile preview</a>
                                     </li>
                                     <li>
-                                        <a href="@Url.Action("Logout", "Account")"><i class="fa fa-sign-out"></i>Sign out</a>
+                                        <div class="navlass_user_icon"><i class="fa fa-sign-out"></i></div><a href="@Url.Action("Logout", "Account")">Sign out</a>
                                     </li>
                                 </ul>
                                 <div class="user_nav_arrow_up"></div>
@@ -135,12 +135,12 @@
                                 </div>
                         </li>
                      }
-            else
-            {
+               else
+               {
                 <li class="dropdown user user-menu">
                     <a href="@Url.Action("Login", "Account")" class="dropdown-toggle"><i class="fa fa-sign-in" style="margin-right: 8px"></i>Login</a>
                 </li>
-            }
+               }
                     </ul>
 
                     @if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin))

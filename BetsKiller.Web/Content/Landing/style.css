@@ -346,27 +346,28 @@ img {
 
 .slider_caption>h2 {
     color: #1e90ff;
-    font-size: 50px;
-    font-weight: 600;
+    font-size: 60px;
+    font-weight: 900;
     line-height: 76px;
+    font-family: 'Roboto', sans-serif;
     margin: 0 auto 10px;
-    padding: 0 40px 8px;
+    padding: 0 100px 8px;
     letter-spacing: 3px;
     word-spacing: 7px;
     text-align: center;
     width: 90%;
-    opacity: .8;
+    opacity: .85;
     text-shadow: 3px -3px 0 rgba(0, 0, 0, .7), -1px -1px 0 rgba(0, 0, 0, .7), 1px -1px 0 rgba(0, 0, 0, .7), -1px 1px 0 rgba(0, 0, 0, .7), 1px 1px 0 rgba(0, 0, 0, .7)
 }
 
 .slider_caption>p {
     color: #ff8c00;
-    font-size: 25px;
+    font-size: 28px;
     padding: 0 400px;
-    font-family: Varela, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 600;
     letter-spacing: 2px;
-    opacity: .8;
+    opacity: .85;
     text-shadow: 1px -1px 0 rgba(0, 0, 0, .5), -1px -1px 0 rgba(0, 0, 0, .5), 1px -1px 0 rgba(0, 0, 0, .5), -1px 1px 0 rgba(0, 0, 0, .5), 1px 1px 0 rgba(0, 0, 0, .5)
 }
 
@@ -1994,7 +1995,7 @@ textarea .form-control {
 
 @media(max-width:1199px) {
     .slider_caption>h2 {
-        width: 100%
+        width: 90%
     }
     .blog_slider .slick-prev {
         left: 91%
@@ -2033,15 +2034,16 @@ textarea .form-control {
         height: 600px!important
     }
     .slider_caption>h2 {
-        font-size: 30px;
-        line-height: 48px
+        font-size: 43px;
+        line-height: 40px;
+        width: 100%;
     }
     .single_service .service_title,
     .slider_caption small {
         font-size: 18px
     }
     .slider_caption>p {
-        font-size: 18px;
+        font-size: 20px;
         padding: 0 140px
     }
     .about_area {
@@ -2126,7 +2128,7 @@ textarea .form-control {
         margin-top: 30%
     }
     .slider_caption>h2 {
-        font-size: 24px;
+        font-size: 26px;
         word-spacing: 2px;
         letter-spacing: 2px;
         margin-bottom: 0;
