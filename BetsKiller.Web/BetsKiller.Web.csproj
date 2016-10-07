@@ -173,7 +173,7 @@
     <Content Include="Content\bootstrap3-wysiwyg5-color.css" />
     <Content Include="Content\bootstrap-wysihtml5.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Dashboard\AdminLTE.min.css" />
+    <Content Include="Content\Dashboard\AdminLTE.css" />
     <Content Include="Content\Dashboard\morris.css" />
     <Content Include="Content\Dashboard\Custom.css" />
     <Content Include="Content\Dashboard\skin-blue.min.css" />
@@ -250,7 +250,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap3-wysihtml5.js" />
-    <Content Include="Scripts\Dashboard\app.min.js" />
+    <Content Include="Scripts\Dashboard\app.js" />
     <Content Include="Scripts\Dashboard\fastclick.min.js" />
     <Content Include="Scripts\Dashboard\jquery-ui.min.js" />
     <Content Include="Scripts\Dashboard\morris.min.js" />
