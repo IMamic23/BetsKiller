@@ -109,6 +109,29 @@ jQuery(function($){
 	  $('.navbar-collapse').collapse('hide');
 	});
 
-    
+    /*
+    $(document).ready(function() {
+   $("#slides").swiperight(function() {
+       $("#slides").click('prev');
+       alert("test");
+    });
+   $("#slides").swipeleft(function() {
+      $("#slides").click('next');
+   });
+    });
+
+    $("#slides").swipe({
+
+  swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+
+    if (direction == 'left') $(this).carousel('next');
+    if (direction == 'right') $(this).carousel('prev');
+
+  },
+  allowPageScroll:"vertical"
+
+});
+*/
+
 });
 

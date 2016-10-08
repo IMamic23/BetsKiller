@@ -561,7 +561,8 @@ h3.western {
        display: inline-block;
        width: 23%;
        padding:5px;
-       border-right: 3px groove rgba(255,255,255,0.3);
+       background: rgba(34, 45, 50, 0.6);
+       border-right: 3px groove rgba(61, 148, 196, 0.80);
     }
 @media(max-width:992px) {
     .badge_custom {
