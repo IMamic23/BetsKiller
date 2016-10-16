@@ -43,6 +43,9 @@
     <Compile Include="AnalyseType.cs" />
     <Compile Include="Analysis.cs" />
     <Compile Include="AnalysisProfit.cs" />
+    <Compile Include="Bet.cs" />
+    <Compile Include="BetGame.cs" />
+    <Compile Include="BetProfile.cs" />
     <Compile Include="BetStatus.cs" />
     <Compile Include="BetType.cs" />
     <Compile Include="DraftsNBA.cs" />

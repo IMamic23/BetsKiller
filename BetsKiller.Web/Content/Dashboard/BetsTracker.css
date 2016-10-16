@@ -1,0 +1,275 @@
+﻿.horizontalText{
+/* Safari */
+-webkit-transform: rotate(-90deg);
+/* Firefox */
+-moz-transform: rotate(-90deg);
+/* IE */
+-ms-transform: rotate(-90deg);
+/* Opera */
+-o-transform: rotate(-90deg);
+/* Chrome */
+transform: rotate(-90deg);
+transform-origin: left top 0;
+position: absolute;
+top: 48px;
+left: 16px;
+font-size:13px;
+letter-spacing:1px;
+}
+.marginleft15{
+	margin-left:15px;
+}
+
+.newBet{
+  margin: 5px;
+  border: 1px solid rgba(0,0,0,0.2);
+  background: #F5F5F5;
+  color:black;
+  border-radius:2px;
+  padding: 5px;
+  font-size: 13px;
+  font-family: Verdana;
+  width: 250px;
+  padding:5px;
+}
+.newBet i{
+	font-size: larger;
+	margin:0 3px 0 5px;
+	line-height:14px;
+	vertical-align: middle;
+}
+.newBet .btn-group{
+	margin-left:5px;
+}
+
+.customBtn01{
+    background-color: #eeeeee;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 5px;
+    cursor: pointer;
+	overflow: hidden;
+	box-sizing: border-box;
+	border-radius: 2px;
+	border: 1px solid rgba(0,0,0,0.2);
+	height: 45px;
+	padding-top: 16px !important;
+	padding-bottom: 0px !important;
+}
+
+.customBtn01:hover{
+    background-color: #dddddd;
+    box-shadow: 1px 4px 4px rgba(0,0,0,0.2);
+    transition: all 0.4s ease-in-out;
+}
+
+.customBtn01:hover i{
+    color: rgba(0,0,0,0.9);
+	transition: all 0.4s ease-in-out;
+}
+
+.customBtn01:active{
+    background-color: #dddddd;
+    transition: all 0.5s ease-in-out;
+}
+
+.customBtn01 i {
+        float:left;
+        color: rgba(0,0,0,0.6);
+        margin: 0 5px;
+		font-size: larger;
+}
+
+.customBtn01 .caret {
+        float:right;
+        color: rgba(0,0,0,0.8);
+        margin-right:4px;
+        margin-top:6px;
+}
+
+.buttonLabel{
+	position: absolute;
+	top: 7px;
+	color: rgba(0,0,0,0.6);
+	left: 15px;
+	font-weight:normal;
+	font-size: small;
+}
+.bottom_border{
+	content="";
+	left: 10%;
+	width: 80%;
+	position: absolute;
+	border-bottom:1px solid rgba(0,0,0,0.2);
+    top:23px;
+	}
+
+
+.badge{
+  font-size: 14px;
+}
+
+.bettingProfilesList a{
+    transition: all 0.4s ease-in-out;
+    border-bottom:  3px inset transparent;
+}
+
+.bettingProfilesList a:hover{
+    border-bottom:  3px inset rgba(0,0,128,0.7); 
+    transition: all 0.4s ease-in-out;
+    color:black;
+}
+
+.dropdown-menu{
+    -webkit-transition: all 350ms ease-in-out;
+    transition: all 350ms ease-in-out;
+    -moz-transform: translateY(-20px) scale(0.1);
+    -ms-transform: translateY(-20px) scale(0.1);
+    -o-transform: translateY(-20px) scale(0.1);
+    -webkit-transform:  translateY(-20px) scale(1);
+    transform: translateY(-20px) scale(0.1);
+    opacity: 0;
+    display: none;
+}
+
+.open .dropdown-menu{
+    transform-origin: top;
+    margin-top:-4px;
+    border:1px inset rgba(0,0,0,0.3); 
+    box-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+    padding:0;
+    animation-name: dropdownAnim;
+    animation-duration: 400ms;
+    animation-fill-mode:forwards;
+}
+
+.open .customBtn01{
+	background: rgba(0,0,0,0.2); 
+}
+.open .customBtn01 i{
+	color: rgba(0,0,0,0.9);
+}
+
+@-moz-keyframes dropdownAnim{
+    0%{
+    opacity: 0;
+    transform: translateY(-30px) scale(0.1);
+    }
+    100%{
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    }
+}
+
+@-webkit-keyframes dropdownAnim{
+    0%{
+    opacity: 0;
+    transform: translateY(-30px) scale(0.1);
+    }
+    100%{
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    }
+}
+
+@keyframes dropdownAnim{
+    0%{
+    opacity: 0;
+    transform: translateY(-30px) scale(0.1);
+    }
+    100%{
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    }
+}
+
+.dropdown-menu li{
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+  /*  border-left: 3px solid rgba(0,0,128,0.5);*/
+    transition: all 250ms ease-in-out;
+    color: rgba(0,0,0,0.85);
+}
+
+.dropdown-menu li a{
+  padding: 6px;
+  text-align: center;
+}
+
+.dropdown-menu li:hover{
+    border-bottom: 1px inset rgba(0,0,128,0.8);
+   /* border-left: 6px solid rgba(0,0,128,0.8);*/
+    transition: all 200ms ease-in-out; 
+    color: rgba(0,0,0,1);
+}
+
+.hidden{
+    visibility: hidden;
+} 
+
+.buttonAdd{
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.button_block{
+    display: block;
+    width:100%;
+}
+.button_sm{
+    width:125px;
+    padding: 8px 6px;
+    font-size: 12px;
+    line-height: 12px;
+}
+.button_md{
+    width: 150px;
+    padding: 10px 8px;
+    font-size: 15px;
+    line-height: 15px;
+}
+.button_lg{
+    width:200px;
+    padding: 12px 10px;
+    font-size: 18px;
+    line-height: 18px;
+}
+.button_group .dropdown{
+    display: inline-block;
+}
+
+.buttonAdd i {
+        float:left;
+        color: rgba(255,255,255,0.8);
+        margin: 0px 5px;
+}
+
+.buttonAdd:hover i{
+    color: rgba(255,255,255,.95);
+    transition: all 0.3s ease-in-out;
+}
+
+.buttonAdd01{
+     background-color: rgba(28,112,112,1);
+     color: rgba(255,255,255,0.85);
+}
+
+.buttonAdd01:hover{
+    filter: brightness(120%);
+    border:  1px solid black; 
+    transition: all 0.3s ease-in-out;
+}
+
+.buttonAdd02{
+    background-color:rgba(139,64,69,1);
+    color: rgba(252,255,255,0.85);
+}
+
+.buttonAdd02:hover{
+    filter: brightness(120%);
+    border:  1px solid black; 
+    transition: all 0.5s ease-in-out;
+}

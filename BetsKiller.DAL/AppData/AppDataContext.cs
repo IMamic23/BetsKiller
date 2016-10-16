@@ -59,6 +59,9 @@ namespace BetsKiller.DAL.AppData
         public DbSet<Injuries> Injuries { get; set; }
         public DbSet<PowerRankingsNBA> PowerRankingsNBA { get; set; }
         public DbSet<Standings> Standings { get; set; }
+        public DbSet<BetProfile> BetProfiles { get; set; }
+        public DbSet<Bet> Bets { get; set; }
+        public DbSet<BetGame> BetGames { get; set; }
 
         #endregion
 
@@ -91,6 +94,21 @@ namespace BetsKiller.DAL.AppData
             modelBuilder.Entity<DraftsNBA>().Property(x => x.WeightLb).HasPrecision(18, 4);
             modelBuilder.Entity<DraftsNBA>().Property(x => x.WeightKg).HasPrecision(18, 4);
             modelBuilder.Entity<Standings>().Property(x => x.GamesBack).HasPrecision(18, 4);
+            modelBuilder.Entity<Bet>().Property(x => x.Invested).HasPrecision(18, 4);
+            modelBuilder.Entity<Bet>().Property(x => x.Odd).HasPrecision(18, 4);
+            modelBuilder.Entity<Bet>().Property(x => x.Profit).HasPrecision(18, 4);
+            modelBuilder.Entity<BetGame>().Property(x => x.Odd).HasPrecision(18, 4);
+
+            // Relationships
+            modelBuilder.Entity<BetProfile>()
+                .HasMany(x => x.Bets)
+                .WithMany(x => x.BetProfiles)
+                .Map(x =>
+                {
+                    x.MapLeftKey("BetProfile_Id");
+                    x.MapRightKey("Bet_Id");
+                    x.ToTable("BetProfiles_Bets");
+                });
 
             base.OnModelCreating(modelBuilder);
         }

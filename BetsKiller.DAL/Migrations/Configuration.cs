@@ -12,7 +12,7 @@ namespace BetsKiller.DAL.Migrations
             // It need to be set automatic=true, so it can track changes and user can add migration.
             // But in appcontext initialize can't be automatic migration on last model, because it will send automatic migration on database.
 
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             AutomaticMigrationDataLossAllowed = false;
         }
 

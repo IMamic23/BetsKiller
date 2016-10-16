@@ -47,6 +47,7 @@
     <Compile Include="Account\PasswordForgotViewModel.cs" />
     <Compile Include="Account\PasswordResentViewModel.cs" />
     <Compile Include="Account\RegisterViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerViewModel.cs" />
     <Compile Include="Dashboard\Index\AnalyseTypeViewModel.cs" />
     <Compile Include="Dashboard\Index\AnalysisProfitViewModel.cs" />
     <Compile Include="Dashboard\Index\AnalysisViewModel.cs" />

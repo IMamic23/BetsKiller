@@ -156,6 +156,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Dashboard\BetsTracker.css" />
     <Content Include="Content\Images\pp-logo-200px.png" />
     <Content Include="Scripts\Dashboard\custom.js" />
     <Content Include="_app_offline.htm" />
@@ -389,6 +390,7 @@
     <Content Include="Views\Account\PasswordReset.cshtml" />
     <Content Include="Views\Account\PasswordResetConfirmed.cshtml" />
     <Content Include="Views\Account\ConfirmationResent.cshtml" />
+    <Content Include="Views\Dashboard\BetsTracker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Payment\" />

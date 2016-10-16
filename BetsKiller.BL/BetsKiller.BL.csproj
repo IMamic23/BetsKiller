@@ -57,6 +57,7 @@
     <Compile Include="Account\GetUserConfirmationToken.cs" />
     <Compile Include="Account\SendMailConfirmation.cs" />
     <Compile Include="Account\SendPasswordForgot.cs" />
+    <Compile Include="Dashboard\BetsTracker\GetData.cs" />
     <Compile Include="Dashboard\Index\DeleteAnalysis.cs" />
     <Compile Include="Dashboard\Index\PublishNews.cs" />
     <Compile Include="Dashboard\Injuries\GetData.cs" />

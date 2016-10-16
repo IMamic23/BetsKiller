@@ -93,6 +93,18 @@ namespace BetsKiller.Web.Controllers
 
         #endregion
 
+        #region BetsTracker
+
+        public ActionResult BetsTracker()
+        {
+            BL.Dashboard.BetsTracker.GetData getData = new BL.Dashboard.BetsTracker.GetData();
+            getData.Start();
+
+            return View(getData.BetsTrackerViewModel);
+        }
+
+        #endregion
+
         #region TeamsStats
 
         public ActionResult TeamsStats()
