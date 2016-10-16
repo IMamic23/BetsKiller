@@ -47,6 +47,13 @@
     <Compile Include="Account\PasswordForgotViewModel.cs" />
     <Compile Include="Account\PasswordResentViewModel.cs" />
     <Compile Include="Account\RegisterViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerAnalysisProfitViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerBettingProfileDataViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerBettingProfileViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerProfileBetViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerPerformanceViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerProfileChartViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerProfileStatisticViewModel.cs" />
     <Compile Include="Dashboard\BetsTracker\BetsTrackerViewModel.cs" />
     <Compile Include="Dashboard\Index\AnalyseTypeViewModel.cs" />
     <Compile Include="Dashboard\Index\AnalysisProfitViewModel.cs" />

@@ -94,8 +94,7 @@ namespace BetsKiller.Web
                       "~/Content/bootstrap.min.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/preloader.css",
-                      "~/Content/LogSignIn/AdminLTE.css",
-                      "~/Content/LogSignIn/blue.css",
+                      "~/Content/LogSignIn/AdminLTE.min.css",
                       "~/Content/LogSignIn/custom.css"
             ));
 

@@ -810,7 +810,7 @@
               @foreach (BetsKiller.ViewModel.Dashboard.Index.ProfitChartViewModel analysisProfit in this.Model.LastThreeMonthsProfitChart)
                   {
                     <text>
-                        { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: @analysisProfit.Profit, wins: @analysisProfit.Wins, losses: @analysisProfit.Losses },
+                        { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: '@analysisProfit.Profit', wins: '@analysisProfit.Wins', losses: '@analysisProfit.Losses' },
                     </text>
                   }
             ],
@@ -830,7 +830,7 @@
               @foreach (BetsKiller.ViewModel.Dashboard.Index.ProfitChartViewModel analysisProfit in this.Model.LastYearProfitChart)
               {
                 <text>
-                   { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: @analysisProfit.Profit, wins: @analysisProfit.Wins, losses: @analysisProfit.Losses },
+                   { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: '@analysisProfit.Profit', wins: '@analysisProfit.Wins', losses: '@analysisProfit.Losses' },
                 </text>
               }
             ],

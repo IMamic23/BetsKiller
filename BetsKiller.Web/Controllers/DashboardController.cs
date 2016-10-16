@@ -95,6 +95,7 @@ namespace BetsKiller.Web.Controllers
 
         #region BetsTracker
 
+        //[Authorize]
         public ActionResult BetsTracker()
         {
             BL.Dashboard.BetsTracker.GetData getData = new BL.Dashboard.BetsTracker.GetData();

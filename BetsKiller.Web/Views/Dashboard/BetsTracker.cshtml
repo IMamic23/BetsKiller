@@ -28,168 +28,171 @@
     <!-- Main row -->
     <div class="row">
 
-        <!-- Overview > XS -->
+        <!-- Game results -->
         <section class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
             <div class="box box-primary animateWithDelayTop">
                 <div class="box-header with-border">
-                    <!--<img src="dist/img/basketball.png" width="23" height="23" />-->
-                    <ul class="nav nav-tabs nav-justified">
-                        <li class="active"><a href="#">All Time</a></li>
-                        <li><a href="#">Last 30 Days</a></li>
+                    Game results
+                </div>
+                <div class="box-body">
+                    <div class="tab-content">
+                        Scrolling boxes with game results
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overall stats -->
+        <section class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+            <div class="box box-primary animateWithDelayTop">
+                <div class="box-header with-border">
+                    <ul class="nav nav-tabs nav-justified" id="analysisProfit">
+                        @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerAnalysisProfitViewModel analyseProfit in this.Model.AnalysisProfit)
+                        {
+                            <li>
+                                <a href="#@analyseProfit.Name" data-toggle="tab"><h5><strong>@analyseProfit.Label</strong></h5></a>
+                            </li>
+                        }
                     </ul>
                     <div class="box-tools pull-right">
                         <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                         <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                     </div>
-                </div><!-- /.box-header -->
+                </div>
                 <div class="box-body">
-                    <div class="row">
-                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box ibItem01">
-                                <span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Total Bets</span>
-                                    <!--<h4>Total bets</h4>-->
-                                    <span class="info-box-number2">8</span>
-                                </div><!-- /.info-box-content -->
-                            </div><!-- /.info-box -->
-                        </div><!-- /.col -->
-                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box ibItem02">
-                                <span class="info-box-icon bg-green"><i class="fa fa-thumbs-up"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Wins</span>
-                                    <span class="info-box-number2">5</span>
-                                </div><!-- /.info-box-content -->
-                            </div><!-- /.info-box -->
-                        </div><!-- /.col -->
-                        <!-- fix for small devices only -->
-                        <div class="clearfix visible-sm-block"></div>
-                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box ibItem03">
-                                <span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Losses</span>
-                                    <span class="info-box-number2">3</span>
-                                </div><!-- /.info-box-content -->
-                            </div><!-- /.info-box -->
-                        </div><!-- /.col -->
-                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box ibItem04">
-                                <span class="info-box-icon bg-blue-active"><i class="fa fa-balance-scale"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Average Odds</span>
-                                    <span class="info-box-number2">&nbsp;1,905</span>
-                                </div><!-- /.info-box-content -->
-                            </div><!-- /.info-box -->
-                        </div><!-- /.col -->
-                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box ibItem05">
-                                <span class="info-box-icon bg-purple-active">
-                                    <i class="fa fa-line-chart"></i>
-                                </span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">ROI</span>
-                                    <span class="info-box-number2">7,42%</span>
-                                </div><!-- /.info-box-content -->
-                            </div><!-- /.info-box -->
-                        </div><!-- /.col -->
-                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box ibItem06">
-                                <span class="info-box-icon bg-green-active"><i class="fa fa-money"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Total Profit</span>
-                                    <span class="info-box-number2"><i class="fa fa-dollar"></i>&nbsp;17,25</span>
-                                </div><!-- /.info-box-content -->
-                            </div><!-- /.info-box -->
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.box-body -->
-            </div><!-- /.box -->
+                    <div class="tab-content">
+                        @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerAnalysisProfitViewModel analyseProfit in this.Model.AnalysisProfit)
+                        {
+                            <div role="tabpanel" class="tab-pane" id="@analyseProfit.Name">
+                                <!-- Total Bets -->
+                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="info-box ibItem01">
+                                        <span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Total Bets</span>
+                                            <span class="info-box-number2">@analyseProfit.TotalBets</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Wins -->
+                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="info-box ibItem02">
+                                        <span class="info-box-icon bg-green"><i class="fa fa-thumbs-up"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Wins</span>
+                                            <span class="info-box-number2">@analyseProfit.Wins</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- fix for small devices only -->
+                                <div class="clearfix visible-sm-block"></div>
+
+                                <!-- Losses -->
+                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="info-box ibItem03">
+                                        <span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Losses</span>
+                                            <span class="info-box-number2">@analyseProfit.Losses</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Average Odds -->
+                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="info-box ibItem04">
+                                        <span class="info-box-icon bg-blue-active"><i class="fa fa-balance-scale"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Average Odds</span>
+                                            <span class="info-box-number2">@analyseProfit.AverageOdds</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ROI -->
+                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="info-box ibItem05">
+                                        <span class="info-box-icon bg-purple-active">
+                                            <i class="fa fa-line-chart"></i>
+                                        </span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">ROI</span>
+                                            <span class="info-box-number2">@analyseProfit.ROI %</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Total Profit -->
+                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="info-box ibItem06">
+                                        <span class="info-box-icon bg-green-active"><i class="fa fa-money"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Total Profit</span>
+                                            <span class="info-box-number2">$ @analyseProfit.TotalProfit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Section-Left -->
         <section class="col-lg-3 col-md-4 col-sm-12 col-xs-12 connectedSortable ui-sortable">
 
-            <!-- Teams -->
+            <!-- Betting Profiles -->
             <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="box box-primary animateWithDelayLeft">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Betting Profiles</h3>
+                        <i class="fa fa-trophy"></i>
+                        <h3 class="box-title"><span class="label label-warning">PREMIUM</span> Betting Profiles</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div>
                     <div class="box-body">
                         <div class="col-md-12 hidden-xs hidden-sm">
-                            <div class="list-group bettingProfilesList" id="teams_list">
-                                <a href="#" class="list-group-item active">
-                                    <span class="badge">1</span>
-                                    Atlanta Hawks
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge"></span>
-                                    Boston Celtics
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge">5</span>
-                                    NBA
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge">2</span>
-                                    Chicago Bulls
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge">1</span>
-                                    Cleveland Cavaliers
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge"></span>
-                                    Golden State Warriors
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge">3</span>
-                                    Miami Heat
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge">3</span>
-                                    MLB
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <span class="badge">1</span>
-                                    Totals
-                                </a>
+                            <div class="list-group bettingProfilesList" id="betting_profiles">
+                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerBettingProfileViewModel bettingProfile in this.Model.BettingProfiles) {
+                                    <a href="javascript:getBettingProfile('@bettingProfile.Id')" class="list-group-item @(bettingProfile.ActiveTab ? "active" : string.Empty)">
+                                        <span class="badge">@bettingProfile.OpenBets</span>
+                                        @bettingProfile.Label
+                                    </a>
+                                }
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 col-offset-2 visible-xs visible-sm">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <select class="form-control" tabindex="-1">
-                                        <option value="">Select a profile</option>
-                                        <option value="NBA">NBA</option>
-                                        <option value="BOS">Boston Celtics</option>
-                                        <option value="MIA">Miami Heat</option>
-                                        <option value="MLB">CMLB</option>
-                                        <option value="Totals">Totals</option>
+                                    <select class="form-control" onchange="javascript: getBettingProfile(this.value)" tabindex="-1">
+                                        @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerBettingProfileViewModel bettingProfile in this.Model.BettingProfiles)
+                                        {
+                                            <option value="@bettingProfile.Id">@bettingProfile.Label</option>
+                                        }
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
+                    </div>
+                </div>
             </section>
 
             <!-- Performance -->
             <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="box box-primary animateWithDelayLeft">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Performance <small>ALL TIME</small></h3>
+                        <i class="fa fa-trophy"></i>
+                        <h3 class="box-title"><span class="label label-warning">PREMIUM</span> Performance</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div>
                     <div class="box-body">
                         <div class="table-responsive">
                             <table class="table table-striped" style="text-align:center">
@@ -200,80 +203,62 @@
                                         <th style="text-align:center">Profit</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td align="center">NBA</td>
-                                        <td align="center">7,55%</td>
-                                        <td align="center">74 Units</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">MLB</td>
-                                        <td align="center">9,33%</td>
-                                        <td align="center">74 Units</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Atlanta Hawks</td>
-                                        <td align="center">1,79%</td>
-                                        <td align="center">2,26 Units</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Miami Heat</td>
-                                        <td align="center">15,7%</td>
-                                        <td align="center">17,55 Units</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">Baltimore Orioles</td>
-                                        <td align="center">4,92%</td>
-                                        <td align="center">15,75 Units</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">NY Mets</td>
-                                        <td align="center">-3,37%</td>
-                                        <td align="center">-7,41 Units</td>
-                                    </tr>
+                                    @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerPerformanceViewModel performance in this.Model.Performances)
+                                    { 
+                                        <tr>
+                                            <td align="center">@performance.Profile</td>
+                                            <td align="center">@performance.ROI %</td>
+                                            <td align="center">@performance.Profit Units</td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
+                    </div>
+                </div>
             </section>
 
-        </section> <!-- Section-Left -->
+        </section>
 
         <!-- Section-Right -->
         <section class="col-lg-9 col-md-8 col-sm-12 col-xs-12 connectedSortable ui-sortable">
-            <!-- Bets Tracker Main Table -->
+
+            <!-- Bets Tracker Bets History -->
             <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <!-- Bets Tracker -->
                 <div class="box box-primary animateWithDelayRight">
                     <div class="box-header with-border">
-                        <!--<img src="dist/img/basketball.png" width="23" height="23" />-->
-                        <h3 class="box-title">Bets Tracker Picks History</h3>&nbsp;&nbsp;&nbsp;<small>Atlanta Hawks</small>
+                        <h3 class="box-title">Bets Tracker Bets History</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div>
                     <div class="box-body">
                         <div class="row">
+                            <!-- Create/Delete profile-->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="newBet">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i> New Bet
                                     <div class="btn-group">
-                                        <button class="btn btn-primary" type="button">
+                                        <a href="javascript:createSingle()" class="btn btn-primary" type="button">
                                             Single
-                                        </button>
-                                        <button class="btn btn-warning" type="button">
+                                        </a>
+                                        <a href="javascript:createParlay()" class="btn btn-warning" type="button">
                                             Parlay
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
+                                <div class="pull-right">
+                                    <a href="javascript:deleteBettingProfile('0')" class="btn btn-danger">Delete profile</a>
+                                </div>
                             </div>
-                            <!-- FILTERS -->
+
+                            <!-- Filters -->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 button_group">
                                 <div class="horizontalText"><span>Filters</span></div>
                                 <div class="dropdown marginleft15">
                                     <button id="gameSiteBtn" class="customBtn01 button_md dropdown-toggle" type="button" data-toggle="dropdown">
-                                        <label class="buttonLabel">Game Site</label>
+                                        <span class="buttonLabel">Game Site</span>
                                         <span class="bottom_border"></span>
                                         <i class="fa fa-filter" aria-hidden="true"></i>
                                         <span class="btnText">All Games</span>
@@ -287,7 +272,7 @@
                                 </div>
                                 <div class="dropdown">
                                     <button id="betTypesBtn" class="customBtn01 button_md dropdown-toggle" type="button" data-toggle="dropdown">
-                                        <label class="buttonLabel">Bet Types</label>
+                                        <span class="buttonLabel">Bet Types</span>
                                         <span class="bottom_border"></span>
                                         <i class="fa fa-filter" aria-hidden="true"></i>
                                         <span class="btnText">All Bet Types</span>
@@ -302,7 +287,7 @@
                                 </div>
                                 <div class="dropdown">
                                     <button id="betSizesBtn" class="customBtn01 button_md dropdown-toggle" type="button" data-toggle="dropdown">
-                                        <label class="buttonLabel">Bet Sizes</label>
+                                        <span class="buttonLabel">Bet Sizes</span>
                                         <span class="bottom_border"></span>
                                         <i class="fa fa-filter" aria-hidden="true"></i>
                                         <span class="btnText">All Bet Sizes</span>
@@ -317,7 +302,7 @@
                                 </div>
                                 <div class="dropdown">
                                     <button id="gameTimesBtn" class="customBtn01 button_md dropdown-toggle" type="button" data-toggle="dropdown">
-                                        <label class="buttonLabel">Game Times</label>
+                                        <span class="buttonLabel">Game Times</span>
                                         <span class="bottom_border"></span>
                                         <i class="fa fa-filter" aria-hidden="true"></i>
                                         <span class="btnText">All Time</span>
@@ -337,435 +322,189 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
+                                <!-- Bets -->
                                 <div class="table-responsive" style="padding-top:20px">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
-                                                <th>
-                                                    <input type="checkbox" class="tableflat">
-                                                </th>
-                                                <th>ID </th>
-                                                <th>Date </th>
-                                                <th>Game </th>
-                                                <th>Bet Amount </th>
-                                                <th>Odds </th>
-                                                <th>Bet Value </th>
-                                                <th>Bet Status </th>
-                                                <th>Profit/Loss </th>
-                                                <th class="no-link last">
-                                                    <span class="nobr">Site</span>
-                                                </th>
+                                                <th class="text-center">Ticket type</th>
+                                                <th class="text-center">Date</th>
+                                                <th class="text-center">Game</th>
+                                                <th class="text-center">Bet Amount</th>
+                                                <th class="text-center">Odds</th>
+                                                <th class="text-center">Bet Value</th>
+                                                <th class="text-center">Bet Status</th>
+                                                <th class="text-center">Profit/Loss</th>
+                                                <th class="text-center">Site</th>
+                                                <th class="text-center">Edit</th>
+                                                <th class="text-center">Delete</th>
+                                                <th class="text-center">Add to profile</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="tableflat">
-                                                </td>
-                                                <td class=" ">10004</td>
-                                                <td class=" ">May 23, 2014</td>
-                                                <td class=" ">Hawks - Celtics</td>
-                                                <td class=" ">$7.45 </td>
-                                                <td class=" ">1,91 </td>
-                                                <td class=" ">U202,5</td>
-                                                <td class=" "><font color="green">WIN</font></td>
-                                                <td class="a-right a-right "><font color="green">$ 7.00</font></td>
-                                                <td class=" last">
-                                                    <a href="#">Home</a>
-                                                </td>
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="tableflat">
-                                                </td>
-                                                <td class=" ">10003</td>
-                                                <td class=" ">May 26, 2014</td>
-                                                <td class=" ">Hawks - Kings</td>
-                                                <td class=" ">$5.45 </td>
-                                                <td class=" ">1,909 </td>
-                                                <td class=" ">U197,5</td>
-                                                <td class=" "><font color="red">LOSS</font></td>
-                                                <td class="a-right a-right "><font color="red">$ -5.45</font></td>
-                                                <td class=" last">
-                                                    <a href="#">Home</a>
-                                                </td>
-                                            </tr>
-                                            <tr class="even pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="tableflat">
-                                                </td>
-                                                <td class=" ">10002</td>
-                                                <td class=" ">May 27, 2014</td>
-                                                <td class=" ">Hawks - Bulls</td>
-                                                <td class=" ">$7.45 </td>
-                                                <td class=" ">1,952 </td>
-                                                <td class=" ">O187</td>
-                                                <td class=" "><font color="green">WIN</font></td>
-                                                <td class="a-right a-right "><font color="green">$ 6.75</font></td>
-                                                <td class=" last">
-                                                    <a href="#">Home</a>
-                                                </td>
-                                            </tr>
-                                            <tr class="odd pointer">
-                                                <td class="a-center ">
-                                                    <input type="checkbox" class="tableflat">
-                                                </td>
-                                                <td class=" ">10001</td>
-                                                <td class=" ">May 28, 2014</td>
-                                                <td class=" ">Wizards - Hawks</td>
-                                                <td class=" ">$11.45 </td>
-                                                <td class=" ">1,862 </td>
-                                                <td class=" ">U192</td>
-                                                <td class=" "><font color="green">WIN</font></td>
-                                                <td class="a-right a-right "><font color="green">$ 10.05</font></td>
-                                                <td class=" last">
-                                                    <a href="#">Away</a>
-                                                </td>
-                                            </tr>
+                                            @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileBetViewModel bet in this.Model.DefaultProfile.Bets)
+                                            { 
+                                                <tr class="text-center">
+                                                    <td>@bet.Type</td>
+                                                    <td>@bet.Timestamp</td>
+                                                    <td>@bet.Game</td>
+                                                    <td>@bet.BetAmount</td>
+                                                    <td>@bet.Odds</td>
+                                                    <td>@bet.BetValue</td>
+                                                    <td>@bet.BetStatus</td>
+                                                    <td>@bet.ProfitLoss</td>
+                                                    <td>@bet.Site</td>
+                                                    <td><a href="javascript:editBet('@bet.Id')"><i class="fa fa-pencil"></i></a></td>
+                                                    <td><a href="javascript:deleteBet('@bet.Id')"><i class="fa fa-trash"></i></a></td>
+                                                    <td><a href="javascript:addBetToProfile('@bet.Id')"><i class="fa fa-plus"></i></a></td>
+                                                </tr>
+                                            }
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-
-                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                <p class="text-info"><h5><strong>Last Game:</strong></h5></p>
-                                <!--<p class="text-info"><h4><strong><font color="DodgerBlue">Hawks - Celtics 111-89 T: 200 H: -22</font></strong></h4></p>-->
-                                <!--<p><h3><span class="label label-lg label-info">Last Game:</span></h3></p>-->
-                                <p><h3><span class="label label-lg label-info">Hawks - Celtics 111-89  T: 200  H: -22</span></h3></p>
-                            </div>
-                            <p></p>
-                            <div class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-                                <button class="btn btn-round btn-default btn-lg btn-block" type="button"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>&nbsp;Save</button>
-                            </div>
-                            <div class="col-lg-2 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-                                <button class="btn btn-round btn-default btn-lg btn-block" type="button"><span class="fa fa-mail-reply" aria-hidden="true"></span>&nbsp;Undo</button>
-                            </div>
-                            <div class="col-lg-2 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
-                                <button class="btn btn-round btn-default btn-lg btn-block" type="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;Delete</button>
-                            </div>
-                        </div>
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
+                    </div>
+                </div>
             </section>
 
-            <!-- Daily Stats -->
+            <!-- Statistics -->
             <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <!-- Bets Tracker -->
                 <div class="box box-primary animateWithDelayRight">
                     <div class="box-header with-border">
-                        <!--<img src="dist/img/basketball.png" width="23" height="23" />-->
                         <h3 class="box-title">Statistics</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div>
                     <div class="box-body">
-
-                        <ul class="nav nav-tabs nav-justified customnav">
-                            <li class="active"><a href="#">Daily</a></li>
-                            <li><a href="#">Weekly</a></li>
-                            <li><a href="#">Monthly</a></li>
+                        <ul class="nav nav-tabs nav-justified customnav" id="statistics">
+                            @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
+                            {
+                                <li @(stat.ActiveTab ? "class=active" : string.Empty)>
+                                    <a href="#@stat.Name" data-toggle="tab"><h5><strong>@stat.Label</strong></h5></a>
+                                </li>
+                            }
                         </ul>
                         <div class="table-responsive">
-                            <table class="table table-striped" style="text-align:center">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align:center">Date</th>
-                                        <th style="text-align:center">Wins</th>
-                                        <th style="text-align:center">Losses</th>
-                                        <th style="text-align:center">Invested</th>
-                                        <th style="text-align:center">Profit +/-</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td align="center">06/10/2015</td>
-                                        <td align="center">2</td>
-                                        <td align="center">2</td>
-                                        <td align="center">15,30</td>
-                                        <td align="center"><font color="red">$ -2,17</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">05/10/2015</td>
-                                        <td align="center">3</td>
-                                        <td align="center">4</td>
-                                        <td align="center">27,20</td>
-                                        <td align="center"><font color="red">$ -5,25</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">04/10/2015</td>
-                                        <td align="center">4</td>
-                                        <td align="center">2</td>
-                                        <td align="center">22,90</td>
-                                        <td align="center"><font color="green">$ 1,58</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">03/10/2015</td>
-                                        <td align="center">5</td>
-                                        <td align="center">2</td>
-                                        <td align="center">28,10</td>
-                                        <td align="center"><font color="green">$ 16,88</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">02/10/2015</td>
-                                        <td align="center">4</td>
-                                        <td align="center">2</td>
-                                        <td align="center">17,50</td>
-                                        <td align="center"><font color="green">$ 0,25</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">01/10/2015</td>
-                                        <td align="center">3</td>
-                                        <td align="center">1</td>
-                                        <td align="center">23,40</td>
-                                        <td align="center"><font color="green">$ 9,82</font></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="tab-content">
+                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
+                                {
+                                    <div role="tabpanel" class="tab-pane @(stat.ActiveTab ? "active" : string.Empty)" id="@stat.Name">
+                                        <table class="table table-striped" style="text-align:center">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Wins</th>
+                                                    <th class="text-center">Losses</th>
+                                                    <th class="text-center">Invested</th>
+                                                    <th class="text-center">Profit +/-</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="text-center">
+                                                    <td>@stat.Date</td>
+                                                    <td>@stat.Wins</td>
+                                                    <td>@stat.Losses</td>
+                                                    <td>@stat.Invested</td>
+                                                    <td>@stat.Profit</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                            </div>
                         </div>
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
+                    </div>
+                </div>
             </section>
 
             <!-- Charts & Graphs -->
             <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <!-- Bets Tracker -->
                 <div class="box box-primary animateWithDelayRight">
                     <div class="box-header with-border">
-                        <!--<img src="dist/img/basketball.png" width="23" height="23" />-->
                         <h3 class="box-title">Charts & Graphs</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                         </div>
-                    </div><!-- /.box-header -->
+                    </div>
                     <div class="box-body">
-                        <ul class="nav nav-tabs nav-justified customnav">
-                            <li class="active"><a href="#">Overview</a></li>
-                            <li><a href="#">Last 30 Days</a></li>
-                            <li><a href="#">Bet-Type</a></li>
-                            <li><a href="#">Sport</a></li>
+                        <ul class="nav nav-tabs nav-justified customnav" id="charts">
+                            @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
+                            {
+                                <li @(chart.ActiveTab ? "class=active" : string.Empty)>
+                                    <a href="#@chart.Name" data-toggle="tab"><h5><strong>@chart.Label</strong></h5></a>
+                                </li>
+                            }
                         </ul>
-                        <div class="sparkline" data-type="pie" data-offset="90" data-width="100px" data-height="100px">
-                            6,4,8
+                        <div class="tab-content">
+                            @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
+                            {
+                                <div role="tabpanel" class="tab-pane @(chart.ActiveTab ? "active" : string.Empty)" id="@chart.Name">
+                                    @chart.Value
+                                </div>
+                            }
                         </div>
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
+                    </div>
+                </div>
             </section>
 
-            <!-- Todays Games -->
-            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <!-- Bets Tracker -->
-                <div class="box box-primary animateWithDelayRight collapsed-box" style="max-height:400px; overflow:auto">
-                    <div class="box-header with-border">
-                        <!--<img src="dist/img/basketball.png" width="23" height="23" />-->
-                        <h3 class="box-title">Todays Games</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align:center">Date</th>
-                                        <th style="text-align:center">Away Team</th>
-                                        <th style="text-align:center">W/L</th>
-                                        <th style="text-align:center">ATS</th>
-                                        <th style="text-align:center">O/U</th>
-                                        <th style="text-align:center">Match Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;">22.02.2016</td>
-                                        <td><img src="dist/img/teams/dallas_mavs.png" width="32" height="32" />&nbsp;Dallas Mavericks vs.</td>
-                                        <td>17 - 12</td>
-                                        <td>15 - 14</td>
-                                        <td>16 - 12 </td>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;"><a href="#">Details</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="dist/img/teams/76ers.gif" width="32" height="32" />&nbsp;Philadelphia Sixers</td>
-                                        <td>4 - 25</td>
-                                        <td>13 - 14</td>
-                                        <td>10 - 18</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;">22.02.2016</td>
-                                        <td><img src="dist/img/teams/Indiana Pacers Long.png" width="90" height="18" /> vs.</td>
-                                        <td>15 - 15</td>
-                                        <td>17 - 12</td>
-                                        <td>15 - 15</td>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;"><a href="#">Details</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="dist/img/teams/Atlanta Hawks Long.png" width="96" height="18" /></td>
-                                        <td>18 - 12</td>
-                                        <td>14 - 14</td>
-                                        <td>13 - 16</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;">22.02.2016</td>
-                                        <td><img src="dist/img/Teams/Boston Celtics Long.png" width="84" height="18" /> vs.</td>
-                                        <td>16 - 14</td>
-                                        <td>18 - 12</td>
-                                        <td>15 - 15</td>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;"><a href="#">Details</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="dist/img/Teams/Houston_Rockets.png" width="32" height="32" />&nbsp;Houston Rockets</td>
-                                        <td>17 - 12</td>
-                                        <td>12 - 16</td>
-                                        <td>15 - 13</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;">22.02.2016</td>
-                                        <td><img src="dist/img/Teams/Oklahoma_City_Thunder.png" width="33" height="32" />&nbsp;Oklahoma City Thunder vs.</td>
-                                        <td>19 - 11</td>
-                                        <td>15 - 13</td>
-                                        <td>16 - 13</td>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;"><a href="#">Details</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="dist/img/Teams/memphis_grizzlies.png" width="29" height="33" />&nbsp;Memphis Grizzlies</td>
-                                        <td>15 - 15</td>
-                                        <td>12 - 16</td>
-                                        <td>11 - 17</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;">22.02.2016</td>
-                                        <td><img src="dist/img/Teams/Milwaukee_Bucks_logo.png" width="33" height="32" />&nbsp;Milwaukee Bucks vs.</td>
-                                        <td>19 - 11</td>
-                                        <td>15 - 13</td>
-                                        <td>16 - 13</td>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;"><a href="#">Details</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="dist/img/Teams/Orlando_Magic_logo_2010.png" width="33" height="30" />&nbsp;Orlando Magic</td>
-                                        <td>15 - 15</td>
-                                        <td>12 - 16</td>
-                                        <td>11 - 17</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;">22.02.2016</td>
-                                        <td><img src="dist/img/Teams/Miami Heat Long.png" width="88" height="22" /> vs.</td>
-                                        <td>19 - 11</td>
-                                        <td>15 - 13</td>
-                                        <td>16 - 13</td>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;"><a href="#">Details</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="dist/img/Teams/NewYorkKnicks.PNG" width="33" height="33" />New York Knicks</td>
-                                        <td>15 - 15</td>
-                                        <td>12 - 16</td>
-                                        <td>11 - 17</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;">22.02.2016</td>
-                                        <td><img src="dist/img/Teams/Oklahoma_City_Thunder.png" width="33" height="32" />New Orleans Hornets vs.</td>
-                                        <td>19 - 11</td>
-                                        <td>15 - 13</td>
-                                        <td>16 - 13</td>
-                                        <td rowspan="2" style="text-align:center; vertical-align:middle;"><a href="#">Details</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="dist/img/Teams/NewOrleans.gif" width="29" height="33" />Los Angeles Clippers</td>
-                                        <td>15 - 15</td>
-                                        <td>12 - 16</td>
-                                        <td>11 - 17</td>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
-            </section>
-
-            <!-- Games Results -->
-            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <!-- Bets Tracker -->
-                <div class="box box-primary animateWithDelayRight collapsed-box" style="max-height:400px; overflow:auto">
-                    <div class="box-header with-border">
-                        <!--<img src="dist/img/basketball.png" width="23" height="23" />-->
-                        <h3 class="box-title">Games Results</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div><!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped" style="text-align:center">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align:center">Date</th>
-                                        <th style="text-align:center">Wins</th>
-                                        <th style="text-align:center">Losses</th>
-                                        <th style="text-align:center">Invested</th>
-                                        <th style="text-align:center">Profit +/-</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td align="center">06/10/2015</td>
-                                        <td align="center">2</td>
-                                        <td align="center">2</td>
-                                        <td align="center">15,30</td>
-                                        <td align="center"><font color="red">$ -2,17</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">05/10/2015</td>
-                                        <td align="center">3</td>
-                                        <td align="center">4</td>
-                                        <td align="center">27,20</td>
-                                        <td align="center"><font color="red">$ -5,25</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">04/10/2015</td>
-                                        <td align="center">4</td>
-                                        <td align="center">2</td>
-                                        <td align="center">22,90</td>
-                                        <td align="center"><font color="green">$ 1,58</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">03/10/2015</td>
-                                        <td align="center">5</td>
-                                        <td align="center">2</td>
-                                        <td align="center">28,10</td>
-                                        <td align="center"><font color="green">$ 16,88</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">02/10/2015</td>
-                                        <td align="center">4</td>
-                                        <td align="center">2</td>
-                                        <td align="center">17,50</td>
-                                        <td align="center"><font color="green">$ 0,25</font></td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">01/10/2015</td>
-                                        <td align="center">3</td>
-                                        <td align="center">1</td>
-                                        <td align="center">23,40</td>
-                                        <td align="center"><font color="green">$ 9,82</font></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
-            </section>
-
-        </section> <!-- Section-Left -->
+        </section>
 
     </div>
 
 </section>
+
+@section Scripts {
+    <script>
+        function getBettingProfile(id) {
+            alert('Get betting profile with id: ' + id);
+
+            $.ajax({
+                url: '/Dashboard/BetsTracker/GetBettingProfile/' + id,
+                dataType: 'html',
+                success: function (data) {
+                    // Take a look that first tabs are active in Statistics and Charts
+                }
+            });
+        }
+
+        function deleteBettingProfile(id) {
+            alert('Deleting betting profile with id: ' + id);
+
+            $.ajax({
+                url: '/Dashboard/BetsTracker/DeleteBettingProfile/' + id,
+                dataType: 'html',
+                success: function (data) {
+                    // Select default profile "All"
+                }
+            });
+        }
+
+        function editBet(id) {
+            alert('Editing bet with id: ' + id);
+        }
+
+        function deleteBet(id) {
+            alert('Deleting bet with id: ' + id);
+        }
+
+        function addBetToProfile(id) {
+            alert('Adding bet to profile with id: ' + id);
+        }
+
+        function createSingle() {
+            alert('Creating single');
+        }
+
+        function createParlay() {
+            alert('Creating parlay');
+        }
+
+        // Set tabs
+        $('#analysisProfit a:first').tab('show');
+
+    </script>
+}

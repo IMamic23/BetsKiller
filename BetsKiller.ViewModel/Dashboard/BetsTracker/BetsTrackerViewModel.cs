@@ -8,5 +8,12 @@ namespace BetsKiller.ViewModel.Dashboard.BetsTracker
 {
     public class BetsTrackerViewModel
     {
+        public List<BetsTrackerAnalysisProfitViewModel> AnalysisProfit { get; set; }
+
+        public List<BetsTrackerBettingProfileViewModel> BettingProfiles { get; set; }
+
+        public List<BetsTrackerPerformanceViewModel> Performances { get; set; }
+
+        public BetsTrackerBettingProfileDataViewModel DefaultProfile { get; set; }
     }
 }
