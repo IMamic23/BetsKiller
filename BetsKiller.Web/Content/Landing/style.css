@@ -17,7 +17,9 @@ h2 {
 .panel-title,
 .scrollToTop {
     -webkit-transition: all .5s;
-    -o-transition: all .5s
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
 }
 
 .count-text,
@@ -149,7 +151,7 @@ img {
 
 .navbar-brand {
     color: #fff!important;
-    font-size: 55px;
+    font-size: 56px;
     font-weight: 800;
     text-shadow: 3px -3px 0 rgba(0, 0, 0, .7), -1px -1px 0 rgba(0, 0, 0, .7), 1px -1px 0 rgba(0, 0, 0, .7), -1px 1px 0 rgba(0, 0, 0, .7), 1px 1px 0 rgba(0, 0, 0, .7)
 }

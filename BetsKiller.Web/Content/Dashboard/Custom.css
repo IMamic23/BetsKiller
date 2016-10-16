@@ -35,9 +35,11 @@
 h3.eastern,
 h3.western {
     font-family: Rockwell;
-    font-size: 38px;
+    font-size: 32px;
     line-height: 1;
-    padding-left: 10px;
+    padding: 10px;
+    letter-spacing: 1px;
+    border-radius: 5px;
     color: #fff
 }
 
@@ -413,11 +415,6 @@ h3.western {
     }
 }
 
-#Free td:nth-child(-n+4),
-#Premium td:nth-child(-n+4) {
-    min-width: 115px
-}
-
 .breadcrumb {
     min-width: 300px
 }
@@ -537,12 +534,17 @@ h3.western {
     color: #fff!important;
     font-size: 30px;
     font-weight: 700;
-    font-family: Varela, sans-serif;
+    font-family: Varela,sans-serif;
     text-shadow: 2px -2px 0 rgba(0, 0, 0, .5), -1px -1px 0 rgba(0, 0, 0, .5), 1px -1px 0 rgba(0, 0, 0, .7), -1px 1px 0 rgba(0, 0, 0, .7), 1px 1px 0 rgba(0, 0, 0, .7)
 }
 
 .logo_text_2 {
     color: #da002a
+}
+
+.panel-collapse textarea {
+    min-height: 140px;
+    min-width: 300px;
 }
 
  .menu-trigger {
@@ -706,4 +708,167 @@ h3.western {
          border-right: 15px solid transparent;
          z-index: 999;
      }
+}
+
+#Free td:nth-child(n+3):nth-child(-n+4),
+#Premium td:nth-child(n+3):nth-child(-n+4) {
+    min-width: 150px;
+}
+#Free td:nth-child(1),
+#Premium td:nth-child(1) {
+    min-width: 100px;
+}
+#Free td:nth-child(2),
+#Premium td:nth-child(2) {
+    min-width: 100px;
+}
+#teamStats td:nth-child(n+3):nth-child(-n+5){
+	min-width: 130px;
+}
+@media(max-width:1800px){
+ #EAST > tbody > tr > td:nth-child(1), #WEST > tbody > tr > td:nth-child(1)  {
+            position:fixed; 
+            width:46px; 
+            left:30px;
+            top:auto;	
+			z-index: 99;
+			background: white;
+			overflow:hidden;
+}
+#EAST > thead > tr > th:nth-child(1), #WEST > thead > tr > th:nth-child(1){
+	        position:fixed; 
+            width:30px;
+            padding-top: 20px; 
+            left:35px;
+            top:auto;	
+			z-index: 99;
+			background: white;
+			overflow:hidden;
+}
+ #EAST > tbody > tr > td:nth-child(2), #WEST > tbody > tr > td:nth-child(2) {
+            position:fixed; 
+            width:75px !important;
+            left:90px;
+            top:auto;			
+			z-index: 99;
+			background: white;
+			overflow:hidden;
+}
+#EAST > thead > tr > th:nth-child(2), #WEST > thead > tr > th:nth-child(2){
+	        position:fixed; 
+            width:55px !important;
+            left:100px;
+            top:auto;			
+			z-index: 99;
+			background: white;
+			overflow:hidden;
+}
+#EAST > thead > tr > th:nth-child(1), #WEST > thead > tr > th:nth-child(1),#EAST > thead > tr > th:nth-child(2), #WEST > thead > tr > th:nth-child(2) {
+	    transform: translate(-10px,8px);
+}
+#EAST, #WEST {
+	margin-left:150px;
+}
+}
+
+	
+@media(max-width:1400px) {
+#teamStats> tbody > tr > td:nth-child(1)  {
+            position:fixed; 
+            width:60px; 
+            left:35px;
+            top:auto;	
+			z-index: 99;
+			background: white;
+			overflow:hidden;
+}
+ 
+#teamStats > thead > tr > th:nth-child(1) {
+            position:fixed; 
+            width:40px; 
+            left:35px;
+            top:auto;
+			transform: translateY(20px);
+		    z-index: 99;
+			background: white;
+}
+
+#teamStats {
+	margin-left:70px;
+}
+}
+@media(max-width:1200px) {
+#Free td:nth-child(n+3):nth-child(-n+4),
+#Premium td:nth-child(n+3):nth-child(-n+4) {
+    min-width: 170px;
+}
+
+#Free > tbody > tr > td:nth-child(2),#Premium > tbody > tr > td:nth-child(2)  {
+            position:fixed; 
+            width:130px; 
+            left:35px;
+            top:auto;
+			z-index: 99;
+			background: white;
+}
+#Free > thead > tr > th:nth-child(2),#Premium > thead > tr > th:nth-child(2) {
+            position:fixed; 
+            width:108px; 
+            left:35px;
+            top:auto;
+		    z-index: 99;
+			background: white;
+}
+ #Free, #Premium {
+	margin-left:140px;
+}
+}
+	
+@media(max-width:700px) {
+#freeBets > tbody > tr > td:nth-child(2),#premiumBets > tbody > tr > td:nth-child(2)  {
+            position:absolute; 
+            width:110px; 
+            left:10px;
+            top:auto;
+			z-index: 99;
+			background: white;
+}
+ 
+#freeBets > thead > tr > th:nth-child(2),#premiumBets > thead > tr > th:nth-child(2) {
+            position:absolute; 
+            width:110px; 
+            left:10px;
+            top:auto;
+		    z-index: 99;
+			background: white;
+}
+
+#freeBets, #premiumBets{
+	margin-left:100px;
+}
+
+#Free > tbody > tr > td:nth-child(2),#Premium > tbody > tr > td:nth-child(2)  {
+            position:fixed; 
+            width:110px; 
+            left:35px;
+            top:auto;
+			z-index: 99;
+			background: white;
+}
+#Free > thead > tr > th:nth-child(2),#Premium > thead > tr > th:nth-child(2) {
+            position:fixed; 
+            width:88px; 
+            left:35px;
+            top:auto;
+		    z-index: 99;
+			background: white;
+}
+#Free, #Premium {
+	margin-left:120px;
+}
+.label-sm{
+	width: 42px;
+	font-size: 10px;
+}
+
 }
