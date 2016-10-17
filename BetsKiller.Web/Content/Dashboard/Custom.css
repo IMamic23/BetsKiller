@@ -726,7 +726,7 @@ h3.western {
 	min-width: 130px;
 }
 @media(max-width:1800px){
- #EAST > tbody > tr > td:nth-child(1), #WEST > tbody > tr > td:nth-child(1)  {
+#EAST > tbody > tr > td:nth-child(1), #WEST > tbody > tr > td:nth-child(1)  {
             position:fixed; 
             width:46px; 
             left:30px;
