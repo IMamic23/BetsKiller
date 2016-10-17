@@ -7,7 +7,6 @@ namespace BetsKiller.DAL.Migrations
     {
         public override void Up()
         {
-            RenameTable(name: "dbo.BetProfile_Bet", newName: "BetProfiles_Bets");
             CreateTable(
                 "dbo.BetGames",
                 c => new
@@ -60,7 +59,6 @@ namespace BetsKiller.DAL.Migrations
             AlterColumn("dbo.Bets", "Odd", c => c.Decimal(nullable: false, precision: 18, scale: 2));
             AlterColumn("dbo.Bets", "Invested", c => c.Decimal(nullable: false, precision: 18, scale: 2));
             DropTable("dbo.BetGames");
-            RenameTable(name: "dbo.BetProfiles_Bets", newName: "BetProfile_Bet");
         }
     }
 }
