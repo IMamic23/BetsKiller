@@ -22,6 +22,7 @@ letter-spacing:1px;
 
 .newBet{
   margin: 5px;
+  margin-left:20px;
   border: 1px solid rgba(0,0,0,0.2);
   background: #F5F5F5;
   color:black;
@@ -43,7 +44,7 @@ letter-spacing:1px;
 }
 
 .customBtn01{
-    background-color: #eeeeee;
+    background-color: rgb(245, 245, 245);
     color: #000000;
     text-align: center;
     text-decoration: none;
@@ -112,12 +113,13 @@ letter-spacing:1px;
 
 .bettingProfilesList a{
     transition: all 0.4s ease-in-out;
-    border-bottom:  3px inset transparent;
+    /*border-bottom:  3px inset transparent;*/
 }
 
 .bettingProfilesList a:hover{
-    border-bottom:  3px inset rgba(0,0,128,0.7); 
+   /* border-bottom:  3px inset rgba(0,0,128,0.7); */
     transition: all 0.4s ease-in-out;
+    background-color:#cde7fc;
     color:black;
 }
 
@@ -200,6 +202,7 @@ letter-spacing:1px;
     border-bottom: 1px inset rgba(0,0,128,0.8);
    /* border-left: 6px solid rgba(0,0,128,0.8);*/
     transition: all 200ms ease-in-out; 
+    cursor:pointer;
     color: rgba(0,0,0,1);
 }
 
@@ -317,4 +320,33 @@ letter-spacing:1px;
 .game-opp, .game-at{
     width:100%;
     color: black;
+}
+
+.bettingProfilesList a:last-child{
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+.info-box-smaller{
+    box-shadow: none;
+   /* border:1px double rgba(0,0,0,0.3);*/
+    margin-top: 10px;
+    min-height: 52px;
+    margin-bottom: 5px;
+}
+.info-box-icon-smaller{
+    width:50px;
+    height:50px;
+    line-height: 35px;
+  /*  background-color:rgb(245, 245, 245);*/
+  background-color:transparent;
+     /*border-bottom: 2px solid rgba(0,0,0,0.2);
+     border-left: 2px solid rgba(0,0,0,0.2);*/
+}
+.info-box-icon-smaller i{
+    font-size: 25px;
+}
+
+.info-box-content-smaller {
+    padding: 3px 7px;
+    margin-left: 50px;
 }
