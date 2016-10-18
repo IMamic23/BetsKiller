@@ -58,6 +58,9 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
 
         protected override void Process()
         {
+            // Game scores NBA
+            this.GetParseGameScoresNBA();
+
             // Analysis profit NBA
             this.GetParseAnalysisProfitNBA();
 
@@ -74,6 +77,85 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
         #endregion
 
         #region Helper methods
+
+        private void GetParseGameScoresNBA()
+        {
+            this.BetsTrackerViewModel.GameScores = new List<BetsTrackerGameScoreViewModel>()
+            {
+                new BetsTrackerGameScoreViewModel()
+                {
+                    Date = "15/10",
+                    Status = new Helper.HTML.CustomHtmlElement(null, null, "color: red", "Final", null),
+                    AwayTeam = "Cleveland",
+                    AwayScore = "102",
+                    HomeTeam = "Indiana",
+                    HomeScore = "99"
+                },
+                new BetsTrackerGameScoreViewModel()
+                {
+                    Date = "15/10",
+                    Status = new Helper.HTML.CustomHtmlElement(null, null, "color: red", "Final", null),
+                    AwayTeam = "Utah",
+                    AwayScore = "97",
+                    HomeTeam = "Portland",
+                    HomeScore = "103"
+                },
+                new BetsTrackerGameScoreViewModel()
+                {
+                    Date = "16/10",
+                    Status = new Helper.HTML.CustomHtmlElement(null, null, "color: red", "Final", null),
+                    AwayTeam = "LAC",
+                    AwayScore = "108",
+                    HomeTeam = "New Orleans",
+                    HomeScore = "99"
+                },
+                new BetsTrackerGameScoreViewModel()
+                {
+                    Date = "16/10",
+                    Status = new Helper.HTML.CustomHtmlElement(null, null, "color: red", "Final", null),
+                    AwayTeam = "Dallas",
+                    AwayScore = "87",
+                    HomeTeam = "Utah",
+                    HomeScore = "89"
+                },
+                new BetsTrackerGameScoreViewModel()
+                {
+                    Date = "17/10",
+                    Status = new Helper.HTML.CustomHtmlElement(null, null, "color: red", "Final", null),
+                    AwayTeam = "Denver",
+                    AwayScore = "118",
+                    HomeTeam = "Golden State",
+                    HomeScore = "128"
+                },
+                new BetsTrackerGameScoreViewModel()
+                {
+                    Date = "17/10",
+                    Status = new Helper.HTML.CustomHtmlElement(null, null, "color: red", "Final", null),
+                    AwayTeam = "Chicago",
+                    AwayScore = "88",
+                    HomeTeam = "Washington",
+                    HomeScore = "104"
+                },
+                new BetsTrackerGameScoreViewModel()
+                {
+                    Date = "17/10",
+                    Status = new Helper.HTML.CustomHtmlElement(null, null, "color: red", "Final", null),
+                    AwayTeam = "LAL",
+                    AwayScore = "98",
+                    HomeTeam = "Atlanta",
+                    HomeScore = "104"
+                },
+                new BetsTrackerGameScoreViewModel()
+                {
+                    Date = "17/10",
+                    Status = new Helper.HTML.CustomHtmlElement(null, null, "color: red", "Final", null),
+                    AwayTeam = "Boston",
+                    AwayScore = "103",
+                    HomeTeam = "Cleveland",
+                    HomeScore = "106"
+                }
+            };
+        }
 
         private void GetParseAnalysisProfitNBA()
         {
@@ -132,8 +214,36 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
                 new BetsTrackerBettingProfileViewModel()
                 {
                     ActiveTab = false,
-                    Id = "2",
+                    Id = "3",
                     Label = "14.10.2016.",
+                    OpenBets = null
+                },
+                new BetsTrackerBettingProfileViewModel()
+                {
+                    ActiveTab = true,
+                    Id = "4",
+                    Label = "13.10.2016.",
+                    OpenBets = "8"
+                },
+                new BetsTrackerBettingProfileViewModel()
+                {
+                    ActiveTab = false,
+                    Id = "5",
+                    Label = "12.10.2016.",
+                    OpenBets = "5",
+                },
+                new BetsTrackerBettingProfileViewModel()
+                {
+                    ActiveTab = false,
+                    Id = "6",
+                    Label = "11.10.2016.",
+                    OpenBets = "3"
+                },
+                new BetsTrackerBettingProfileViewModel()
+                {
+                    ActiveTab = false,
+                    Id = "7",
+                    Label = "10.10.2016.",
                     OpenBets = null
                 }
             };
@@ -181,6 +291,136 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
                 {
                     Type = "single",
                     Id = "1",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "2",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "3",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "4",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "5",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "6",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "7",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "8",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "9",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "10",
+                    Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
+                    Game = "Hawks - Celtics",
+                    BetAmount = "$7.45",
+                    Odds = "1,91",
+                    BetValue = "U202,5",
+                    BetStatus = "WIN",
+                    ProfitLoss = "$7.00",
+                    Site = "Home"
+                },
+                new BetsTrackerProfileBetViewModel()
+                {
+                    Type = "single",
+                    Id = "11",
                     Timestamp = TypeDateTime.ParseDateTime(DateTime.Now),
                     Game = "Hawks - Celtics",
                     BetAmount = "$7.45",

@@ -6,6 +6,7 @@
 @section Styles {
     @Styles.Render("~/Content/dashboard-css")
     @Styles.Render("~/Content/Dashboard/BetsTracker.css")
+    @Styles.Render("~/Content/Dashboard/simplePagination.css")
 }
 
 @model BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerViewModel
@@ -37,77 +38,30 @@
                 <div class="box-body scores-body">
                     <div class="tab-content">
                         <div class="contain-div">
-                                  <div class="row cycle-slideshow" 
-  		                                data-cycle-fx=carousel
-  		                                data-cycle-speed="8000" 
-  		                                data-cycle-timeout=1
-  		                                data-cycle-easing="linear" 
-  		                                data-cycle-carousel-fluid="true"
-  		                                data-cycle-pause-on-hover="true"
-  		                                data-cycle-slides="> div">
-
+                            <div class="row cycle-slideshow"
+                                 data-cycle-fx=carousel
+                                 data-cycle-speed="8000"
+                                 data-cycle-timeout=1
+                                 data-cycle-easing="linear"
+                                 data-cycle-carousel-fluid="true"
+                                 data-cycle-pause-on-hover="true"
+                                 data-cycle-slides="> div"
+                                 data-cycle-log="false">
+                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerGameScoreViewModel game in this.Model.GameScores)
+                                {
                                     <div class="main-box">
                                         <div class="game-box">
-        	                                <div class="game-date">10/15<span class="game-prog">Final</span></div>
-        	                                <div class="game-opp">Cleveland<span class="score-opp">102</span></div>
-        	                                <div class="game-at">Indiana<span class="score-at">99</span></div>
+                                            <div class="game-date">@game.Date<span class="game-prog" style="@game.Status.Style">@game.Status.Value</span></div>
+                                            <div class="game-opp">@game.AwayTeam<span class="score-opp">@game.AwayScore</span></div>
+                                            <div class="game-at">@game.HomeTeam<span class="score-at">@game.HomeScore</span></div>
                                         </div>
                                     </div>
-                                    <div class="main-box">
-                                        <div class="game-box">
-        	                                <div class="game-date">10/15<span class="game-prog">Final</span>        </div>
-        	                                <div class="game-opp">Utah<span class="score-opp">97</span>        </div>
-        	                                <div class="game-at">Portland<span class="score-at">103</span>          </div>
-                                        </div>
-                                    </div>
-                                    <div class="main-box">
-                                        <div class="game-box">
-        	                                <div class="game-date">10/16<span class="game-prog">Final</span>        </div>
-        	                                <div class="game-opp">LAC<span class="score-opp">108</span>      </div>
-        	                                <div class="game-at">New Orleans<span class="score-at">99</span>        </div>
-                                        </div>
-                                    </div>
-                                    <div class="main-box">
-                                        <div class="game-box">
-        	                                <div class="game-date">10/16<span class="game-prog">Final</span></div>
-        	                                <div class="game-opp">Dallas<span class="score-opp">87</span></div>
-        	                                <div class="game-at">Utah<span class="score-at">89</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="main-box">
-                                        <div class="game-box">
-        	                                <div class="game-date">10/17<span class="game-prog">Final</span></div>
-        	                                <div class="game-opp">Denver<span class="score-opp">118</span></div>
-        	                                <div class="game-at">Golden State<span class="score-at">128</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="main-box">
-                                        <div class="game-box">
-        	                                <div class="game-date">10/17<span class="game-prog">Final</span></div>
-        	                                <div class="game-opp">Chicago<span class="score-opp">88</span></div>
-        	                                <div class="game-at">Washington<span class="score-at">104</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="main-box">
-                                        <div class="game-box">
-        	                                <div class="game-date">10/17<span class="game-prog">Final</span></div>
-        	                                <div class="game-opp">LAL<span class="score-opp">98</span></div>
-        	                                <div class="game-at">Atlanta<span class="score-at">104</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="main-box">
-                                        <div class="game-box">
-        	                                <div class="game-date">10/17<span class="game-prog">Final</span></div>
-        	                                <div class="game-opp">Boston<span class="score-opp">103</span></div>
-        	                                <div class="game-at">Cleveland<span class="score-at">106</span></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                  </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-                </div>
         </section>
 
         <!-- Overall stats -->
@@ -225,14 +179,16 @@
                     </div>
                     <div class="box-body">
                         <div class="col-md-12 hidden-xs hidden-sm">
-                            <div class="list-group bettingProfilesList" id="betting_profiles">
-                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerBettingProfileViewModel bettingProfile in this.Model.BettingProfiles) {
+                            <div class="list-group bettingProfilesList" id="betting-profiles">
+                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerBettingProfileViewModel bettingProfile in this.Model.BettingProfiles)
+                                {
                                     <a href="javascript:getBettingProfile('@bettingProfile.Id')" class="list-group-item @(bettingProfile.ActiveTab ? "active" : string.Empty)">
                                         <span class="badge">@bettingProfile.OpenBets</span>
                                         @bettingProfile.Label
                                     </a>
                                 }
                             </div>
+                            <div id="betting-profiles-nav"></div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 col-offset-2 visible-xs visible-sm">
@@ -272,7 +228,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerPerformanceViewModel performance in this.Model.Performances)
-                                    { 
+                                    {
                                         <tr>
                                             <td align="center">@performance.Profile</td>
                                             <td align="center">@performance.ROI %</td>
@@ -295,10 +251,10 @@
             <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="box box-primary animateWithDelayRight">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Bets Tracker Bets History</h3>
-                         <div class="delete-profile pull-right">
-                                    <a href="javascript:deleteBettingProfile('0')" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>Delete profile</a>
-                                </div>
+                        <h3 class="box-title">Bets History</h3>
+                        <div class="delete-profile pull-right">
+                            <a href="javascript:deleteBettingProfile('0')" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>Delete profile</a>
+                        </div>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
@@ -329,13 +285,13 @@
                                         <span class="buttonLabel">Game Site</span>
                                         <span class="bottom_border"></span>
                                         <i class="fa fa-filter" aria-hidden="true"></i>
-                                        <span class="btnText">All Games</span>
+                                        <span id="gameSiteList-text" class="btnText">All Games</span>
                                         <span class="caret"></span>
                                     </button>
                                     <ul id="gameSiteList" class="dropdown-menu">
-                                        <li><a href="#">All Games</a></li>
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="#">Away</a></li>
+                                        <li><a>All Games</a></li>
+                                        <li><a>Home</a></li>
+                                        <li><a>Away</a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown">
@@ -343,14 +299,15 @@
                                         <span class="buttonLabel">Bet Types</span>
                                         <span class="bottom_border"></span>
                                         <i class="fa fa-filter" aria-hidden="true"></i>
-                                        <span class="btnText">All Bet Types</span>
+                                        <span id="betTypesList-text" class="btnText">All Bet Types</span>
                                         <span class="caret"></span>
                                     </button>
                                     <ul id="betTypesList" class="dropdown-menu">
-                                        <li><a href="#">All Bet Types</a></li>
-                                        <li><a href="#">Totals</a></li>
-                                        <li><a href="#">Moneyline</a></li>
-                                        <li><a href="#">Handicap</a></li>
+                                        <li><a>All Bet Types</a></li>
+                                        <li><a>Totals</a></li>
+                                        <li><a>Moneyline</a></li>
+                                        <li><a>Handicap</a></li>
+                                        <li><a>Parlay</a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown">
@@ -358,14 +315,14 @@
                                         <span class="buttonLabel">Bet Sizes</span>
                                         <span class="bottom_border"></span>
                                         <i class="fa fa-filter" aria-hidden="true"></i>
-                                        <span class="btnText">All Bet Sizes</span>
+                                        <span id="betSizesList-text" class="btnText">All Bet Sizes</span>
                                         <span class="caret"></span>
                                     </button>
                                     <ul id="betSizesList" class="dropdown-menu">
-                                        <li><a href="#">All Bet Sizes</a></li>
-                                        <li><a href="#">1 - 5 Units</a></li>
-                                        <li><a href="#">5 - 10 Units</a></li>
-                                        <li><a href="#">10+ Units</a></li>
+                                        <li><a>All Bet Sizes</a></li>
+                                        <li><a>1 - 5 Units</a></li>
+                                        <li><a>5 - 10 Units</a></li>
+                                        <li><a>10+ Units</a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown">
@@ -373,17 +330,17 @@
                                         <span class="buttonLabel">Game Times</span>
                                         <span class="bottom_border"></span>
                                         <i class="fa fa-filter" aria-hidden="true"></i>
-                                        <span class="btnText">All Time</span>
+                                        <span id="gameTimesList-text" class="btnText">All Time</span>
                                         <span class="caret"></span>
                                     </button>
                                     <ul id="gameTimesList" class="dropdown-menu">
-                                        <li><a href="#">All Time</a></li>
-                                        <li><a href="#">Last 7 days</a></li>
-                                        <li><a href="#">Last 14 days</a></li>
-                                        <li><a href="#">Last 30 days</a></li>
-                                        <li><a href="#">Last 60 days</a></li>
-                                        <li><a href="#">Last 90 days</a></li>
-                                        <li><a href="#">Last 6 months</a></li>
+                                        <li><a>All Time</a></li>
+                                        <li><a>Last 7 days</a></li>
+                                        <li><a>Last 14 days</a></li>
+                                        <li><a>Last 30 days</a></li>
+                                        <li><a>Last 60 days</a></li>
+                                        <li><a>Last 90 days</a></li>
+                                        <li><a>Last 6 months</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -392,7 +349,7 @@
                             <div class="col-lg-12">
                                 <!-- Bets -->
                                 <div class="table-responsive" style="padding-top:20px">
-                                    <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                    <table id="bets-table" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
                                                 <th class="text-center">Ticket type</th>
@@ -411,7 +368,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileBetViewModel bet in this.Model.DefaultProfile.Bets)
-                                            { 
+                                            {
                                                 <tr class="text-center">
                                                     <td>@bet.Type</td>
                                                     <td>@bet.Timestamp</td>
@@ -526,6 +483,9 @@
 </section>
 
 @section Scripts {
+    @Scripts.Render("~/Scripts/Dashboard/jquery.cycle2.js")
+    @Scripts.Render("~/Scripts/Dashboard/jquery.simplePagination.js")
+
     <script>
         function getBettingProfile(id) {
             alert('Get betting profile with id: ' + id);
@@ -535,8 +495,17 @@
                 dataType: 'html',
                 success: function (data) {
                     // Take a look that first tabs are active in Statistics and Charts
+
+                    // Activate selected profile
+                    
+                    //$('#betting-profiles a').removeClass('active');
+                    //$('#betting-profiles a[href*=' + id + ']').addClass('active');
                 }
             });
+
+            // Test - remove this and uncomment from success event of ajax request
+            $('#betting-profiles a').removeClass('active');
+            $('#betting-profiles a[href*=' + id + ']').addClass('active');
         }
 
         function deleteBettingProfile(id) {
@@ -546,7 +515,7 @@
                 url: '/Dashboard/BetsTracker/DeleteBettingProfile/' + id,
                 dataType: 'html',
                 success: function (data) {
-                    // Select default profile "All"
+                    // Select default profile "All" to get data and activate
                 }
             });
         }
@@ -573,6 +542,64 @@
 
         // Set tabs
         $('#analysisProfit a:first').tab('show');
+
+        // Betting profiles pagination
+        var pageParts = $("#betting-profiles a");
+        var numPages = pageParts.length;
+        var perPage = 4;
+        pageParts.slice(perPage).hide();
+        $('#betting-profiles-nav').pagination({
+            items: numPages,
+            itemsOnPage: perPage,
+            cssStyle: "light-theme",
+            onPageClick: function (pageNum) {
+                var start = perPage * (pageNum - 1);
+                var end = start + perPage;
+                pageParts.hide()
+                         .slice(start, end).show();
+            }
+        });
+
+        // Bets table
+        $.fn.dataTable.ext.search.push(
+            function (settings, searchData, index, rowData, counter) {
+                var gameSiteList = $('#gameSiteList-text').text();
+                var betTypesList = $('#betTypesList-text').text();
+                var betSizesList = $('#betSizesList-text').text();
+                var gameTimesList = $('#gameTimesList-text').text();
+
+                //var min = parseInt($('#min').val(), 10);
+                //var max = parseInt($('#max').val(), 10);
+                //var age = parseFloat(data[3]) || 0; // use data for the age column
+
+                //if ((isNaN(min) && isNaN(max)) ||
+                //        (isNaN(min) && age <= max) ||
+                //        (min <= age && isNaN(max)) ||
+                //        (min <= age && age <= max)) {
+                //    return true;
+                //}
+                return true;
+            }
+        );
+
+        var table = $('#bets-table').DataTable({
+            "paging": true,
+            "ordering": true,
+            "info": false,
+            "bLengthChange": false,
+            "sDom": "tp"
+        });
+
+        // Event listener to the two range filtering inputs to redraw on input
+        $('#gameSiteList a, #betTypesList a, #betSizesList a, #gameTimesList a').on('click', function () {
+            $('#' + $(this).parent().parent().attr('id') + '-text').text($(this).text());
+
+            table.draw();
+
+            $.fn.dataTable.ext.search.pop();
+
+            // Refresh Statistics and Charts with new set of data
+        });
 
     </script>
 }

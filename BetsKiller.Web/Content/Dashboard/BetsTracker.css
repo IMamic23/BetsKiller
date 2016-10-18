@@ -306,10 +306,15 @@ letter-spacing:1px;
 	font-size:12px;
 	color: rgba(0,0,0,0.8);
 }
-.score-opp, .score-at, .game-prog{float:right;}
-.game-prog{color:#f00000;
-           font-size:12px;
-           float:right;
+.score-opp, .score-at, .game-prog{
+    float:right;
+
 }
-.game-opp, .game-at{width:100%;
-color: black}
+.game-prog{
+    font-size:12px;
+    float:right;
+}
+.game-opp, .game-at{
+    width:100%;
+    color: black;
+}
