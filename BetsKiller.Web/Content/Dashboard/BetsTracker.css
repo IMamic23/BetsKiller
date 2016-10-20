@@ -98,7 +98,6 @@ letter-spacing:1px;
 	font-size: small;
 }
 .bottom_border{
-	content="";
 	left: 10%;
 	width: 80%;
 	position: absolute;
@@ -349,4 +348,12 @@ letter-spacing:1px;
 .info-box-content-smaller {
     padding: 3px 7px;
     margin-left: 50px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover {
+    color: white;
+    background-color: rgba(28,112,112,1);
+}
+.nav>li>a {
+    padding: 2px 2px;
 }
