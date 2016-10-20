@@ -488,7 +488,7 @@
                     <div class="box-footer">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <ul class="nav nav-tabs nav-justified customnav" id="statistics">
+                                <ul class="nav nav-tabs nav-justified betsKillerNav" id="statistics">
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
                                     {
                                         <li @(stat.ActiveTab ? "class=active" : string.Empty)>
@@ -527,7 +527,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <ul class="nav nav-tabs nav-justified customnav" id="charts">
+                                <ul class="nav nav-tabs nav-justified betsKillerNav" id="charts">
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
                                     {
                                         <li @(chart.ActiveTab ? "class=active" : string.Empty)>
@@ -543,6 +543,21 @@
                                         </div>
                                     }
                                 </div>
+                                      <div class="row">
+                                        <div class="col-md-8">
+                                              <div class="chart-responsive">
+                                                <canvas id="pieChart" height="150"></canvas>
+                                              </div><!-- ./chart-responsive -->
+                                            </div><!-- /.col -->
+                                            <div class="col-md-4">
+                                              <ul class="chart-legend clearfix">
+                                                <li><i class="fa fa-circle-o text-red"></i> Total</li>
+                                                <li><i class="fa fa-circle-o text-green"></i> Moneyline</li>
+                                                <li><i class="fa fa-circle-o text-yellow"></i> Handicap</li>
+                                                <li><i class="fa fa-circle-o text-aqua"></i> Parlay</li>
+                                              </ul>
+                                        </div><!-- /.col -->
+                                  </div><!-- /.row -->
                             </div>
                         </div>
                     </div>
