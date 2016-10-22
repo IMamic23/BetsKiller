@@ -30,7 +30,7 @@
     <div class="row">
 
         <!-- Game results -->
-        <section class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+        <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="box box-primary scores-mainbox animateWithDelayTop">
                 @*<div class="box-header scores-header with-border">
                     Game results
@@ -65,10 +65,10 @@
         </section>
 
         <!-- Overall stats -->
-        <section class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+        <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="box box-primary animateWithDelayTop">
                 <div class="box-header with-border">
-                    <ul class="nav nav-tabs nav-justified betsKillerNav" id="analysisProfit">
+                    <ul class="nav nav-tabs nav-justified betsKillerNav two-way-nav" id="analysisProfit">
                         @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerAnalysisProfitViewModel analyseProfit in this.Model.AnalysisProfit)
                         {
                             <li>
@@ -178,7 +178,7 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <div class="col-md-12 hidden-xs hidden-sm">
+                        <div class="col-md-12">
                             <div class="list-group bettingProfilesList" id="betting-profiles">
                                 @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerBettingProfileViewModel bettingProfile in this.Model.BettingProfiles)
                                 {
@@ -190,21 +190,9 @@
                                 }
                             </div>
                             <div id="betting-profiles-nav"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 col-offset-2 visible-xs visible-sm">
-                                <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <select class="form-control" onchange="javascript: getBettingProfile(this.value)" tabindex="-1">
-                                        @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerBettingProfileViewModel bettingProfile in this.Model.BettingProfiles)
-                                        {
-                                            <option value="@bettingProfile.Id">@bettingProfile.Label</option>
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </div><!--col-->
+                    </div><!--box-body-->
+                </div><!--box-->
             </section>
 
             <!-- Performance -->
@@ -267,16 +255,16 @@
                                <a href="javascript:deleteBettingProfile('0')" class="btn btn-danger btn-sm btn-delete-profile btn-profile"><i class="fa fa-trash" aria-hidden="true"></i><span>Delete profile</span></a>
                                <a href="" class="btn btn-success btn-sm btn-to-excel btn-profile"><i class="fa fa-file-excel-o" aria-hidden="true"></i><span>Export to Excel</span></a>
                             </div>
-                              <div class="btn-group visible-xs bets-tracker-actions">
-                              <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-wrench"></i>Actions<span class="fa fa-caret-down"></span></button>
+                             <div class="btn-group visible-xs bets-tracker-actions">
+                              <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bars"></i><span class="fa fa-caret-down"></span></button>
                                   <ul class="dropdown-menu" role="menu">
                                         <li><a href="#">New Profile</a></li>
                                         <li><a href="#">Delete Profile</a></li>
                                         <li><a href="#">Export to Excel</a></li>
                                         <li><a href="#">New bet-Single</a></li>
-                                       <li><a href="#">New bet-Parlay</a></li>
+                                        <li><a href="#">New bet-Parlay</a></li>
                                   </ul>
-                           </div>
+                             </div>
                         </div>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
@@ -487,8 +475,8 @@
                     </div>
                     <div class="box-footer">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <ul class="nav nav-tabs nav-justified betsKillerNav" id="statistics">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <ul class="nav nav-tabs nav-justified betsKillerNav three-way-nav" id="statistics">
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
                                     {
                                         <li @(stat.ActiveTab ? "class=active" : string.Empty)>
@@ -526,8 +514,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <ul class="nav nav-tabs nav-justified betsKillerNav" id="charts">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <ul class="nav nav-tabs nav-justified betsKillerNav four-way-nav" id="charts">
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
                                     {
                                         <li @(chart.ActiveTab ? "class=active" : string.Empty)>
@@ -544,12 +532,12 @@
                                     }
                                 </div>
                                       <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 col-sm-8 col-xs-8">
                                               <div class="chart-responsive">
                                                 <canvas id="pieChart" height="150"></canvas>
                                               </div><!-- ./chart-responsive -->
                                             </div><!-- /.col -->
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 col-sm-4 col-xs-4">
                                               <ul class="chart-legend clearfix">
                                                 <li><i class="fa fa-circle-o text-red"></i> Total</li>
                                                 <li><i class="fa fa-circle-o text-green"></i> Moneyline</li>

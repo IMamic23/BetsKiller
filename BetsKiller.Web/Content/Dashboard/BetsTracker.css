@@ -294,7 +294,7 @@ letter-spacing:1px;
     min-width: 110px !important;
 }
 .bets-tracker-actions span{
-    margin-left:5px;
+    margin-left:0px;
 }
 .box .overlay{
     position: absolute;
@@ -448,4 +448,99 @@ letter-spacing:1px;
 .info-box:hover i{
     transform: scale(1.2);
     transition: all 400ms ease;
+}
+
+.bettingProfilesList_small{
+    display:block;
+    width:100%;
+}
+
+.select-profile-small i{
+    float: left;
+    margin-left: 10px;
+}
+.select-profile-small span{
+    float:right;
+    margin-right:10px;
+}
+.select-profile-small > .dropdown-menu{
+    transform: translateY(50px);
+    min-width: 150px !important;
+}
+.nav-tabs>li>a {
+    border-radius: 4px 4px 0 0 !important;
+}
+
+@media screen and (max-width: 990px) {
+    .customBtn01 {
+        width:120px;
+        margin: 4px 3px;
+        padding: 4px;
+    }
+    .customBtn01 i{
+        margin: 0 3px;
+        font-size:large;
+    }
+    .btnText{
+        font-size: 13px;
+    }
+    .buttonLabel{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 768px){
+    .info-box-text{
+    width: 50%;
+    }
+    .nav-tabs.nav-justified>li {
+    float: left;
+}
+    .two-way-nav.nav > li{
+        width:50%;
+    }
+    .three-way-nav.nav > li{
+        width:33%;
+    }
+    .four-way-nav.nav >li{
+        width:25%;
+    }
+    .customBtn01 {
+        width:110px;
+        margin: 4px 2px;
+        padding: 2px;
+    }
+    .customBtn01 i{
+        margin: 0 2px;
+        font-size:medium;
+    }
+    .btnText{
+        font-size: 12px;
+    }
+    .buttonLabel{
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 520px) {
+    .betsKillerNav.nav > li > a > h5{
+        font-size: 12px;
+    }
+     .chart-legend > li{
+        font-size: 12px;
+        margin: 0;
+    }
+     .main-box{
+         width: 120px;
+     }
+     .game-opp, .game-at{
+         font-size:12px;
+     }
+}
+@media screen and (max-width: 400px) {
+    .betsKillerNav.nav > li > a > h5{
+       font-size: 10px;
+    }
+    .chart-legend > li{
+       font-size: 10px;
+       margin: 0;
+    }
 }
