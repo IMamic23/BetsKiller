@@ -104,6 +104,26 @@ namespace BetsKiller.Web.Controllers
             return View(getData.BetsTrackerViewModel);
         }
 
+        [HttpPost]
+        //[Authorize]
+        public JsonResult BetsTrackerGetProfile(string id)
+        {
+            BL.Dashboard.BetsTracker.GetProfile getProfile = new BL.Dashboard.BetsTracker.GetProfile(id);
+            getProfile.Start();
+
+            return Json(getProfile);
+        }
+
+        [HttpPost]
+        //[Authorize]
+        public JsonResult BetsTrackerDeleteProfile(string id)
+        {
+            BL.Dashboard.BetsTracker.DeleteProfile deleteProfile = new BL.Dashboard.BetsTracker.DeleteProfile(id);
+            deleteProfile.Start();
+
+            return Json(deleteProfile);
+        }
+
         #endregion
 
         #region TeamsStats

@@ -13,5 +13,7 @@ namespace BetsKiller.ViewModel.Dashboard.BetsTracker
         public List<BetsTrackerProfileStatisticViewModel> Statistics { get; set; }
 
         public List<BetsTrackerProfileChartViewModel> Charts { get; set; }
+
+        public List<string> InfoBoxesValues { get; set; }
     }
 }

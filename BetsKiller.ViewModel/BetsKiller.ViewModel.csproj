@@ -54,6 +54,7 @@
     <Compile Include="Dashboard\BetsTracker\BetsTrackerProfileBetViewModel.cs" />
     <Compile Include="Dashboard\BetsTracker\BetsTrackerPerformanceViewModel.cs" />
     <Compile Include="Dashboard\BetsTracker\BetsTrackerProfileChartViewModel.cs" />
+    <Compile Include="Dashboard\BetsTracker\BetsTrackerProfileStatisticElementViewModel.cs" />
     <Compile Include="Dashboard\BetsTracker\BetsTrackerProfileStatisticViewModel.cs" />
     <Compile Include="Dashboard\BetsTracker\BetsTrackerViewModel.cs" />
     <Compile Include="Dashboard\Index\AnalyseTypeViewModel.cs" />

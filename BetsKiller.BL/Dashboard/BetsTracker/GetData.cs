@@ -195,7 +195,8 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
                     ActiveTab = true,
                     Id = "0",
                     Label = "All",
-                    OpenBets = "8"
+                    OpenBets = "8",
+                    LastBetsStatus = "-1,0,1,1,0,0,-1,1,0,1"
                 },
                 new BetsTrackerBettingProfileViewModel()
                 {
@@ -203,27 +204,31 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
                     Id = "1",
                     Label = "16.10.2016.",
                     OpenBets = "5",
+                    LastBetsStatus = "-1,0,1,1,0,0,-1,1,0,1"
                 },
                 new BetsTrackerBettingProfileViewModel()
                 {
                     ActiveTab = false,
                     Id = "2",
                     Label = "15.10.2016.",
-                    OpenBets = "3"
+                    OpenBets = "3",
+                    LastBetsStatus = "-1,0,1,1,0,0,-1,1,0,1"
                 },
                 new BetsTrackerBettingProfileViewModel()
                 {
                     ActiveTab = false,
                     Id = "3",
                     Label = "14.10.2016.",
-                    OpenBets = null
+                    OpenBets = null,
+                    LastBetsStatus = "-1,0,1,1,0,0,-1,1,0,1"
                 },
                 new BetsTrackerBettingProfileViewModel()
                 {
                     ActiveTab = true,
                     Id = "4",
                     Label = "13.10.2016.",
-                    OpenBets = "8"
+                    OpenBets = "8",
+                    LastBetsStatus = "-1,0,1,1,0,0,-1,1,0,1"
                 },
                 new BetsTrackerBettingProfileViewModel()
                 {
@@ -231,20 +236,23 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
                     Id = "5",
                     Label = "12.10.2016.",
                     OpenBets = "5",
+                    LastBetsStatus = "-1,0,1,1,0,0,-1,1,0,1"
                 },
                 new BetsTrackerBettingProfileViewModel()
                 {
                     ActiveTab = false,
                     Id = "6",
                     Label = "11.10.2016.",
-                    OpenBets = "3"
+                    OpenBets = "3",
+                    LastBetsStatus = "-1,0,1,1,0,0,-1,1,0,1"
                 },
                 new BetsTrackerBettingProfileViewModel()
                 {
                     ActiveTab = false,
                     Id = "7",
                     Label = "10.10.2016.",
-                    OpenBets = null
+                    OpenBets = null,
+                    LastBetsStatus = "-1,0,1,1,0,0,-1,1,0,1"
                 }
             };
         }
@@ -432,6 +440,17 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
                 }
             };
 
+            // Get info boxes values
+            this.BetsTrackerViewModel.DefaultProfile.InfoBoxesValues = new List<string>()
+            {
+                "88",
+                "88",
+                "88",
+                "88",
+                "88",
+                "88"
+            };
+
             // Get statistics
             this.BetsTrackerViewModel.DefaultProfile.Statistics = new List<BetsTrackerProfileStatisticViewModel>()
             {
@@ -440,33 +459,51 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
                     ActiveTab = true,
                     Name = "daily",
                     Label = "Daily",
-                    Date = "16/10/2016",
-                    Wins = "1",
-                    Losses = "1",
-                    Invested = "1",
-                    Profit = "1"
+                    Data = new List<BetsTrackerProfileStatisticElementViewModel>()
+                    {
+                        new BetsTrackerProfileStatisticElementViewModel()
+                        {
+                            Date = "1/1/1",
+                            Wins = "1",
+                            Losses = "1",
+                            Invested = "1",
+                            Profit = "1"
+                        }
+                    }
                 },
                 new BetsTrackerProfileStatisticViewModel()
                 {
                     ActiveTab = false,
                     Name = "weekly",
                     Label = "Weekly",
-                    Date = "15/10/2016",
-                    Wins = "2",
-                    Losses = "2",
-                    Invested = "2",
-                    Profit = "2"
+                    Data = new List<BetsTrackerProfileStatisticElementViewModel>()
+                    {
+                        new BetsTrackerProfileStatisticElementViewModel()
+                        {
+                            Date = "2/2/2",
+                            Wins = "2",
+                            Losses = "2",
+                            Invested = "2",
+                            Profit = "2"
+                        }
+                    }
                 },
                 new BetsTrackerProfileStatisticViewModel()
                 {
                     ActiveTab = false,
                     Name = "monthly",
                     Label = "Monthly",
-                    Date = "14/10/2016",
-                    Wins = "3",
-                    Losses = "3",
-                    Invested = "3",
-                    Profit = "3"
+                    Data = new List<BetsTrackerProfileStatisticElementViewModel>()
+                    {
+                        new BetsTrackerProfileStatisticElementViewModel()
+                        {
+                            Date = "3/3/3",
+                            Wins = "3",
+                            Losses = "3",
+                            Invested = "3",
+                            Profit = "3"
+                        }
+                    }
                 }
             };
 
@@ -475,31 +512,43 @@ namespace BetsKiller.BL.Dashboard.BetsTracker
             {
                 new BetsTrackerProfileChartViewModel()
                 {
-                    ActiveTab = true,
+                    ActiveTab = false,
                     Name = "overview",
                     Label = "Overview",
-                    Value = "Overview chart"
+                    TotalValue = "20",
+                    MoneylineValue = "30",
+                    Handicap = "10",
+                    Parlay = "40"
                 },
                 new BetsTrackerProfileChartViewModel()
                 {
                     ActiveTab = false,
                     Name = "chart_last_30_days",
                     Label = "Last 30 days",
-                    Value = "Last 30 days chart"
+                    TotalValue = "25",
+                    MoneylineValue = "25",
+                    Handicap = "30",
+                    Parlay = "20"
                 },
                 new BetsTrackerProfileChartViewModel()
                 {
                     ActiveTab = false,
                     Name = "bet_type",
                     Label = "Bet-type",
-                    Value = "Bet-type chart"
+                    TotalValue = "34",
+                    MoneylineValue = "16",
+                    Handicap = "24",
+                    Parlay = "26"
                 },
                 new BetsTrackerProfileChartViewModel()
                 {
                     ActiveTab = false,
                     Name = "sport",
                     Label = "Sport",
-                    Value = "Sport chart"
+                    TotalValue = "17",
+                    MoneylineValue = "33",
+                    Handicap = "8",
+                    Parlay = "42"
                 }
             };
         }

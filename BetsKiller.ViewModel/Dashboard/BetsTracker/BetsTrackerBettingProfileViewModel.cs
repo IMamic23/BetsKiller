@@ -15,5 +15,7 @@ namespace BetsKiller.ViewModel.Dashboard.BetsTracker
         public string Label { get; set; }
 
         public string OpenBets { get; set; }
+
+        public string LastBetsStatus { get; set; }
     }
 }

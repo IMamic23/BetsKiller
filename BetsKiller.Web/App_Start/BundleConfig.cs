@@ -54,6 +54,13 @@ namespace BetsKiller.Web
                         "~/Scripts/preloader.js"
                         ));
 
+            bundles.Add(new ScriptBundle("~/bundles/dashboard-betstracker").Include(
+                        "~/Scripts/Dashboard/jquery.cycle2.js",
+                        "~/Scripts/Dashboard/jquery.simplePagination.js",
+                        "~/Scripts/Dashboard/jquery.sparkline.min.js",
+                        "~/Scripts/Dashboard/Chart.js"
+                        ));
+
             #endregion
 
             #region Styles

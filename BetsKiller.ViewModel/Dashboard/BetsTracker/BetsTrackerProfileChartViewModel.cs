@@ -14,6 +14,9 @@ namespace BetsKiller.ViewModel.Dashboard.BetsTracker
 
         public string Label { get; set; }
 
-        public string Value { get; set; }
+        public string TotalValue { get; set; }
+        public string MoneylineValue { get; set; }
+        public string Handicap { get; set; }
+        public string Parlay { get; set; }
     }
 }
