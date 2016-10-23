@@ -14,14 +14,6 @@ namespace BetsKiller.ViewModel.Dashboard.BetsTracker
 
         public string Label { get; set; }
 
-        public string Date { get; set; }
-
-        public string Wins { get; set; }
-
-        public string Losses { get; set; }
-
-        public string Invested { get; set; }
-
-        public string Profit { get; set; }
+        public List<BetsTrackerProfileStatisticElementViewModel> Data { get; set; }
     }
 }
