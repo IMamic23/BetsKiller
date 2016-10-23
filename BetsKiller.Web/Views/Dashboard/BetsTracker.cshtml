@@ -238,32 +238,32 @@
                 <div class="box box-primary tracker-box animateWithDelayRight">
                     <div class="box-header with-border">
                         <h3 class="box-title">PROFILE NAME<small>  Bets History</small></h3>
-                         <!-- Create/Delete profile-->
+                        <!-- Create/Delete profile-->
                         <div class="profile-actions pull-right">
                             <div class="btn-group hidden-xs">
                                 <div class="newBetBtn">
-                                          <button type="button" class="btn btn-default btn-sm bg-purple dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>New Bet <span class="fa fa-caret-down"></span></button>
-                                              <ul class="dropdown-menu">
+                                    <button type="button" class="btn btn-default btn-sm bg-purple dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>New Bet <span class="fa fa-caret-down"></span></button>
+                                    <ul class="dropdown-menu">
                                         <li><a href="javascript:createSingle()">Single</a></li>
                                         <li><a href="javascript:createParlay()">Parlay</a></li>
-                                              </ul>
-                                  </div>
+                                    </ul>
+                                </div>
                                 <a href="" class="btn btn-warning btn-sm btn-reset-filter btn-profile"><i class="fa fa-refresh" aria-hidden="true"></i><span>Reset Filters</span></a>
                                 <a href="javascript:createNewProfile('0')" class="btn btn-primary btn-sm btn-new-profile btn-profile"><i class="fa fa-plus" aria-hidden="true"></i><span>New profile</span></a>
                                 <a href="javascript:deleteBettingProfile('0')" class="btn btn-danger btn-sm btn-delete-profile btn-profile hidden"><i class="fa fa-trash" aria-hidden="true"></i><span>Delete profile</span></a>
                                 <a href="javascript:exportBettingProfile('0')" class="btn btn-success btn-sm btn-to-excel btn-profile"><i class="fa fa-file-excel-o" aria-hidden="true"></i><span>Export to Excel</span></a>
                             </div>
-                             <div class="btn-group visible-xs bets-tracker-actions">
-                              <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bars"></i><span class="fa fa-caret-down"></span></button>
-                                  <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">New bet-Single</a></li>
-                                        <li><a href="#">New bet-Parlay</a></li>
-                                        <li><a href="#">Reset Filters</a></li>
-                                        <li><a href="#">New Profile</a></li>
-                                        <li><a href="#">Delete Profile</a></li>
-                                        <li><a href="#">Export to Excel</a></li>
-                                  </ul>
-                             </div>
+                            <div class="btn-group visible-xs bets-tracker-actions">
+                                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bars"></i><span class="fa fa-caret-down"></span></button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">New bet-Single</a></li>
+                                    <li><a href="#">New bet-Parlay</a></li>
+                                    <li><a href="#">Reset Filters</a></li>
+                                    <li><a href="#">New Profile</a></li>
+                                    <li><a href="#">Delete Profile</a></li>
+                                    <li><a href="#">Export to Excel</a></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
@@ -462,13 +462,13 @@
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
                                     {
                                         <li @(stat.ActiveTab ? "class=active" : string.Empty)>
-                                        <a href="#@stat.Name-stat" data-toggle="tab"><h5><strong>@stat.Label</strong></h5></a>
+                                            <a href="#@stat.Name-stat" data-toggle="tab"><h5><strong>@stat.Label</strong></h5></a>
                                         </li>
                                     }
                                 </ul>
-                                    <div class="tab-content">
-                                        @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
-                                        {
+                                <div class="tab-content">
+                                    @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
+                                    {
                                         <div role="tabpanel" class="tab-pane @(stat.ActiveTab ? "active" : string.Empty)" id="@stat.Name-stat">
                                             <div class="table-responsive">
                                                 <table class="table table-striped" style="text-align:center">
@@ -484,81 +484,78 @@
                                                     <tbody>
                                                         @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticElementViewModel statElem in stat.Data)
                                                         {
-                                                        <tr class="text-center">
+                                                            <tr class="text-center">
                                                                 <td>@statElem.Date</td>
                                                                 <td>@statElem.Wins</td>
                                                                 <td>@statElem.Losses</td>
                                                                 <td>@statElem.Invested</td>
                                                                 <td>@statElem.Profit</td>
-                                                        </tr>
+                                                            </tr>
                                                         }
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
-                                        }
+                                    }
+                                </div>
+                            </div>
+                            <!-- Charts -->
+                            <div class="row">
+                                <div class="table-responsive sparkline-box">
+                                    <span>Profit:</span>
+                                    <div class="sparkline"
+                                         data-type="line"
+                                         data-spot-radius="3"
+                                         data-highlight-spot-color="#f39c12"
+                                         data-highlight-line-color="#222"
+                                         data-min-spot-color="#f56954"
+                                         data-max-spot-color="#00a65a"
+                                         data-spot-color="#39CCCC"
+                                         data-offset="90"
+                                         data-width="100%"
+                                         data-height="100px"
+                                         data-line-width="2"
+                                         data-line-color="#39CCCC"
+                                         data-fill-color="rgba(57, 204, 204, 0.08)">
+                                        6,4,7,8,4,3,-2,2,5,6,7,4,-1,-5,2,4,9,8,7,6
                                     </div>
                                 </div>
-                            <!-- Charts -->
-                                    <div class="row">
-                                       <div class="table-responsive sparkline-box">
-                                                 <span>Profit:</span>
-                                                          <div class="sparkline" 
-				                                                  data-type="line" 
-				                                                  data-spot-Radius="3" 
-				                                                  data-highlight-Spot-Color="#f39c12" 
-				                                                  data-highlight-Line-Color="#222" 
-				                                                  data-min-Spot-Color="#f56954" 
-				                                                  data-max-Spot-Color="#00a65a" 
-				                                                  data-spot-Color="#39CCCC" 
-				                                                  data-offset="90" 
-				                                                  data-width="100%" 
-				                                                  data-height="100px" 
-				                                                  data-line-Width="2" 
-				                                                  data-line-Color="#39CCCC" 
-				                                                  data-fill-Color="rgba(57, 204, 204, 0.08)">
-                                                                    6,4,7,8,4,3,-2,2,5,6,7,4,-1,-5,2,4,9,8,7,6
-                                                          </div>
-                                     </div>
-                                  </div>
                             </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <ul class="nav nav-tabs nav-justified betsKillerNav four-way-nav" id="charts">
-                                    @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
-                                    {
-                                        <li @(chart.ActiveTab ? "class=active" : string.Empty)>
-                                            <a href="#@chart.Name" data-toggle="tab"><h5><strong>@chart.Label</strong></h5></a>
-                                        </li>
-                                    }
-                                </ul>
-                                <div class="tab-content">
-                                    @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
-                                    {
-                                        <div role="tabpanel" class="tab-pane @(chart.ActiveTab ? "active" : string.Empty)" id="@chart.Name">
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <ul class="nav nav-tabs nav-justified betsKillerNav four-way-nav" id="charts">
+                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
+                                {
+                                    <li @(chart.ActiveTab ? "class=active" : string.Empty)>
+                                        <a href="#@chart.Name" data-toggle="tab"><h5><strong>@chart.Label</strong></h5></a>
+                                    </li>
+                                }
+                            </ul>
+                            <div class="tab-content">
+                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
+                                {
+                                    <div role="tabpanel" class="tab-pane @(chart.ActiveTab ? "active" : string.Empty)" id="@chart.Name">
                                         <div class="col-md-8 col-sm-8 col-xs-8">
-                                                <canvas id="@chart.Name-chart" height="150"></canvas>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                              <ul class="chart-legend clearfix">
+                                            <canvas id="@chart.Name-chart" height="150"></canvas>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-4">
+                                            <ul class="chart-legend clearfix">
                                                 <li><i class="fa fa-circle-o text-red"></i> Total</li>
                                                 <li><i class="fa fa-circle-o text-green"></i> Moneyline</li>
                                                 <li><i class="fa fa-circle-o text-yellow"></i> Handicap</li>
                                                 <li><i class="fa fa-circle-o text-aqua"></i> Parlay</li>
-                                              </ul>
+                                            </ul>
                                         </div>
-                                          <div class="col-md-12 col-xs-12">
-                                              <ul class="nav nav-pills nav-stacked visible-xs">
+                                        <div class="col-md-12 col-xs-12">
+                                            <ul class="nav nav-pills nav-stacked visible-xs">
                                                 <li class="margin-l-r-10">Total</li>
                                                 <li class="margin-l-r-10">Moneyline</li>
                                                 <li class="margin-l-r-10">Handicap</li>
                                                 <li class="margin-l-r-10">Parlay</li>
-                                              </ul>
-                                          </div>
-                                      </div>
-                                            </div>
+                                            </ul>
                                         </div>
-                                    }
-                                </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -568,29 +565,28 @@
         </section>
 
     </div>
-
 </section>
-                                        <!-- MODAL WINDOWS-->
-                                               <div class="delete-profile">
-                                                <div id="modal-delete-profile" class="modal fade" role="dialog">
-                                                  <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                      <div class="modal-header">
-                                                        <button type="button" class="close" style="color:white; opacity:.8;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title">Delete Profile</h4>
-                                                      </div>
-                                                      <div class="modal-body text-center">
-                                                        <p>Are you sure you want to delete this profile?</p>
-                                                          <span class="label label-warning">If you delete it, You will lose all bets history and profits from this profile.</span>
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-danger">Confirm</button>
-                                                      </div>
-                                                    </div><!-- /.modal-content -->
-                                                  </div><!-- /.modal-dialog -->
-                                                </div><!-- /.modal -->
-                                              </div><!-- /.delete-profile-modal -->
+<!-- MODAL WINDOWS-->
+<div class="delete-profile">
+    <div id="modal-delete-profile" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" style="color:white; opacity:.8;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Delete Profile</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Are you sure you want to delete this profile?</p>
+                    <span class="label label-warning">If you delete it, You will lose all bets history and profits from this profile.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/dashboard-betstracker")
 
@@ -607,16 +603,16 @@
                         // If default profile, hide delete profile button
                         if (id == 0) {
                             $('.btn-delete-profile').addClass('hidden');
-                }
+                        }
                         else {
                             $('.btn-delete-profile').removeClass('hidden');
                         }
 
                         // Activate selected betting profile
-            $('#betting-profiles a').removeClass('active');
-            $('#betting-profiles a[href*=' + id + ']').addClass('active');
+                        $('#betting-profiles a').removeClass('active');
+                        $('#betting-profiles a[href*=' + id + ']').addClass('active');
 
-            // Reset filters
+                        // Reset filters
                         $.each($('[id$="-text"]'), function (index, value) {
                             var elementName = $(value).attr('id').split('-text')[0];
                             $(value).text($('#' + elementName + ' li')[0].innerText);
@@ -632,7 +628,7 @@
                         });
 
                         // Update profile bets
-            table.clear();
+                        table.clear();
                         $.each(data.BetsTrackerBettingProfileDataViewModel.Bets, function (index, value) {
                             table.row.add([
                                 value.Type,
@@ -649,7 +645,7 @@
                                 value.Id
                             ])
                         });
-            table.draw();
+                        table.draw();
 
                         // Update profile statistics
                         $.each(statTables, function (index, value) {
@@ -795,13 +791,13 @@
         @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
         {
             <text>
-            statTables.push($('#@stat.Name-stat table').DataTable({
-                "paging": true,
-                "ordering": true,
-                "searching": false,
-                "info": true
-            }));
-            </text>
+        statTables.push($('#@stat.Name-stat table').DataTable({
+            "paging": true,
+            "ordering": true,
+            "searching": false,
+            "info": true
+        }));
+        </text>
         }
 
         // TODO for premium
@@ -824,13 +820,13 @@
                 easing: "easeOutBounce",
                 animateRotate: true,
                 animateScale: false
-    },
-    responsive: true,
-    maintainAspectRatio: false,
+            },
+            responsive: true,
+            maintainAspectRatio: false,
             legend: {
                 display: false
             }
-  };
+        };
         var chartData = [];
         @for (int i = 0; i < this.Model.DefaultProfile.Charts.Count; i++)
         {
@@ -874,7 +870,7 @@
         }
         $.each($('a[href$="-chart"]'), function (index, value) {
             $(value).tab('show');
-   });
+        });
         $('a[href=#@this.Model.DefaultProfile.Charts.First().Name]').tab('show');
 
     </script>
