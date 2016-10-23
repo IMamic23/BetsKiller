@@ -499,29 +499,7 @@
                                     }
                                 </div>
                             </div>
-                            <!-- Charts -->
-                            <div class="row">
-                                <div class="table-responsive sparkline-box">
-                                    <span>Profit:</span>
-                                    <div class="sparkline"
-                                         data-type="line"
-                                         data-spot-radius="3"
-                                         data-highlight-spot-color="#f39c12"
-                                         data-highlight-line-color="#222"
-                                         data-min-spot-color="#f56954"
-                                         data-max-spot-color="#00a65a"
-                                         data-spot-color="#39CCCC"
-                                         data-offset="90"
-                                         data-width="100%"
-                                         data-height="100px"
-                                         data-line-width="2"
-                                         data-line-color="#39CCCC"
-                                         data-fill-color="rgba(57, 204, 204, 0.08)">
-                                        6,4,7,8,4,3,-2,2,5,6,7,4,-1,-5,2,4,9,8,7,6
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Charts -->
                         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <ul class="nav nav-tabs nav-justified betsKillerNav four-way-nav" id="charts">
                                 @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
@@ -558,8 +536,9 @@
                                 }
                             </div>
                         </div>
-                    </div>
-                </div>
+                      </div> <!--row-->
+                    </div> <!--box-footer-->
+                </div> <!--box-->
             </section>
 
         </section>
