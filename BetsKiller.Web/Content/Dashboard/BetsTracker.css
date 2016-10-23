@@ -82,11 +82,11 @@ letter-spacing:1px;
 		font-size: larger;
 }
 
-.customBtn01 .caret {
+.customBtn01 .caret_down{
         float:right;
         color: rgba(0,0,0,0.8);
         margin-right:4px;
-        margin-top:6px;
+        margin-top:2px;
 }
 
 .buttonLabel{
@@ -104,7 +104,6 @@ letter-spacing:1px;
 	border-bottom:1px solid rgba(0,0,0,0.2);
     top:23px;
 	}
-
 
 .badge{
   font-size: 14px;
@@ -315,7 +314,10 @@ letter-spacing:1px;
 .scores-mainbox{
      background:#f5f5f5;
      padding: 0px 5px 0 5px;
-     border-top:3px solid rgba(164, 25, 25, 0.85) !important;
+     border-top:3px solid rgba(0,0,0,0.8) !important;
+}
+.tracker-box{
+     border-top:3px solid #008d4c !important;
 }
 
 .score-box{
@@ -399,6 +401,21 @@ letter-spacing:1px;
 .list-group-item>.badge {
     background-color: #b53333;
 }
+.margin-l-r-10{
+    margin: 0 10px !important;
+}
+.sparkline-box{
+    width:95%;
+    margin-left:2.5%;
+    border:1px solid rgba(0,0,0,0.2);
+    padding:5px 0 0 0;
+}
+.sparkline-box span{
+    margin-left: 10px;
+}
+.mainStats > ul.nav-tabs{
+    width:30%;
+}
 /* PROFILE BUTTONS*/
 .btn-profile{
     width: 35px;
@@ -410,6 +427,9 @@ letter-spacing:1px;
 .btn-profile span{
     display: none;
 }
+.btn-reset-filter span{
+    display: none;
+}
 .btn-profile i{
     padding: 0;
 }
@@ -418,7 +438,7 @@ letter-spacing:1px;
     transition: all 600ms ease-in;
     transition-delay: 150ms;
 }
-.btn-new-profile:hover span, .btn-delete-profile:hover span,.btn-to-excel:hover span{
+.btn-new-profile:hover span, .btn-delete-profile:hover span,.btn-to-excel:hover span,.btn-reset-filter:hover span{
     display:inline-block;
     visibility: hidden;
     padding: 0 5px 0 10px;
@@ -470,8 +490,13 @@ letter-spacing:1px;
 .nav-tabs>li>a {
     border-radius: 4px 4px 0 0 !important;
 }
-
+.chart-legend>li{
+    float:none;
+}
 @media screen and (max-width: 990px) {
+    .mainStats > ul.nav-tabs{
+    width:100%;
+     }
     .customBtn01 {
         width:120px;
         margin: 4px 3px;
@@ -486,6 +511,12 @@ letter-spacing:1px;
     }
     .buttonLabel{
         font-size: 12px;
+    }
+     .dropdown .dropdown-menu{
+        min-width:130px;
+    }
+    .dropdown-menu>li>a {
+        font-size:13px;
     }
 }
 @media screen and (max-width: 768px){
@@ -513,6 +544,12 @@ letter-spacing:1px;
         margin: 0 2px;
         font-size:medium;
     }
+    .dropdown .dropdown-menu{
+        min-width:115px;
+    }
+    .dropdown-menu>li>a {
+        font-size:12px;
+    }
     .btnText{
         font-size: 12px;
     }
@@ -534,6 +571,11 @@ letter-spacing:1px;
      .game-opp, .game-at{
          font-size:12px;
      }
+}
+@media screen and (max-width: 480px) {
+    .marginleft15_xs{
+        margin-left: 15px;
+    }
 }
 @media screen and (max-width: 400px) {
     .betsKillerNav.nav > li > a > h5{
