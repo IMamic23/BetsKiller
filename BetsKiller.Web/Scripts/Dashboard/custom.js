@@ -39,6 +39,12 @@
             }
         });
                });
+
+        	$(document).ready(function(){
+						$('.usertoggle').hover(function() {
+							$('.navclass_user').addClass('showIt').addClass('animated fadeInDown');
+						})
+				    }); 	
     
     	/* ----------------------------------------------------------- */
 	/*  SOCIAL MENU NAV OPEN  
