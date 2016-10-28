@@ -51,23 +51,21 @@
 
     <!-- BEGAIN PRELOADER -->
     <div id="preloader">
-         <div class="spinner">
-              <span class="ball-1"></span>
-              <span class="ball-2"></span>
-              <span class="ball-3"></span>
-              <span class="ball-4"></span>
-              <span class="ball-5"></span>
-              <span class="ball-6"></span>
-              <span class="ball-7"></span>
-              <span class="ball-8"></span>
+        <div class="spinner">
+            <span class="ball-1"></span>
+            <span class="ball-2"></span>
+            <span class="ball-3"></span>
+            <span class="ball-4"></span>
+            <span class="ball-5"></span>
+            <span class="ball-6"></span>
+            <span class="ball-7"></span>
+            <span class="ball-8"></span>
         </div>
     </div>
     <!-- END PRELOADER -->
-
     <!-- START SCROLL BUTTONS -->
     <a href="#" id="scrollTop" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
     <!-- END SCROLL BUTTONS -->
-
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Header -->
@@ -91,16 +89,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                 <span class="menu-trigger">Social Links<i class="fa fa-arrow-down"></i></span>
+                <span class="menu-trigger">Social Links<i class="fa fa-arrow-down"></i></span>
                 <div id="socialnav" class="badge badge_custom  animated slideInDown">
                     <nav class="navclass" id="navigation">
-                       <ul>
-                          <li><div class="fb-like" data-href="https://www.facebook.com/BetsKillerAnalysis" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></li>
-                          <li><a href="http://facebook.com/BetsKillerAnalysis" target="_blank" class="icon-button facebook"><i class="fa fa-facebook icon-facebook"></i><span></span></a></li>
-                          <li><a href="http://twitter.com/betskiller" target="_blank" class="icon-button twitter"><i class="fa fa-twitter icon-twitter"></i><span></span></a></li>
-                          <li><a href="http://www.instagram.com/betskiller" target="_blank" class="icon-button instagram"><i class="fa fa-instagram icon-instagram"></i><span></span></a></li>
-                     </ul>
-                     </nav>                  
+                        <ul>
+                            <li><div class="fb-like" data-href="https://www.facebook.com/BetsKillerAnalysis" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></li>
+                            <li>
+                                <a href="http://facebook.com/BetsKillerAnalysis" target="_blank" class="icon-button facebook"><i class="fa fa-facebook icon-facebook"></i><span></span></a>
+                                <a href="http://twitter.com/betskiller" target="_blank" class="icon-button twitter"><i class="fa fa-twitter icon-twitter"></i><span></span></a>
+                                <a href="http://www.instagram.com/betskiller" target="_blank" class="icon-button instagram"><i class="fa fa-instagram icon-instagram"></i><span></span></a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
 
                 <div class="navbar-custom-menu">
@@ -258,6 +258,28 @@
                         </a>
                     </li>
                 </ul>
+                <script src="//blockr.io/js_external/coinwidget/coin.js"></script>
+                <script>
+                    CoinWidgetCom.go({
+                        wallet_address: '18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW',
+                        currency: 'bitcoin',
+                        counter: 'count',
+                        lbl_button: 'Donate',
+                        lbl_count: 'donations',
+                        lbl_amount: 'BTC',
+                        lbl_address: 'Use address below to donate. Thanks!',
+                        qrcode: true,
+                        alignment: 'bl',
+                        decimals: 8,
+                        size: "big",
+                        color: "dark",
+                        countdownFrom: "0",
+                        element: "#coinwidget-bitcoin-18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW",
+                        onShow: function () { },
+                        onHide: function () { }
+                    });
+                </script>
+                <div id="coinwidget-bitcoin-18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW" style="margin-left:10px;"></div>
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -339,6 +361,30 @@
             </div>
         </div>
 
+        <!--Modal Donate-->
+        <div class="modal fade" id="donateModal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#006dcc">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" style="color:white">Donate</h4>
+                    </div>
+                    <div class="modal-body">
+                            <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> Donate Wallet address</label>
+                               <div class="input-group">
+                                    <input type="text" class="form-control" id="inputSuccess" value="18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW">
+                                    <button class="btn btn-default">Copy to Clipboard</button>
+                                </div>
+                        <img src="" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal Subscrib-->
         <div class="modal fade" id="subscribeModal" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -466,14 +512,16 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                            <button type="button" class="btn btn-default pull-left btn-block" data-dismiss="modal">Close</button>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <button type="button" class="btn btn-default pull-left btn-block" data-dismiss="modal">Close</button>
+                            </div>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <div class="col-lg-offset-1  col-lg-3 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-12"><a href="@Url.Action("Login", "Account")" class="btn btn-success btn-block">Log In</a></div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><a href="@Url.Action("Register", "Account")" class="btn btn-danger btn-block">Sign Up</a></div>
+                            }
                         </div>
-                        @if (!User.Identity.IsAuthenticated)
-                        {
-                            <div class="col-lg-offset-1  col-lg-3 col-md-offset-1 col-md-3 col-sm-offset-1 col-sm-3 col-xs-12"><a href="@Url.Action("Login", "Account")" class="btn btn-success btn-block">Log In</a></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"><a href="@Url.Action("Register", "Account")" class="btn btn-danger btn-block">Sign Up</a></div>
-                        }
                     </div>
                 </div>
             </div>
@@ -544,30 +592,30 @@
         });
 
     </script>
-  <script>
-         jQuery(document).ready(function() {
-         jQuery(".menu-trigger").click(function(){
-             jQuery(".navclass").toggleClass('show').addClass('animated fadeInDown');
-         });
-         });
+    <script>
+        jQuery(document).ready(function () {
+            jQuery(".menu-trigger").click(function () {
+                jQuery(".navclass").toggleClass('show').addClass('animated fadeInDown');
+            });
+        });
 
-              jQuery(document).ready(function() {
-         jQuery(".menu-trigger").click(function(){
-             jQuery("#socialnav").removeClass('animated').toggleClass('show');
-         });
-              });
+        jQuery(document).ready(function () {
+            jQuery(".menu-trigger").click(function () {
+                jQuery("#socialnav").removeClass('animated').toggleClass('show');
+            });
+        });
 
-    jQuery(document).ready(function() {
-         jQuery(".navclass a").click(function(){
-             jQuery(".navclass").toggleClass('show');
-      });               
-    });
+        jQuery(document).ready(function () {
+            jQuery(".navclass a").click(function () {
+                jQuery(".navclass").toggleClass('show');
+            });
+        });
 
-         jQuery(document).ready(function() {
-         jQuery(".navclass a").click(function(){
-             jQuery("#socialnav").toggleClass('show');
-         });
-              });
-  </script>
+        jQuery(document).ready(function () {
+            jQuery(".navclass a").click(function () {
+                jQuery("#socialnav").toggleClass('show');
+            });
+        });
+    </script>
 </body>
 </html>
