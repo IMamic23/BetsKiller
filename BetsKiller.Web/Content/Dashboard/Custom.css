@@ -603,6 +603,20 @@ color: white !important;
 	left: 0%; 
 }
 }
+@media(max-width:450px){
+    .invested-text{
+        display:none;
+    }
+    .invested-finish{
+        width:70% !important;
+    }
+}
+.invested-finish{
+    width:40%;
+}
+.modal-open .modal {
+    z-index: 10999;
+}
 
 nav ul li {
   display: inline;
@@ -619,10 +633,55 @@ nav ul li {
 .menu-trigger {
 	display: none;
 }
-@media screen and (max-width: 520px) {
+/* DONATE BTN AND MODAL*/
+.donate_btn i{
+    padding: 0 10px;
+}
+.donate_btn{
+    font-size: large;
+    text-align: left;
+    font-weight: bold;
+    border-radius: 0 !important;
+}
+.donate-modal-dialog{
+   width: 450px;
+   padding-top:100px;
+}
+.donateimg{
+    display: block;
+    margin: auto;
+    margin-top:10% !important;
+}
+.donate-input-btn{
+    float:left !important;
+}
+.donate_group{
+	display: block;
+}
+
+#newBetTable > tbody > tr > td > span{
+    font-weight: bold;
+}
+.odds-add-betSlip{
+    display:inline-flex;
+}
+
+@media screen and (max-width: 600px) {
 	.navclass{
 	display: none;
 	}
+    .table-betSlip thead tr th{
+        font-size: 14px !important;
+    }
+    .odds-add-betSlip{
+    display: table-cell;
+    }
+    #addToBetSlip{
+       margin-top:5px;
+    }
+    .odds-add-betSlip .input-group{
+        margin-right:0px !important;
+    }
 	.badge_custom{
 	display: none;
 	background-color: transparent;
@@ -668,5 +727,42 @@ nav ul li {
 	border-bottom: 1px solid rgba(255,255,255,0.2);
 	background: #3c8dbc;
     box-shadow: 6px 6px 8px rgba(0,0,0,0.4);
+  }
+   .icon-button{
+	     margin: 0px 7px 0 7px;
+	 }
+    .donate-modal-dialog {
+    width: 390px !important;
+    padding-top: 60px;
+}
+}
+
+.copied::after {
+  position: absolute;
+  top: 20%;
+  right: 110%;
+  display: block;
+  content: "copied";
+  font-size: 0.75em;
+  padding: 2px 3px;
+  color: #fff;
+  background-color: #22a;
+  border-radius: 3px;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: showcopied 1.5s ease;
+}
+
+@keyframes showcopied {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
   }
 }

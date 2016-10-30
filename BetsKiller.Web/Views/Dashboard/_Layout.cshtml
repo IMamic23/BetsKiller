@@ -171,6 +171,7 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar" style="height: 900px; overflow: hidden; width: auto;">
                 <!-- sidebar menu: : style can be found in sidebar.less -->
+                <button type="button" class="btn bg-yellow-gradient btn-block btn-flat donate_btn" data-toggle="modal" data-target="#donateModal"><i class="fa fa-btc fa-lg"></i> Donate</button>
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
@@ -257,29 +258,7 @@
                             <i class="fa fa-angle-right pull-right"></i>
                         </a>
                     </li>
-                </ul>
-                <script src="//blockr.io/js_external/coinwidget/coin.js"></script>
-                <script>
-                    CoinWidgetCom.go({
-                        wallet_address: '18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW',
-                        currency: 'bitcoin',
-                        counter: 'count',
-                        lbl_button: 'Donate',
-                        lbl_count: 'donations',
-                        lbl_amount: 'BTC',
-                        lbl_address: 'Use address below to donate. Thanks!',
-                        qrcode: true,
-                        alignment: 'bl',
-                        decimals: 8,
-                        size: "big",
-                        color: "dark",
-                        countdownFrom: "0",
-                        element: "#coinwidget-bitcoin-18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW",
-                        onShow: function () { },
-                        onHide: function () { }
-                    });
-                </script>
-                <div id="coinwidget-bitcoin-18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW" style="margin-left:10px;"></div>
+                </ul>           
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -361,21 +340,23 @@
             </div>
         </div>
 
-        <!--Modal Donate-->
+       <!--Modal Donate-->
         <div class="modal fade" id="donateModal" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-md donate-modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header" style="background-color:#006dcc">
+                    <div class="modal-header bg-yellow-gradient">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" style="color:white">Donate</h4>
+                        <h4 class="modal-title" style="color:white"><i class="fa fa-btc fa-lg"></i> Bitcoins Donate</h4>
                     </div>
                     <div class="modal-body">
-                            <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> Donate Wallet address</label>
-                               <div class="input-group">
-                                    <input type="text" class="form-control" id="inputSuccess" value="18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW">
-                                    <button class="btn btn-default">Copy to Clipboard</button>
-                                </div>
-                        <img src="" />
+                            <label> Wallet address</label>
+                         <div class="input-group donate_group">
+                                <input type="text" class="form-control" id="walletCode" readonly="readonly" value="18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW">
+                                <span class="input-group-btn donate-input-btn">
+                                  <button class="btn btn-default btn-flat" data-copytarget="#walletCode" type="button">Copy</button>
+                                </span>
+                         </div>
+                        <img class="donateimg" src="~/Content/Images/18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW.png" align="middle" />
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
