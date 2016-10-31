@@ -283,7 +283,12 @@ h3.western {
 width: 100%;
 border-bottom:2px solid #3c8dbc;
 }
-
+/*#newBetTable .dropdown-menu{
+    left:-82px;
+}*/
+#modalAddNewBet .table-responsive{
+    overflow:visible;
+}
 /*scrol to top*/
 .scrollToTop {
   bottom: 60px;
@@ -610,12 +615,42 @@ color: white !important;
     .invested-finish{
         width:70% !important;
     }
+    #modalAddNewBet .table-responsive{
+    overflow-x:auto;
+    overflow-y:visible;
+    }
+    .display-inline-flex{
+    display: block !important;
+    }
+    .odds-group{
+        margin-right:0px !important;
+    }
+    .betType-group{
+    width:100% !important;
+    }
+    .pick-form-control{
+    width:100% !important;
+    margin-left:0px !important;
+    margin-top:3px;
+    }
+    #addToBetSlip{
+        width:100%;
+    }
 }
+
+.betType-group{
+    width:80%;
+}
+.pick-form-control{
+    width:47%;
+    margin-left:4px;
+}
+
 .invested-finish{
     width:40%;
 }
 .modal-open .modal {
-    z-index: 10999;
+    z-index: 1999;
 }
 
 nav ul li {
@@ -662,7 +697,7 @@ nav ul li {
 #newBetTable > tbody > tr > td > span{
     font-weight: bold;
 }
-.odds-add-betSlip{
+.display-inline-flex{
     display:inline-flex;
 }
 
@@ -680,7 +715,7 @@ nav ul li {
        margin-top:5px;
     }
     .odds-add-betSlip .input-group{
-        margin-right:0px !important;
+     margin-right:0px !important;
     }
 	.badge_custom{
 	display: none;
@@ -727,10 +762,10 @@ nav ul li {
 	border-bottom: 1px solid rgba(255,255,255,0.2);
 	background: #3c8dbc;
     box-shadow: 6px 6px 8px rgba(0,0,0,0.4);
-  }
+   }
    .icon-button{
-	     margin: 0px 7px 0 7px;
-	 }
+	 margin: 0px 7px 0 7px;
+   }
     .donate-modal-dialog {
     width: 390px !important;
     padding-top: 60px;

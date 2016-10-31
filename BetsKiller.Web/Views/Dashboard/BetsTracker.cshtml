@@ -646,7 +646,6 @@
                                     </td>
                                     <td>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Game" readonly>
                                             <div class="input-group-btn">
                                                 <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select <span class="fa fa-caret-down" style="margin-left:5px"></span></button>
                                                 <ul class="dropdown-menu">
@@ -655,6 +654,7 @@
                                                     <li><a href="#">DEN - LAL</a></li>
                                                 </ul>
                                             </div><!-- /btn-group -->
+                                           <input type="text" class="form-control" placeholder="Game" readonly>
                                         </div>
                                     </td>
                                 </tr>
@@ -663,9 +663,8 @@
                                     <td>
                                         <span>Bet type</span>
                                     </td>
-                                    <td>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" readonly>
+                                    <td class="display-inline-flex">
+                                        <div class="input-group betType-group">
                                             <div class="input-group-btn">
                                                 <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select <span class="fa fa-caret-down" style="margin-left:5px"></span></button>
                                                 <ul class="dropdown-menu">
@@ -674,8 +673,9 @@
                                                     <li><a href="#">total</a></li>
                                                 </ul>
                                             </div><!-- /btn-group -->
-                                            <input type="number" name="Pick" class="form-control" placeholder="Pick" step="0.5">
+                                            <input type="text" class="form-control" placeholder="Bet Type" readonly>
                                         </div>
+                                       <input type="number" name="Pick" class="form-control pick-form-control" placeholder="Pick" step="0.5">
                                     </td>
                                 </tr>
                                 <!-- Odds -->
@@ -683,9 +683,8 @@
                                     <td>
                                         <span>Odds</span>
                                     </td>
-                                    <td class="odds-add-betSlip">
-                                        <div class="input-group" style="margin-right:10px">
-                                            <input type="text" class="form-control" placeholder="Odds">
+                                    <td class="display-inline-flex">
+                                        <div class="input-group odds-group" style="margin-right:10px">
                                             <div class="input-group-btn">
                                                 <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select <span class="fa fa-caret-down" style="margin-left:5px"></span></button>
                                                 <ul class="dropdown-menu">
@@ -695,6 +694,7 @@
                                                     <li><a href="#">1.9</a></li>
                                                 </ul>
                                             </div><!-- /btn-group -->
+                                           <input type="text" class="form-control" placeholder="Odds">
                                         </div>
                                         <button type="button" id="addToBetSlip" class="btn btn-primary btn-flat">Add To Bet Slip</button>
                                     </td>
