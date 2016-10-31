@@ -283,12 +283,7 @@ h3.western {
 width: 100%;
 border-bottom:2px solid #3c8dbc;
 }
-/*#newBetTable .dropdown-menu{
-    left:-82px;
-}*/
-#modalAddNewBet .table-responsive{
-    overflow:visible;
-}
+
 /*scrol to top*/
 .scrollToTop {
   bottom: 60px;
@@ -610,22 +605,26 @@ color: white !important;
 }
 @media(max-width:620px){
     .display-inline-flex{
-    display: block !important;
-    }
+   /* display: block !important;*/
+   }
     .odds-group{
-        margin-right:0px !important;
+     margin-right:0px;
     }
     .betType-group{
-    width:100% !important;
-    }
-    .pick-form-control{
-    width:100% !important;
-    margin-left:0px !important;
-    margin-top:3px;
+    width:59% !important;
     }
     #addToBetSlip{
         width:100% !important;
         margin-top:3px !important;
+    }
+    .odds-input-group{
+    margin-right:3px;
+    }
+    .control-label-hidden{
+        display:none;
+    }
+    .form-group {
+    margin-bottom: 5px;
     }
 }
 @media(max-width:450px){
@@ -635,18 +634,27 @@ color: white !important;
     .invested-finish{
         width:70% !important;
     }
-    #modalAddNewBet .table-responsive{
-    overflow-x:auto;
-    overflow-y:visible;
+    .odds-input-group{
+    width: 100% !important;
+    }
+    .addto-betslip-btn{
+        width:100% !important;
+        margin-top:5px;
+    }
+    .odds-add-betSlip{
+        display:block !important;
+    }
+    .profile-actions {
+    margin-right: 50px !important;
     }
 }
 
 .betType-group{
-    width:80%;
+    width:60%;
 }
 .pick-form-control{
-    width:47%;
-    margin-left:4px;
+    width: 40%;
+    margin-left: 3px;
 }
 
 .invested-finish{
@@ -715,7 +723,7 @@ nav ul li {
     display: table-cell;
     }
     #addToBetSlip{
-       margin-top:5px;
+     margin-top:5px;
     }
     .odds-add-betSlip .input-group{
      margin-right:0px !important;
@@ -803,4 +811,13 @@ nav ul li {
   100% {
     opacity: 0;
   }
+}
+.odds-input-group{
+    width: 70%;
+}
+.addto-betslip-btn{
+    width:30%;
+}
+.odds-add-betSlip{
+    display:inline-flex;
 }

@@ -248,21 +248,20 @@
                 <div class="box box-primary tracker-box animateWithDelayRight">
                     <div class="box-header with-border">
                         <h3 class="box-title">PROFILE NAME<small>  Bets History</small></h3>
-                    <button type="button" class="btn bg-black-gradient btn-flat" data-toggle="modal" data-target="#modalAddNewBet"><i class="fa fa-edit fa-lg"></i> New Bet</button>
                         <!-- Create/Delete profile-->
                         <div class="profile-actions pull-right">
                             <div class="btn-group hidden-xs">
-                                <div class="newBetBtn">
-                                    <button type="button" class="btn btn-default btn-sm bg-purple dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>New Bet <span class="fa fa-caret-down"></span></button>
+                                <div class="dropdown newBetBtn">
+                                    <button id="newBetBtnID" type="button" class="btn btn-flat bg-purple-gradient dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>New Bet <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:createSingle()">Single</a></li>
                                         <li><a href="javascript:createParlay()">Parlay</a></li>
                                     </ul>
                                 </div>
-                                <a href="" class="btn btn-warning btn-sm btn-reset-filter btn-profile"><i class="fa fa-refresh" aria-hidden="true"></i><span>Reset Filters</span></a>
-                                <a href="javascript:createNewProfile('0')" class="btn btn-primary btn-sm btn-new-profile btn-profile"><i class="fa fa-plus" aria-hidden="true"></i><span>New profile</span></a>
-                                <a href="javascript:deleteBettingProfile('0')" class="btn btn-danger btn-sm btn-delete-profile btn-profile hidden"><i class="fa fa-trash" aria-hidden="true"></i><span>Delete profile</span></a>
-                                <a href="javascript:exportBettingProfile('0')" class="btn btn-success btn-sm btn-to-excel btn-profile"><i class="fa fa-file-excel-o" aria-hidden="true"></i><span>Export to Excel</span></a>
+                                <a href="" class="btn btn-flat bg-yellow-gradient btn-reset-filter btn-profile"><i class="fa fa-refresh" aria-hidden="true"></i><span>Reset Filters</span></a>
+                                <a href="javascript:createNewProfile('0')" class="btn btn-flat bg-blue-gradient btn-new-profile btn-profile"><i class="fa fa-plus" aria-hidden="true"></i><span>New profile</span></a>
+                                <a href="javascript:deleteBettingProfile('0')" class="btn btn-flat bg-red-gradient btn-delete-profile btn-profile hidden"><i class="fa fa-trash" aria-hidden="true"></i><span>Delete profile</span></a>
+                                <a href="javascript:exportBettingProfile('0')" class="btn btn-flat bg-green-gradient btn-to-excel btn-profile"><i class="fa fa-file-excel-o" aria-hidden="true"></i><span>Export to Excel</span></a>
                             </div>
                             <div class="btn-group visible-xs bets-tracker-actions">
                                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bars"></i><span class="fa fa-caret-down"></span></button>
@@ -352,7 +351,7 @@
                                 </div>
                             </div> <!--col-->
                         </div> <!--row-->
-
+                      <button type="button" class="btn bg-black-gradient btn-flat" data-toggle="modal" data-target="#modalAddNewBet"><i class="fa fa-edit fa-lg"></i> New Bet</button>
                         <div class="row">
                             <div class="col-lg-12">
                                 <!-- Bets -->
@@ -584,24 +583,20 @@
 
             <!-- Modal content-->
             <div class="modal-content">
-                <form method="post" action="@Url.Action("SaveAnalysis", "Dashboard")">
+                <form class="form-horizontal" method="post" action="@Url.Action("SaveAnalysis", "Dashboard")">
 
                     <div class="modal-header" style="background-color:#006dcc">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title" style="color:white">Add New Bet <small style="color:white"> PARLAY</small></h4>
                     </div>
                     <div class="modal-body">
-                        <div class="table-responsive">
-                        <table id="newBetTable" class="table">
-                            <tbody>
-                                <!-- Bets slip -->
-                                <tr>
-                                    <td>
-                                        <span>Bets slip</span>
-                                    </td>
-                                    <td>
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-striped table-betSlip">
+                        @*<div class="table-responsive">*@
+                             <!-- Bets slip -->
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="BetSlip">Bet Slip</label>
+                                     <div class="col-sm-10">
+                                          <div class="table-responsive">
+                                            <table class="table table-hover table-responsive table-striped table-betSlip">
                                                 <thead>
                                                     <tr>
                                                         <th>Game</th>
@@ -637,16 +632,14 @@
                                                 </tfoot>
                                             </table>
                                         </div>
-                                    </td>
-                                </tr>
-                                <!-- Game -->
-                                <tr>
-                                    <td>
-                                        <span>Game</span>
-                                    </td>
-                                    <td>
-                                        <div class="input-group">
-                                            <div class="input-group-btn">
+                                    </div><!--col-->
+                            </div> <!--form-group-->
+                               <!-- Game -->
+                            <div class="form-group">
+                                 <label class="control-label control-label-hidden col-sm-2" for="Game">Game</label>
+                                     <div class="col-sm-10">
+                                          <div class="input-group">
+                                            <div class="input-group-btn dropdown">
                                                 <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select <span class="fa fa-caret-down" style="margin-left:5px"></span></button>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="#">ATL - BOS</a></li>
@@ -656,16 +649,14 @@
                                             </div><!-- /btn-group -->
                                            <input type="text" class="form-control" placeholder="Game" readonly>
                                         </div>
-                                    </td>
-                                </tr>
-                                <!-- Bet type -->
-                                <tr>
-                                    <td>
-                                        <span>Bet type</span>
-                                    </td>
-                                    <td class="display-inline-flex">
-                                        <div class="input-group betType-group">
-                                            <div class="input-group-btn">
+                                     </div>
+                            </div><!--form-group-->
+                              <!-- Bet type -->
+                              <div class="form-group">
+                                 <label class="control-label control-label-hidden col-sm-2" for="BetType">Bet Type</label>
+                                     <div class="col-sm-10 display-inline-flex">
+                                          <div class="input-group betType-group">
+                                            <div class="input-group-btn dropdown">
                                                 <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select <span class="fa fa-caret-down" style="margin-left:5px"></span></button>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="#">team-away-handicap</a></li>
@@ -674,35 +665,35 @@
                                                 </ul>
                                             </div><!-- /btn-group -->
                                             <input type="text" class="form-control" placeholder="Bet Type" readonly>
-                                        </div>
-                                       <input type="number" name="Pick" class="form-control pick-form-control" placeholder="Pick" step="0.5">
-                                    </td>
-                                </tr>
-                                <!-- Odds -->
-                                <tr>
-                                    <td>
-                                        <span>Odds</span>
-                                    </td>
-                                    <td class="display-inline-flex">
-                                        <div class="input-group odds-group" style="margin-right:10px">
-                                            <div class="input-group-btn">
-                                                <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select <span class="fa fa-caret-down" style="margin-left:5px"></span></button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">1.84</a></li>
-                                                    <li><a href="#">1.869</a></li>
-                                                    <li><a href="#">1.884</a></li>
-                                                    <li><a href="#">1.9</a></li>
-                                                </ul>
-                                            </div><!-- /btn-group -->
-                                           <input type="text" class="form-control" placeholder="Odds">
-                                        </div>
-                                        <button type="button" id="addToBetSlip" class="btn btn-primary btn-flat">Add To Bet Slip</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                      </div>
-                    </div>
+                                          </div>
+                                         <input type="number" name="Pick" class="form-control pick-form-control" placeholder="Pick" step="0.5">
+                                     </div>
+                            </div><!--form-group-->
+                              <!-- Odds -->
+                                <div class="form-group">
+                                 <label class="control-label control-label-hidden col-sm-2" for="Odds">Odds</label>
+                                     <div class="col-sm-10 odds-add-betSlip">
+                                         <div class="odds-input-group">
+                                            <div class="input-group" style="margin-right:4px">
+                                                <div class="input-group-btn dropdown">
+                                                    <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select <span class="fa fa-caret-down" style="margin-left:5px"></span></button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#">1.84</a></li>
+                                                        <li><a href="#">1.869</a></li>
+                                                        <li><a href="#">1.884</a></li>
+                                                        <li><a href="#">1.9</a></li>
+                                                    </ul>
+                                                 </div><!-- /btn-group -->
+                                                <input type="text" class="form-control" placeholder="Odds">
+                                             </div>
+                                           </div>
+                                           <div class="addto-betslip-btn">
+                                                <button type="button" class="btn btn-primary btn-flat btn-block">Add To Bet Slip</button>
+                                           </div>  
+                                  </div><!--col-->
+                            </div><!--form-group-->
+                     @*</div>*@<!--table-responsive-->
+                    </div><!--modal-body-->
                     <div class="modal-footer">
                         <div class="row" style="margin-top:5px; margin-left:10px; margin-right:10px">
                             <button type="button" class="btn btn-danger" style="float:left; width:20%" data-dismiss="modal">Close</button>
@@ -1028,6 +1019,23 @@
          $('#cancelEditActiveProfiles').click(function(){
          $('.icheckbox_flat-green').toggleClass('hidden');
          $('#profilesSaveCancelBtns').toggleClass('hidden');
-        });
+         });
+
+         if(document.documentElement.clientWidth > 900)
+			   {
+					//$(document).ready(function(){
+					//	$('#newBetBtnID').hover(function() {
+					//	    $('.newBetBtn').stop(true,true).addClass('open', 500).fadeIn(200);
+					//	})
+					//}); 	
+             
+                    $(function() {
+                        $(".dropdown").hover(function() {
+                            $(this).stop(true,true).addClass("open", 500);
+                        }, function() {
+                            $(this).stop(true,true).removeClass("open", 100);
+                        });    
+                    });
+			   }
     </script>
 }

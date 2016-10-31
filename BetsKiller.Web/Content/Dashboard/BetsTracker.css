@@ -417,11 +417,19 @@ letter-spacing:1px;
     width:30%;
 }
 /* PROFILE BUTTONS*/
+.dropdown:hover .dropdown-menu{
+    display:block !important;
+}
+.dropdown:hover #newBetBtnID {
+    color:white;
+}
+
 .btn-profile{
-    width: 35px;
+  width: 40px;
 }
 .btn-profile:hover{
-    width: 120px;
+    width: 130px;
+    color:white;
     transition: all 600ms ease-out;
 }
 .btn-profile span{
