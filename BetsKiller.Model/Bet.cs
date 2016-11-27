@@ -14,6 +14,8 @@ namespace BetsKiller.Model
         [Key]
         public int Id { get; set; }
 
+        public DateTime Created { get; set; }
+
         public decimal Invested { get; set; }
 
         public decimal Odd { get; set; }

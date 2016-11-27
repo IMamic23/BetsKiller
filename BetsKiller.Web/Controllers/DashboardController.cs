@@ -95,27 +95,27 @@ namespace BetsKiller.Web.Controllers
 
         #region BetsTracker
 
-        //[Authorize]
+        [Authorize]
         public ActionResult BetsTracker()
         {
-            BL.Dashboard.BetsTracker.GetData getData = new BL.Dashboard.BetsTracker.GetData();
+            BL.Dashboard.BetsTracker.GetData getData = new BL.Dashboard.BetsTracker.GetData(User.Identity.Name);
             getData.Start();
 
             return View(getData.BetsTrackerViewModel);
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public JsonResult BetsTrackerGetProfile(string id)
         {
-            BL.Dashboard.BetsTracker.GetProfile getProfile = new BL.Dashboard.BetsTracker.GetProfile(id);
+            BL.Dashboard.BetsTracker.GetProfile getProfile = new BL.Dashboard.BetsTracker.GetProfile(id, User.Identity.Name);
             getProfile.Start();
 
             return Json(getProfile);
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public JsonResult BetsTrackerDeleteProfile(string id)
         {
             BL.Dashboard.BetsTracker.DeleteProfile deleteProfile = new BL.Dashboard.BetsTracker.DeleteProfile(id);

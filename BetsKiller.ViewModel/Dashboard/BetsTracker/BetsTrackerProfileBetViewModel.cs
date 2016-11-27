@@ -25,7 +25,5 @@ namespace BetsKiller.ViewModel.Dashboard.BetsTracker
         public string BetStatus { get; set; }
 
         public string ProfitLoss { get; set; }
-
-        public string Site { get; set; }
     }
 }

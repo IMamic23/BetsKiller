@@ -19,7 +19,7 @@
 				displayedPages: 5,
 				edges: 2,
 				currentPage: 0,
-				hrefTextPrefix: '#page-',
+				hrefTextPrefix: '#',
 				hrefTextSuffix: '',
 				prevText: 'Prev',
 				nextText: 'Next',
@@ -304,7 +304,8 @@
 					$linkWrapper.addClass('active');
 				}
 				$link = $('<span class="current">' + (options.text) + '</span>');
-			} else {
+			}
+			else {
 				$link = $('<a href="' + o.hrefTextPrefix + (pageIndex + 1) + o.hrefTextSuffix + '" class="page-link">' + (options.text) + '</a>');
 				$link.click(function(event){
 					return methods._selectPage.call(self, pageIndex, event);

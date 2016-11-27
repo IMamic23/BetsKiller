@@ -170,5 +170,17 @@ namespace BetsKiller.DAL
         IQueryable<PowerRankingsNBA> GetAllPowerRankingsNBA();
 
         #endregion
+
+        #region BetProfile
+
+        IQueryable<BetProfile> GetAllBetProfiles();
+
+        #endregion
+
+        #region Bets
+
+        IQueryable<Bet> GetAllBets();
+
+        #endregion
     }
 }

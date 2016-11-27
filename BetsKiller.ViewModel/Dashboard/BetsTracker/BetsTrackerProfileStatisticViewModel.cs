@@ -15,5 +15,10 @@ namespace BetsKiller.ViewModel.Dashboard.BetsTracker
         public string Label { get; set; }
 
         public List<BetsTrackerProfileStatisticElementViewModel> Data { get; set; }
+
+        public BetsTrackerProfileStatisticViewModel()
+        {
+            this.Data = new List<BetsTrackerProfileStatisticElementViewModel>();
+        }
     }
 }
