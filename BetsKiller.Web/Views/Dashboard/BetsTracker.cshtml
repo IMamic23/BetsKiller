@@ -48,13 +48,13 @@
                                  data-cycle-log="false">
                                 @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerGameScoreViewModel game in this.Model.GameScores)
                                 {
-                                    <div class="main-box">
-                                        <div class="game-box">
-                                            <div class="game-date">@game.Date<span class="game-prog" style="@game.Status.Style">@game.Status.Value</span></div>
-                                            <div class="game-opp">@game.AwayTeam<span class="score-opp">@game.AwayScore</span></div>
-                                            <div class="game-at">@game.HomeTeam<span class="score-at">@game.HomeScore</span></div>
-                                        </div>
+                                <div class="main-box">
+                                    <div class="game-box">
+                                        <div class="game-date">@game.Date<span class="game-prog" style="@game.Status.Style">@game.Status.Value</span></div>
+                                        <div class="game-opp">@game.AwayTeam<span class="score-opp">@game.AwayScore</span></div>
+                                        <div class="game-at">@game.HomeTeam<span class="score-at">@game.HomeScore</span></div>
                                     </div>
+                                </div>
                                 }
                             </div>
                         </div>
@@ -70,9 +70,9 @@
                     <ul class="nav nav-tabs nav-justified betsKillerNav two-way-nav" id="analysisProfit">
                         @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerAnalysisProfitViewModel analyseProfit in this.Model.AnalysisProfit)
                         {
-                            <li>
-                                <a href="#@analyseProfit.Name" data-toggle="tab"><h5><strong>@analyseProfit.Label</strong></h5></a>
-                            </li>
+                        <li>
+                            <a href="#@analyseProfit.Name" data-toggle="tab"><h5><strong>@analyseProfit.Label</strong></h5></a>
+                        </li>
                         }
                     </ul>
                     <div class="box-tools pull-right">
@@ -84,78 +84,78 @@
                     <div class="tab-content">
                         @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerAnalysisProfitViewModel analyseProfit in this.Model.AnalysisProfit)
                         {
-                            <div role="tabpanel" class="tab-pane" id="@analyseProfit.Name">
-                                <!-- Total Bets -->
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="info-box ibItem01">
-                                        <span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
-                                        <div class="info-box-content">
-                                            <span class="info-box-text">Total Bets</span>
-                                            <span class="info-box-number2">@analyseProfit.TotalBets</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Wins -->
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="info-box ibItem02">
-                                        <span class="info-box-icon bg-green"><i class="fa fa-thumbs-up"></i></span>
-                                        <div class="info-box-content">
-                                            <span class="info-box-text">Wins</span>
-                                            <span class="info-box-number2">@analyseProfit.Wins</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- fix for small devices only -->
-                                <div class="clearfix visible-sm-block"></div>
-
-                                <!-- Losses -->
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="info-box ibItem03">
-                                        <span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
-                                        <div class="info-box-content">
-                                            <span class="info-box-text">Losses</span>
-                                            <span class="info-box-number2">@analyseProfit.Losses</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Average Odds -->
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="info-box ibItem04">
-                                        <span class="info-box-icon bg-blue-active"><i class="fa fa-balance-scale"></i></span>
-                                        <div class="info-box-content">
-                                            <span class="info-box-text">Average Odds</span>
-                                            <span class="info-box-number2">@analyseProfit.AverageOdds</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- ROI -->
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="info-box ibItem05">
-                                        <span class="info-box-icon bg-purple-active">
-                                            <i class="fa fa-line-chart"></i>
-                                        </span>
-                                        <div class="info-box-content">
-                                            <span class="info-box-text">ROI</span>
-                                            <span class="info-box-number2">@analyseProfit.ROI %</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Total Profit -->
-                                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="info-box ibItem06">
-                                        <span class="info-box-icon bg-green-active"><i class="fa fa-money"></i></span>
-                                        <div class="info-box-content">
-                                            <span class="info-box-text">Total Profit</span>
-                                            <span class="info-box-number2">$ @analyseProfit.TotalProfit</span>
-                                        </div>
-                                    </div>
+                    <div role="tabpanel" class="tab-pane" id="@analyseProfit.Name">
+                        <!-- Total Bets -->
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box ibItem01">
+                                <span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Bets</span>
+                                    <span class="info-box-number2">@analyseProfit.TotalBets</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Wins -->
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box ibItem02">
+                                <span class="info-box-icon bg-green"><i class="fa fa-thumbs-up"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Wins</span>
+                                    <span class="info-box-number2">@analyseProfit.Wins</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- fix for small devices only -->
+                        <div class="clearfix visible-sm-block"></div>
+
+                        <!-- Losses -->
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box ibItem03">
+                                <span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Losses</span>
+                                    <span class="info-box-number2">@analyseProfit.Losses</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Average Odds -->
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box ibItem04">
+                                <span class="info-box-icon bg-blue-active"><i class="fa fa-balance-scale"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Average Odds</span>
+                                    <span class="info-box-number2">@analyseProfit.AverageOdds</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ROI -->
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box ibItem05">
+                                <span class="info-box-icon bg-purple-active">
+                                    <i class="fa fa-line-chart"></i>
+                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">ROI</span>
+                                    <span class="info-box-number2">@analyseProfit.ROI %</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total Profit -->
+                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                            <div class="info-box ibItem06">
+                                <span class="info-box-icon bg-green-active"><i class="fa fa-money"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Profit</span>
+                                    <span class="info-box-number2">$ @analyseProfit.TotalProfit</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                         }
                     </div> <!--tab-content-->
                 </div> <!--box-body-->
@@ -182,22 +182,22 @@
                             <div class="list-group bettingProfilesList" id="betting-profiles">
                                 @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerBettingProfileViewModel bettingProfile in this.Model.BettingProfiles)
                                 {
-                                    <a href="javascript:getBettingProfile('@bettingProfile.Id')" class="list-group-item @(bettingProfile.ActiveTab ? " active" : string.Empty)">
+                                <a href="javascript:getBettingProfile('@bettingProfile.Id')" class="list-group-item @(bettingProfile.ActiveTab ? " active" : string.Empty)">
 
-                                        <input id="profilesCB" type="checkbox">
+                                    <input id="profilesCB" type="checkbox">
 
-                                        <span class="sparktristate">@bettingProfile.LastBetsStatus</span>
-                                        <span class="badge">@bettingProfile.OpenBets</span>
-                                        @bettingProfile.Label
-                                    </a>
+                                    <span class="sparktristate">@bettingProfile.LastBetsStatus</span>
+                                    <span class="badge">@bettingProfile.OpenBets</span>
+                                    @bettingProfile.Label
+                                </a>
                                 }
                             </div>
                             <div id="betting-profiles-nav"></div>
                             <div id="profilesSaveCancelBtns" class="btn-group hidden" style="width:100%">
                                 <button id="saveEditActiveProfiles" class="btn btn-success btn-flat" style="width:50%">Save</button>
                                 <button id="cancelEditActiveProfiles" class="btn btn-danger btn-flat" style="width:50%">Cancel</button>
+                            </div>
                         </div>
-                    </div>
                     </div> <!--box-body-->
                 </div> <!--box-->
             </section>
@@ -225,11 +225,11 @@
                                 <tbody>
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerPerformanceViewModel performance in this.Model.Performances)
                                     {
-                                        <tr>
-                                            <td align="center">@performance.Profile</td>
-                                            <td align="center">@performance.ROI %</td>
-                                            <td align="center">@performance.Profit Units</td>
-                                        </tr>
+                                    <tr>
+                                        <td align="center">@performance.Profile</td>
+                                        <td align="center">@performance.ROI %</td>
+                                        <td align="center">@performance.Profit Units</td>
+                                    </tr>
                                     }
                                 </tbody>
                             </table>
@@ -284,7 +284,7 @@
                         <div class="row">
                             <!-- Filters -->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 button_group">
-                              
+
                                 <div class="horizontalText"><span>Filters</span></div>
                                 <div class="dropdown marginleft15">
                                     <button id="gameSiteBtn" class="customBtn01 button_md dropdown-toggle" type="button" data-toggle="dropdown">
@@ -351,7 +351,7 @@
                                 </div>
                             </div> <!--col-->
                         </div> <!--row-->
-                      <button type="button" class="btn bg-black-gradient btn-flat" data-toggle="modal" data-target="#modalAddNewBet"><i class="fa fa-edit fa-lg"></i> New Bet</button>
+                        <button type="button" class="btn bg-black-gradient btn-flat" data-toggle="modal" data-target="#modalAddNewBet"><i class="fa fa-edit fa-lg"></i> New Bet</button>
                         <div class="row">
                             <div class="col-lg-12">
                                 <!-- Bets -->
@@ -375,19 +375,19 @@
                                         <tbody>
                                             @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileBetViewModel bet in this.Model.DefaultProfile.Bets)
                                             {
-                                                <tr>
-                                                    <td>@bet.Type</td>
-                                                    <td>@bet.Timestamp</td>
-                                                    <td>@bet.Game</td>
-                                                    <td>@bet.BetAmount</td>
-                                                    <td>@bet.Odds</td>
-                                                    <td>@bet.BetValue</td>
-                                                    <td>@bet.BetStatus</td>
-                                                    <td>@bet.ProfitLoss</td>
-                                                    <td>@bet.Id</td>
-                                                    <td>@bet.Id</td>
-                                                    <td>@bet.Id</td>
-                                                </tr>
+                                            <tr>
+                                                <td>@bet.Type</td>
+                                                <td>@bet.Timestamp</td>
+                                                <td>@bet.Game</td>
+                                                <td>@bet.BetAmount</td>
+                                                <td>@bet.Odds</td>
+                                                <td>@bet.BetValue</td>
+                                                <td>@bet.BetStatus</td>
+                                                <td>@bet.ProfitLoss</td>
+                                                <td>@bet.Id</td>
+                                                <td>@bet.Id</td>
+                                                <td>@bet.Id</td>
+                                            </tr>
                                             }
                                         </tbody>
                                     </table>
@@ -470,57 +470,57 @@
                                 <ul class="nav nav-tabs nav-justified betsKillerNav three-way-nav" id="statistics">
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
                                     {
-                                        <li @(stat.ActiveTab ? "class=active" : string.Empty)>
-                                            <a href="#@stat.Name-stat" data-toggle="tab"><h5><strong>@stat.Label</strong></h5></a>
-                                        </li>
+                                    <li @(stat.ActiveTab ? "class=active" : string.Empty)>
+                                        <a href="#@stat.Name-stat" data-toggle="tab"><h5><strong>@stat.Label</strong></h5></a>
+                                    </li>
                                     }
                                 </ul>
                                 <div class="tab-content">
                                     @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticViewModel stat in this.Model.DefaultProfile.Statistics)
                                     {
-                                        <div role="tabpanel" class="tab-pane @(stat.ActiveTab ? "active" : string.Empty)" id="@stat.Name-stat">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped" style="text-align:center">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center">Date</th>
-                                                            <th class="text-center">Wins</th>
-                                                            <th class="text-center">Losses</th>
-                                                            <th class="text-center">Invested</th>
-                                                            <th class="text-center">Profit +/-</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticElementViewModel statElem in stat.Data)
+                                <div role="tabpanel" class="tab-pane @(stat.ActiveTab ? "active" : string.Empty)" id="@stat.Name-stat">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" style="text-align:center">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Wins</th>
+                                                    <th class="text-center">Losses</th>
+                                                    <th class="text-center">Invested</th>
+                                                    <th class="text-center">Profit +/-</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileStatisticElementViewModel statElem in stat.Data)
                                                         {
-                                                            <tr class="text-center">
-                                                                <td>@statElem.Date</td>
-                                                                <td>@statElem.Wins</td>
-                                                                <td>@statElem.Losses</td>
-                                                                <td>@statElem.Invested</td>
-                                                                <td>@statElem.Profit</td>
-                                                            </tr>
+                                                        <tr class="text-center">
+                                                            <td>@statElem.Date</td>
+                                                            <td>@statElem.Wins</td>
+                                                            <td>@statElem.Losses</td>
+                                                            <td>@statElem.Invested</td>
+                                                            <td>@statElem.Profit</td>
+                                                        </tr>
                                                         }
-                                                    </tbody>
-                                                </table>
-                                            </div> <!--table-responsive-->
-                                        </div> <!--tab-panel-->
+                                            </tbody>
+                                        </table>
+                                    </div> <!--table-responsive-->
+                                </div> <!--tab-panel-->
                                     }
                                 </div> <!--tab-content-->
                             </div> <!--col-->
-                        <!-- Charts -->
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <ul class="nav nav-tabs nav-justified betsKillerNav four-way-nav" id="charts">
-                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
-                                {
+                            <!-- Charts -->
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <ul class="nav nav-tabs nav-justified betsKillerNav four-way-nav" id="charts">
+                                    @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
+                                    {
                                     <li @(chart.ActiveTab ? "class=active" : string.Empty)>
                                         <a href="#@chart.Name" data-toggle="tab"><h5><strong>@chart.Label</strong></h5></a>
                                     </li>
-                                }
-                            </ul>
-                            <div class="tab-content">
-                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
-                                {
+                                    }
+                                </ul>
+                                <div class="tab-content">
+                                    @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
+                                    {
                                     <div role="tabpanel" class="tab-pane @(chart.ActiveTab ? "active" : string.Empty)" id="@chart.Name" style="margin-bottom:10px">
                                         <div class="col-md-8 col-sm-8 col-xs-8">
                                             <canvas id="@chart.Name-chart" height="150"></canvas>
@@ -542,10 +542,10 @@
                                             </ul>
                                         </div>
                                     </div>
-                                }
+                                    }
+                                </div>
                             </div>
-                        </div>
-                      </div> <!--row-->
+                        </div> <!--row-->
                     </div> <!--box-footer-->
                 </div> <!--box-->
             </section>
@@ -577,19 +577,21 @@
 </div>
 <!--MODAL ADD NEW BET-->
 <div class="modal fade" id="modalAddNewBet" role="dialog">
-        <div class="modal-dialog modal-sd">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <form class="form-horizontal" method="post" action="@Url.Action("SaveAnalysis", "Dashboard")">
-
-                    <div class="modal-header" style="background-color:#006dcc">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" style="color:white">Add New Bet <small style="color:white"> PARLAY</small></h4>
+    <div class="modal-dialog modal-sd">
+        <div class="modal-content">
+            <form class="form-horizontal" method="post" action="@Url.Action("SaveAnalysis", "Dashboard")">
+                <div class="modal-header" style="background-color:#006dcc">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color:white">Add New Bet <small style="color:white"> PARLAY</small></h4>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/dashboard-betstracker")
-   <script src="~/Scripts/Dashboard/icheck.js"></script>
+    <script src="~/Scripts/Dashboard/icheck.js"></script>
 
     <script>
         function resetFilters(tableRedraw) {
@@ -891,40 +893,40 @@
     </script>
     <script>
         $(document).ready(function(){
-          $('input').iCheck({
-            checkboxClass: 'icheckbox_flat-green'
-          });
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_flat-green'
+            });
         });
 
-         $(document).ready(function(){
-             $('.icheckbox_flat-green').delay(20).addClass('hidden');
-         });
+        $(document).ready(function(){
+            $('.icheckbox_flat-green').delay(20).addClass('hidden');
+        });
 
         $('#editActiveProfiles').click(function(){
             $('.icheckbox_flat-green').toggleClass('hidden');
             $('#profilesSaveCancelBtns').toggleClass('hidden');
         });
 
-         $('#cancelEditActiveProfiles').click(function(){
-         $('.icheckbox_flat-green').toggleClass('hidden');
-         $('#profilesSaveCancelBtns').toggleClass('hidden');
-         });
+        $('#cancelEditActiveProfiles').click(function(){
+            $('.icheckbox_flat-green').toggleClass('hidden');
+            $('#profilesSaveCancelBtns').toggleClass('hidden');
+        });
 
-         if(document.documentElement.clientWidth > 900)
-			   {
-					//$(document).ready(function(){
-					//	$('#newBetBtnID').hover(function() {
-					//	    $('.newBetBtn').stop(true,true).addClass('open', 500).fadeIn(200);
-					//	})
-					//}); 	
-             
-                    $(function() {
-                        $(".dropdown").hover(function() {
-                            $(this).stop(true,true).addClass("open", 500);
-                        }, function() {
-                            $(this).stop(true,true).removeClass("open", 100);
-                        });    
-                    });
-			   }
+        if(document.documentElement.clientWidth > 900)
+        {
+            //$(document).ready(function(){
+            //	$('#newBetBtnID').hover(function() {
+            //	    $('.newBetBtn').stop(true,true).addClass('open', 500).fadeIn(200);
+            //	})
+            //});
+
+            $(function() {
+                $(".dropdown").hover(function() {
+                    $(this).stop(true,true).addClass("open", 500);
+                }, function() {
+                    $(this).stop(true,true).removeClass("open", 100);
+                });
+            });
+        }
     </script>
 }
