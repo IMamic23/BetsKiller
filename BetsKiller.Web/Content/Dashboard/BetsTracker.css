@@ -501,8 +501,8 @@ letter-spacing:1px;
 .chart-legend>li{
     float:none;
 }
-.modal{
-    margin-top: 100px;
+.modal-content{
+    margin-top: 60px;
 }
 #modal-delete-profile .modal-header{
     background: #dd4b39;

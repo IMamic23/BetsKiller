@@ -199,6 +199,7 @@
     <Content Include="Scripts\Dashboard\icheck.min.js" />
     <Content Include="Scripts\Dashboard\jquery.cycle2.js" />
     <Content Include="Scripts\Dashboard\jquery.simplePagination.js" />
+    <Content Include="Scripts\Dashboard\jquery.stickytableheaders.min.js" />
     <Content Include="_app_offline.htm" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
