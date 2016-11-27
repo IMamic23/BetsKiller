@@ -63,11 +63,9 @@
         </div>
     </div>
     <!-- END PRELOADER -->
-
     <!-- START SCROLL BUTTONS -->
     <a href="#" id="scrollTop" class="scrollToTop"><i class="fa fa-arrow-up"></i></a>
     <!-- END SCROLL BUTTONS -->
-
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Header -->
@@ -96,9 +94,11 @@
                     <nav class="navclass" id="navigation">
                        <ul>
                           <li><div class="fb-like" data-href="https://www.facebook.com/BetsKillerAnalysis" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div></li>
-                          <li><a href="http://facebook.com/BetsKillerAnalysis" target="_blank" class="icon-button facebook"><i class="fa fa-facebook icon-facebook"></i><span></span></a></li>
-                          <li><a href="http://twitter.com/betskiller" target="_blank" class="icon-button twitter"><i class="fa fa-twitter icon-twitter"></i><span></span></a></li>
-                          <li><a href="http://www.instagram.com/betskiller" target="_blank" class="icon-button instagram"><i class="fa fa-instagram icon-instagram"></i><span></span></a></li>
+                            <li>
+                                <a href="http://facebook.com/BetsKillerAnalysis" target="_blank" class="icon-button facebook"><i class="fa fa-facebook icon-facebook"></i><span></span></a>
+                                <a href="http://twitter.com/betskiller" target="_blank" class="icon-button twitter"><i class="fa fa-twitter icon-twitter"></i><span></span></a>
+                                <a href="http://www.instagram.com/betskiller" target="_blank" class="icon-button instagram"><i class="fa fa-instagram icon-instagram"></i><span></span></a>
+                            </li>
                      </ul>
                      </nav>                  
                 </div>
@@ -171,6 +171,7 @@
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar" style="height: 900px; overflow: hidden; width: auto;">
                 <!-- sidebar menu: : style can be found in sidebar.less -->
+                <button type="button" class="btn bg-yellow-gradient btn-block btn-flat donate_btn" data-toggle="modal" data-target="#donateModal"><i class="fa fa-btc fa-lg"></i> Donate</button>
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
@@ -339,6 +340,32 @@
             </div>
         </div>
 
+       <!--Modal Donate-->
+        <div class="modal fade" id="donateModal" role="dialog">
+            <div class="modal-dialog modal-md donate-modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-yellow-gradient">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" style="color:white"><i class="fa fa-btc fa-lg"></i> Bitcoins Donate</h4>
+                    </div>
+                    <div class="modal-body">
+                            <label> Wallet address</label>
+                         <div class="input-group donate_group">
+                                <input type="text" class="form-control" id="walletCode" readonly="readonly" value="18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW">
+                                <span class="input-group-btn donate-input-btn">
+                                  <button class="btn btn-default btn-flat" data-copytarget="#walletCode" type="button">Copy</button>
+                                </span>
+                         </div>
+                        <img class="donateimg" src="~/Content/Images/18qzw2Zd8JDmU9zZ3qcEKS4at8veYe4oRW.png" align="middle" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal Subscrib-->
         <div class="modal fade" id="subscribeModal" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -466,6 +493,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <div class="row">
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                             <button type="button" class="btn btn-default pull-left btn-block" data-dismiss="modal">Close</button>
                         </div>
@@ -478,6 +506,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <div id="profileModal" class="modal fade" role="dialog"></div>
@@ -545,23 +574,26 @@
 
     </script>
   <script>
-    jQuery(document).ready(function() {
-        jQuery(".menu-trigger").click(function() {
-            jQuery(".navclass").toggleClass('show').addClass('animated fadeInDown');
-        });
+        jQuery(document).ready(function () {
+            jQuery(".menu-trigger").click(function () {
+             jQuery(".navclass").toggleClass('show').addClass('animated fadeInDown');
+         });
 
-        jQuery(".menu-trigger").click(function () {
-            jQuery("#socialnav").removeClass('animated').toggleClass('show');
-        });
+        jQuery(document).ready(function () {
+            jQuery(".menu-trigger").click(function () {
+             jQuery("#socialnav").removeClass('animated').toggleClass('show');
+         });
 
-        jQuery(".navclass a").click(function () {
-            jQuery(".navclass").toggleClass('show');
-        });
+        jQuery(document).ready(function () {
+            jQuery(".navclass a").click(function () {
+             jQuery(".navclass").toggleClass('show');
+      });               
 
-        jQuery(".navclass a").click(function () {
-            jQuery("#socialnav").toggleClass('show');
-        });
-    });
+        jQuery(document).ready(function () {
+            jQuery(".navclass a").click(function () {
+             jQuery("#socialnav").toggleClass('show');
+         });
+              });
   </script>
 </body>
 </html>

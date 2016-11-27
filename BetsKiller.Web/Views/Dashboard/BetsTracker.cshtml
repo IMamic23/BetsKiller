@@ -7,7 +7,9 @@
     @Styles.Render("~/Content/dashboard-css")
     @Styles.Render("~/Content/Dashboard/BetsTracker.css")
     @Styles.Render("~/Content/Dashboard/simplePagination.css")
+    @Styles.Render("~/Content/Dashboard/iCheck/flat/green.css")
 }
+
 
 @model BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerViewModel
 
@@ -56,9 +58,9 @@
                                 }
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div> <!--tab-content-->
+                </div> <!--box-body-->
+            </div> <!--box-->
         </section>
 
         <!-- Overall stats -->
@@ -155,9 +157,9 @@
                                 </div>
                             </div>
                         }
-                    </div>
-                </div>
-            </div>
+                    </div> <!--tab-content-->
+                </div> <!--box-body-->
+            </div> <!--box-->
         </section>
 
         <!-- Section-Left -->
@@ -171,6 +173,7 @@
                         <h3 class="box-title"><span class="label label-warning">PREMIUM</span> Betting Profiles</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" id="editActiveProfiles" data-toggle="tooltip" title="Edit Active Profiles"><i class="fa fa-wrench"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
@@ -179,7 +182,10 @@
                             <div class="list-group bettingProfilesList" id="betting-profiles">
                                 @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerBettingProfileViewModel bettingProfile in this.Model.BettingProfiles)
                                 {
-                                    <a href="javascript:getBettingProfile('@bettingProfile.Id')" class="list-group-item @(bettingProfile.ActiveTab ? "active" : string.Empty)">
+                                    <a href="javascript:getBettingProfile('@bettingProfile.Id')" class="list-group-item @(bettingProfile.ActiveTab ? " active" : string.Empty)">
+
+                                        <input id="profilesCB" type="checkbox">
+
                                         <span class="sparktristate">@bettingProfile.LastBetsStatus</span>
                                         <span class="badge">@bettingProfile.OpenBets</span>
                                         @bettingProfile.Label
@@ -187,9 +193,13 @@
                                 }
                             </div>
                             <div id="betting-profiles-nav"></div>
+                            <div id="profilesSaveCancelBtns" class="btn-group hidden" style="width:100%">
+                                <button id="saveEditActiveProfiles" class="btn btn-success btn-flat" style="width:50%">Save</button>
+                                <button id="cancelEditActiveProfiles" class="btn btn-danger btn-flat" style="width:50%">Cancel</button>
                         </div>
                     </div>
-                </div>
+                    </div> <!--box-body-->
+                </div> <!--box-->
             </section>
 
             <!-- Performance -->
@@ -223,9 +233,9 @@
                                     }
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
+                        </div> <!--table-responsive-->
+                    </div> <!--box-body-->
+                </div> <!--box-->
             </section>
 
         </section>
@@ -241,17 +251,17 @@
                         <!-- Create/Delete profile-->
                         <div class="profile-actions pull-right">
                             <div class="btn-group hidden-xs">
-                                <div class="newBetBtn">
-                                    <button type="button" class="btn btn-default btn-sm bg-purple dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>New Bet <span class="fa fa-caret-down"></span></button>
+                                <div class="dropdown newBetBtn">
+                                    <button id="newBetBtnID" type="button" class="btn btn-flat bg-purple-gradient dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>New Bet <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="javascript:createSingle()">Single</a></li>
                                         <li><a href="javascript:createParlay()">Parlay</a></li>
                                     </ul>
                                 </div>
-                                <a href="javascript:resetFilters(true)" class="btn btn-warning btn-sm btn-reset-filter btn-profile"><i class="fa fa-refresh" aria-hidden="true"></i><span>Reset Filters</span></a>
-                                <a href="javascript:createNewProfile('0')" class="btn btn-primary btn-sm btn-new-profile btn-profile"><i class="fa fa-plus" aria-hidden="true"></i><span>New profile</span></a>
-                                <a href="#" class="btn btn-danger btn-sm btn-delete-profile btn-profile hidden" data-toggle="modal" data-target="#modal-delete-profile"><i class="fa fa-trash" aria-hidden="true"></i><span>Delete profile</span></a>
-                                <a href="javascript:exportBettingProfile('0')" class="btn btn-success btn-sm btn-to-excel btn-profile"><i class="fa fa-file-excel-o" aria-hidden="true"></i><span>Export to Excel</span></a>
+                                <a href="" class="btn btn-flat bg-yellow-gradient btn-reset-filter btn-profile"><i class="fa fa-refresh" aria-hidden="true"></i><span>Reset Filters</span></a>
+                                <a href="javascript:createNewProfile('0')" class="btn btn-flat bg-blue-gradient btn-new-profile btn-profile"><i class="fa fa-plus" aria-hidden="true"></i><span>New profile</span></a>
+                                <a href="javascript:deleteBettingProfile('0')" class="btn btn-flat bg-red-gradient btn-delete-profile btn-profile hidden"><i class="fa fa-trash" aria-hidden="true"></i><span>Delete profile</span></a>
+                                <a href="javascript:exportBettingProfile('0')" class="btn btn-flat bg-green-gradient btn-to-excel btn-profile"><i class="fa fa-file-excel-o" aria-hidden="true"></i><span>Export to Excel</span></a>
                             </div>
                             <div class="btn-group visible-xs bets-tracker-actions">
                                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bars"></i><span class="fa fa-caret-down"></span></button>
@@ -269,11 +279,12 @@
                             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
                             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
                         </div>
-                    </div>
+                    </div> <!--box-header-->
                     <div class="box-body">
                         <div class="row">
                             <!-- Filters -->
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 button_group">
+                              
                                 <div class="horizontalText"><span>Filters</span></div>
                                 <div class="dropdown marginleft15">
                                     <button id="gameSiteBtn" class="customBtn01 button_md dropdown-toggle" type="button" data-toggle="dropdown">
@@ -338,9 +349,9 @@
                                         <li><a>Last 6 months</a></li>
                                     </ul>
                                 </div>
-                            </div>
-                        </div>
-
+                            </div> <!--col-->
+                        </div> <!--row-->
+                      <button type="button" class="btn bg-black-gradient btn-flat" data-toggle="modal" data-target="#modalAddNewBet"><i class="fa fa-edit fa-lg"></i> New Bet</button>
                         <div class="row">
                             <div class="col-lg-12">
                                 <!-- Bets -->
@@ -380,10 +391,10 @@
                                             }
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </div> <!--table-responsive-->
+                            </div> <!--col-->
+                        </div> <!--row-->
+                    </div> <!--box-body-->
                     <div class="box-footer">
                         <div class="row">
                             <div class="col-lg-12">
@@ -449,9 +460,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </div> <!--col-->
+                        </div> <!--row-->
+                    </div> <!--box-footer-->
                     <div class="box-footer">
                         <div class="row">
                             <!-- Statistics -->
@@ -492,58 +503,57 @@
                                                         }
                                                     </tbody>
                                                 </table>
-                                            </div>
+                                            </div> <!--table-responsive-->
+                                        </div> <!--tab-panel-->
+                                    }
+                                </div> <!--tab-content-->
+                            </div> <!--col-->
+                        <!-- Charts -->
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <ul class="nav nav-tabs nav-justified betsKillerNav four-way-nav" id="charts">
+                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
+                                {
+                                    <li @(chart.ActiveTab ? "class=active" : string.Empty)>
+                                        <a href="#@chart.Name" data-toggle="tab"><h5><strong>@chart.Label</strong></h5></a>
+                                    </li>
+                                }
+                            </ul>
+                            <div class="tab-content">
+                                @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
+                                {
+                                    <div role="tabpanel" class="tab-pane @(chart.ActiveTab ? "active" : string.Empty)" id="@chart.Name" style="margin-bottom:10px">
+                                        <div class="col-md-8 col-sm-8 col-xs-8">
+                                            <canvas id="@chart.Name-chart" height="150"></canvas>
                                         </div>
-                                    }
-                                </div>
-                            </div>
-                            <!-- Charts -->
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <ul class="nav nav-tabs nav-justified betsKillerNav four-way-nav" id="charts">
-                                    @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
-                                    {
-                                        <li @(chart.ActiveTab ? "class=active" : string.Empty)>
-                                            <a href="#@chart.Name" data-toggle="tab"><h5><strong>@chart.Label</strong></h5></a>
-                                        </li>
-                                    }
-                                </ul>
-                                <div class="tab-content">
-                                    @foreach (BetsKiller.ViewModel.Dashboard.BetsTracker.BetsTrackerProfileChartViewModel chart in this.Model.DefaultProfile.Charts)
-                                    {
-                                        <div role="tabpanel" class="tab-pane @(chart.ActiveTab ? "active" : string.Empty)" id="@chart.Name">
-                                            <div class="col-md-8 col-sm-8 col-xs-8">
-                                                <canvas id="@chart.Name-chart" height="150"></canvas>
-                                            </div>
-                                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                                <ul class="chart-legend clearfix">
-                                                    <li><i class="fa fa-circle-o text-red"></i> Total</li>
-                                                    <li><i class="fa fa-circle-o text-green"></i> Moneyline</li>
-                                                    <li><i class="fa fa-circle-o text-yellow"></i> Handicap</li>
-                                                    <li><i class="fa fa-circle-o text-aqua"></i> Parlay</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-12 col-xs-12">
-                                                <ul class="nav nav-pills nav-stacked visible-xs">
-                                                    <li class="margin-l-r-10">Total</li>
-                                                    <li class="margin-l-r-10">Moneyline</li>
-                                                    <li class="margin-l-r-10">Handicap</li>
-                                                    <li class="margin-l-r-10">Parlay</li>
-                                                </ul>
-                                            </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-4">
+                                            <ul class="chart-legend clearfix">
+                                                <li><i class="fa fa-circle-o text-red"></i> Total</li>
+                                                <li><i class="fa fa-circle-o text-green"></i> Moneyline</li>
+                                                <li><i class="fa fa-circle-o text-yellow"></i> Handicap</li>
+                                                <li><i class="fa fa-circle-o text-aqua"></i> Parlay</li>
+                                            </ul>
                                         </div>
-                                    }
-                                </div>
+                                        <div class="col-md-12 col-xs-12">
+                                            <ul class="nav nav-pills nav-stacked visible-xs">
+                                                <li class="margin-l-r-10">Total</li>
+                                                <li class="margin-l-r-10">Moneyline</li>
+                                                <li class="margin-l-r-10">Handicap</li>
+                                                <li class="margin-l-r-10">Parlay</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                }
                             </div>
-                      </div>
-                    </div>
-                </div>
+                        </div>
+                      </div> <!--row-->
+                    </div> <!--box-footer-->
+                </div> <!--box-->
             </section>
 
-        </section>
+        </section> <!--section-right-->
 
     </div>
 </section>
-
 <!-- MODAL WINDOWS-->
 <div class="delete-profile">
     <div id="modal-delete-profile" class="modal fade" role="dialog">
@@ -565,9 +575,21 @@
         </div>
     </div>
 </div>
+<!--MODAL ADD NEW BET-->
+<div class="modal fade" id="modalAddNewBet" role="dialog">
+        <div class="modal-dialog modal-sd">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <form class="form-horizontal" method="post" action="@Url.Action("SaveAnalysis", "Dashboard")">
+
+                    <div class="modal-header" style="background-color:#006dcc">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" style="color:white">Add New Bet <small style="color:white"> PARLAY</small></h4>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/dashboard-betstracker")
+   <script src="~/Scripts/Dashboard/icheck.js"></script>
 
     <script>
         function resetFilters(tableRedraw) {
@@ -866,5 +888,43 @@
         });
         $('a[href=#@this.Model.DefaultProfile.Charts.First().Name]').tab('show');
 
+    </script>
+    <script>
+        $(document).ready(function(){
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-green'
+          });
+        });
+
+         $(document).ready(function(){
+             $('.icheckbox_flat-green').delay(20).addClass('hidden');
+         });
+
+        $('#editActiveProfiles').click(function(){
+            $('.icheckbox_flat-green').toggleClass('hidden');
+            $('#profilesSaveCancelBtns').toggleClass('hidden');
+        });
+
+         $('#cancelEditActiveProfiles').click(function(){
+         $('.icheckbox_flat-green').toggleClass('hidden');
+         $('#profilesSaveCancelBtns').toggleClass('hidden');
+         });
+
+         if(document.documentElement.clientWidth > 900)
+			   {
+					//$(document).ready(function(){
+					//	$('#newBetBtnID').hover(function() {
+					//	    $('.newBetBtn').stop(true,true).addClass('open', 500).fadeIn(200);
+					//	})
+					//}); 	
+             
+                    $(function() {
+                        $(".dropdown").hover(function() {
+                            $(this).stop(true,true).addClass("open", 500);
+                        }, function() {
+                            $(this).stop(true,true).removeClass("open", 100);
+                        });    
+                    });
+			   }
     </script>
 }
