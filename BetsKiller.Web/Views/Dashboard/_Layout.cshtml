@@ -545,29 +545,23 @@
 
     </script>
   <script>
-         jQuery(document).ready(function() {
-         jQuery(".menu-trigger").click(function(){
-             jQuery(".navclass").toggleClass('show').addClass('animated fadeInDown');
-         });
-         });
-
-              jQuery(document).ready(function() {
-         jQuery(".menu-trigger").click(function(){
-             jQuery("#socialnav").removeClass('animated').toggleClass('show');
-         });
-              });
-
     jQuery(document).ready(function() {
-         jQuery(".navclass a").click(function(){
-             jQuery(".navclass").toggleClass('show');
-      });               
-    });
+        jQuery(".menu-trigger").click(function() {
+            jQuery(".navclass").toggleClass('show').addClass('animated fadeInDown');
+        });
 
-         jQuery(document).ready(function() {
-         jQuery(".navclass a").click(function(){
-             jQuery("#socialnav").toggleClass('show');
-         });
-              });
+        jQuery(".menu-trigger").click(function () {
+            jQuery("#socialnav").removeClass('animated').toggleClass('show');
+        });
+
+        jQuery(".navclass a").click(function () {
+            jQuery(".navclass").toggleClass('show');
+        });
+
+        jQuery(".navclass a").click(function () {
+            jQuery("#socialnav").toggleClass('show');
+        });
+    });
   </script>
 </body>
 </html>

@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201610052032029_BetsTrackerTablesAdded1.Designer.cs">
       <DependentUpon>201610052032029_BetsTrackerTablesAdded1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610272012010_BetsTrackerViewUpdate.cs" />
+    <Compile Include="Migrations\201610272012010_BetsTrackerViewUpdate.Designer.cs">
+      <DependentUpon>201610272012010_BetsTrackerViewUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="UserManagement\UserManagementContext.cs" />
     <Compile Include="UserManagement\UserManagementInitializer.cs" />
@@ -139,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610052032029_BetsTrackerTablesAdded1.resx">
       <DependentUpon>201610052032029_BetsTrackerTablesAdded1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610272012010_BetsTrackerViewUpdate.resx">
+      <DependentUpon>201610272012010_BetsTrackerViewUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -463,6 +463,24 @@ namespace BetsKiller.DAL.AppData
 
         #endregion
 
+        #region BetProfiles
+
+        public IQueryable<BetProfile> GetAllBetProfiles()
+        {
+            return this._context.BetProfiles;
+        }
+
+        #endregion
+
+        #region Bets
+
+        public IQueryable<Bet> GetAllBets()
+        {
+            return this._context.Bets;
+        }
+
+        #endregion
+
         #endregion
 
         #region Dispose
