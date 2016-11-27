@@ -254,6 +254,12 @@ a:focus {
 	float: right
 }
 
+.main-header .navbar-custom-menu{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 @media (max-width:991px) {
 	.main-header .navbar-custom-menu a,
 	.main-header .navbar-right a {
@@ -5562,7 +5568,10 @@ table.text-center th {
 	padding-bottom: 14px;
 	line-height: 14px;
 	}
-	
+	.three-way-nav li{
+    width:32%;
+    display: inline-flex;
+    }
 	#status {
 	width: 100px !important;
 	height: 100px !important;
@@ -5617,9 +5626,15 @@ table.text-center th {
 	td{
 		font-size:12px;
 	}
+    .label {
+	font-size: 80%;
+	font-weight: 600;
+	line-height: 1.2;
+	}
 	.label-sm {
-	font-size: smaller !important;
-	width: 40px !important;
+	font-size: 12px !important;
+	width: 50px !important;
+    height: 25px;
 	}
 	.box {
 	padding: 5px 9px;
@@ -5627,11 +5642,6 @@ table.text-center th {
 	.sportPicksText{
 		width:60%;
 		font-size: 14px !important;
-	}
-	.label {
-	font-size: 65%;
-	font-weight: 500;
-	line-height: 0.5;
 	}
 	h3{
 		margin-top: 5px;
