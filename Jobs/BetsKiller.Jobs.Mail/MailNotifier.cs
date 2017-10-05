@@ -33,13 +33,13 @@ namespace BetsKiller.Jobs.Mail
 
         public void SendServiceJobStatus(string jobName, string status, string message)
         {
-            using (MailMessage mail = new MailMessage(this._adminMailAddress, this._adminMailAddress))
-            {
-                mail.Subject = "Job " + jobName + ": " + status + " at " + DateTime.Now.ToShortTimeString();
-                mail.Body = message;
+            //using (MailMessage mail = new MailMessage(this._adminMailAddress, this._adminMailAddress))
+            //{
+            //    mail.Subject = "Job " + jobName + ": " + status + " at " + DateTime.Now.ToShortTimeString();
+            //    mail.Body = message;
 
-                base.Send(MailAddressesEnum.Admin, mail);
-            }
+            //    base.Send(MailAddressesEnum.Admin, mail);
+            //}
         }
 
         public void SendMailConfirmation(string link, string mailAddressTo)

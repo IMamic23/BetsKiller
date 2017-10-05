@@ -1,866 +1,866 @@
 ﻿@{
-    ViewBag.Title = "Dashboard";
-    Layout = "~/Views/Dashboard/_Layout.cshtml";
+	ViewBag.Title = "Dashboard";
+	Layout = "~/Views/Dashboard/_Layout.cshtml";
 }
 
 @section Styles {
-    @Styles.Render("~/Content/dashboard-css")
-    <link href='https://fonts.googleapis.com/css?family=Pridi:500' rel='stylesheet' type='text/css'>
+	@Styles.Render("~/Content/dashboard-css")
+	<link href='https://fonts.googleapis.com/css?family=Pridi:500' rel='stylesheet' type='text/css'>
 }
 
 @model BetsKiller.ViewModel.Dashboard.Index.DashboardViewModel
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
-    <h1>
-        Dashboard
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="/Dashboard/"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-    </ol>
+	<h1>
+		Dashboard
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="/Dashboard/"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Dashboard</li>
+	</ol>
 </section>
 
 <!-- Main content -->
 <section class="content">
 
-    <!-- Info boxes -->
-    <div class="row">
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <div class="info-box animated pulse" style="animation-delay:2s">
-                <span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Total bets</span>
-                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.TotalBets</span>
-                    <p></p>
-                    <span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.TotalBetsPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.TotalBetsPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.TotalBetsPctFromLastWeek.Value%</span>
-                    <span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <div class="info-box animated pulse" style="animation-delay:2.3s">
-                <span class="info-box-icon bg-green"><i class="fa fa-thumbs-up"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Wins</span>
-                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.Wins</span>
-                    <p></p>
-                    <span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.WinsPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.WinsPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.WinsPctFromLastWeek.Value%</span>
-                    <span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
-                </div>
-            </div>
-        </div>
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <div class="info-box animated pulse" style="animation-delay:2.6s">
-                <span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Losses</span>
-                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.Losses</span>
-                    <p></p>
-                    <span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.LossesPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.LossesPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.LossesPctFromLastWeek.Value%</span>
-                    <span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <div class="info-box animated pulse" style="animation-delay:2.9s">
-                <span class="info-box-icon bg-blue-active"><i class="fa fa-bank"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Invested <span style="font-size: smaller">units</span></span>
-                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.TotalInvested <small>@this.Model.AnalysisProfitNBA.TotalInvestedMoney</small></span>
-                    <p></p>
-                    <span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Value%</span>
-                    <span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <div class="info-box animated pulse" style="animation-delay:3.2s">
-                <span class="info-box-icon bg-purple-active">
-                    <i class="fa  fa-line-chart"></i>
-                </span>
-                <div class="info-box-content">
-                    <span class="info-box-text">ROI</span>
-                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.ROI%</span>
-                    <p></p>
-                    <span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.ROIPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.ROIPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.ROIPctFromLastWeek.Value%</span>
-                    <span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <div class="info-box animated pulse" style="animation-delay:3.5s">
-                <span class="info-box-icon" style="background-color: #daa520 !important"><i class="fa fa-money" style="color: white"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Profit <span style="font-size: smaller">units</span></span>
-                    <span class="info-box-number">@this.Model.AnalysisProfitNBA.Profit <small>@this.Model.AnalysisProfitNBA.ProfitMoney</small></span>
-                    <p></p>
-                    <span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Value%</span>
-                    <span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Info boxes -->
+	<div class="row">
+		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+			<div class="info-box animated pulse" style="animation-delay:2s">
+				<span class="info-box-icon bg-aqua"><i class="fa fa-folder-open"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Total bets</span>
+					<span class="info-box-number">@this.Model.AnalysisProfitNBA.TotalBets</span>
+					<p></p>
+					<span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.TotalBetsPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.TotalBetsPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.TotalBetsPctFromLastWeek.Value%</span>
+					<span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+			<div class="info-box animated pulse" style="animation-delay:2.3s">
+				<span class="info-box-icon bg-green"><i class="fa fa-thumbs-up"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Wins</span>
+					<span class="info-box-number">@this.Model.AnalysisProfitNBA.Wins</span>
+					<p></p>
+					<span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.WinsPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.WinsPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.WinsPctFromLastWeek.Value%</span>
+					<span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
+				</div>
+			</div>
+		</div>
+		<!-- fix for small devices only -->
+		<div class="clearfix visible-sm-block"></div>
+		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+			<div class="info-box animated pulse" style="animation-delay:2.6s">
+				<span class="info-box-icon bg-red"><i class="fa fa-thumbs-down"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Losses</span>
+					<span class="info-box-number">@this.Model.AnalysisProfitNBA.Losses</span>
+					<p></p>
+					<span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.LossesPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.LossesPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.LossesPctFromLastWeek.Value%</span>
+					<span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+			<div class="info-box animated pulse" style="animation-delay:2.9s">
+				<span class="info-box-icon bg-blue-active"><i class="fa fa-bank"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Invested <span style="font-size: smaller">units</span></span>
+					<span class="info-box-number">@this.Model.AnalysisProfitNBA.TotalInvested <small>@this.Model.AnalysisProfitNBA.TotalInvestedMoney</small></span>
+					<p></p>
+					<span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.TotalInvestedPctFromLastWeek.Value%</span>
+					<span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+			<div class="info-box animated pulse" style="animation-delay:3.2s">
+				<span class="info-box-icon bg-purple-active">
+					<i class="fa  fa-line-chart"></i>
+				</span>
+				<div class="info-box-content">
+					<span class="info-box-text">ROI</span>
+					<span class="info-box-number">@this.Model.AnalysisProfitNBA.ROI%</span>
+					<p></p>
+					<span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.ROIPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.ROIPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.ROIPctFromLastWeek.Value%</span>
+					<span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+			<div class="info-box animated pulse" style="animation-delay:3.5s">
+				<span class="info-box-icon" style="background-color: #daa520 !important"><i class="fa fa-money" style="color: white"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Profit <span style="font-size: smaller">units</span></span>
+					<span class="info-box-number">@this.Model.AnalysisProfitNBA.Profit <small>@this.Model.AnalysisProfitNBA.ProfitMoney</small></span>
+					<p></p>
+					<span class="fromLastWeek" style="@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Style"><span class="@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Class"></span>@this.Model.AnalysisProfitNBA.ProfitPctFromLastWeek.Value%</span>
+					<span style="margin-left: 5px" data-toggle="tooltip" title="From last week"><i class="fa fa-info-circle"></i></span>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <!-- Main content box with sortable panels -->
-    <div class="row">
+	<!-- Main content box with sortable panels -->
+	<div class="row">
 
-        <!-- Left col -->
-        <section class="col-lg-7 col-md-7 col-sm-12 col-xs-12 connectedSortable">
+		<!-- Left col -->
+		<section class="col-lg-7 col-md-7 col-sm-12 col-xs-12 connectedSortable">
 
-            <!-- Profit charts -->
-            <div class="nav-tabs-custom">
-                <!-- Tabs within a box -->
-                <ul class="nav nav-tabs pull-right">
-                    <li class="pull-left header"><i class="fa fa-area-chart"></i><h3 class="box-title" style="font-size: 18px; display: inline">Profit Charts</h3></li>
-                    <li id="liLtm"><a href="#profit-chart-ltm" data-toggle="tab">Last three months</a></li>
-                    <li id="liLy" class="active"><a href="#profit-chart-ly" data-toggle="tab">Last year</a></li>
-                </ul>
-                <div class="tab-content no-padding">
-                    <!-- Morris chart -->
-                    <div class="chart tab-pane" id="profit-chart-ltm" style="position: relative; height: 300px;"></div>
-                    <div class="chart tab-pane active" id="profit-chart-ly" style="position: relative; height: 300px;"></div>
-                </div>
-            </div>
+			<!-- Profit charts -->
+			<div class="nav-tabs-custom">
+				<!-- Tabs within a box -->
+				<ul class="nav nav-tabs pull-right">
+					<li class="pull-left header"><i class="fa fa-area-chart"></i><h3 class="box-title" style="font-size: 18px; display: inline">Profit Charts</h3></li>
+					<li id="liLtm"><a href="#profit-chart-ltm" data-toggle="tab">Last three months</a></li>
+					<li id="liLy" class="active"><a href="#profit-chart-ly" data-toggle="tab">Last year</a></li>
+				</ul>
+				<div class="tab-content no-padding">
+					<!-- Morris chart -->
+					<div class="chart tab-pane" id="profit-chart-ltm" style="position: relative; height: 300px;"></div>
+					<div class="chart tab-pane active" id="profit-chart-ly" style="position: relative; height: 300px;"></div>
+				</div>
+			</div>
 
-            @if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin))
-            {
-                <!-- Add new analysis button -->
-                <div class="text-center" style="margin-bottom: 10px">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAddNewAnalysis">Add new analysis</button>
-                </div>
-            }
+			@if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin))
+			{
+				<!-- Add new analysis button -->
+				<div class="text-center" style="margin-bottom: 10px">
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalAddNewAnalysis">Add new analysis</button>
+				</div>
+			}
 
-            <!-- Today's Free Picks List -->
-            <div class="box box-primary shakeAndBake">
-                <div class="box-header with-border">
-                    <i class="fa fa-bolt"></i>
-                    <h3 class="box-title"><span class="label label-info" style="background-color: #00c0ef">FREE</span> Today's Picks</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Game</th>
-                                <th class="text-center">Bet type</th>
-                                <th class="text-center">Pick </th>
-                                <th class="text-center">Confidence</th>
-                                <th class="text-center">Odds</th>
-                                <th class="text-center">Invested</th>
-                                <th class="text-center">Details</th>
-                                @if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager))
-                                {
-                                    <th class="text-center">Tools</th>
-                                }
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel analyse in this.Model.TodaysFreeAnalysisNBA)
-                            {
-                                <tr>
-                                    <td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
-                                    <td class="text-center">
-                                        @if (User.Identity.IsAuthenticated)
-                                        {
-                                            @analyse.BetType
-                                        }
-                                        else
-                                        {
-                                            <span class="badge" style="background-color: #00c0ef; font-size: large"><i class="fa fa-lock"></i></span>
-                                        }
-                                    </td>
-                                    <td class="text-center">
-                                        @if (User.Identity.IsAuthenticated)
-                                        {
-                                            @analyse.Pick
-                                        }
-                                        else
-                                        {
-                                            <span class="badge" style="background-color: #00c0ef; font-size: large"><i class="fa fa-lock"></i></span>
-                                        }
-                                    </td>
-                                    <td class="text-center">
-                                        @foreach (BetsKiller.Helper.HTML.CustomHtmlElement subElement in analyse.Confidence.SubElements)
-                                        {
-                                            <@subElement.Type class='@subElement.Class'></@subElement.Type>
-                                        }
-                                        <span style="@analyse.Confidence.Style">@analyse.Confidence.Value</span>
-                                    </td>
-                                    <td class="text-center">
-                                        @if (User.Identity.IsAuthenticated)
-                                        {
-                                            @analyse.Odds
-                                        }
-                                        else
-                                        {
-                                            <span class="badge" style="background-color: #00c0ef; font-size: large"><i class="fa fa-lock"></i></span>
-                                        }
-                                    </td>
-                                    <td class="text-center">@analyse.Invested</td>
-                                    <td class="text-center">
-                                        @if (User.Identity.IsAuthenticated)
-                                        {
-                                            <a tabindex="0" id="matchDetails" class="btn btn-default" data-html="true" role="button" data-toggle="popover" data-placement="bottom" data-content="@analyse.Description">Bet details</a>
-                                        }
-                                        else
-                                        {
-                                            <span class="badge" style="background-color: #00c0ef; font-size: large"><i class="fa fa-lock"></i></span>
-                                        }
-                                    </td>
-                                    @if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager))
-                                    {
-                                        <td class="text-center">
-                                            <a data-confirm="Are you sure you want to delete: @analyse.HomeTeamAbbreviation - @analyse.AwayTeamAbbreviation?" class="btn btn-danger" href="/Dashboard/DeleteAnalysis/?idAnalysis=@analyse.Id">Delete</a>
-                                        </td>
-                                    }
-                                    else
-                                        {
-                                            if (!User.Identity.IsAuthenticated)
-                                            {
-                                                <td class="text-center">
-                                                    <a href="@Url.Action("Login", "Account")" class="btn btn-info btn-sm"><i class="fa fa-sign-in" style="margin-right: 5px"></i>Login</a>
-                                                </td>
-                                            }
-                                        }
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <!-- Today's Premium Picks List -->
-            <div class="box box-primary shakeAndBake">
-                <div class="box-header with-border">
-                    <i class="fa fa-trophy"></i>
-                    <h3 class="box-title"><span class="label label-warning">PREMIUM</span> Today's Picks</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Game</th>
-                                <th class="text-center">Bet type</th>
-                                <th class="text-center">Pick </th>
-                                <th class="text-center">Confidence</th>
-                                <th class="text-center">Odds</th>
-                                <th class="text-center">Invested</th>
-                                <th class="text-center">Details</th>
-                                @if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager))
-                                { 
-                                    <th class="text-center">Tools</th>
-                                }
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @{
-                                System.Collections.Generic.IEnumerable<BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel> analysis = this.Model.TodaysPremiumAnalysisNBA;
-                                    
-                                if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Premium))
-                                {
-                                    if (this.Model.TodaysPremiumAnalysisNBA.Count > 0)
-                                    {
-                                        analysis = analysis.OrderBy(x => x.Date).Take(1);
-                                    }
-                                }
-                                    
-                                foreach (BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel analyse in analysis)
-                                {
-                                    <tr>
-                                        <td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
-                                        <td class="text-center">
-                                            @if (!User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) && User.Identity.IsAuthenticated)
-                                            {
-                                                @analyse.BetType
-                                            }
-                                            else
-                                            {
-                                                <span class="badge" style="background-color: orange; font-size: large"><i class="fa fa-lock"></i></span>
-                                            }
-                                        </td>
-                                        <td class="text-center">
-                                            @if (!User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) && User.Identity.IsAuthenticated)
-                                            {
-                                                @analyse.Pick
-                                            }
-                                            else
-                                            {
-                                                <span class="badge" style="background-color: orange; font-size: large"><i class="fa fa-lock"></i></span>
-                                            }
-                                        </td>
-                                        <td class="text-center">
-                                            @foreach (BetsKiller.Helper.HTML.CustomHtmlElement subElement in analyse.Confidence.SubElements)
-                                            {
-                                                <@subElement.Type class='@subElement.Class'></@subElement.Type>
-                                            }
-                                            <span style="@analyse.Confidence.Style">@analyse.Confidence.Value</span>
-                                        </td>
-                                        <td class="text-center">
-                                            @if (!User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) && User.Identity.IsAuthenticated)
-                                            {
-                                                @analyse.Odds
-                                            }
-                                            else
-                                            {
-                                                <span class="badge" style="background-color: orange; font-size: large"><i class="fa fa-lock"></i></span>
-                                            }
-                                        </td>
-                                        <td class="text-center">@analyse.Invested</td>
-                                        <td class="text-center">
-                                            @if (!User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) && User.Identity.IsAuthenticated)
-                                            { 
-                                                <a tabindex="0" id="matchDetails" class="btn btn-default" data-html="true" role="button" data-toggle="popover" data-placement="bottom" data-content="@analyse.Description">Bet details</a>
-                                            }
-                                            else
-                                            {
-                                                <span class="badge" style="background-color: orange; font-size: large"><i class="fa fa-lock"></i></span>
-                                            }
-                                        </td>
-                                        @if ((User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager)) && User.Identity.IsAuthenticated)
-                                        {
-                                            <td class="text-center">
-                                                <a data-confirm="Are you sure you want to delete: @analyse.HomeTeamAbbreviation - @analyse.AwayTeamAbbreviation?" class="btn btn-danger" href="/Dashboard/DeleteAnalysis/?idAnalysis=@analyse.Id">Delete</a>
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) || !User.Identity.IsAuthenticated)
-                                            { 
-                                                <td class="text-center">
-                                                    <a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#subscribeModal"><i class="fa fa-star" style="margin-right: 5px"></i>Subscribe</a>
-                                                </td>
-                                            }
-                                        }
-                                    </tr>
-                                }
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+			<!-- Today's Free Picks List -->
+			<div class="box box-primary shakeAndBake">
+				<div class="box-header with-border">
+					<i class="fa fa-bolt"></i>
+					<h3 class="box-title"><span class="label label-info" style="background-color: #00c0ef">FREE</span> Today's Picks</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+						<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="text-center">Game</th>
+								<th class="text-center">Bet type</th>
+								<th class="text-center">Pick </th>
+								<th class="text-center">Confidence</th>
+								<th class="text-center">Odds</th>
+								<th class="text-center">Invested</th>
+								<th class="text-center">Details</th>
+								@if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager))
+								{
+									<th class="text-center">Tools</th>
+								}
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel analyse in this.Model.TodaysFreeAnalysisNBA)
+							{
+								<tr>
+									<td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
+									<td class="text-center">
+										@if (User.Identity.IsAuthenticated)
+										{
+											@analyse.BetType
+										}
+										else
+										{
+											<span class="badge" style="background-color: #00c0ef; font-size: large"><i class="fa fa-lock"></i></span>
+										}
+									</td>
+									<td class="text-center">
+										@if (User.Identity.IsAuthenticated)
+										{
+											@analyse.Pick
+										}
+										else
+										{
+											<span class="badge" style="background-color: #00c0ef; font-size: large"><i class="fa fa-lock"></i></span>
+										}
+									</td>
+									<td class="text-center">
+										@foreach (BetsKiller.Helper.HTML.CustomHtmlElement subElement in analyse.Confidence.SubElements)
+										{
+											<@subElement.Type class='@subElement.Class'></@subElement.Type>
+										}
+										<span style="@analyse.Confidence.Style">@analyse.Confidence.Value</span>
+									</td>
+									<td class="text-center">
+										@if (User.Identity.IsAuthenticated)
+										{
+											@analyse.Odds
+										}
+										else
+										{
+											<span class="badge" style="background-color: #00c0ef; font-size: large"><i class="fa fa-lock"></i></span>
+										}
+									</td>
+									<td class="text-center">@analyse.Invested</td>
+									<td class="text-center">
+										@if (User.Identity.IsAuthenticated)
+										{
+											<a tabindex="0" id="matchDetails" class="btn btn-default" data-html="true" role="button" data-toggle="popover" data-placement="bottom" data-content="@analyse.Description">Bet details</a>
+										}
+										else
+										{
+											<span class="badge" style="background-color: #00c0ef; font-size: large"><i class="fa fa-lock"></i></span>
+										}
+									</td>
+									@if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager))
+									{
+										<td class="text-center">
+											<a data-confirm="Are you sure you want to delete: @analyse.HomeTeamAbbreviation - @analyse.AwayTeamAbbreviation?" class="btn btn-danger" href="/Dashboard/DeleteAnalysis/?idAnalysis=@analyse.Id">Delete</a>
+										</td>
+									}
+									else
+										{
+											if (!User.Identity.IsAuthenticated)
+											{
+												<td class="text-center">
+													<a href="@Url.Action("Login", "Account")" class="btn btn-info btn-sm"><i class="fa fa-sign-in" style="margin-right: 5px"></i>Login</a>
+												</td>
+											}
+										}
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<!-- Today's Premium Picks List -->
+			<div class="box box-primary shakeAndBake">
+				<div class="box-header with-border">
+					<i class="fa fa-trophy"></i>
+					<h3 class="box-title"><span class="label label-warning">PREMIUM</span> Today's Picks</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+						<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="text-center">Game</th>
+								<th class="text-center">Bet type</th>
+								<th class="text-center">Pick </th>
+								<th class="text-center">Confidence</th>
+								<th class="text-center">Odds</th>
+								<th class="text-center">Invested</th>
+								<th class="text-center">Details</th>
+								@if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager))
+								{ 
+									<th class="text-center">Tools</th>
+								}
+							</tr>
+						</thead>
+						<tbody>
+							@{
+								System.Collections.Generic.IEnumerable<BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel> analysis = this.Model.TodaysPremiumAnalysisNBA;
+									
+								if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Premium))
+								{
+									if (this.Model.TodaysPremiumAnalysisNBA.Count > 0)
+									{
+										analysis = analysis.OrderBy(x => x.Date).Take(1);
+									}
+								}
+									
+								foreach (BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel analyse in analysis)
+								{
+									<tr>
+										<td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
+										<td class="text-center">
+											@if (!User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) && User.Identity.IsAuthenticated)
+											{
+												@analyse.BetType
+											}
+											else
+											{
+												<span class="badge" style="background-color: orange; font-size: large"><i class="fa fa-lock"></i></span>
+											}
+										</td>
+										<td class="text-center">
+											@if (!User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) && User.Identity.IsAuthenticated)
+											{
+												@analyse.Pick
+											}
+											else
+											{
+												<span class="badge" style="background-color: orange; font-size: large"><i class="fa fa-lock"></i></span>
+											}
+										</td>
+										<td class="text-center">
+											@foreach (BetsKiller.Helper.HTML.CustomHtmlElement subElement in analyse.Confidence.SubElements)
+											{
+												<@subElement.Type class='@subElement.Class'></@subElement.Type>
+											}
+											<span style="@analyse.Confidence.Style">@analyse.Confidence.Value</span>
+										</td>
+										<td class="text-center">
+											@if (!User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) && User.Identity.IsAuthenticated)
+											{
+												@analyse.Odds
+											}
+											else
+											{
+												<span class="badge" style="background-color: orange; font-size: large"><i class="fa fa-lock"></i></span>
+											}
+										</td>
+										<td class="text-center">@analyse.Invested</td>
+										<td class="text-center">
+											@if (!User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) && User.Identity.IsAuthenticated)
+											{ 
+												<a tabindex="0" id="matchDetails" class="btn btn-default" data-html="true" role="button" data-toggle="popover" data-placement="bottom" data-content="@analyse.Description">Bet details</a>
+											}
+											else
+											{
+												<span class="badge" style="background-color: orange; font-size: large"><i class="fa fa-lock"></i></span>
+											}
+										</td>
+										@if ((User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager)) && User.Identity.IsAuthenticated)
+										{
+											<td class="text-center">
+												<a data-confirm="Are you sure you want to delete: @analyse.HomeTeamAbbreviation - @analyse.AwayTeamAbbreviation?" class="btn btn-danger" href="/Dashboard/DeleteAnalysis/?idAnalysis=@analyse.Id">Delete</a>
+											</td>
+										}
+										else
+										{
+											if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Free) || !User.Identity.IsAuthenticated)
+											{ 
+												<td class="text-center">
+													<a href="#" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#subscribeModal"><i class="fa fa-star" style="margin-right: 5px"></i>Subscribe</a>
+												</td>
+											}
+										}
+									</tr>
+								}
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-            <!-- Today's games -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <img class ="basketball_icon" src="/Content/Images/basketball.png" alt="basketball" width="23" height="23" />
-                    <h3 class="box-title">Today's Games</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Event info</th>
-                                <th class="text-center">Team</th>
-                                <th class="text-center">W/L</th>
-                                <th class="text-center">ATS</th>
-                                <th class="text-center">O/U</th>
-                                <th class="text-center"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (BetsKiller.ViewModel.Dashboard.Index.TodaysGamesNBAViewModel todayGame in this.Model.TodaysGamesNBA)
-                            {
-                                <tr>
-                                    <!-- Both rows -->
-                                    <td rowspan="2" style="text-align:center; vertical-align:middle">
-                                        <p>@todayGame.EventStart</p>
-                                        <p>@todayGame.EventStatus</p>
-                                    </td>
+			<!-- Today's games -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<img class ="basketball_icon" src="/Content/Images/basketball.png" alt="basketball" width="23" height="23" />
+					<h3 class="box-title">Today's Games</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+						<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="text-center">Event info</th>
+								<th class="text-center">Team</th>
+								<th class="text-center">W/L</th>
+								<th class="text-center">ATS</th>
+								<th class="text-center">O/U</th>
+								<th class="text-center"></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (BetsKiller.ViewModel.Dashboard.Index.TodaysGamesNBAViewModel todayGame in this.Model.TodaysGamesNBA)
+							{
+								<tr>
+									<!-- Both rows -->
+									<td rowspan="2" style="text-align:center; vertical-align:middle">
+										<p>@todayGame.EventStart</p>
+										<p>@todayGame.EventStatus</p>
+									</td>
 
-                                    <!-- First row -->
-                                    <td class="text-center"><span class="label label-sm label-@todayGame.HomeTeamAbbreviation.ToLower()">@todayGame.HomeTeamAbbreviation</span></td>
-                                    <td class="text-center">@todayGame.HomeTeamSU</td>
-                                    <td class="text-center">@todayGame.HomeTeamATS</td>
-                                    <td class="text-center">@todayGame.HomeTeamOU</td>
+									<!-- First row -->
+									<td class="text-center"><span class="label label-sm label-@todayGame.HomeTeamAbbreviation.ToLower()">@todayGame.HomeTeamAbbreviation</span></td>
+									<td class="text-center">@todayGame.HomeTeamSU</td>
+									<td class="text-center">@todayGame.HomeTeamATS</td>
+									<td class="text-center">@todayGame.HomeTeamOU</td>
 
-                                    <!-- Both rows -->
-                                    <td rowspan="2" style="text-align:center; vertical-align:middle">
-                                        <a tabindex="0" id="matchDetails" class="btn btn-default" data-html="true" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="@("<b>Season type</b>: " + todayGame.SeasonType + "<br> <b>Location</b>: " + todayGame.SiteName + ", " + todayGame.SiteCity + ", " + todayGame.SiteState + " (Capacity - " + todayGame.SiteCapacity + ")")">Match details</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- Second row -->
-                                    <td class="text-center"><span class="label label-sm label-@todayGame.AwayTeamAbbreviation.ToLower()">@todayGame.AwayTeamAbbreviation</span></td>
-                                    <td class="text-center">@todayGame.AwayTeamSU</td>
-                                    <td class="text-center">@todayGame.AwayTeamATS</td>
-                                    <td class="text-center">@todayGame.AwayTeamOU</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+									<!-- Both rows -->
+									<td rowspan="2" style="text-align:center; vertical-align:middle">
+										<a tabindex="0" id="matchDetails" class="btn btn-default" data-html="true" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content="@("<b>Season type</b>: " + todayGame.SeasonType + "<br> <b>Location</b>: " + todayGame.SiteName + ", " + todayGame.SiteCity + ", " + todayGame.SiteState + " (Capacity - " + todayGame.SiteCapacity + ")")">Match details</a>
+									</td>
+								</tr>
+								<tr>
+									<!-- Second row -->
+									<td class="text-center"><span class="label label-sm label-@todayGame.AwayTeamAbbreviation.ToLower()">@todayGame.AwayTeamAbbreviation</span></td>
+									<td class="text-center">@todayGame.AwayTeamSU</td>
+									<td class="text-center">@todayGame.AwayTeamATS</td>
+									<td class="text-center">@todayGame.AwayTeamOU</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-            <!-- Facebook Page -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <i class="fa fa-facebook"></i>
-                    <h3 class="box-title"><span class="label label-info" style="background-color: #00c0ef">FACEBOOK</span> Page</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body table-responsive">
-                    <div class="fb-page" data-href="https://www.facebook.com/BetsKillerAnalysis/" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                        <div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/BetsKillerAnalysis/"><a href="https://www.facebook.com/BetsKillerAnalysis/">BetsKiller - NBA and MLB games analysis</a></blockquote></div>
-                    </div>
-                </div>
-            </div>
+			<!-- Facebook Page -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<i class="fa fa-facebook"></i>
+					<h3 class="box-title"><span class="label label-info" style="background-color: #00c0ef">FACEBOOK</span> Page</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+						<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<div class="fb-page" data-href="https://www.facebook.com/BetsKillerAnalysis/" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+						<div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/BetsKillerAnalysis/"><a href="https://www.facebook.com/BetsKillerAnalysis/">BetsKiller - NBA and MLB games analysis</a></blockquote></div>
+					</div>
+				</div>
+			</div>
 
-        </section>
+		</section>
 
-        <!-- Right col -->
-        <section class="col-lg-5 col-md-5 col-sm-12 col-xs-12 connectedSortable">
+		<!-- Right col -->
+		<section class="col-lg-5 col-md-5 col-sm-12 col-xs-12 connectedSortable">
 
-            <!-- NBA Headlines PUBLISH -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <i class="fa fa-newspaper-o"></i>
-                    <h3 class="box-title">NBA Headlines</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <div class="box-group" id="accordion">
-                        @foreach (BetsKiller.ViewModel.Dashboard.Index.HeadlineNBAViewModel headline in Model.HeadlinesPublishedNBA)
-                        {
-                            <form method="post" action="@Url.Action("PublishNews", "Dashboard")">
-                                @Html.Hidden("Id", @headline.Id)
-                                <div class="box-header with-border">
-                                    <h4 class="box-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="@("#collapse" + headline.Id)">@headline.Title</a>
-                                    </h4>
-                                </div>
-                                <div id="@("collapse" + headline.Id)" class="panel-collapse collapse">
-                                    <div class="box-body">
-                                        <blockquote>
-                                            <p>
-                                                @headline.Description
-                                            </p>
-                                            <p class="pull-right">
-                                                Published: @headline.Published
-                                            </p>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                            </form>
-                        }
-                    </div>
-                </div>
-            </div>
+			<!-- NBA Headlines PUBLISH -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<i class="fa fa-newspaper-o"></i>
+					<h3 class="box-title">NBA Headlines</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+						<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="box-body">
+					<div class="box-group" id="accordion">
+						@foreach (BetsKiller.ViewModel.Dashboard.Index.HeadlineNBAViewModel headline in Model.HeadlinesPublishedNBA)
+						{
+							<form method="post" action="@Url.Action("PublishNews", "Dashboard")">
+								@Html.Hidden("Id", @headline.Id)
+								<div class="box-header with-border">
+									<h4 class="box-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="@("#collapse" + headline.Id)">@headline.Title</a>
+									</h4>
+								</div>
+								<div id="@("collapse" + headline.Id)" class="panel-collapse collapse">
+									<div class="box-body">
+										<blockquote>
+											<p>
+												@headline.Description
+											</p>
+											<p class="pull-right">
+												Published: @headline.Published
+											</p>
+										</blockquote>
+									</div>
+								</div>
+							</form>
+						}
+					</div>
+				</div>
+			</div>
 
-            <!-- Last 10 Free Picks List -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <i class="fa fa-list-ul"></i>
-                    <h3 class="box-title"><span class="label label-info" style="background-color: #00c0ef">FREE</span> Last 10 Picks</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body table-responsive">
-                    <table id="freeBets" class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Game</th>
-                                <th class="text-center" style="width:100px">Pick </th>
-                                <th class="text-center">Result</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Profit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel analyse in this.Model.LastFreeAnalysisNBA)
-                            {
-                                <tr>
-                                    <td class="text-center">@analyse.Date</td>
-                                    <td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
-                                    <td class="text-center">@analyse.Pick</td>
-                                    <td class="text-center" style="font-weight: bold">@analyse.Result</td>
-                                    <td class="text-center" style="@analyse.Status.Style">@analyse.Status.Value</td>
-                                    <td class="text-center" style="@analyse.Profit.Style">@analyse.Profit.Value</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+			<!-- Last 10 Free Picks List -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<i class="fa fa-list-ul"></i>
+					<h3 class="box-title"><span class="label label-info" style="background-color: #00c0ef">FREE</span> Last 10 Picks</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+						<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table id="freeBets" class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="text-center">Date</th>
+								<th class="text-center">Game</th>
+								<th class="text-center" style="width:100px">Pick </th>
+								<th class="text-center">Result</th>
+								<th class="text-center">Status</th>
+								<th class="text-center">Profit</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel analyse in this.Model.LastFreeAnalysisNBA)
+							{
+								<tr>
+									<td class="text-center">@analyse.Date</td>
+									<td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
+									<td class="text-center">@analyse.Pick</td>
+									<td class="text-center" style="font-weight: bold">@analyse.Result</td>
+									<td class="text-center" style="@analyse.Status.Style">@analyse.Status.Value</td>
+									<td class="text-center" style="@analyse.Profit.Style">@analyse.Profit.Value</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-            <!-- Last 10 Premium Picks List -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <i class="fa fa-trophy"></i>
-                    <h3 class="box-title"><span class="label label-warning">PREMIUM</span> Last 10 Picks</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body table-responsive">
-                    <table id="premiumBets" class="table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Date</th>
-                                <th class="text-center">Game</th>
-                                <th class="text-center" style="width:100px">Pick </th>
-                                <th class="text-center">Result</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Profit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel analyse in this.Model.LastPremiumAnalysisNBA)
-                            {
-                                <tr>
-                                    <td class="text-center">@analyse.Date</td>
-                                    <td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
-                                    <td class="text-center">@analyse.Pick</td>
-                                    <td class="text-center" style="font-weight: bold">@analyse.Result</td>
-                                    <td class="text-center" style="@analyse.Status.Style">@analyse.Status.Value</td>
-                                    <td class="text-center" style="@analyse.Profit.Style">@analyse.Profit.Value</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+			<!-- Last 10 Premium Picks List -->
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<i class="fa fa-trophy"></i>
+					<h3 class="box-title"><span class="label label-warning">PREMIUM</span> Last 10 Picks</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+						<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="box-body table-responsive">
+					<table id="premiumBets" class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="text-center">Date</th>
+								<th class="text-center">Game</th>
+								<th class="text-center" style="width:100px">Pick </th>
+								<th class="text-center">Result</th>
+								<th class="text-center">Status</th>
+								<th class="text-center">Profit</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (BetsKiller.ViewModel.Dashboard.Index.AnalysisViewModel analyse in this.Model.LastPremiumAnalysisNBA)
+							{
+								<tr>
+									<td class="text-center">@analyse.Date</td>
+									<td class="text-center"><span class="label label-sm label-@analyse.HomeTeamAbbreviation.ToLower()">@analyse.HomeTeamAbbreviation</span> - <span class="label label-sm label-@analyse.AwayTeamAbbreviation.ToLower()">@analyse.AwayTeamAbbreviation</span></td>
+									<td class="text-center">@analyse.Pick</td>
+									<td class="text-center" style="font-weight: bold">@analyse.Result</td>
+									<td class="text-center" style="@analyse.Status.Style">@analyse.Status.Value</td>
+									<td class="text-center" style="@analyse.Profit.Style">@analyse.Profit.Value</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
 
-            @if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager))
-            {
-                <!-- NBA Headlines FEED -->
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <i class="fa fa-newspaper-o"></i>
-                        <h3 class="box-title">NBA Headlines FEED</h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div class="box-group" id="accordion">
-                            @foreach (BetsKiller.ViewModel.Dashboard.Index.HeadlineNBAViewModel headline in Model.HeadlinesFeedNBA)
-                            {
-                                <form method="post" action="@Url.Action("PublishNews", "Dashboard")">
-                                    @Html.Hidden("Id", @headline.Id)
-                                    <div class="box-header with-border">
-                                        <h4 class="box-title">
-                                            <textarea style="width: 400px" data-toggle="collapse" data-parent="#accordion" href="@("#collapseFeed" + headline.Id)" name="Title">@headline.Title</textarea>
-                                        </h4>
-                                    </div>
-                                    <div id="@("collapseFeed" + headline.Id)" class="panel-collapse collapse">
-                                        <div class="box-body">
-                                            <blockquote>
-                                                <p>
-                                                    <textarea name="Description">@headline.Description</textarea>
-                                                </p>
-                                                <p>
-                                                    <input type="submit" class="btn btn-success pull-right" value="Publish" />
-                                                </p>
-                                            </blockquote>
-                                        </div>
-                                    </div>
-                                </form>
-                            }
-                        </div>
-                    </div>
-                </div>
-            }
+			@if (User.IsInRole(BetsKiller.Helper.Constants.RolesConst.Admin) || User.IsInRole(BetsKiller.Helper.Constants.RolesConst.ContentManager))
+			{
+				<!-- NBA Headlines FEED -->
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<i class="fa fa-newspaper-o"></i>
+						<h3 class="box-title">NBA Headlines FEED</h3>
+						<div class="box-tools pull-right">
+							<button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+							<button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+						</div>
+					</div>
+					<div class="box-body">
+						<div class="box-group" id="accordion">
+							@foreach (BetsKiller.ViewModel.Dashboard.Index.HeadlineNBAViewModel headline in Model.HeadlinesFeedNBA)
+							{
+								<form method="post" action="@Url.Action("PublishNews", "Dashboard")">
+									@Html.Hidden("Id", @headline.Id)
+									<div class="box-header with-border">
+										<h4 class="box-title">
+											<textarea style="width: 400px" data-toggle="collapse" data-parent="#accordion" href="@("#collapseFeed" + headline.Id)" name="Title">@headline.Title</textarea>
+										</h4>
+									</div>
+									<div id="@("collapseFeed" + headline.Id)" class="panel-collapse collapse">
+										<div class="box-body">
+											<blockquote>
+												<p>
+													<textarea name="Description">@headline.Description</textarea>
+												</p>
+												<p>
+													<input type="submit" class="btn btn-success pull-right" value="Publish" />
+												</p>
+											</blockquote>
+										</div>
+									</div>
+								</form>
+							}
+						</div>
+					</div>
+				</div>
+			}
 
-        </section>
+		</section>
 
-    </div>
+	</div>
 
 </section>
 
 <!-- Modal content -->
 <section>
 
-    <div class="modal fade" id="modalAddNewAnalysis" role="dialog">
-        <div class="modal-dialog modal-sd">
+	<div class="modal fade" id="modalAddNewAnalysis" role="dialog">
+		<div class="modal-dialog modal-sd">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <form method="post" action="@Url.Action("SaveAnalysis", "Dashboard")">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<form method="post" action="@Url.Action("SaveAnalysis", "Dashboard")">
 
-                    <div class="modal-header" style="background-color:#006dcc">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title" style="color:white">Add New Analysis</h4>
-                    </div>
-                    <div class="modal-body">
+					<div class="modal-header" style="background-color:#006dcc">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title" style="color:white">Add New Analysis</h4>
+					</div>
+					<div class="modal-body">
 
-                        <table class="table">
-                            <tbody>
-                                <!-- Analyse type -->
-                                <tr>
-                                    <td>
-                                        <span>Analyse type:</span>
-                                    </td>
-                                    <td>
-                                        <select name="AnalyseType" style="width: 100%">
-                                            @foreach (BetsKiller.ViewModel.Dashboard.Index.AnalyseTypeViewModel analyseType in this.Model.AnalyseTypes)
-                                            {
-                                                <option value="@analyseType.Id">@analyseType.Label</option>
-                                            }
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Game -->
-                                <tr>
-                                    <td>
-                                        <span>Game:</span>
-                                    </td>
-                                    <td>
-                                        <select name="Game" style="width: 100%">
-                                            @foreach (BetsKiller.ViewModel.Dashboard.Index.TodaysGamesNBAViewModel todayGame in this.Model.TodaysGamesNBA)
-                                            {
-                                                <option value="@todayGame.EventId">@todayGame.HomeTeamAbbreviation - @todayGame.AwayTeamAbbreviation</option>
-                                            }
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Bet type -->
-                                <tr>
-                                    <td>
-                                        <span>Bet type:</span>
-                                    </td>
-                                    <td>
-                                        <select name="BetType" style="width: 100%">
-                                            @foreach (BetsKiller.ViewModel.Dashboard.Index.BetTypeViewModel betType in this.Model.BetTypes)
-                                            {
-                                                <option value="@betType.Id">@betType.Label</option>
-                                            }
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Pick -->
-                                <tr>
-                                    <td>
-                                        <span>Pick:</span>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="Pick" class="form-control" placeholder="Pick" step="0.5">
-                                    </td>
-                                </tr>
-                                <!-- Offer total -->
-                                <tr>
-                                    <td>
-                                        <span>Offer total:</span>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="OfferTotal" class="form-control" placeholder="Offer total" step="0.5">
-                                    </td>
-                                </tr>
-                                <!-- Offer line-->
-                                <tr>
-                                    <td>
-                                        <span>Offer line:</span>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="OfferLine" class="form-control" placeholder="Offer line" step="0.5">
-                                    </td>
-                                </tr>
-                                <!-- Confidence -->
-                                <tr>
-                                    <td>
-                                        <span>Confidence</span>
-                                    </td>
-                                    <td>
-                                        <select name="Confidence" style="width: 100%">
-                                            <option value="50">50%</option>
-                                            <option value="55">55%</option>
-                                            <option value="60">60%</option>
-                                            <option value="65">65%</option>
-                                            <option value="70">70%</option>
-                                            <option value="75">75%</option>
-                                            <option value="80">80%</option>
-                                            <option value="85">85%</option>
-                                            <option value="90">90%</option>
-                                            <option value="95">95%</option>
-                                            <option value="100">100%</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Odd -->
-                                <tr>
-                                    <td>
-                                        <span>Odd:</span>
-                                    </td>
-                                    <td>
-                                        <select name="Odd" style="width: 100%">
-                                            <option value="1.84">1.84</option>
-                                            <option value="1.869">1.869</option>
-                                            <option value="1.877">1.877</option>
-                                            <option value="1.884">1.884</option>
-                                            <option value="1.892">1.892</option>
-                                            <option value="1.9">1.9</option>
-                                            <option value="1.909">1.909</option>
-                                            <option value="1.917">1.917</option>
-                                            <option value="1.925">1.925</option>
-                                            <option value="1.934">1.934</option>
-                                            <option value="1.952">1.952</option>
+						<table class="table">
+							<tbody>
+								<!-- Analyse type -->
+								<tr>
+									<td>
+										<span>Analyse type:</span>
+									</td>
+									<td>
+										<select name="AnalyseType" style="width: 100%">
+											@foreach (BetsKiller.ViewModel.Dashboard.Index.AnalyseTypeViewModel analyseType in this.Model.AnalyseTypes)
+											{
+												<option value="@analyseType.Id">@analyseType.Label</option>
+											}
+										</select>
+									</td>
+								</tr>
+								<!-- Game -->
+								<tr>
+									<td>
+										<span>Game:</span>
+									</td>
+									<td>
+										<select name="Game" style="width: 100%">
+											@foreach (BetsKiller.ViewModel.Dashboard.Index.TodaysGamesNBAViewModel todayGame in this.Model.TodaysGamesNBA)
+											{
+												<option value="@todayGame.EventId">@todayGame.HomeTeamAbbreviation - @todayGame.AwayTeamAbbreviation</option>
+											}
+										</select>
+									</td>
+								</tr>
+								<!-- Bet type -->
+								<tr>
+									<td>
+										<span>Bet type:</span>
+									</td>
+									<td>
+										<select name="BetType" style="width: 100%">
+											@foreach (BetsKiller.ViewModel.Dashboard.Index.BetTypeViewModel betType in this.Model.BetTypes)
+											{
+												<option value="@betType.Id">@betType.Label</option>
+											}
+										</select>
+									</td>
+								</tr>
+								<!-- Pick -->
+								<tr>
+									<td>
+										<span>Pick:</span>
+									</td>
+									<td>
+										<input type="number" name="Pick" class="form-control" placeholder="Pick" step="0.5">
+									</td>
+								</tr>
+								<!-- Offer total -->
+								<tr>
+									<td>
+										<span>Offer total:</span>
+									</td>
+									<td>
+										<input type="number" name="OfferTotal" class="form-control" placeholder="Offer total" step="0.5">
+									</td>
+								</tr>
+								<!-- Offer line-->
+								<tr>
+									<td>
+										<span>Offer line:</span>
+									</td>
+									<td>
+										<input type="number" name="OfferLine" class="form-control" placeholder="Offer line" step="0.5">
+									</td>
+								</tr>
+								<!-- Confidence -->
+								<tr>
+									<td>
+										<span>Confidence</span>
+									</td>
+									<td>
+										<select name="Confidence" style="width: 100%">
+											<option value="50">50%</option>
+											<option value="55">55%</option>
+											<option value="60">60%</option>
+											<option value="65">65%</option>
+											<option value="70">70%</option>
+											<option value="75">75%</option>
+											<option value="80">80%</option>
+											<option value="85">85%</option>
+											<option value="90">90%</option>
+											<option value="95">95%</option>
+											<option value="100">100%</option>
+										</select>
+									</td>
+								</tr>
+								<!-- Odd -->
+								<tr>
+									<td>
+										<span>Odd:</span>
+									</td>
+									<td>
+										<select name="Odd" style="width: 100%">
+											<option value="1.84">1.84</option>
+											<option value="1.869">1.869</option>
+											<option value="1.877">1.877</option>
+											<option value="1.884">1.884</option>
+											<option value="1.892">1.892</option>
+											<option value="1.9">1.9</option>
+											<option value="1.909">1.909</option>
+											<option value="1.917">1.917</option>
+											<option value="1.925">1.925</option>
+											<option value="1.934">1.934</option>
+											<option value="1.952">1.952</option>
 											<option value="2.000">2.0</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <!-- Invested -->
-                                <tr>
-                                    <td>
-                                        <span>Invested:</span>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="Invested" class="form-control" placeholder="Invested" min="0" step="0.5">
-                                    </td>
-                                </tr>
-                                <!-- Details -->
-                                <tr>
-                                    <td>
-                                        <span>Details:</span>
-                                    </td>
-                                    <td>
-                                        <textarea class="textarea form-control" name="Details" placeholder="Details" rows="10" cols="80"></textarea>
-                                    </td>
-                                </tr>
-                            </tbody>
+										</select>
+									</td>
+								</tr>
+								<!-- Invested -->
+								<tr>
+									<td>
+										<span>Invested:</span>
+									</td>
+									<td>
+										<input type="number" name="Invested" class="form-control" placeholder="Invested" min="0" step="0.5">
+									</td>
+								</tr>
+								<!-- Details -->
+								<tr>
+									<td>
+										<span>Details:</span>
+									</td>
+									<td>
+										<textarea class="textarea form-control" name="Details" placeholder="Details" rows="10" cols="80"></textarea>
+									</td>
+								</tr>
+							</tbody>
 
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="row" style="margin-top:5px; margin-left:10px; margin-right:10px">
-                            <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
-                        </div>
-                        <div class="row" style="margin-top:5px; margin-left:10px; margin-right:10px">
-                            <button type="submit" class="btn btn-success btn-block btn-lg">Add</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<div class="row" style="margin-top:5px; margin-left:10px; margin-right:10px">
+							<button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Close</button>
+						</div>
+						<div class="row" style="margin-top:5px; margin-left:10px; margin-right:10px">
+							<button type="submit" class="btn btn-success btn-block btn-lg">Add</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 </section>
 
 @section Scripts {
-    <script>
-        // Set tooltips
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip(); 
-        });
+	<script>
+		// Set tooltips
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip(); 
+		});
 
-        // Set popovers
-        $('[id*=matchDetails]').popover();
+		// Set popovers
+		$('[id*=matchDetails]').popover();
 
-        // Set HTML editor
-        $('.textarea').wysihtml5();
+		// Set HTML editor
+		$('.textarea').wysihtml5();
 
-        $('a[data-confirm]').click(function(ev) {
-            var href = $(this).attr('href');
-            if (!$('#dataConfirmModal').length) {
-                $('body').append(
-                    '<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header" style="color:white; text-align:center"><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body" style="color:white; text-align:center"></div><div class="modal-footer" style="color:white; text-align:center"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>');
-            }
-            $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
-            $('#dataConfirmOK').attr('href', href);
-            $('#dataConfirmModal').modal({show:true});
-            return false;
-        });
+		$('a[data-confirm]').click(function(ev) {
+			var href = $(this).attr('href');
+			if (!$('#dataConfirmModal').length) {
+				$('body').append(
+					'<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header" style="color:white; text-align:center"><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body" style="color:white; text-align:center"></div><div class="modal-footer" style="color:white; text-align:center"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>');
+			}
+			$('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+			$('#dataConfirmOK').attr('href', href);
+			$('#dataConfirmModal').modal({show:true});
+			return false;
+		});
 
-        $(".dropdown-menu li a").click(function(){
-            $(this).closest('div').parent().find('input').val($(this).attr('value'));
-        });
-    </script>
+		$(".dropdown-menu li a").click(function(){
+			$(this).closest('div').parent().find('input').val($(this).attr('value'));
+		});
+	</script>
 
-    <script>
+	<script>
 
-        // Make the dashboard widgets sortable using jQuery UI
-        "use strict";
-        $(".connectedSortable").sortable({
-            placeholder: "sort-highlight",
-            connectWith: ".connectedSortable",
-            handle: ".box-header, .nav-tabs",
-            forcePlaceholderSize: true,
-            zIndex: 999999
-        });
-        $(".connectedSortable .box-header, .connectedSortable .nav-tabs-custom").css("cursor", "move");
+		// Make the dashboard widgets sortable using jQuery UI
+		"use strict";
+		$(".connectedSortable").sortable({
+			placeholder: "sort-highlight",
+			connectWith: ".connectedSortable",
+			handle: ".box-header, .nav-tabs",
+			forcePlaceholderSize: true,
+			zIndex: 999999
+		});
+		$(".connectedSortable .box-header, .connectedSortable .nav-tabs-custom").css("cursor", "move");
 
-        // Set charts using Morris.js
-        var areaLtm = new Morris.Area({
-            element: 'profit-chart-ltm',
-            resize: true,
-            data: [
-              @foreach (BetsKiller.ViewModel.Dashboard.Index.ProfitChartViewModel analysisProfit in this.Model.LastThreeMonthsProfitChart)
-                  {
-                    <text>
-                        { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: @analysisProfit.Profit, wins: @analysisProfit.Wins, losses: @analysisProfit.Losses },
-                    </text>
-                  }
-            ],
-            xkey: 'firstDayInWeek',
-            ykeys: ['losses', 'profit', 'wins'],
-            labels: ['Losses', 'Profit (units)', 'Wins'],
-            lineColors: ['#dd4b39', '#daa520', '#00a65a'],
-            hideHover: 'auto',
-            behaveLikeLine: true,
-            fillOpacity: 0.1
-        });
+		// Set charts using Morris.js
+		var areaLtm = new Morris.Area({
+			element: 'profit-chart-ltm',
+			resize: true,
+			data: [
+			  @foreach (BetsKiller.ViewModel.Dashboard.Index.ProfitChartViewModel analysisProfit in this.Model.LastThreeMonthsProfitChart)
+				  {
+					<text>
+						{ firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: @analysisProfit.Profit, wins: @analysisProfit.Wins, losses: @analysisProfit.Losses },
+					</text>
+				  }
+			],
+			xkey: 'firstDayInWeek',
+			ykeys: ['losses', 'profit', 'wins'],
+			labels: ['Losses', 'Profit (units)', 'Wins'],
+			lineColors: ['#dd4b39', '#daa520', '#00a65a'],
+			hideHover: 'auto',
+			behaveLikeLine: true,
+			fillOpacity: 0.1
+		});
 
-        var areaLy = new Morris.Area({
-            element: 'profit-chart-ly',
-            resize: true,
-            data: [
-              @foreach (BetsKiller.ViewModel.Dashboard.Index.ProfitChartViewModel analysisProfit in this.Model.LastYearProfitChart)
-              {
-                <text>
-                   { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: @analysisProfit.Profit, wins: @analysisProfit.Wins, losses: @analysisProfit.Losses },
-                </text>
-              }
-            ],
-            xkey: 'firstDayInWeek',
-            ykeys: ['losses', 'profit', 'wins'],
-            labels: ['Losses', 'Profit (units)', 'Wins'],
-            lineColors: ['#dd4b39', '#daa520', '#00a65a'],
-            hideHover: 'auto',
-            behaveLikeLine: true,
-            fillOpacity: 0.1
-        });
+		var areaLy = new Morris.Area({
+			element: 'profit-chart-ly',
+			resize: true,
+			data: [
+			  @foreach (BetsKiller.ViewModel.Dashboard.Index.ProfitChartViewModel analysisProfit in this.Model.LastYearProfitChart)
+			  {
+				<text>
+				   { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: @analysisProfit.Profit, wins: @analysisProfit.Wins, losses: @analysisProfit.Losses },
+				</text>
+			  }
+			],
+			xkey: 'firstDayInWeek',
+			ykeys: ['losses', 'profit', 'wins'],
+			labels: ['Losses', 'Profit (units)', 'Wins'],
+			lineColors: ['#dd4b39', '#daa520', '#00a65a'],
+			hideHover: 'auto',
+			behaveLikeLine: true,
+			fillOpacity: 0.1
+		});
 
-        $('#liLtm').on('click', function ()
-        {
-            setTimeout(function() {
-                areaLtm.redraw();
-            }, 50);
-        });
+		$('#liLtm').on('click', function ()
+		{
+			setTimeout(function() {
+				areaLtm.redraw();
+			}, 50);
+		});
 
-        $('#liLy').on('click', function ()
-        {
-            setTimeout(function() {
-                areaLy.redraw();
-            }, 50);
-        });
+		$('#liLy').on('click', function ()
+		{
+			setTimeout(function() {
+				areaLy.redraw();
+			}, 50);
+		});
 
-    </script>
+	</script>
 	<script>
 	setTimeout(function () {
-    $('.shakeAndBake').addClass('animated flash');
-    }, 5000);
-    </script>
+	$('.shakeAndBake').addClass('animated flash');
+	}, 5000);
+	</script>
 }
