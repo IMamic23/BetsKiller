@@ -44,7 +44,7 @@ namespace BetsKiller.Jobs.Processes
             this._sports = base.GetSports();
             this._teams = base.GetTeamsNBA();
 
-            foreach (string date in this._dates)
+            foreach (var date in this._dates)
             {
                 // Get events NBA
                 this.GetParseEventsNBA(date);
@@ -69,12 +69,12 @@ namespace BetsKiller.Jobs.Processes
             this._addedScheduleResults = new List<ScheduleResultsNBA>();
 
             // Get todays games
-            BetsKiller.API.Erikberg.Methods.MethodEvents methodEvents = new API.Erikberg.Methods.MethodEvents();
-            BetsKiller.API.Erikberg.Entities.Events dataEvents = methodEvents.Get(date, SportConst.NBA);
+            var methodEvents = new API.Erikberg.Methods.MethodEvents();
+            var dataEvents = methodEvents.Get(date, SportConst.NBA);
 
-            foreach (BetsKiller.API.Erikberg.Entities.Event dataEvent in dataEvents.Event)
+            foreach (var dataEvent in dataEvents.Event)
             {
-                ScheduleResultsNBA scheduleResult = base.AppDataRepository.GetAllScheduleResultsNBA().Where(x => x.EventId == dataEvent.EventId).FirstOrDefault();
+                var scheduleResult = base.AppDataRepository.GetAllScheduleResultsNBA().Where(x => x.EventId == dataEvent.EventId).FirstOrDefault();
 
                 if (scheduleResult != null) // Update existing event in DB
                 {
@@ -110,13 +110,13 @@ namespace BetsKiller.Jobs.Processes
                     scheduleResult.SiteState = dataEvent.Site.State;
                     scheduleResult.SiteCity = dataEvent.Site.City;
 
-                    TeamsNBA homeTeam = this._teams.Where(x => x.Name.NameErikberg == dataEvent.HomeTeam.TeamId).FirstOrDefault();
+                    var homeTeam = this._teams.Where(x => x.Name.NameErikberg == dataEvent.HomeTeam.TeamId).FirstOrDefault();
                     if (homeTeam != null)
                     {
                         scheduleResult.Team_Id = homeTeam.Id;
                     }
 
-                    TeamsNBA awayTeam = this._teams.Where(x => x.Name.NameErikberg == dataEvent.AwayTeam.TeamId).FirstOrDefault();
+                    var awayTeam = this._teams.Where(x => x.Name.NameErikberg == dataEvent.AwayTeam.TeamId).FirstOrDefault();
                     if (awayTeam != null)
                     {
                         scheduleResult.Opponent_Id = awayTeam.Id;
@@ -132,15 +132,15 @@ namespace BetsKiller.Jobs.Processes
             this._updatedAnalysis = new List<Analysis>();
 
             // Get related anlysis foreach updated scheduleResult and resolve their status.
-            foreach (ScheduleResultsNBA scheduleResult in this._updatedScheduleResults)
+            foreach (var scheduleResult in this._updatedScheduleResults)
             {
                 // See is game completed/postponed/suspended/cancelled
                 if (scheduleResult.EventStatus != EventStatusConst.SCHEDULED)
                 {
                     // Find if game is connected to any analysis
-                    List<Analysis> analysis = base.AppDataRepository.GetAllAnalysis().Where(x => x.EventNBA != null && x.EventNBA.EventId == scheduleResult.EventId).ToList();
+                    var analysis = base.AppDataRepository.GetAllAnalysis().Where(x => x.EventNBA != null && x.EventNBA.EventId == scheduleResult.EventId).ToList();
 
-                    foreach (Analysis analyse in analysis)
+                    foreach (var analyse in analysis)
                     {
                         if (analyse.BetStatus.Name == BetStatusConst.SCHEDULED) // Don't update updated analysis
                         {
@@ -160,8 +160,8 @@ namespace BetsKiller.Jobs.Processes
             // Update data in analysis
             analyse.Changed = DateTime.Now;
 
-            List<int> homePoints = scheduleResult.TeamPeriodScores.Split(',').Select(x => Convert.ToInt32(x)).ToList();
-            List<int> awayPoints = scheduleResult.OpponentPeriodScores.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+            var homePoints = scheduleResult.TeamPeriodScores.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+            var awayPoints = scheduleResult.OpponentPeriodScores.Split(',').Select(x => Convert.ToInt32(x)).ToList();
 
             analyse.Result = scheduleResult.TeamPointsScored.ToString() + " - " + scheduleResult.OpponentPointsScored.ToString() + " (" + (homePoints[0] + homePoints[1]).ToString() + " - " + (awayPoints[0] + awayPoints[1]).ToString() + ")";
 
@@ -174,10 +174,10 @@ namespace BetsKiller.Jobs.Processes
             else // It is completed so we can resolve result
             {
                 // First resolve PUSH status if it is set
-                bool isPush = false;
+                var isPush = false;
                 if (!string.IsNullOrEmpty(analyse.BetLogicPush))
                 {
-                    string pushExpression = analyse.BetLogicPush
+                    var pushExpression = analyse.BetLogicPush
                                             .Replace("X", scheduleResult.TeamPointsScored.ToString())
                                             .Replace("X1", homePoints[0].ToString())
                                             .Replace("X2", homePoints[1].ToString())
@@ -189,7 +189,7 @@ namespace BetsKiller.Jobs.Processes
                                             .Replace("Y3", awayPoints[2].ToString())
                                             .Replace("Y4", awayPoints[3].ToString());
 
-                    Expression expression = new Expression(pushExpression);
+                    var expression = new Expression(pushExpression);
                     isPush = (bool)expression.Evaluate();
                 }
 
@@ -200,7 +200,7 @@ namespace BetsKiller.Jobs.Processes
                 }
                 else // If it is not PUSH status, resolve WIN/LOSS status.+
                 {
-                    string winLossExpression = analyse.BetLogicWinLoss
+                    var winLossExpression = analyse.BetLogicWinLoss
                                             .Replace("X", scheduleResult.TeamPointsScored.ToString())
                                             .Replace("X1", homePoints[0].ToString())
                                             .Replace("X2", homePoints[1].ToString())
@@ -212,8 +212,8 @@ namespace BetsKiller.Jobs.Processes
                                             .Replace("Y3", awayPoints[2].ToString())
                                             .Replace("Y4", awayPoints[3].ToString());
 
-                    Expression expression = new Expression(winLossExpression);
-                    bool isWin = (bool)expression.Evaluate();
+                    var expression = new Expression(winLossExpression);
+                    var isWin = (bool)expression.Evaluate();
 
                     if (isWin)
                     {
@@ -231,11 +231,11 @@ namespace BetsKiller.Jobs.Processes
 
         private void UpdateAnalysisProfit(Analysis analyse)
         {
-            int year = analyse.Created.Year;
-            int month = analyse.Created.Month;
-            int week = CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(analyse.Created, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+            var year = analyse.Created.Year;
+            var month = analyse.Created.Month;
+            var week = CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(analyse.Created, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
 
-            AnalysisProfit analysisProfit = base.AppDataRepository.GetAllAnalysisProfit().Where(x => x.Year == year && x.Week == week).FirstOrDefault();
+            var analysisProfit = base.AppDataRepository.GetAllAnalysisProfit().Where(x => x.Year == year && x.Week == week).FirstOrDefault();
 
             if (analysisProfit != null)
             {

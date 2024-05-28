@@ -52,15 +52,15 @@ namespace BetsKiller.Jobs.Processes
         {
             this._scheduleResults = new List<ScheduleResultsNBA>();
 
-            foreach (TeamsNBA team in this._teamsNba)
+            foreach (var team in this._teamsNba)
             {
                 // Get schedule and results
-                BetsKiller.API.Erikberg.Methods.MethodTeamScheduleResults methodsScheduleResults = new BetsKiller.API.Erikberg.Methods.MethodTeamScheduleResults();
-                List<BetsKiller.API.Erikberg.Entities.TeamScheduleResults> dataScheduleResults = methodsScheduleResults.Get(BetsKiller.API.Erikberg.Enums.SportEnum.nba, team.Name.NameErikberg, this._season, this._since, this._until, null);
+                var methodsScheduleResults = new BetsKiller.API.Erikberg.Methods.MethodTeamScheduleResults();
+                var dataScheduleResults = methodsScheduleResults.Get(BetsKiller.API.Erikberg.Enums.SportEnum.nba, team.Name.NameErikberg, this._season, this._since, this._until, null);
 
-                foreach (BetsKiller.API.Erikberg.Entities.TeamScheduleResults dataScheduleResult in dataScheduleResults.Where(x => x.TeamEventLocationType == "h"))
+                foreach (var dataScheduleResult in dataScheduleResults.Where(x => x.TeamEventLocationType == "h"))
                 {
-                    ScheduleResultsNBA scheduleResult = new ScheduleResultsNBA();
+                    var scheduleResult = new ScheduleResultsNBA();
 
                     scheduleResult.EventId = dataScheduleResult.EventId;
                     scheduleResult.EventStatus = dataScheduleResult.EventStatus;
@@ -81,13 +81,13 @@ namespace BetsKiller.Jobs.Processes
                     scheduleResult.SiteState = dataScheduleResult.Site.State;
                     scheduleResult.SiteCity = dataScheduleResult.Site.City;
 
-                    TeamsNBA homeTeam = this._teamsNba.Where(x => x.Name.NameErikberg == dataScheduleResult.Team.TeamId).FirstOrDefault();
+                    var homeTeam = this._teamsNba.Where(x => x.Name.NameErikberg == dataScheduleResult.Team.TeamId).FirstOrDefault();
                     if (homeTeam != null)
                     {
                         scheduleResult.Team_Id = homeTeam.Id;
                     }
 
-                    TeamsNBA awayTeam = this._teamsNba.Where(x => x.Name.NameErikberg == dataScheduleResult.Opponent.TeamId).FirstOrDefault();
+                    var awayTeam = this._teamsNba.Where(x => x.Name.NameErikberg == dataScheduleResult.Opponent.TeamId).FirstOrDefault();
                     if (awayTeam != null)
                     {
                         scheduleResult.Opponent_Id = awayTeam.Id;

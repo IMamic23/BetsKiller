@@ -40,14 +40,14 @@ namespace BetsKiller.Jobs.Processes
             this._leaders = new List<LeadersNBA>();
 
             // Get leaders for each category
-            foreach (LeadersNBACategories leadersCategory in this._leaderCategoriesNba)
+            foreach (var leadersCategory in this._leaderCategoriesNba)
             {
-                BetsKiller.API.Erikberg.Methods.MethodNBALeaders methodNbaLeaders = new BetsKiller.API.Erikberg.Methods.MethodNBALeaders();
-                List<BetsKiller.API.Erikberg.Entities.NBALeader> dataLeaders = methodNbaLeaders.Get(BetsKiller.API.Erikberg.Enums.SportEnum.nba, leadersCategory.NameErikberg, null, null, null);
+                var methodNbaLeaders = new BetsKiller.API.Erikberg.Methods.MethodNBALeaders();
+                var dataLeaders = methodNbaLeaders.Get(BetsKiller.API.Erikberg.Enums.SportEnum.nba, leadersCategory.NameErikberg, null, null, null);
 
-                foreach (BetsKiller.API.Erikberg.Entities.NBALeader dataLeader in dataLeaders)
+                foreach (var dataLeader in dataLeaders)
                 {
-                    LeadersNBA leader = new LeadersNBA();
+                    var leader = new LeadersNBA();
 
                     leader.FirstName = dataLeader.FirstName;
                     leader.LastName = dataLeader.LastName;

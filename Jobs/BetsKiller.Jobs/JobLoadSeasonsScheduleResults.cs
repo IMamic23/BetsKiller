@@ -23,18 +23,18 @@ namespace BetsKiller.Jobs
             /*
             * LoadScheduleResultsNBA for past two seasons and current season.
             */
-            int currentSeason = Convert.ToInt32(Load.GetCurrentSeasonErikberg());
+            var currentSeason = Convert.ToInt32(Load.GetCurrentSeasonErikberg());
 
-            List<string> seasons = new List<string>()
+            var seasons = new List<string>()
                 {
                     currentSeason.ToString(),
                     (--currentSeason).ToString(),
                     (--currentSeason).ToString()
                 };
 
-            foreach (string season in seasons.OrderBy(x => x))
+            foreach (var season in seasons.OrderBy(x => x))
             {
-                LoadScheduleResultsNBA loadScheduleResultsNBA = new LoadScheduleResultsNBA(season);
+                var loadScheduleResultsNBA = new LoadScheduleResultsNBA(season);
                 loadScheduleResultsNBA.Start();
 
                 Thread.Sleep(base.WAIT_TIME);

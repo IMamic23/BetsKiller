@@ -1,6 +1,5 @@
 ﻿using BetsKiller.API.Rotoworld.Entities;
 using BetsKiller.API.Rotoworld.Helpers;
-using HtmlAgilityPack;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
@@ -29,23 +28,23 @@ namespace BetsKiller.API.Rotoworld.Methods
 
         public List<Injury> Get()
         {
-            base.GetData();
+            GetData();
 
-            List<Injury> injuries = new List<Injury>();
+            var injuries = new List<Injury>();
 
             // Iterate teams
-            HtmlNodeCollection teams = base.HtmlDocument.DocumentNode.SelectNodes("//div[@class='pb']");
-            foreach (HtmlNode team in teams)
+            var teams = HtmlDocument.DocumentNode.SelectNodes("//div[@class='pb']");
+            foreach (var team in teams)
             {
-                string teamName = team.SelectSingleNode("div").InnerText;
+                var teamName = team.SelectSingleNode("div").InnerText;
 
                 // Iterate players
-                HtmlNodeCollection players = team.SelectNodes("table/tr");
-                for (int i = 1; i < players.Count; i++)
+                var players = team.SelectNodes("table/tr");
+                for (var i = 1; i < players.Count; i++)
                 {
-                    HtmlNodeCollection playerData = players[i].SelectNodes("td");
+                    var playerData = players[i].SelectNodes("td");
 
-                    Injury injury = new Injury();
+                    var injury = new Injury();
 
                     injury.TeamName = teamName;
                     injury.PlayerName = StringTransformator.RemoveSpecialCharacters(WebUtility.HtmlDecode(playerData[0].InnerText));
@@ -55,10 +54,10 @@ namespace BetsKiller.API.Rotoworld.Methods
                     injury.Type = StringTransformator.RemoveSpecialCharacters(WebUtility.HtmlDecode(playerData[5].InnerText));
                     injury.Returns = StringTransformator.RemoveSpecialCharacters(WebUtility.HtmlDecode(playerData[6].InnerText));
 
-                    string report = playerData[1].SelectSingleNode("div/div[1]").InnerText;
+                    var report = playerData[1].SelectSingleNode("div/div[1]").InnerText;
                     injury.Report = StringTransformator.RemoveSpecialCharacters(WebUtility.HtmlDecode(report));
 
-                    string reportUpdateDate = playerData[1].SelectSingleNode("div/div[3]").InnerText;
+                    var reportUpdateDate = playerData[1].SelectSingleNode("div/div[3]").InnerText;
                     injury.ReportUpdateDate = WebUtility.HtmlDecode(reportUpdateDate);
 
                     injuries.Add(injury);

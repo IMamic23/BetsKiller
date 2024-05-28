@@ -42,12 +42,12 @@ namespace BetsKiller.Jobs.Processes
         private void GetParseStandingsNBA()
         {
             // Get standings
-            BetsKiller.API.Erikberg.Methods.MethodStandings methodStandings = new API.Erikberg.Methods.MethodStandings();
-            BetsKiller.API.Erikberg.Entities.Standings dataStandings = methodStandings.Get(API.Erikberg.Enums.SportEnum.nba, base.GetCurrentDateErikberg());
+            var methodStandings = new API.Erikberg.Methods.MethodStandings();
+            var dataStandings = methodStandings.Get(API.Erikberg.Enums.SportEnum.nba, base.GetCurrentDateErikberg());
 
-            foreach (BetsKiller.API.Erikberg.Entities.Standing dataStanding in dataStandings.Standing)
+            foreach (var dataStanding in dataStandings.Standing)
             {
-                Standings standing = new Standings();
+                var standing = new Standings();
                 standing.Rank = dataStanding.Rank;
                 standing.OrdinalRank = dataStanding.OrdinalRank;
                 standing.Won = dataStanding.Won;

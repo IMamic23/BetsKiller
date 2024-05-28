@@ -38,12 +38,12 @@ namespace BetsKiller.Jobs.Processes
             this._powerRankings = new List<PowerRankingsNBA>();
 
             // Get power rankings
-            BetsKiller.API.NBAcom.Methods.MethodPowerRankings methodPowerRankings = new BetsKiller.API.NBAcom.Methods.MethodPowerRankings();
-            List<BetsKiller.API.NBAcom.Entities.PowerRankings> dataPowerRankings = methodPowerRankings.Get();
+            var methodPowerRankings = new BetsKiller.API.NBAcom.Methods.MethodPowerRankings();
+            var dataPowerRankings = methodPowerRankings.Get();
 
-            foreach (BetsKiller.API.NBAcom.Entities.PowerRankings dataPowerRanking in dataPowerRankings)
+            foreach (var dataPowerRanking in dataPowerRankings)
             {
-                PowerRankingsNBA powerRanking = new PowerRankingsNBA();
+                var powerRanking = new PowerRankingsNBA();
 
                 powerRanking.Rank = Convert.ToInt32(dataPowerRanking.Rank);
                 powerRanking.RankLastWeek = Convert.ToInt32(dataPowerRanking.RankLastWeek);

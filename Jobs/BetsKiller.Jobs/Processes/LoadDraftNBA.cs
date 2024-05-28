@@ -38,12 +38,12 @@ namespace BetsKiller.Jobs.Processes
             this._drafts = new List<DraftsNBA>();
 
             // Get drafts
-            BetsKiller.API.Erikberg.Methods.MethodNBADraft methodNbaDraft = new BetsKiller.API.Erikberg.Methods.MethodNBADraft();
-            List<BetsKiller.API.Erikberg.Entities.NBADraft> dataDrafts = methodNbaDraft.Get(BetsKiller.API.Erikberg.Enums.SportEnum.nba, null, null);
+            var methodNbaDraft = new BetsKiller.API.Erikberg.Methods.MethodNBADraft();
+            var dataDrafts = methodNbaDraft.Get(BetsKiller.API.Erikberg.Enums.SportEnum.nba, null, null);
 
-            foreach (BetsKiller.API.Erikberg.Entities.NBADraft dataDraft in dataDrafts)
+            foreach (var dataDraft in dataDrafts)
             {
-                DraftsNBA draft = new DraftsNBA();
+                var draft = new DraftsNBA();
 
                 draft.FirstName = dataDraft.Player.FirstName;
                 draft.LastName = dataDraft.Player.LastName;

@@ -1,6 +1,4 @@
-﻿using BetsKiller.API.NBAcom.Entities;
-using BetsKiller.API.NBAcom.Methods;
-using System.Collections.Generic;
+﻿using BetsKiller.API.NBAcom.Methods;
 
 namespace BetsKiller.API.NBAcom._Example
 {
@@ -8,8 +6,8 @@ namespace BetsKiller.API.NBAcom._Example
     {
         public static void Start()
         {
-            MethodNews methodNews = new MethodNews();
-            List<News> news = methodNews.Get();
+            var methodNews = new MethodNews();
+            var news = methodNews.Get();
         }
     }
 }

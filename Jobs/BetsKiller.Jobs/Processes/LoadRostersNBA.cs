@@ -37,14 +37,14 @@ namespace BetsKiller.Jobs.Processes
             this._rosters = new List<RostersNBA>();
 
             // Get roster for each team
-            foreach (TeamsNBA team in this._teamsNba)
+            foreach (var team in this._teamsNba)
             {
-                BetsKiller.API.Erikberg.Methods.MethodRoster methodRoster = new BetsKiller.API.Erikberg.Methods.MethodRoster();
-                BetsKiller.API.Erikberg.Entities.Roster dataRoster = methodRoster.Get(BetsKiller.API.Erikberg.Enums.SportEnum.nba, team.Name.NameErikberg, null);
+                var methodRoster = new BetsKiller.API.Erikberg.Methods.MethodRoster();
+                var dataRoster = methodRoster.Get(BetsKiller.API.Erikberg.Enums.SportEnum.nba, team.Name.NameErikberg, null);
 
-                foreach (BetsKiller.API.Erikberg.Entities.Player player in dataRoster.Players)
+                foreach (var player in dataRoster.Players)
                 {
-                    RostersNBA rosterPlayer = new RostersNBA();
+                    var rosterPlayer = new RostersNBA();
 
                     rosterPlayer.FirstName = player.FirstName;
                     rosterPlayer.LastName = player.LastName;

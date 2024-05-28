@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Text.RegularExpressions;
-using System.Xml;
 
 namespace BetsKiller.API.NBAcom.Methods
 {
@@ -34,27 +33,27 @@ namespace BetsKiller.API.NBAcom.Methods
 
         public List<PowerRankings> Get()
         {
-            base.GetData();
+            GetData();
 
-            List<PowerRankings> powerRankings = new List<PowerRankings>();
+            var powerRankings = new List<PowerRankings>();
 
             // Get current power ranking link
-            XmlNodeList items = base.XmlDocument.SelectNodes("//channel/item");
-            string currentPowerRankingLink = StringTransformator.RemoveSpecialCharacters(items[0].SelectSingleNode("link").InnerText);
+            var items = XmlDocument.SelectNodes("//channel/item");
+            var currentPowerRankingLink = StringTransformator.RemoveSpecialCharacters(items[0].SelectSingleNode("link").InnerText);
 
             // Load HTML document from link
-            HtmlDocument htmlDocument = new HtmlDocument();
-            using (WebClient webClient = new WebClient())
+            var htmlDocument = new HtmlDocument();
+            using (var webClient = new WebClient())
             {
-                string response = webClient.DownloadString(currentPowerRankingLink);
+                var response = webClient.DownloadString(currentPowerRankingLink);
                 htmlDocument.LoadHtml(response);
             }
 
             // Parse HTML document
-            HtmlNodeCollection teams = htmlDocument.DocumentNode.SelectNodes("//div[@class='nbaArticlePRItem']");
-            foreach (HtmlNode team in teams)
+            var teams = htmlDocument.DocumentNode.SelectNodes("//div[@class='nbaArticlePRItem']");
+            foreach (var team in teams)
             {
-                PowerRankings powerRanking = new PowerRankings();
+                var powerRanking = new PowerRankings();
 
                 powerRanking.TeamName = team.SelectSingleNode("div[2]/b[1]").InnerText.Trim();
                 powerRanking.Rank = team.SelectSingleNode("div[1]/div[1]/div[1]/p").InnerHtml.Trim();

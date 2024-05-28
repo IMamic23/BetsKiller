@@ -48,16 +48,16 @@ namespace BetsKiller.Jobs.Processes
         private void GetCreateTeams()
         {
             // Get teams informations from Erikberg
-            BetsKiller.API.Erikberg.Methods.MethodTeams methodTeams = new BetsKiller.API.Erikberg.Methods.MethodTeams();
+            var methodTeams = new BetsKiller.API.Erikberg.Methods.MethodTeams();
             IEnumerable<BetsKiller.API.Erikberg.Entities.Team> teamsInfo = methodTeams.Get(API.Erikberg.Enums.SportEnum.nba);
 
             // Get teams
             this._teams = new List<TeamsNBA>();
 
             // Parse Erikbergs teams informations and create teams collection for DB
-            foreach (BetsKiller.API.Erikberg.Entities.Team teamInfo in teamsInfo)
+            foreach (var teamInfo in teamsInfo)
             {
-                TeamsNBA team = new TeamsNBA();
+                var team = new TeamsNBA();
 
                 team.Abbreviation = teamInfo.Abbreviation;
                 team.Active = teamInfo.Active;
@@ -69,7 +69,7 @@ namespace BetsKiller.Jobs.Processes
                 team.City = teamInfo.City;
                 team.State = teamInfo.State;
 
-                TeamsNBANames teamName = this._teamsNbaNames.Single(x => x.NameErikberg == teamInfo.TeamId);
+                var teamName = this._teamsNbaNames.Single(x => x.NameErikberg == teamInfo.TeamId);
 
                 team.Name_Id = teamName.Id;
 
@@ -87,12 +87,12 @@ namespace BetsKiller.Jobs.Processes
         {
             #region Both
 
-            BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats bothMethodTeamStats = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Both, this._season);
-            List<BetsKiller.API.SportsDatabase.Entities.TeamStat> bothTeamStats = bothMethodTeamStats.Get();
+            var bothMethodTeamStats = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Both, this._season);
+            var bothTeamStats = bothMethodTeamStats.Get();
 
-            foreach (BetsKiller.API.SportsDatabase.Entities.TeamStat teamStat in bothTeamStats)
+            foreach (var teamStat in bothTeamStats)
             {
-                TeamsNBA team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
+                var team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
 
                 team.GamesInSeason = teamStat.Games;
                 team.BothSU = teamStat.SU;
@@ -108,12 +108,12 @@ namespace BetsKiller.Jobs.Processes
 
             #region Home
 
-            BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats homeMethodTeamStats = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Home, this._season);
-            List<BetsKiller.API.SportsDatabase.Entities.TeamStat> homeTeamStats = homeMethodTeamStats.Get();
+            var homeMethodTeamStats = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Home, this._season);
+            var homeTeamStats = homeMethodTeamStats.Get();
 
-            foreach (BetsKiller.API.SportsDatabase.Entities.TeamStat teamStat in homeTeamStats)
+            foreach (var teamStat in homeTeamStats)
             {
-                TeamsNBA team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
+                var team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
 
                 team.HomeSU = teamStat.SU;
                 team.HomeATS = teamStat.ATS;
@@ -128,12 +128,12 @@ namespace BetsKiller.Jobs.Processes
 
             #region Away
 
-            BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats awayMethodTeamStats = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Away, this._season);
-            List<BetsKiller.API.SportsDatabase.Entities.TeamStat> awayTeamStats = awayMethodTeamStats.Get();
+            var awayMethodTeamStats = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStats(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Away, this._season);
+            var awayTeamStats = awayMethodTeamStats.Get();
 
-            foreach (BetsKiller.API.SportsDatabase.Entities.TeamStat teamStat in awayTeamStats)
+            foreach (var teamStat in awayTeamStats)
             {
-                TeamsNBA team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
+                var team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
 
                 team.AwaySU = teamStat.SU;
                 team.AwayATS = teamStat.ATS;
@@ -151,12 +151,12 @@ namespace BetsKiller.Jobs.Processes
         {
             #region Both
 
-            BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage bothMethodTeamStatsAverage = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Both, this._season);
-            List<BetsKiller.API.SportsDatabase.Entities.TeamStatAverage> bothTeamsStatsAverage = bothMethodTeamStatsAverage.Get();
+            var bothMethodTeamStatsAverage = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Both, this._season);
+            var bothTeamsStatsAverage = bothMethodTeamStatsAverage.Get();
 
-            foreach (BetsKiller.API.SportsDatabase.Entities.TeamStatAverage teamStat in bothTeamsStatsAverage)
+            foreach (var teamStat in bothTeamsStatsAverage)
             {
-                TeamsNBA team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
+                var team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
 
                 team.BothAvgPoints = teamStat.AvgPoints;
                 team.BothAvgAssists = teamStat.AvgAssists;
@@ -172,12 +172,12 @@ namespace BetsKiller.Jobs.Processes
 
             #region Home
 
-            BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage homeMethodTeamStatsAverage = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Home, this._season);
-            List<BetsKiller.API.SportsDatabase.Entities.TeamStatAverage> homeTeamsStatsAverage = homeMethodTeamStatsAverage.Get();
+            var homeMethodTeamStatsAverage = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Home, this._season);
+            var homeTeamsStatsAverage = homeMethodTeamStatsAverage.Get();
 
-            foreach (BetsKiller.API.SportsDatabase.Entities.TeamStatAverage teamStat in homeTeamsStatsAverage)
+            foreach (var teamStat in homeTeamsStatsAverage)
             {
-                TeamsNBA team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
+                var team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
 
                 team.HomeAvgPoints = teamStat.AvgPoints;
                 team.HomeAvgAssists = teamStat.AvgAssists;
@@ -193,12 +193,12 @@ namespace BetsKiller.Jobs.Processes
 
             #region Away
 
-            BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage awayMethodTeamStatsAverage = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Away, this._season);
-            List<BetsKiller.API.SportsDatabase.Entities.TeamStatAverage> awayTeamsStatsAverage = awayMethodTeamStatsAverage.Get();
+            var awayMethodTeamStatsAverage = new BetsKiller.API.SportsDatabase.Methods.MethodTeamsStatsAverage(BetsKiller.API.SportsDatabase.Enums.SportEnum.nba, BetsKiller.API.SportsDatabase.Enums.PlayingSideEnum.Away, this._season);
+            var awayTeamsStatsAverage = awayMethodTeamStatsAverage.Get();
 
-            foreach (BetsKiller.API.SportsDatabase.Entities.TeamStatAverage teamStat in awayTeamsStatsAverage)
+            foreach (var teamStat in awayTeamsStatsAverage)
             {
-                TeamsNBA team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
+                var team = this._teams.Single(x => x.Name.NameSportsdatabase == teamStat.TeamName);
 
                 team.AwayAvgPoints = teamStat.AvgPoints;
                 team.AwayAvgAssists = teamStat.AvgAssists;

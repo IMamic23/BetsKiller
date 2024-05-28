@@ -21,7 +21,7 @@ namespace BetsKiller.Jobs
              * Load new news
              */
 
-            LoadNews loadNews = new LoadNews();
+            var loadNews = new LoadNews();
             loadNews.Start();
 
             Thread.Sleep(base.WAIT_TIME);
@@ -30,7 +30,7 @@ namespace BetsKiller.Jobs
              * Load new injuries
              */
 
-            LoadInjuries loadInjuries = new LoadInjuries();
+            var loadInjuries = new LoadInjuries();
             loadInjuries.Start();
         }
 

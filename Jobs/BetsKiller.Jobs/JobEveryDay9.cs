@@ -23,7 +23,7 @@ namespace BetsKiller.Jobs
              * Update NBA teams.
              */
 
-            LoadTeamsNBA loadTeamsNba = new LoadTeamsNBA();
+            var loadTeamsNba = new LoadTeamsNBA();
             loadTeamsNba.Start();
 
             Thread.Sleep(base.WAIT_TIME);
@@ -33,7 +33,7 @@ namespace BetsKiller.Jobs
              * Load new NBA leaders.
              */
 
-            LoadLeadersNBA loadLeadersNba = new LoadLeadersNBA();
+            var loadLeadersNba = new LoadLeadersNBA();
             loadLeadersNba.Start();
 
             Thread.Sleep(base.WAIT_TIME);
@@ -43,7 +43,7 @@ namespace BetsKiller.Jobs
              * Load new NBA rosters.
              */
 
-            LoadRostersNBA loadRostersNba = new LoadRostersNBA();
+            var loadRostersNba = new LoadRostersNBA();
             loadRostersNba.Start();
 
             Thread.Sleep(base.WAIT_TIME);
@@ -53,7 +53,7 @@ namespace BetsKiller.Jobs
              * Load new NBA draft data.
              */
 
-            LoadDraftNBA loadDrafNba = new LoadDraftNBA();
+            var loadDrafNba = new LoadDraftNBA();
             loadDrafNba.Start();
 
             Thread.Sleep(base.WAIT_TIME);
@@ -61,13 +61,13 @@ namespace BetsKiller.Jobs
             /*
              * Update events data from past days.
              */
-            DateTime today = DateTime.Now;
-            string dateToday = today.Year.ToString() + today.Month.ToString().PadLeft(2, '0') + today.Day.ToString().PadLeft(2, '0');
+            var today = DateTime.Now;
+            var dateToday = today.Year.ToString() + today.Month.ToString().PadLeft(2, '0') + today.Day.ToString().PadLeft(2, '0');
 
-            DateTime yesterday = DateTime.Now.AddDays(-1);
-            string dateYesterday = yesterday.Year.ToString() + yesterday.Month.ToString().PadLeft(2, '0') + yesterday.Day.ToString().PadLeft(2, '0');
+            var yesterday = DateTime.Now.AddDays(-1);
+            var dateYesterday = yesterday.Year.ToString() + yesterday.Month.ToString().PadLeft(2, '0') + yesterday.Day.ToString().PadLeft(2, '0');
 
-            LoadEventsNBA loadEventsNba = new LoadEventsNBA(new List<string>() { dateToday, dateYesterday });
+            var loadEventsNba = new LoadEventsNBA(new List<string>() { dateToday, dateYesterday });
             loadEventsNba.Start();
 
             Thread.Sleep(base.WAIT_TIME);
@@ -75,7 +75,7 @@ namespace BetsKiller.Jobs
             /*
              * Load standings
              */
-            LoadStandings loadStandings = new LoadStandings();
+            var loadStandings = new LoadStandings();
             loadStandings.Start();
         }
 

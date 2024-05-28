@@ -17,7 +17,7 @@ namespace BetsKiller.API.NBAcom.Methods
 
         protected XmlDocument XmlDocument 
         {
-            get { return this._xmlDocument; }
+            get { return _xmlDocument; }
         }
 
         #endregion
@@ -26,12 +26,12 @@ namespace BetsKiller.API.NBAcom.Methods
 
         protected void GetData()
         {
-            using (WebClient webClient = new WebClient())
+            using (var webClient = new WebClient())
             {
-                string response = webClient.DownloadString(this.Url);
+                var response = webClient.DownloadString(Url);
 
-                this._xmlDocument = new XmlDocument();
-                this._xmlDocument.LoadXml(response);
+                _xmlDocument = new XmlDocument();
+                _xmlDocument.LoadXml(response);
             }
         }
 

@@ -20,13 +20,13 @@ namespace BetsKiller.Jobs
             /*
              * LoadScheduleResultsNBA for the next one week to refresh data.
              */
-            DateTime today = DateTime.Now;
-            string since = today.Year.ToString() + today.Month.ToString().PadLeft(2, '0') + today.Day.ToString().PadLeft(2, '0');
+            var today = DateTime.Now;
+            var since = today.Year.ToString() + today.Month.ToString().PadLeft(2, '0') + today.Day.ToString().PadLeft(2, '0');
 
-            DateTime finish = today.AddDays(7);
-            string until = finish.Year.ToString() + finish.Month.ToString().PadLeft(2, '0') + finish.Day.ToString().PadLeft(2, '0');
+            var finish = today.AddDays(7);
+            var until = finish.Year.ToString() + finish.Month.ToString().PadLeft(2, '0') + finish.Day.ToString().PadLeft(2, '0');
 
-            LoadScheduleResultsNBA loadScheduleResultsNBA = new LoadScheduleResultsNBA(since, until);
+            var loadScheduleResultsNBA = new LoadScheduleResultsNBA(since, until);
             loadScheduleResultsNBA.Start();
         }
 

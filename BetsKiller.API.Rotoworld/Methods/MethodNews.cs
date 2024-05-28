@@ -32,15 +32,15 @@ namespace BetsKiller.API.Rotoworld.Methods
 
         public List<News> Get()
         {
-            base.GetData();
+            GetData();
 
-            List<News> listNews = new List<News>();
+            var listNews = new List<News>();
 
-            XmlNodeList items = base.XmlDocument.SelectNodes("//channel/item");
+            var items = XmlDocument.SelectNodes("//channel/item");
 
             foreach (XmlNode item in items)
             {
-                News news = new News();
+                var news = new News();
 
                 news.Title = StringTransformator.RemoveSpecialCharacters(WebUtility.HtmlDecode(item.SelectSingleNode("title").InnerText));
                 news.Link = StringTransformator.RemoveSpecialCharacters(WebUtility.HtmlDecode(item.SelectSingleNode("link").InnerText));

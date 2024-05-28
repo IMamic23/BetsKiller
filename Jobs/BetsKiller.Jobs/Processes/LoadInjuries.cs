@@ -40,15 +40,15 @@ namespace BetsKiller.Jobs.Processes
             this._injuries = new List<Injuries>();
 
             // Get nba sport
-            Sport nbaSport = this._sports.Single(x => x.Name == SportConst.NBA);
+            var nbaSport = this._sports.Single(x => x.Name == SportConst.NBA);
 
             // Get injuries
-            BetsKiller.API.Rotoworld.Methods.MethodInjuries methodInjuries = new BetsKiller.API.Rotoworld.Methods.MethodInjuries();
-            List<BetsKiller.API.Rotoworld.Entities.Injury> dataInjuries = methodInjuries.Get();
+            var methodInjuries = new BetsKiller.API.Rotoworld.Methods.MethodInjuries();
+            var dataInjuries = methodInjuries.Get();
 
-            foreach (BetsKiller.API.Rotoworld.Entities.Injury dataInjury in dataInjuries)
+            foreach (var dataInjury in dataInjuries)
             {
-                Injuries injury = new Injuries();
+                var injury = new Injuries();
 
                 injury.PlayerName = dataInjury.PlayerName;
                 injury.PlayerPosition = dataInjury.PlayerPosition;

@@ -45,15 +45,15 @@ namespace BetsKiller.Jobs.Processes
         private void GetParseNBAcomNews()
         {
             // Get news
-            BetsKiller.API.NBAcom.Methods.MethodNews methodNews = new BetsKiller.API.NBAcom.Methods.MethodNews();
-            List<BetsKiller.API.NBAcom.Entities.News> dataListNews = methodNews.Get();
+            var methodNews = new BetsKiller.API.NBAcom.Methods.MethodNews();
+            var dataListNews = methodNews.Get();
 
-            List<int> randomNumbers = RandomElement.FromList(dataListNews.Count, 9);
-            for (int i = 0; i < 9; i++)
+            var randomNumbers = RandomElement.FromList(dataListNews.Count, 9);
+            for (var i = 0; i < 9; i++)
             {
-                BetsKiller.API.NBAcom.Entities.News dataNews = dataListNews[randomNumbers[i]];
+                var dataNews = dataListNews[randomNumbers[i]];
 
-                NewsFeed news = new NewsFeed();
+                var news = new NewsFeed();
                 news.Title = dataNews.Title;
                 news.Link = dataNews.Link;
                 news.Description = dataNews.Description;
@@ -66,15 +66,15 @@ namespace BetsKiller.Jobs.Processes
         private void GetParseRotoworldNewsNBA()
         {
             // Get news
-            BetsKiller.API.Rotoworld.Methods.MethodNews methodNews = new BetsKiller.API.Rotoworld.Methods.MethodNews();
-            List<BetsKiller.API.Rotoworld.Entities.News> dataListNews = methodNews.Get();
+            var methodNews = new BetsKiller.API.Rotoworld.Methods.MethodNews();
+            var dataListNews = methodNews.Get();
 
-            List<int> randomNumbers = RandomElement.FromList(dataListNews.Count, 9);
-            for (int i = 0; i < 9; i++)
+            var randomNumbers = RandomElement.FromList(dataListNews.Count, 9);
+            for (var i = 0; i < 9; i++)
             {
-                BetsKiller.API.Rotoworld.Entities.News dataNews = dataListNews[randomNumbers[i]];
+                var dataNews = dataListNews[randomNumbers[i]];
 
-                NewsFeed news = new NewsFeed();
+                var news = new NewsFeed();
                 news.Title = dataNews.Title;
                 news.Link = dataNews.Link;
                 news.Description = dataNews.Description;
@@ -87,13 +87,13 @@ namespace BetsKiller.Jobs.Processes
         private void SaveNewsInDB()
         {
             // Get not published news
-            NewsFeed[] currentNews = new NewsFeed[18];
+            var currentNews = new NewsFeed[18];
 
             // Get current news and insert them in array
             base.AppDataRepository.GetAllNewsFeed().ToList().CopyTo(currentNews, 0);
 
             // Iterate through new news
-            foreach (NewsFeed dataNews in this._news)
+            foreach (var dataNews in this._news)
             {
                 if (!currentNews.Any(x => x != null && x.Link == dataNews.Link) && !this._newsPublished.Any(x => x.Link == dataNews.Link)) // Only if news not exists in DB, use it
                 {

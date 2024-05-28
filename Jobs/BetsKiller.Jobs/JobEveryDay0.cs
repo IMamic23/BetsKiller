@@ -34,7 +34,7 @@ namespace BetsKiller.Jobs
             IEnumerable<UserProfile> userProfiles = this._repository.SelectUserProfiles(null, null, null).ToList();
             IEnumerable<Role> roles = this._repository.SelectRoles().ToList();
 
-            foreach (UserProfile userProfile in userProfiles)
+            foreach (var userProfile in userProfiles)
             {
                 if (userProfile.RoleActiveTo.HasValue 
                     && userProfile.RoleActiveTo.Value.Date < DateTime.Now.Date

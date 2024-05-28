@@ -20,7 +20,7 @@ namespace BetsKiller.Jobs
              * Load new NBA power rankings
              */
 
-            LoadPowerRankingsNBA loadPowerRankingNBA = new LoadPowerRankingsNBA();
+            var loadPowerRankingNBA = new LoadPowerRankingsNBA();
             loadPowerRankingNBA.Start();
         }
 

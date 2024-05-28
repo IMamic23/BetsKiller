@@ -33,7 +33,7 @@ namespace BetsKiller.Jobs.Processes
         /// </summary>
         protected List<TeamsNBA> GetTeamsNBA()
         {
-            List<TeamsNBA> teams = this.AppDataRepository.GetAllTeamsNBA().ToList();
+            var teams = this.AppDataRepository.GetAllTeamsNBA().ToList();
             
             return teams;
         }
@@ -43,7 +43,7 @@ namespace BetsKiller.Jobs.Processes
         /// </summary>
         protected List<LeadersNBACategories> GetLeadersCategories()
         {
-            List<LeadersNBACategories> leadersCategories = this.AppDataRepository.GetLeadersNBACategories().ToList();
+            var leadersCategories = this.AppDataRepository.GetLeadersNBACategories().ToList();
 
             return leadersCategories;
         }
@@ -53,7 +53,7 @@ namespace BetsKiller.Jobs.Processes
         /// </summary>
         protected string GetCurrentSeasonSportsDatabase()
         {
-            string season = string.Empty;
+            var season = string.Empty;
 
             if (DateTime.Now < new DateTime(DateTime.Now.Year, 7, 1))
             {
@@ -72,9 +72,9 @@ namespace BetsKiller.Jobs.Processes
         /// </summary>
         protected string GetCurrentDateErikberg()
         {
-            DateTime dateTime = DateTime.Now;
+            var dateTime = DateTime.Now;
 
-            string date = dateTime.Year.ToString() + dateTime.Month.ToString().PadLeft(2, '0') + dateTime.Day.ToString().PadLeft(2, '0');
+            var date = dateTime.Year.ToString() + dateTime.Month.ToString().PadLeft(2, '0') + dateTime.Day.ToString().PadLeft(2, '0');
 
             return date;
         }
@@ -84,7 +84,7 @@ namespace BetsKiller.Jobs.Processes
         /// </summary>
         protected List<Sport> GetSports()
         {
-            List<Sport> sports = this.AppDataRepository.GetAllSports().ToList();
+            var sports = this.AppDataRepository.GetAllSports().ToList();
 
             return sports;
         }
@@ -94,7 +94,7 @@ namespace BetsKiller.Jobs.Processes
         /// </summary>
         protected List<TeamsNBANames> GetTeamsNBANames()
         {
-            List<TeamsNBANames> names = this.AppDataRepository.GetTeamsNBANames().ToList();
+            var names = this.AppDataRepository.GetTeamsNBANames().ToList();
 
             return names;
         }
@@ -104,7 +104,7 @@ namespace BetsKiller.Jobs.Processes
         /// </summary>
         protected List<BetStatus> GetBetStatuses()
         {
-            List<BetStatus> betStatuses = this.AppDataRepository.GetAllBetStatus().ToList();
+            var betStatuses = this.AppDataRepository.GetAllBetStatus().ToList();
 
             return betStatuses;
         }
@@ -118,7 +118,7 @@ namespace BetsKiller.Jobs.Processes
         /// </summary>
         public static string GetCurrentSeasonErikberg()
         {
-            string season = string.Empty;
+            var season = string.Empty;
 
             if (DateTime.Now > new DateTime(DateTime.Now.Year, 7, 1))
             {

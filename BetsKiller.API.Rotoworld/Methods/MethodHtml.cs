@@ -17,7 +17,7 @@ namespace BetsKiller.API.Rotoworld.Methods
 
         protected HtmlDocument HtmlDocument
         {
-            get { return this._htmlDocument; }
+            get { return _htmlDocument; }
         }
 
         #endregion
@@ -26,12 +26,12 @@ namespace BetsKiller.API.Rotoworld.Methods
 
         protected void GetData()
         {
-            using (WebClient webClient = new WebClient())
+            using (var webClient = new WebClient())
             {
-                string response = webClient.DownloadString(this.Url);
+                var response = webClient.DownloadString(Url);
 
-                this._htmlDocument = new HtmlDocument();
-                this._htmlDocument.LoadHtml(response);
+                _htmlDocument = new HtmlDocument();
+                _htmlDocument.LoadHtml(response);
             }
         }
 
