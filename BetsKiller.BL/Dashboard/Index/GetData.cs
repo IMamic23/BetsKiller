@@ -10,11 +10,8 @@ using BetsKiller.ViewModel.Dashboard.Index;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.BL.Dashboard.Index
 {

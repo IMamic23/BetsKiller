@@ -1,12 +1,7 @@
 ﻿using BetsKiller.BL.UserManagement;
 using BetsKiller.Helper.Constants;
 using BetsKiller.ViewModel.UserManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using WebMatrix.WebData;
 
 namespace BetsKiller.Web.Controllers
 {

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BetsKiller.Jobs.EveryDay9</RootNamespace>
     <AssemblyName>BetsKiller.Jobs.EveryDay9</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>D:\Projects\BetsKiller\Publish\Tasks\JobEveryDay9\</PublishUrl>

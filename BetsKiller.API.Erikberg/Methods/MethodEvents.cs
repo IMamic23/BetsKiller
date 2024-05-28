@@ -1,10 +1,5 @@
 ﻿using BetsKiller.API.Erikberg.Entities;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.Erikberg.Methods
 {
@@ -31,12 +26,12 @@ namespace BetsKiller.API.Erikberg.Methods
 
         public Events Get(string date, string sport)
         {
-            base.AddParameterToDict("date", date);
-            base.AddParameterToDict("sport", sport);
+            AddParameterToDict("date", date);
+            AddParameterToDict("sport", sport);
 
-            base.GetData();
+            GetData();
 
-            return JsonConvert.DeserializeObject<Events>(base.ResponseString);
+            return JsonConvert.DeserializeObject<Events>(ResponseString);
         }
 
         #endregion

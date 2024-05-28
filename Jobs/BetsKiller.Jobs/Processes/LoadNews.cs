@@ -1,13 +1,9 @@
-﻿using BetsKiller.DAL;
-using BetsKiller.DAL.AppData;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using BetsKiller.Helper.Constants;
 using BetsKiller.Helper.Operations;
 using BetsKiller.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.Jobs.Processes
 {

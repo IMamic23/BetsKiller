@@ -1,11 +1,7 @@
 ﻿using BetsKiller.DAL;
 using BetsKiller.DAL.UserManagement;
 using BetsKiller.Model.UserManagement;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace BetsKiller.BL.UserManagement
@@ -24,7 +20,7 @@ namespace BetsKiller.BL.UserManagement
 
         public List<SelectListItem> PaymentSources
         {
-            get { return this._paymentSources; }
+            get { return _paymentSources; }
         }
 
         #endregion
@@ -47,8 +43,8 @@ namespace BetsKiller.BL.UserManagement
 
         public GetPaymentSources()
         {
-            this._paymentSources = new List<SelectListItem>();
-            this._userManagementRepository = new UserManagementRepository();
+            _paymentSources = new List<SelectListItem>();
+            _userManagementRepository = new UserManagementRepository();
         }
 
         #endregion
@@ -57,7 +53,7 @@ namespace BetsKiller.BL.UserManagement
 
         protected override void Process()
         {
-            this.GetSources();
+            GetSources();
         }
 
         #endregion
@@ -66,8 +62,8 @@ namespace BetsKiller.BL.UserManagement
 
         private void GetSources()
         {
-            IEnumerable<PaymentSource> paymentSources = this._userManagementRepository.GetPaymentSources();
-            this._paymentSources.AddRange(this.ParsePaymentSources(paymentSources));
+            IEnumerable<PaymentSource> paymentSources = _userManagementRepository.GetPaymentSources();
+            _paymentSources.AddRange(ParsePaymentSources(paymentSources));
         }
 
         private List<SelectListItem> ParsePaymentSources(IEnumerable<PaymentSource> paymentSources)

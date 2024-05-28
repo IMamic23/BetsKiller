@@ -1,10 +1,5 @@
 ﻿using BetsKiller.Jobs.Processes;
-using NLog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Web;
 
 namespace BetsKiller.Jobs
 {

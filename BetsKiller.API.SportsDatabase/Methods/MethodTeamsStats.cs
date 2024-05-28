@@ -2,14 +2,8 @@
 using BetsKiller.API.SportsDatabase.Enums;
 using BetsKiller.API.SportsDatabase.Helpers;
 using HtmlAgilityPack;
-using Microsoft.Win32.SafeHandles;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.SportsDatabase.Methods
 {

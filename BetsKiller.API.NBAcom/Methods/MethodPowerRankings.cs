@@ -1,14 +1,10 @@
 ﻿using BetsKiller.API.NBAcom.Entities;
 using BetsKiller.API.NBAcom.Helpers;
 using HtmlAgilityPack;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace BetsKiller.API.NBAcom.Methods

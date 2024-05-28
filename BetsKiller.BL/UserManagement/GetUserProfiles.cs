@@ -3,11 +3,8 @@ using BetsKiller.DAL.UserManagement;
 using BetsKiller.Helper.Types;
 using BetsKiller.Model.UserManagement;
 using BetsKiller.ViewModel.UserManagement;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.BL.UserManagement
 {
@@ -26,7 +23,7 @@ namespace BetsKiller.BL.UserManagement
 
         public List<UserProfileViewModel> UserProfiles
         {
-            get { return this._userProfilesViewModel; }
+            get { return _userProfilesViewModel; }
         }
 
         #endregion
@@ -49,9 +46,9 @@ namespace BetsKiller.BL.UserManagement
 
         public GetUserProfiles(UsersProfilesSearchViewModel searchViewModel)
         {
-            this._searchViewModel = searchViewModel;
-            this._userProfilesViewModel = new List<UserProfileViewModel>();
-            this._userManagementRepository = new UserManagementRepository();
+            _searchViewModel = searchViewModel;
+            _userProfilesViewModel = new List<UserProfileViewModel>();
+            _userManagementRepository = new UserManagementRepository();
         }
 
         #endregion
@@ -60,7 +57,7 @@ namespace BetsKiller.BL.UserManagement
 
         protected override void Process()
         {
-            this.GetData();
+            GetData();
         }
 
         #endregion
@@ -69,9 +66,9 @@ namespace BetsKiller.BL.UserManagement
 
         private void GetData()
         {
-            IEnumerable<UserProfile> users = this._userManagementRepository.SelectUserProfiles(this._searchViewModel.Email,
-                                                                           this._searchViewModel.RoleName,
-                                                                           this._searchViewModel.ResultLimit);
+            IEnumerable<UserProfile> users = _userManagementRepository.SelectUserProfiles(_searchViewModel.Email,
+                                                                           _searchViewModel.RoleName,
+                                                                           _searchViewModel.ResultLimit);
 
             foreach (UserProfile userProfile in users)
             {
@@ -85,7 +82,7 @@ namespace BetsKiller.BL.UserManagement
                     Roles = string.Join(", ", userProfile.Roles.OrderBy(x => x.RoleName).Select(x => x.RoleName))
                 };
 
-                this._userProfilesViewModel.Add(userProfileViewModel);
+                _userProfilesViewModel.Add(userProfileViewModel);
             }
         }
 

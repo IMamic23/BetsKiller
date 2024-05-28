@@ -1,12 +1,8 @@
 ﻿using BetsKiller.DAL;
 using BetsKiller.DAL.UserManagement;
 using BetsKiller.Model.UserManagement;
-using BetsKiller.ViewModel.UserManagement;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace BetsKiller.BL.UserManagement
@@ -27,7 +23,7 @@ namespace BetsKiller.BL.UserManagement
 
         public List<SelectListItem> Roles
         {
-            get { return this._roles; }
+            get { return _roles; }
         }
 
         #endregion
@@ -50,17 +46,17 @@ namespace BetsKiller.BL.UserManagement
 
         public GetRoles(AddPredefinedType predefinedType)
         {
-            this._predefinedType = predefinedType;
-            this._roles = new List<SelectListItem>();
-            this._userManagementRepository = new UserManagementRepository();
+            _predefinedType = predefinedType;
+            _roles = new List<SelectListItem>();
+            _userManagementRepository = new UserManagementRepository();
         }
 
         public GetRoles(AddPredefinedType predefinedType, string userName)
         {
-            this._predefinedType = predefinedType;
-            this._userName = userName;
-            this._roles = new List<SelectListItem>();
-            this._userManagementRepository = new UserManagementRepository();
+            _predefinedType = predefinedType;
+            _userName = userName;
+            _roles = new List<SelectListItem>();
+            _userManagementRepository = new UserManagementRepository();
         }
 
         #endregion
@@ -69,15 +65,15 @@ namespace BetsKiller.BL.UserManagement
 
         protected override void Process()
         {
-            this.AddPredefinedRole();
+            AddPredefinedRole();
 
-            if (string.IsNullOrEmpty(this._userName))
+            if (string.IsNullOrEmpty(_userName))
             {
-                this.GetAllRoles();
+                GetAllRoles();
             }
             else
             {
-                this.GetUserRoles();
+                GetUserRoles();
             }
 
         }
@@ -88,38 +84,38 @@ namespace BetsKiller.BL.UserManagement
 
         private void AddPredefinedRole()
         {
-            if (this._predefinedType != AddPredefinedType.None)
+            if (_predefinedType != AddPredefinedType.None)
             {
                 SelectListItem roleItem = new SelectListItem();
                 roleItem.Selected = true;
 
-                if (this._predefinedType == AddPredefinedType.Any)
+                if (_predefinedType == AddPredefinedType.Any)
                 {
                     roleItem.Text = "Any";
                 }
-                else if (this._predefinedType == AddPredefinedType.Blank)
+                else if (_predefinedType == AddPredefinedType.Blank)
                 {
                     roleItem.Text = string.Empty;
                 }
 
                 roleItem.Value = string.Empty;
 
-                this._roles.Add(roleItem);
+                _roles.Add(roleItem);
             }
         }
 
         private void GetAllRoles()
         {
-            IEnumerable<Role> roles = this._userManagementRepository.SelectRoles();
+            IEnumerable<Role> roles = _userManagementRepository.SelectRoles();
 
-            this._roles.AddRange(this.ParseRoles(roles));
+            _roles.AddRange(ParseRoles(roles));
         }
 
         private void GetUserRoles()
         {
-            IEnumerable<UserProfile> users = this._userManagementRepository.SelectUserProfiles(this._userName, null, null);
+            IEnumerable<UserProfile> users = _userManagementRepository.SelectUserProfiles(_userName, null, null);
 
-            this._roles.AddRange(this.ParseRoles(users.First().Roles));
+            _roles.AddRange(ParseRoles(users.First().Roles));
         }
 
         private List<SelectListItem> ParseRoles(IEnumerable<Role> roles)

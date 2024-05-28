@@ -1,11 +1,6 @@
 ﻿using BetsKiller.API.Erikberg.Entities;
 using BetsKiller.API.Erikberg.Enums;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.Erikberg.Methods
 {
@@ -31,8 +26,8 @@ namespace BetsKiller.API.Erikberg.Methods
             {
                 string url = "${sport}/boxscore/${event_id}.json";
 
-                url = url.Replace("${sport}", this._sport.ToString());
-                url = url.Replace("${event_id}", this._eventId);
+                url = url.Replace("${sport}", _sport.ToString());
+                url = url.Replace("${event_id}", _eventId);
 
                 return url;
             }
@@ -44,12 +39,12 @@ namespace BetsKiller.API.Erikberg.Methods
 
         public NBABoxScore Get(SportEnum sport, string eventId)
         {
-            this._sport = sport;
-            this._eventId = eventId;
+            _sport = sport;
+            _eventId = eventId;
 
-            base.GetData();
+            GetData();
 
-            return JsonConvert.DeserializeObject<NBABoxScore>(base.ResponseString);
+            return JsonConvert.DeserializeObject<NBABoxScore>(ResponseString);
         }
 
         #endregion

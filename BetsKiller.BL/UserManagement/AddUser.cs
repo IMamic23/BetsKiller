@@ -1,14 +1,6 @@
-﻿using BetsKiller.DAL;
-using BetsKiller.DAL.UserManagement;
-using BetsKiller.Model.UserManagement;
-using BetsKiller.ViewModel.UserManagement;
-using NLog;
+﻿using BetsKiller.ViewModel.UserManagement;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Security;
 using WebMatrix.WebData;
 
@@ -26,7 +18,7 @@ namespace BetsKiller.BL.UserManagement
 
         public UserAddViewModel UserAddViewModel
         {
-            get { return this._inputUserAddViewModel; }
+            get { return _inputUserAddViewModel; }
         }
 
         #endregion
@@ -49,16 +41,16 @@ namespace BetsKiller.BL.UserManagement
 
         public AddUser()
         {
-            this._inputUserAddViewModel = new UserAddViewModel();
+            _inputUserAddViewModel = new UserAddViewModel();
 
-            this.LoadRoles();
+            LoadRoles();
         }
 
         public AddUser(UserAddViewModel userAddViewModel)
         {
-            this._inputUserAddViewModel = userAddViewModel;
+            _inputUserAddViewModel = userAddViewModel;
 
-            this.LoadRoles();
+            LoadRoles();
         }
 
         #endregion
@@ -67,9 +59,9 @@ namespace BetsKiller.BL.UserManagement
 
         protected override void Process()
         {
-            this.CreateUser();
+            CreateUser();
 
-            this.AddRolesToUser();
+            AddRolesToUser();
         }
 
         #endregion
@@ -80,28 +72,28 @@ namespace BetsKiller.BL.UserManagement
         {
             GetRoles getRoles = new GetRoles(GetRoles.AddPredefinedType.None);
             getRoles.Start();
-            this._inputUserAddViewModel.AllRoles = getRoles.Roles;
+            _inputUserAddViewModel.AllRoles = getRoles.Roles;
         }
 
         private void CreateUser()
         {
             WebSecurity.CreateUserAndAccount(
-                this._inputUserAddViewModel.Email,
-                this._inputUserAddViewModel.Password,
+                _inputUserAddViewModel.Email,
+                _inputUserAddViewModel.Password,
                 new
                 {
-                    FullName = this._inputUserAddViewModel.FullName,
-                    RoleActiveFrom = Convert.ToDateTime(this._inputUserAddViewModel.RoleActiveFrom, CultureInfo.InvariantCulture),
-                    RoleActiveTo = this._inputUserAddViewModel.RoleActiveTo != null ? (object)Convert.ToDateTime(this._inputUserAddViewModel.RoleActiveTo, CultureInfo.InvariantCulture) : null
+                    FullName = _inputUserAddViewModel.FullName,
+                    RoleActiveFrom = Convert.ToDateTime(_inputUserAddViewModel.RoleActiveFrom, CultureInfo.InvariantCulture),
+                    RoleActiveTo = _inputUserAddViewModel.RoleActiveTo != null ? (object)Convert.ToDateTime(_inputUserAddViewModel.RoleActiveTo, CultureInfo.InvariantCulture) : null
                 }
             );
         }
 
         private void AddRolesToUser()
         {
-            foreach (string role in this._inputUserAddViewModel.Roles)
+            foreach (string role in _inputUserAddViewModel.Roles)
             {
-                Roles.AddUserToRole(this._inputUserAddViewModel.Email, role);
+                Roles.AddUserToRole(_inputUserAddViewModel.Email, role);
             }
         }
 

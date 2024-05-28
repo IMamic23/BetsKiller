@@ -1,11 +1,7 @@
 ﻿using BetsKiller.API.Erikberg.Entities;
 using BetsKiller.API.Erikberg.Enums;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.Erikberg.Methods
 {
@@ -38,8 +34,8 @@ namespace BetsKiller.API.Erikberg.Methods
             {
                 string url = "${sport}/results/${team_id}.json";
 
-                url = url.Replace("${sport}", this._sport.ToString());
-                url = url.Replace("${team_id}", this._teamId);
+                url = url.Replace("${sport}", _sport.ToString());
+                url = url.Replace("${team_id}", _teamId);
 
                 return url;
             }
@@ -51,17 +47,17 @@ namespace BetsKiller.API.Erikberg.Methods
 
         public List<TeamScheduleResults> Get(SportEnum sport, string teamId, string season, string since, string until, string order)
         {
-            this._sport = sport;
-            this._teamId = teamId;
+            _sport = sport;
+            _teamId = teamId;
 
-            base.AddParameterToDict("season", season);
-            base.AddParameterToDict("since", since);
-            base.AddParameterToDict("until", until);
-            base.AddParameterToDict("order", order);
+            AddParameterToDict("season", season);
+            AddParameterToDict("since", since);
+            AddParameterToDict("until", until);
+            AddParameterToDict("order", order);
 
-            base.GetData();
+            GetData();
 
-            return JsonConvert.DeserializeObject<List<TeamScheduleResults>>(base.ResponseString);
+            return JsonConvert.DeserializeObject<List<TeamScheduleResults>>(ResponseString);
         }
 
         #endregion

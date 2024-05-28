@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using BetsKiller.ViewModel.UserManagement;
-using BetsKiller.DAL;
-using BetsKiller.DAL.UserManagement;
-using System.Web.Mvc;
-using BetsKiller.Model.UserManagement;
-using NLog;
 using BetsKiller.Helper.Constants;
 
 namespace BetsKiller.BL.UserManagement
@@ -25,7 +16,7 @@ namespace BetsKiller.BL.UserManagement
 
         public UsersListViewModel UsersListViewModels
         {
-            get { return this._usersListViewModel; }
+            get { return _usersListViewModel; }
         }
 
         #endregion
@@ -48,14 +39,14 @@ namespace BetsKiller.BL.UserManagement
 
         public GetUsers()
         {
-            this._usersListViewModel = new UsersListViewModel();
-            this._usersListViewModel.UserProfileSearchViewModel = new UsersProfilesSearchViewModel();
+            _usersListViewModel = new UsersListViewModel();
+            _usersListViewModel.UserProfileSearchViewModel = new UsersProfilesSearchViewModel();
         }
 
         public GetUsers(UsersProfilesSearchViewModel searchViewModel)
         {
-            this._usersListViewModel = new UsersListViewModel();
-            this._usersListViewModel.UserProfileSearchViewModel = searchViewModel;
+            _usersListViewModel = new UsersListViewModel();
+            _usersListViewModel.UserProfileSearchViewModel = searchViewModel;
         }
 
         #endregion
@@ -64,9 +55,9 @@ namespace BetsKiller.BL.UserManagement
 
         protected override void Process()
         {
-            this.GetRolesData();
+            GetRolesData();
 
-            this.GetUserProfiles();
+            GetUserProfiles();
         }
 
         #endregion
@@ -78,15 +69,15 @@ namespace BetsKiller.BL.UserManagement
             GetRoles getRoles = new GetRoles(GetRoles.AddPredefinedType.Any);
             getRoles.Start();
 
-            this._usersListViewModel.AllRoles = getRoles.Roles;
+            _usersListViewModel.AllRoles = getRoles.Roles;
         }
 
         private void GetUserProfiles()
         {
-            GetUserProfiles getUserProfiles = new GetUserProfiles(this._usersListViewModel.UserProfileSearchViewModel);
+            GetUserProfiles getUserProfiles = new GetUserProfiles(_usersListViewModel.UserProfileSearchViewModel);
             getUserProfiles.Start();
 
-            this._usersListViewModel.UserProfileViewModels = getUserProfiles.UserProfiles.Where(x => x.Email != UsersConst.AdminUsername).ToList();
+            _usersListViewModel.UserProfileViewModels = getUserProfiles.UserProfiles.Where(x => x.Email != UsersConst.AdminUsername).ToList();
         }
 
         #endregion

@@ -1,15 +1,11 @@
 ﻿using BetsKiller.DAL;
 using BetsKiller.DAL.UserManagement;
-using BetsKiller.Helper.Types;
 using BetsKiller.Model.UserManagement;
 using BetsKiller.ViewModel.UserManagement;
-using NLog;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Security;
 using WebMatrix.WebData;
 
@@ -31,7 +27,7 @@ namespace BetsKiller.BL.UserManagement
 
         public UserEditViewModel UserEditViewModel
         {
-            get { return this._userEditViewModel; }
+            get { return _userEditViewModel; }
         }
 
         #endregion
@@ -54,7 +50,7 @@ namespace BetsKiller.BL.UserManagement
 
         public EditUser(string userName)
         {
-            this._userEditViewModel = new UserEditViewModel();
+            _userEditViewModel = new UserEditViewModel();
 
             if (!string.IsNullOrEmpty(userName))
             {
@@ -63,33 +59,33 @@ namespace BetsKiller.BL.UserManagement
 
                 if (userProfiles.UserProfiles.Count > 0)
                 {
-                    this._userEditViewModel = new UserEditViewModel();
-                    this._userEditViewModel.Email = userProfiles.UserProfiles.First().Email;
-                    this._userEditViewModel.FullName = userProfiles.UserProfiles.First().FullName;
-                    this._userEditViewModel.RoleActiveFrom = userProfiles.UserProfiles.First().RoleActiveFrom;
-                    this._userEditViewModel.RoleActiveTo = userProfiles.UserProfiles.First().RoleActiveTo;
+                    _userEditViewModel = new UserEditViewModel();
+                    _userEditViewModel.Email = userProfiles.UserProfiles.First().Email;
+                    _userEditViewModel.FullName = userProfiles.UserProfiles.First().FullName;
+                    _userEditViewModel.RoleActiveFrom = userProfiles.UserProfiles.First().RoleActiveFrom;
+                    _userEditViewModel.RoleActiveTo = userProfiles.UserProfiles.First().RoleActiveTo;
 
-                    GetRoles getUserRoles = new GetRoles(GetRoles.AddPredefinedType.None, this._userEditViewModel.Email);
+                    GetRoles getUserRoles = new GetRoles(GetRoles.AddPredefinedType.None, _userEditViewModel.Email);
                     getUserRoles.Start();
-                    this._userEditViewModel.Roles = getUserRoles.Roles.Select(x => x.Text).ToList();
+                    _userEditViewModel.Roles = getUserRoles.Roles.Select(x => x.Text).ToList();
 
                     GetPaymentSources getPaymentSources = new GetPaymentSources();
                     getPaymentSources.Start();
-                    this._userEditViewModel.AllPaymentSources = getPaymentSources.PaymentSources;
+                    _userEditViewModel.AllPaymentSources = getPaymentSources.PaymentSources;
 
 
                     GetRoles getRoles = new GetRoles(GetRoles.AddPredefinedType.None);
                     getRoles.Start();
-                    this._userEditViewModel.AllRoles = getRoles.Roles;
+                    _userEditViewModel.AllRoles = getRoles.Roles;
                 }
             }
         }
 
         public EditUser(UserEditViewModel userEditViewModel)
         {
-            this._userEditViewModel = userEditViewModel;
-            this._userManagementRepository = new UserManagementRepository();
-            this._userRoleHistory = new UserRoleHistory();
+            _userEditViewModel = userEditViewModel;
+            _userManagementRepository = new UserManagementRepository();
+            _userRoleHistory = new UserRoleHistory();
         }
 
         #endregion
@@ -98,14 +94,14 @@ namespace BetsKiller.BL.UserManagement
 
         protected override void Process()
         {
-            if (!this.Validate())
+            if (!Validate())
                 return;
 
-            this.ParseRoles();
+            ParseRoles();
 
-            this.ParsePassword();
+            ParsePassword();
 
-            this.ParseUserProfile();
+            ParseUserProfile();
         }
 
         #endregion
@@ -114,7 +110,7 @@ namespace BetsKiller.BL.UserManagement
 
         private bool Validate()
         {
-            if (this._userEditViewModel == null || string.IsNullOrWhiteSpace(this._userEditViewModel.Email) || !WebSecurity.UserExists(this._userEditViewModel.Email))
+            if (_userEditViewModel == null || string.IsNullOrWhiteSpace(_userEditViewModel.Email) || !WebSecurity.UserExists(_userEditViewModel.Email))
             {
                 return false;
             }
@@ -128,79 +124,79 @@ namespace BetsKiller.BL.UserManagement
         {
             GetRoles getRoles = new GetRoles(GetRoles.AddPredefinedType.None);
             getRoles.Start();
-            this._userEditViewModel.AllRoles = getRoles.Roles;
+            _userEditViewModel.AllRoles = getRoles.Roles;
 
             // Get current roles
-            string[] currentRoles = Roles.GetRolesForUser(this._userEditViewModel.Email);
+            string[] currentRoles = Roles.GetRolesForUser(_userEditViewModel.Email);
 
-            if (this._userEditViewModel.Roles != null && currentRoles != null)
+            if (_userEditViewModel.Roles != null && currentRoles != null)
             {
                 // Find roles to remove user from
-                foreach (string removeRole in currentRoles.Except(this._userEditViewModel.Roles))
+                foreach (string removeRole in currentRoles.Except(_userEditViewModel.Roles))
                 {
-                    if (Roles.IsUserInRole(this._userEditViewModel.Email, removeRole))
+                    if (Roles.IsUserInRole(_userEditViewModel.Email, removeRole))
                     {
-                        Roles.RemoveUserFromRole(this._userEditViewModel.Email, removeRole);
+                        Roles.RemoveUserFromRole(_userEditViewModel.Email, removeRole);
                     }
                 }
 
                 // Find new roles to add to user
-                foreach (string addRole in this._userEditViewModel.Roles.Except(currentRoles))
+                foreach (string addRole in _userEditViewModel.Roles.Except(currentRoles))
                 {
-                    if (Roles.RoleExists(addRole) && !Roles.IsUserInRole(this._userEditViewModel.Email, addRole))
+                    if (Roles.RoleExists(addRole) && !Roles.IsUserInRole(_userEditViewModel.Email, addRole))
                     {
-                        Roles.AddUserToRole(this._userEditViewModel.Email, addRole);
+                        Roles.AddUserToRole(_userEditViewModel.Email, addRole);
                     }
                 }
             }
 
             // Save roles history
-            IEnumerable<Role> roles = this._userManagementRepository.SelectRoles();
-            this._userRoleHistory.Old_RoleId = roles.Single(x => x.RoleName == currentRoles.First()).RoleId;
-            this._userRoleHistory.New_RoleId = roles.Single(x => x.RoleName == this._userEditViewModel.Roles.First()).RoleId;
+            IEnumerable<Role> roles = _userManagementRepository.SelectRoles();
+            _userRoleHistory.Old_RoleId = roles.Single(x => x.RoleName == currentRoles.First()).RoleId;
+            _userRoleHistory.New_RoleId = roles.Single(x => x.RoleName == _userEditViewModel.Roles.First()).RoleId;
         }
 
         private void ParsePassword()
         {
             // Set new password if it is provided
-            if (!string.IsNullOrWhiteSpace(this._userEditViewModel.Password))
+            if (!string.IsNullOrWhiteSpace(_userEditViewModel.Password))
             {
-                string newToken = WebSecurity.GeneratePasswordResetToken(this._userEditViewModel.Email);
-                WebSecurity.ResetPassword(newToken, this._userEditViewModel.Password);
+                string newToken = WebSecurity.GeneratePasswordResetToken(_userEditViewModel.Email);
+                WebSecurity.ResetPassword(newToken, _userEditViewModel.Password);
             }
         }
 
         private void ParseUserProfile()
         {
-            IEnumerable<UserProfile> users = this._userManagementRepository.SelectUserProfiles(this._userEditViewModel.Email, null, null);
+            IEnumerable<UserProfile> users = _userManagementRepository.SelectUserProfiles(_userEditViewModel.Email, null, null);
             UserProfile user = users.First();
 
-            user.FullName = this._userEditViewModel.FullName;
-            user.RoleActiveFrom = Convert.ToDateTime(this._userEditViewModel.RoleActiveFrom);
+            user.FullName = _userEditViewModel.FullName;
+            user.RoleActiveFrom = Convert.ToDateTime(_userEditViewModel.RoleActiveFrom);
 
-            if (string.IsNullOrEmpty(this._userEditViewModel.RoleActiveTo))
+            if (string.IsNullOrEmpty(_userEditViewModel.RoleActiveTo))
             {
                 user.RoleActiveTo = null;
             }
             else
             {
-                Convert.ToDateTime(this._userEditViewModel.RoleActiveTo);
+                Convert.ToDateTime(_userEditViewModel.RoleActiveTo);
             }
 
-            this._userManagementRepository.EditUserProfile(user);
+            _userManagementRepository.EditUserProfile(user);
 
             // Save user history
-            this._userRoleHistory.UserId = user.UserId;
-            this._userRoleHistory.Changed = DateTime.Now;
-            this._userRoleHistory.MoneyPaid = Convert.ToDecimal(this._userEditViewModel.MoneyPaid, CultureInfo.InvariantCulture);
-            this._userRoleHistory.PaymentDescription = this._userEditViewModel.PaymentDescription;
+            _userRoleHistory.UserId = user.UserId;
+            _userRoleHistory.Changed = DateTime.Now;
+            _userRoleHistory.MoneyPaid = Convert.ToDecimal(_userEditViewModel.MoneyPaid, CultureInfo.InvariantCulture);
+            _userRoleHistory.PaymentDescription = _userEditViewModel.PaymentDescription;
 
-            IEnumerable<PaymentSource> paymentSources = this._userManagementRepository.GetPaymentSources();
-            this._userRoleHistory.PaymentSource_Id = paymentSources.Single(x => x.Name == this._userEditViewModel.PaymentSources.First()).Id;
+            IEnumerable<PaymentSource> paymentSources = _userManagementRepository.GetPaymentSources();
+            _userRoleHistory.PaymentSource_Id = paymentSources.Single(x => x.Name == _userEditViewModel.PaymentSources.First()).Id;
 
-            if (this._userRoleHistory.Old_RoleId != this._userRoleHistory.New_RoleId)
+            if (_userRoleHistory.Old_RoleId != _userRoleHistory.New_RoleId)
             {
-                this._userManagementRepository.AddUserRoleHistoryItem(this._userRoleHistory);
+                _userManagementRepository.AddUserRoleHistoryItem(_userRoleHistory);
             }
         }
 

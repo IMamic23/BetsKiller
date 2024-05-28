@@ -186,9 +186,9 @@
                                         }
                                     </td>
                                     <td class="text-center">
-                                        @foreach (BetsKiller.Helper.HTML.CustomHtmlElement subElement in analyse.Confidence.SubElements)
+                                        @foreach (var subElement in analyse.Confidence.SubElements)
                                         {
-                                            <@subElement.Type class='@subElement.Class'></@subElement.Type>
+                                            <subElement.Type class="@subElement.Class"></subElement.Type>
                                         }
                                         <span style="@analyse.Confidence.Style">@analyse.Confidence.Value</span>
                                     </td>
@@ -299,9 +299,9 @@
                                             }
                                         </td>
                                         <td class="text-center">
-                                            @foreach (BetsKiller.Helper.HTML.CustomHtmlElement subElement in analyse.Confidence.SubElements)
+                                            @foreach (var subElement in analyse.Confidence.SubElements)
                                             {
-                                                <@subElement.Type class='@subElement.Class'></@subElement.Type>
+                                                <subElement.Type class="@subElement.Class"></subElement.Type>
                                             }
                                             <span style="@analyse.Confidence.Style">@analyse.Confidence.Value</span>
                                         </td>
@@ -827,11 +827,11 @@
             element: 'profit-chart-ly',
             resize: true,
             data: [
-              @foreach (BetsKiller.ViewModel.Dashboard.Index.ProfitChartViewModel analysisProfit in this.Model.LastYearProfitChart)
+              @foreach (var analysisProfit in this.Model.LastYearProfitChart)
               {
-                <text>
-                   { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: @analysisProfit.Profit, wins: @analysisProfit.Wins, losses: @analysisProfit.Losses },
-                </text>
+                  <text>
+                      { firstDayInWeek: '@analysisProfit.LastDayInWeek', week: '@analysisProfit.Week', profit: @analysisProfit.Profit, wins: @analysisProfit.Wins, losses: @analysisProfit.Losses },
+                  </text>
               }
             ],
             xkey: 'firstDayInWeek',

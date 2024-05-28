@@ -1,8 +1,4 @@
 ﻿using BotDetect.Web.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace BetsKiller.Web.App_Code
 {

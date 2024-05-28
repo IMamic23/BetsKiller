@@ -1,11 +1,6 @@
 ﻿using BetsKiller.API.Erikberg.Entities;
 using BetsKiller.API.Erikberg.Enums;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.Erikberg.Methods
 {
@@ -32,8 +27,8 @@ namespace BetsKiller.API.Erikberg.Methods
             {
                 string url = "${sport}/team-stats${date}.json";
 
-                url = url.Replace("${sport}", this._sport.ToString());
-                url = url.Replace("${date}", !string.IsNullOrEmpty(this._date) ? "/" + this._date : string.Empty);
+                url = url.Replace("${sport}", _sport.ToString());
+                url = url.Replace("${date}", !string.IsNullOrEmpty(_date) ? "/" + _date : string.Empty);
 
                 return url;
             }
@@ -45,14 +40,14 @@ namespace BetsKiller.API.Erikberg.Methods
 
         public NBATeamStats Get(SportEnum sport, string date, string team_id)
         {
-            this._sport = sport;
-            this._date = date;
+            _sport = sport;
+            _date = date;
 
-            base.AddParameterToDict("team_id", team_id);
+            AddParameterToDict("team_id", team_id);
 
-            base.GetData();
+            GetData();
 
-            return JsonConvert.DeserializeObject<NBATeamStats>(base.ResponseString);
+            return JsonConvert.DeserializeObject<NBATeamStats>(ResponseString);
         }
 
         #endregion

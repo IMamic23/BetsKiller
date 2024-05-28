@@ -1,10 +1,5 @@
 ﻿using BetsKiller.API.Erikberg.Entities;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.Erikberg.Methods
 {
@@ -23,9 +18,9 @@ namespace BetsKiller.API.Erikberg.Methods
 
         public Me Get()
         {
-            base.GetData();
+            GetData();
 
-            return JsonConvert.DeserializeObject<Me>(base.ResponseString);
+            return JsonConvert.DeserializeObject<Me>(ResponseString);
         }
 
         #endregion

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.Erikberg.Methods
 {
@@ -27,7 +23,7 @@ namespace BetsKiller.API.Erikberg.Methods
 
         protected string ResponseString
         {
-            get { return this._response; }
+            get { return _response; }
         }
 
         #endregion
@@ -38,25 +34,25 @@ namespace BetsKiller.API.Erikberg.Methods
         {
             using (WebClient webClient = new WebClient())
             {
-                webClient.Headers.Add("Authorization", "Bearer " + this._apiToken);
-                webClient.Headers.Add("User-agent", this._userAgentInfo);
+                webClient.Headers.Add("Authorization", "Bearer " + _apiToken);
+                webClient.Headers.Add("User-agent", _userAgentInfo);
                 webClient.Headers.Add("Content-Type", "charset=utf-8");
                 //webClient.Headers.Add("Accept-encoding", "gzip"); //daje neke hieroglife kao response sa upita.
 
-                this._response = webClient.DownloadString(this._host + this.Url + this.UrlParsedParameters());
+                _response = webClient.DownloadString(_host + Url + UrlParsedParameters());
             }
         }
 
         protected void AddParameterToDict(string parameterName, string parameterValue)
         {
-            if (this._parameters == null)
+            if (_parameters == null)
             {
-                this._parameters = new Dictionary<string, string>();
+                _parameters = new Dictionary<string, string>();
             }
 
             if (!string.IsNullOrEmpty(parameterValue))
             {
-                this._parameters.Add(parameterName, parameterValue);
+                _parameters.Add(parameterName, parameterValue);
             }
         }
 
@@ -68,11 +64,11 @@ namespace BetsKiller.API.Erikberg.Methods
         {
             string urlParsedParameters = string.Empty;
 
-            if (this._parameters != null && this._parameters.Count > 0)
+            if (_parameters != null && _parameters.Count > 0)
             {
                 urlParsedParameters += "?";
 
-                foreach (KeyValuePair<string, string> param in this._parameters)
+                foreach (KeyValuePair<string, string> param in _parameters)
                 {
                     urlParsedParameters += param.Key + "=" + param.Value + "&";
                 }

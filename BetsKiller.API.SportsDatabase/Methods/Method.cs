@@ -1,13 +1,9 @@
 ﻿using BetsKiller.API.SportsDatabase.Enums;
 using HtmlAgilityPack;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.SportsDatabase.Methods
 {

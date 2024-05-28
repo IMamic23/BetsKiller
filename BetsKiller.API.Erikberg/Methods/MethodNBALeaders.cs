@@ -1,11 +1,7 @@
 ﻿using BetsKiller.API.Erikberg.Entities;
 using BetsKiller.API.Erikberg.Enums;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.Erikberg.Methods
 {
@@ -39,8 +35,8 @@ namespace BetsKiller.API.Erikberg.Methods
             {
                 string url = "${sport}/leaders/${category_id}.json";
 
-                url = url.Replace("${sport}", this._sport.ToString());
-                url = url.Replace("${category_id}", this._categoryId);
+                url = url.Replace("${sport}", _sport.ToString());
+                url = url.Replace("${category_id}", _categoryId);
 
                 return url;
             }
@@ -52,16 +48,16 @@ namespace BetsKiller.API.Erikberg.Methods
 
         public List<NBALeader> Get(SportEnum sport, string categoryId, string limit, string qualified, string seasonType)
         {
-            this._sport = sport;
-            this._categoryId = categoryId;
+            _sport = sport;
+            _categoryId = categoryId;
 
-            base.AddParameterToDict("limit", limit);
-            base.AddParameterToDict("qualified", qualified);
-            base.AddParameterToDict("season_type", seasonType);
+            AddParameterToDict("limit", limit);
+            AddParameterToDict("qualified", qualified);
+            AddParameterToDict("season_type", seasonType);
 
-            base.GetData();
+            GetData();
 
-            return JsonConvert.DeserializeObject<List<NBALeader>>(base.ResponseString);
+            return JsonConvert.DeserializeObject<List<NBALeader>>(ResponseString);
         }
 
         #endregion

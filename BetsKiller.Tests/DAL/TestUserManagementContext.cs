@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BetsKiller.DAL;
 using BetsKiller.DAL.UserManagement;
 using BetsKiller.Model.UserManagement;

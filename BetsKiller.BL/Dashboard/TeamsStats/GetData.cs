@@ -3,11 +3,8 @@ using BetsKiller.DAL.AppData;
 using BetsKiller.Helper.Constants;
 using BetsKiller.Model;
 using BetsKiller.ViewModel.Dashboard.TeamsStats;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.BL.Dashboard.TeamsStats
 {

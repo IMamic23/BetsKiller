@@ -1,12 +1,10 @@
-﻿using BetsKiller.DAL;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BetsKiller.DAL;
 using BetsKiller.DAL.UserManagement;
 using BetsKiller.Helper.Constants;
 using BetsKiller.Model.UserManagement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.Jobs
 {

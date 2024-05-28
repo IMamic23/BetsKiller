@@ -1,11 +1,7 @@
 ﻿using BetsKiller.API.SportsDatabase.Entities;
 using BetsKiller.API.SportsDatabase.Enums;
 using BetsKiller.API.SportsDatabase.Methods;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.API.SportsDatabase._Example
 {

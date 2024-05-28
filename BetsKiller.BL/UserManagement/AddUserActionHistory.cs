@@ -2,10 +2,6 @@
 using BetsKiller.DAL.UserManagement;
 using BetsKiller.Model.UserManagement;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BetsKiller.BL.UserManagement
 {
@@ -39,10 +35,10 @@ namespace BetsKiller.BL.UserManagement
 
         public AddUserActionHistory(int userId, ActionType actionType)
         {
-            this._userId = userId;
-            this._actionType = actionType;
-            this._dateTime = DateTime.Now;
-            this._userManagementRepository = new UserManagementRepository();   
+            _userId = userId;
+            _actionType = actionType;
+            _dateTime = DateTime.Now;
+            _userManagementRepository = new UserManagementRepository();   
         }
 
         #endregion
@@ -52,7 +48,7 @@ namespace BetsKiller.BL.UserManagement
         protected override void Process()
         {
             // Save action history
-            this.SaveHistory();
+            SaveHistory();
         }
 
         #endregion
@@ -79,12 +75,12 @@ namespace BetsKiller.BL.UserManagement
         {
             UserActionHistory userActionHistory = new UserActionHistory()
             {
-                UserId = this._userId,
-                Action = this._actionType.ToString(),
-                DateTime = this._dateTime
+                UserId = _userId,
+                Action = _actionType.ToString(),
+                DateTime = _dateTime
             };
 
-            this._userManagementRepository.AddUserActionHistoryItem(userActionHistory);
+            _userManagementRepository.AddUserActionHistoryItem(userActionHistory);
         }
 
         #endregion
